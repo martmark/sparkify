@@ -9,7 +9,7 @@ export const signup = user => {
 export const login = (user) => {
   return $.ajax({
     method: 'POST',
-    url: "/api/session",
+    url: '/api/session',
     data: { user }
   });
 };
@@ -17,6 +17,14 @@ export const login = (user) => {
 export const logout = () => {
   return $.ajax({
     method: 'DELETE',
-    url: "api/session"
+    url: '/api/session'
   });
 };
+
+export const demoLogin = () => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/session',
+    data: {user: {username: 'DemoUser', password: 'sparkifyonline'}}
+  })
+}

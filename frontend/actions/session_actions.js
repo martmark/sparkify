@@ -36,3 +36,9 @@ export const signup = (user) => dispatch => {
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
+
+export const demoLogin = () => {
+  return APIUtil.demoLogin().then(currentUser => dispatch(receiveCurrentUser(currentUser)),
+    errors => dispatch(receiveErrors(errors.responseJSON))
+  );
+};
