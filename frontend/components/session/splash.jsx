@@ -6,15 +6,15 @@ class Splash extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="splash">
         <header className="splash-header">
-          <nav className="nav-bar">
+          <nav className="splash-nav">
             <div className="splash-logo">
               <Link to="/" className="logo">
                 <h1 className="header-logo">Sparkify</h1>
               </Link>
             </div>
-            <ul className="header-list">
+            <ul className="splash-header-list">
               <li>
                 <Link to="/signup">Sign Up</Link>
               </li>
@@ -24,7 +24,8 @@ class Splash extends React.Component {
             </ul>
           </nav>
         </header>
-        <section>
+
+        <section className="splash-main">
           <h1>Music for everyone.</h1>
           <h3>Millions of songs. No credit card needed.</h3>
           <DemoLoginButton />
