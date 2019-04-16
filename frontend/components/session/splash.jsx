@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import DemoLoginButton from './demo_login_button';
 
 class Splash extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.demoLogin = this.demoLogin.bind(this);
+
+  // }
+
+  
 
   render() {
     return (
@@ -27,8 +33,9 @@ class Splash extends React.Component {
 
         <section className="splash-main">
           <h1>Music for everyone.</h1>
-          <h3>Millions of songs. No credit card needed.</h3>
-          <DemoLoginButton />
+          <h4>Millions of songs. No credit card needed.</h4>
+          <button onClick={this.props.demoLogin}>LOG IN AS DEMO USER</button>
+          
         </section>
       </div>
     );
