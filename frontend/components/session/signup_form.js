@@ -28,7 +28,7 @@ class SignupForm extends React.Component {
 
     return (
       <div className="signup">
-        <header className='signup-header'>Sparkify</header>
+        <header className='signup-header'><Link to={'/'}>Sparkify</Link></header>
         <section className="signup-main">
           <div className='signup-demo-button'>
             <button onClick={this.props.demoLogin}>SIGN IN AS DEMO USER</button>

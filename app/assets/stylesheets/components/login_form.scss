@@ -91,7 +91,7 @@ h3:after {
 .login-form {
   display: flex;
   flex-direction: column;
-  margin-block-end: 20px;
+  margin-block-end: 5px;
   border-bottom: 0.5px solid lightgray;
 }
 
@@ -129,4 +129,25 @@ h3:after {
 
 .green-link:hover {
   color: rgb(30,215,96);
+}
+
+.to-signup-button > button {
+  border: 2px solid rgb(50,50,50);
+  height: 50px;
+  width: 100%;
+  margin: auto;
+  border-radius: 30px;
+  font-family: Circular, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  transition: 0.3s;
+  color: rgb(50,50,50);
+}
+
+.to-signup-button > button:hover {
+  background: rgb(50,50,50);
+  color: white;
+  transition: 0.3s;
+
 }

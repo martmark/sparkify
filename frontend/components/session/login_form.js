@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 
 class LoginForm extends React.Component {
@@ -24,11 +25,15 @@ class LoginForm extends React.Component {
     }
   }
 
+  goToSignup() {
+    window.location.hash = "#/signup";
+  }
+
   render() {
 
     return (
       <div className="login">
-        <header className='login-header'>Sparkify</header>
+        <header className='login-header'><Link to={'/'}>Sparkify</Link></header>
         <section className="login-main">
           <h1>To continue, log in to Sparkify.</h1>
           <div className='login-demo-button'>
@@ -43,7 +48,10 @@ class LoginForm extends React.Component {
 
             <button onClick={this.handleSubmit}>LOG IN</button>
           </form>
-          <h2>Don't have an account?</h2>
+          <h1>Don't have an account?</h1>
+          <div className="to-signup-button">
+            <button onClick={this.goToSignup}>SIGN UP FOR SPARKIFY</button>
+          </div>
         </section>
       </div>
     )
@@ -51,4 +59,4 @@ class LoginForm extends React.Component {
 
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);
