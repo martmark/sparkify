@@ -5,7 +5,6 @@ import Splash from './splash'
 const mdp = dispatch => {
   return({
     demoLogin: () => {
-      debugger
       return dispatch(demoLogin())
     }
   });
