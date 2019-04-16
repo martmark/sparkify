@@ -7,7 +7,7 @@ import Splash from './session/splash';
 
 const App = () => (
   <div>
-    <Route path="/" component={Splash} />
+    <Route exact path="/" component={Splash} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />
   </div>
