@@ -14,6 +14,10 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.receiveSessionErrors([]);
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state);
@@ -30,7 +34,8 @@ class LoginForm extends React.Component {
   }
 
   render() {
-
+    const errorsList = this.props.errors.length > 0 ?
+      (<ul className="session-errors">{this.props.errors.map((error, idx) => (<li key={idx}>{error}</li>))} </ul>) : null
     return (
       <div className="login">
         <header className='login-header'><Link to={'/'}>Sparkify</Link></header>
@@ -40,6 +45,7 @@ class LoginForm extends React.Component {
             <button onClick={this.props.demoLogin}>LOG IN AS DEMO USER</button>
           </div>
           <h3>OR</h3>
+          {errorsList}
           <form className="login-form">
             <input type="text" value={this.state.username} placeholder={'Username'} onChange={this.update('username')} />
 

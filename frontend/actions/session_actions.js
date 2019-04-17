@@ -15,7 +15,7 @@ const logoutCurrentUser = () => ({
   type: LOGOUT_CURRENT_USER
 });
 
-const receiveSessionErrors = (errors) => ({
+export const receiveSessionErrors = (errors) => ({
   type: RECEIVE_SESSION_ERRORS,
   errors
 });
@@ -44,3 +44,4 @@ export const demoLogin = () => dispatch => {
     errors => dispatch(receiveSessionErrors(errors.responseJSON))
   );
 };
+
