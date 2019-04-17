@@ -51,17 +51,20 @@ h3:after {
   height: 0.5px;
   position: relative;
   vertical-align: middle;
-  width: 50%;
+  width: 44%;
+  overflow: hidden;
 }
 
 .login-main > h3:before {
   right: 0.5em;
   margin-left: -50%;
+  overflow: hidden;
 }
 
 .login-main > h3:after {
   left: 0.5em;
   margin-right: -50%;
+  overflow: hidden;
 }
 
 .login-demo-button {
