@@ -9,12 +9,14 @@ class Greeting extends React.Component {
   }
 
   render() {
-      return (<div>
+    return (
+      <div style={{ textAlign: 'center', fontSize: '24px' }}>
+        <br />
         <p>Welcome to Sparkify, {this.props.currentUser.username}!</p>
-        <br/><br/>
+        <br/>
         <p>Obviously, there is more content coming.</p>
-        <br/><br/>
-        <button onClick={this.props.logout}>Log Out</button>
+        <br/>
+        <button className="green-link" onClick={this.props.logout}>Log Out</button>
       </div>)
   }
 
