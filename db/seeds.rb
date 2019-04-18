@@ -56,7 +56,7 @@ soul.songs.create([
   { title: 'For Once In My Life', duration: '4:40' },
   { title: 'Everyday I Have The Blues', duration: '4:25' },
   { title: 'I Need Your Key (To Turn Me On)', duration: '3:43' },
-  { title: 'Paps''s Got A Brand New Bag', duration: '4:38' },
+  { title: "Papa's Got A Brand New Bag", duration: '4:38' },
   { title: 'There Was A Time', duration: '3:05' }
 ])
 

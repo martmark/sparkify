@@ -1,5 +1,6 @@
 import { RECEIVE_PLAYLIST } from './../actions/playlist_actions';
 import merge from 'lodash/merge';
+import { RECEIVE_ALBUM } from '../actions/album_actions';
 
 const songsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -10,6 +11,8 @@ const songsReducer = (state = {}, action) => {
       } else {
         return {};
       }
+    case RECEIVE_ALBUM:
+      return action.payload.songs;
     default:
       return state;
   }

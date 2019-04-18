@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class PlaylistIndex extends React.Component {
   componentDidMount() {
@@ -10,7 +11,7 @@ class PlaylistIndex extends React.Component {
     return(
       <div>
         <ul>
-          {this.props.playlists.map(playlist => <li key={playlist.id}>{playlist.title} by {playlist.authorName}</li>)}
+          {this.props.playlists.map(playlist => <li key={playlist.id}><Link to={`/playlist/${playlist.id}`}>{playlist.title}</Link> by {playlist.authorName}</li>)}
         </ul>
       </div>
     )

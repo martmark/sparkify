@@ -14,8 +14,10 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute path="/browse" component={Main} />
+      <ProtectedRoute path="/search" component={Main} />
       <ProtectedRoute path="/collection" component={Main} />
       <ProtectedRoute path="/playlist" component={Main} />
+      <ProtectedRoute path="/album" component={Main} />
       <Route component={Page404} />
     </Switch>
   </div>

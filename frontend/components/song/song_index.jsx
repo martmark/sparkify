@@ -1,11 +1,12 @@
 import React from 'react';
+import SongIndexItem from './song_index_item';
 
 class SongIndex extends React.Component {
   render() {
     return(
       <div>
-        <ul>
-          {this.props.songs.map(song => <li key={song.id}>{song.title} by {song.artistName} - {song.duration}</li>)}
+        <ul className="song-index">
+          {this.props.songs.map(song => <SongIndexItem song={song} key={song.id} />)}
         </ul>
       </div>
     )
