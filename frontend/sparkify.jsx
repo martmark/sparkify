@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
+import * as PlaylistAPI from './util/playlist_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -26,3 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={ store }/>, root);
 });
+
+window.fetchPlaylists = PlaylistAPI.fetchPlaylists;
+window.fetchPlaylist = PlaylistAPI.fetchPlaylist;
+window.createPlaylist = PlaylistAPI.createPlaylist;
