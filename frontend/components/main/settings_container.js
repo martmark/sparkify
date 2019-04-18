@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
+import Settings from './settings';
 import { logout } from './../../actions/session_actions';
-import Greeting from './greeting';
 import React from 'react';
 
 const msp = state => {
@@ -9,9 +9,10 @@ const msp = state => {
   });
 };
 
-const mdp = dispatch => ({
-  logout: () => dispatch(logout())
-});
+const mdp = dispatch => {
+  return({
+    logout: () => dispatch(logout())
+  });
+};
 
-
-export default connect(msp, mdp)(Greeting);
+export default connect(msp, mdp)(Settings);

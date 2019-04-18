@@ -21,7 +21,7 @@ billie = Artist.create({ name: 'Billie Eilish', bio: 'coming soon'})
 jack = Artist.create({ name: 'Jack Johnson', bio: 'coming soon'})
 air = Artist.create({ name: 'Air', bio: 'coming soon'})
 devendra = Artist.create({ name: 'Devendra Banhart', bio: 'coming soon'})
-can = Artist.create({ name: 'can', bio: 'coming soon'})
+can = Artist.create({ name: 'Can', bio: 'coming soon'})
 frank = Artist.create({ name: 'Frank', bio: 'coming soon'})
 elliott = Artist.create({ name: 'Elliott Smith', bio: 'coming soon'})
 floyd = Artist.create({ name: 'Pink Floyd', bio: 'coming soon'})
@@ -42,8 +42,6 @@ blonde = frank.albums.create({ title: 'Blonde', genre: 'Hip-Hop', year: 2016 })
 either = elliott.albums.create({ title: 'Either/Or', genre: 'Acoustic', year: 1997 })
 moon = floyd.albums.create({ title: 'Dark Side of the Moon', genre: 'Rock', year: 1973 })
 atliens = outkast.albums.create({ title: 'ATLiens', genre: 'Hip-Hop', year: 1996 })
-
-
 
 soul.songs.create([
   { title: 'That''s My Desire', duration: '4:07' },
@@ -88,7 +86,7 @@ asleep.songs.create([
   { title: 'i love you', duration: '4:52' },
   { title: 'goodbye', duration: '1:59' }
 ])
-bury = asleep.songs[9]
+chill.songs << asleep.songs[9]
 
 onandon.songs.create([
   { title: 'Times Like These', duration: '2:21' },
@@ -108,7 +106,7 @@ onandon.songs.create([
   { title: 'Mediocre Bad Guys', duration: '3:00' },
   { title: 'Symbol In My Driveway', duration: '2:51' },
 ])
-holes = onandon.songs[7]
+chill.songs << onandon.songs[7]
 
 talkie.songs.create([
   { title: 'Venus', duration: '4:05' },
@@ -122,7 +120,7 @@ talkie.songs.create([
   { title: 'Biological', duration: '6:05' },
   { title: 'Alone in Kyoto', duration: '4:51' }
 ])
-surfing = talkie.songs[5]
+chill.songs << talkie.songs[5]
 
 mala.songs.create([
   { title: 'Golden Girls', duration: '1:36' },
@@ -140,7 +138,7 @@ mala.songs.create([
   { title: 'Won''t You Come Home', duration: '3:32' },
   { title: 'Taurobolium', duration: '3:16' }
 ])
-never = mala.songs[3]
+chill.songs << mala.songs[3]
 
 ege.songs.create([
   { title: 'Pinch', duration: '9:29' },
@@ -151,7 +149,7 @@ ege.songs.create([
   { title: 'I''m So Green', duration: '3:05' },
   { title: 'Spoon', duration: '3:06' }
 ])
-night = ege.songs[2]
+chill.songs << ege.songs[2]
 
 blonde.songs.create([
   { title: 'Nikes', duration: '5:14' },
@@ -172,7 +170,7 @@ blonde.songs.create([
   { title: 'Godspeed', duration: '2:58' },
   { title: 'Futura Free', duration: '9:24' }
 ])
-control = blonde.songs[6]
+chill.songs << blonde.songs[6]
 
 either.songs.create([
   { title: 'Speed Trials', duration: '3:01' },
@@ -188,7 +186,7 @@ either.songs.create([
   { title: '2:45 AM', duration: '3:19' },
   { title: 'Say Yes', duration: '2:19' },
 ])
-sayyes = either.songs[11]
+chill.songs << either.songs[11]
 
 moon.songs.create([
   { title: 'Speak to Me', duration: '1:05' },
@@ -202,7 +200,7 @@ moon.songs.create([
   { title: 'Brain Damage', duration: '3:47' },
   { title: 'Eclipse', duration: '2:10' }
 ])
-usthem = moon.songs[6]
+chill.songs << moon.songs[6]
 
 atliens.songs.create([
   { title: 'You May Die (Intro)', duration: '1:06' },
@@ -220,12 +218,3 @@ atliens.songs.create([
   { title: 'E.T. (Extraterrestrial)', duration: '3:07' },
   { title: '13th Floor / Growing Old', duration: '6:51' }
 ])
-
-chill.songs << bury
-chill.songs << holes
-chill.songs << surfing
-chill.songs << never
-chill.songs << night
-chill.songs << control
-chill.songs << sayyes
-chill.songs << usthem
