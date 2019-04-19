@@ -13,6 +13,7 @@ if @album.songs
         json.duration song.duration
         json.artistName song.artist.name
         json.albumTitle song.album.title
+        json.albumId song.album_id
       end
     end
   end

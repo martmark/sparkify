@@ -9,8 +9,12 @@ const songIndexItem = ({ song }) => {
         <span className='song-duration'>{song.duration}</span>
       </div>
       <div className='song-artist-info'>
-        <span className='song-artist'>{song.artistName}</span>
-        <span className='song-album'><Link to={`/album/${song.albumId}`}>{song.albumTitle}</Link></span>
+        <span className='song-artist'>
+          <Link to={`/artist/${song.artistId}`}>{song.artistName}</Link>
+        </span>
+        <span className='song-album'>
+          <Link to={`/album/${song.albumId}`}>{song.albumTitle}</Link>
+        </span>
       </div>
     </li>
   );

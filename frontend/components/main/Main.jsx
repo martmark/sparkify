@@ -8,6 +8,7 @@ import GreetingContainer from './../browse/greeting_container';
 import Page404 from '../page404';
 import AlbumShowContainer from './../album/album_show_container';
 import SettingsContainer from './settings_container';
+import ArtistShowContainer from './../artist/artist_show_container';
 
 const Main = () => (
   <div className='main-content'>
@@ -17,6 +18,7 @@ const Main = () => (
       <Route path="/collection" component={Collection} />
       <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
       <Route path="/album/:albumId" component={AlbumShowContainer} />
+      <Route path="/artist/:artistId" component={ArtistShowContainer} />
       <Route path="/settings" component={SettingsContainer} />
   </div>
 );

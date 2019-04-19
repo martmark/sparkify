@@ -18,6 +18,7 @@ const App = () => (
       <ProtectedRoute path="/collection" component={Main} />
       <ProtectedRoute path="/playlist" component={Main} />
       <ProtectedRoute path="/album" component={Main} />
+      <ProtectedRoute path="/artist" component={Main} />
       <ProtectedRoute path="/settings" component={Main} />
       <Route component={Page404} />
     </Switch>

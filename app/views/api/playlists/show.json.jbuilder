@@ -12,6 +12,7 @@ if @playlist.songs
         json.title song.title
         json.duration song.duration
         json.artistName song.artist.name
+        json.artistId song.artist.id
         json.albumTitle song.album.title
         json.albumId song.album_id
       end

@@ -10,7 +10,7 @@ class AlbumShow extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.albumId !== prevProps.albumId) {
-      this.props.fetchAlbum(this.props.albumId)
+      this.props.fetchAlbum(this.props.albumId);
     }
   }
 
