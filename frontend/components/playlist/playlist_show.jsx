@@ -21,11 +21,13 @@ class PlaylistShow extends React.Component {
   render() {
     let playlist = '';
     if (this.props.playlist) {
-      playlist = `${this.props.playlist.title} by ${this.props.playlist.authorName}`;
+      playlist = `<h1>${this.props.playlist.title}</h1></h2>${this.props.playlist.authorName}</h2>`;
     }
     return(
       <div>
-        {playlist}
+        <section className='playlist-header'>
+          {playlist}
+        </section>
         <SongIndexContainter />
       </div>
     )

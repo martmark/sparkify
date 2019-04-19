@@ -15,7 +15,9 @@ class mainNav extends React.Component {
           <li key={2}><Link to={'/search'}>Search</Link></li>
           <li key={3}><Link to={'/collection'}>Library</Link></li>
         </ul>
-        <Link to={'/settings/account'}><h1>{this.props.currentUser.username}</h1></Link>
+          <span className="main-nav-username">
+            <Link to={'/settings/account'}>{this.props.currentUser.username}</Link>
+          </span>
       </div>
     )
   }

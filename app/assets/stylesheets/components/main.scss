@@ -15,3 +15,17 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.main-nav-links {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.main-nav-links > li {
+  padding: 10px;
+}
+
+.main-nav-username {
+  padding: 30px;
+}
