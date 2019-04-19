@@ -8,7 +8,6 @@ class PlaylistShow extends React.Component {
   }
 
   componentDidMount() {
-    // debugger;
     this.props.fetchPlaylist(this.props.playlistId);
   }
 
@@ -18,15 +17,25 @@ class PlaylistShow extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.clearSongs();
+  }
+
   render() {
-    let playlist = '';
+    let title = '';
+    let authorName = '';
+    let trackCount = '';
     if (this.props.playlist) {
-      playlist = `<h1>${this.props.playlist.title}</h1></h2>${this.props.playlist.authorName}</h2>`;
+      title = this.props.playlist.title;
+      authorName = this.props.playlist.authorName;
+      trackCount = `${this.props.playlist.trackCount}`;
     }
     return(
-      <div>
+      <div className='playlist-show'>
         <section className='playlist-header'>
-          {playlist}
+          <h1>{title}</h1>
+          <h2>{authorName}</h2>
+          <h3>{trackCount} SONGS</h3>
         </section>
         <SongIndexContainter />
       </div>

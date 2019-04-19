@@ -1,0 +1,25 @@
+.song-index {
+  padding: 20px;
+  font-family: Circular, Helvetica, Arial, sans-serif;
+}
+
+.song-index > li {
+  padding: 10px;
+}
+
+.song-index-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.song-title-info {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.song-artist-info {
+  font-size: 10px;
+  display: flex;
+}
+

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import PlaylistShow from './playlist_show';
 import { fetchPlaylist } from './../../actions/playlist_actions';
+import { clearSongs } from './../../actions/song_actions';
 
 const msp = (state, ownProps) => {
   let playlistId = ownProps.match.params.playlistId;
@@ -13,7 +14,8 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => {
   return({
-    fetchPlaylist: id => dispatch(fetchPlaylist(id))
+    fetchPlaylist: id => dispatch(fetchPlaylist(id)),
+    clearSongs: () => dispatch(clearSongs())
   })
 }
 

@@ -44,7 +44,7 @@ class LoginForm extends React.Component {
           <div className='login-demo-button'>
             <button onClick={this.props.demoLogin}>LOG IN AS DEMO USER</button>
           </div>
-          <h3>OR</h3>
+          <h3 id='form-or'>OR</h3>
           {errorsList}
           <form className="login-form">
             <input type="text" value={this.state.username} placeholder={'Username'} onChange={this.update('username')} />

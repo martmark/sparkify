@@ -14,6 +14,10 @@ class AlbumShow extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.clearSongs();
+  }
+
   render() {
     let album = '';
     if (this.props.album) {

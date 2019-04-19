@@ -38,13 +38,13 @@
   margin-bottom: 15px;
 }
 
-.login-main > h3 {
+#form-or {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.login-main > h3:before,
-h3:after {
+#form-or:before,
+#form-or:after {
   background-color: lightgray;
   content: "";
   display: inline-block;
@@ -55,13 +55,13 @@ h3:after {
   overflow: hidden;
 }
 
-.login-main > h3:before {
+#form-or:before {
   right: 0.5em;
   margin-left: -50%;
   overflow: hidden;
 }
 
-.login-main > h3:after {
+#form-or:after {
   left: 0.5em;
   margin-right: -50%;
   overflow: hidden;

@@ -1,6 +1,7 @@
 json.playlist do
   json.extract! @playlist, :id, :title
   json.authorName @playlist.user.username
+  json.trackCount @playlist.songs.count
 end
 
 if @playlist.songs
@@ -12,6 +13,7 @@ if @playlist.songs
         json.duration song.duration
         json.artistName song.artist.name
         json.albumTitle song.album.title
+        json.albumId song.album_id
       end
     end
   end

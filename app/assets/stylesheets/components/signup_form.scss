@@ -39,27 +39,6 @@
 }
 
 
-.signup-main > h3:before,
-h3:after {
-  background-color: lightgray;
-  content: "";
-  display: inline-block;
-  height: 0.5px;
-  position: relative;
-  vertical-align: middle;
-  width: 46%;
-}
-
-.signup-main > h3:before {
-  right: 0.5em;
-  margin-left: -50%;
-}
-
-.signup-main > h3:after {
-  left: 0.5em;
-  margin-right: -50%;
-}
-
 .signup-demo-button {
   margin-top: 25px;
   margin-bottom: 10px;
