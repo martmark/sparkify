@@ -5,7 +5,7 @@ import LoginFormContainer from './session/login_form_container';
 import { AuthRoute, ProtectedRoute } from './../util/route_util';
 import SplashContainer from './session/splash_container';
 import Page404 from './page404';
-import Main from './main/Main';
+import Main from './main_content/Main';
 
 const App = () => (
   <div>

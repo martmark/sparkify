@@ -7,15 +7,7 @@ end
 if @playlist.songs
   json.songs do
     @playlist.songs.each do |song|
-      json.set! song.id do
-        json.id song.id
-        json.title song.title
-        json.duration song.duration
-        json.artistName song.artist.name
-        json.artistId song.artist.id
-        json.albumTitle song.album.title
-        json.albumId song.album_id
-      end
+      json.partial! 'api/songs/song', song: song
     end
   end
 else

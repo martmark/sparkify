@@ -6,7 +6,7 @@ class PlaylistForm extends React.Component {
     this.state = {title: ''};
     this.updateTitle = this.updateTitle.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.cancelCreate = this.cancelCreate.bind(this);
+    
   }
 
   updateTitle(e) {
@@ -17,9 +17,7 @@ class PlaylistForm extends React.Component {
     this.props.createPlaylist(this.state);
   }
 
-  cancelCreate() {
-    this.setState({title: ''});
-  }
+ 
 
   render() {
     return(
@@ -27,7 +25,7 @@ class PlaylistForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="playlist-form">
           <input type="text" value={this.state.title} onChange={this.updateTitle} placeholder={'Start typing...'}/>
         </form>
-        <button onClick={this.cancelCreate}>CANCEL</button>
+        <button onClick={this.props.closeModal}>CANCEL</button>
         <button onClick={this.handleSubmit}>CREATE</button>
       </div>
     )

@@ -9,9 +9,11 @@ import Page404 from '../page404';
 import AlbumShowContainer from './../album/album_show_container';
 import SettingsContainer from './settings_container';
 import ArtistShowContainer from './../artist/artist_show_container';
+import ModalContainer from './modal_container';
 
 const Main = () => (
   <div className='main-content'>
+      <ModalContainer />
       <MainNav />
       <Route path="/browse" component={GreetingContainer} />
       <Route path="/search" component={GreetingContainer} />
