@@ -14,19 +14,22 @@ class PlaylistForm extends React.Component {
   }
 
   handleSubmit(e) {
-    this.props.createPlaylist(this.state);
+    this.props.createPlaylist(this.state)
+      .then(() => this.props.closeModal());
   }
 
  
 
   render() {
     return(
-      <div>
+      <div className='playlist-form-div'>
         <form onSubmit={this.handleSubmit} className="playlist-form">
-          <input type="text" value={this.state.title} onChange={this.updateTitle} placeholder={'Start typing...'}/>
+          <input id='playlist-form-input' type="text" value={this.state.title} onChange={this.updateTitle} placeholder={'Start typing...'}/>
         </form>
-        <button onClick={this.props.closeModal}>CANCEL</button>
-        <button onClick={this.handleSubmit}>CREATE</button>
+        <div className='playlist-form-buttons'>
+          <button id='playlist-form-cancel' onClick={this.props.closeModal}>CANCEL</button>
+          <button id='playlist-form-submit' onClick={this.handleSubmit}>CREATE</button>
+        </div>
       </div>
     )
   }

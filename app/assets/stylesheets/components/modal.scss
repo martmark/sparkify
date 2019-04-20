@@ -1,0 +1,36 @@
+.modal-bg {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(0,0,0,0.8);
+}
+
+.modal-inner {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  margin-left: -220px;
+  width: 100%;
+  padding: 20px;
+  z-index: 3;
+}
+
+.playlist-form-div {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.playlist-form-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.playlist-form > input {
+  font-size: 60px;
+  background: rbg(39,39,39);
+  width: 100%;
+}
