@@ -4,6 +4,7 @@ import PlaylistIndex from './../playlist/playlist_index';
 import SongIndex from './../song/song_index';
 import CollectionNav from './collection_nav';
 import AlbumIndex from './../album/album_index';
+import ArtistIndex from './../artist/artist_index';
 import { fetchPlaylists } from './../../actions/playlist_actions';
 import { fetchArtists } from './../../actions/artist_actions';
 import { fetchAlbums } from './../../actions/album_actions';
@@ -26,7 +27,7 @@ class Collection extends React.Component {
   }
 
   render() {
-    const { playlist, artists, albums, songs, loading } = this.props;
+    const { playlists, artists, albums, songs, loading } = this.props;
     
       if (loading) {
         return(
@@ -38,9 +39,10 @@ class Collection extends React.Component {
         <div>
           <CollectionNav />
           <Route exact path='/collection' render={() => <Redirect to='/collection/playlists' />} />
-          <Route path="/collection/playlists" component={PlaylistIndex} />
+          <Route path="/collection/playlists" render={(props) => <PlaylistIndex {...props} playlists={playlists} />} />
           <Route path="/collection/albums" render={(props) => <AlbumIndex {...props} albums={albums} />} />
           <Route path="/collection/tracks" render={(props) => <SongIndex {...props} songs={songs} />} />
+          <Route path="/collection/artists" render={(props) => <ArtistIndex {...props} artists={artists} />} />
         </div>
       )
     

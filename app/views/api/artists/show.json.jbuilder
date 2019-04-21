@@ -2,6 +2,7 @@ json.artist do
     json.id @artist.id
     json.name @artist.name
     json.bio @artist.bio
+    json.image_url @artist.image_url
 end
 
 json.albums do

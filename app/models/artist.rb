@@ -6,4 +6,6 @@ class Artist < ApplicationRecord
     through: :albums,
     source: :songs
   has_many :follows, as: :followable
+
+  
 end

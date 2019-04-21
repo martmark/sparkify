@@ -5,7 +5,7 @@ class AlbumIndex extends React.Component {
   render() {
     return (
       <div>
-        <ul className="song-index">
+        <ul className="album-index">
           {this.props.albums.map(album => <AlbumIndexItem album={album} key={album.id} />)}
         </ul>
       </div>

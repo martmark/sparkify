@@ -1,7 +1,7 @@
 import { RECEIVE_PLAYLIST } from './../actions/playlist_actions';
 import merge from 'lodash/merge';
 import { RECEIVE_ALBUM } from './../actions/album_actions';
-import { REMOVE_SONGS, RECEIVE_SONGS } from './../actions/song_actions';
+import { RECEIVE_SONGS } from './../actions/song_actions';
 import { RECEIVE_ARTIST } from './../actions/artist_actions';
 
 const songsReducer = (state = {}, action) => {
@@ -19,8 +19,6 @@ const songsReducer = (state = {}, action) => {
       return action.payload.songs;
     case RECEIVE_ARTIST:
       return action.payload.songs;
-    case REMOVE_SONGS:
-      return {};
     default:
       return state;
   }

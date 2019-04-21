@@ -1,20 +1,17 @@
-// import { connect } from 'react-redux';
-// import React from 'react';
+import React from 'react';
+import ArtistIndexItem from './artist_index_item';
 
-// class ArtistIndex extends React.Component {
+class ArtistIndex extends React.Component {
+  render() {
+    return (
+      <div>
+        <ul className="artist-index">
+          {this.props.artists.map(artist => <ArtistIndexItem artist={artist} key={artist.id} />)}
+        </ul>
+      </div>
+    )
+  }
 
-// }
+}
 
-// const msp = state => {
-//   return({
-
-//   });
-// };
-
-// const mdp = dispatch => {
-//   return({
-
-//   });
-// };
-
-// export default connect(msp, mdp)(ArtistIndex)
+export default ArtistIndex;

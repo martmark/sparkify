@@ -15,13 +15,15 @@ const Main = () => (
   <div className='main-content'>
       <ModalContainer />
       <MainNav />
-      <Route path="/browse" component={GreetingContainer} />
-      <Route path="/search" component={GreetingContainer} />
-      <Route path="/collection" component={Collection} />
-      <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
-      <Route path="/album/:albumId" component={AlbumShow} />
-      <Route path="/artist/:artistId" component={ArtistShow} />
-      <Route path="/settings" component={SettingsContainer} />
+      <Switch>
+        <Route path="/browse" component={GreetingContainer} />
+        <Route path="/search" component={GreetingContainer} />
+        <Route path="/collection" component={Collection} />
+        <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
+        <Route path="/album/:albumId" component={AlbumShow} />
+        <Route path="/artist/:artistId" component={ArtistShow} />
+        <Route path="/settings" component={SettingsContainer} />
+      </Switch>
   </div>
 );
 

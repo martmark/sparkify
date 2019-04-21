@@ -8,5 +8,5 @@ class Playlist < ApplicationRecord
     source: :song
   has_many :follows, as: :followable
 
-
+  has_one_attached :image
 end

@@ -2,7 +2,6 @@ import React from 'react';
 import SongIndex from './../song/song_index';
 import { connect } from 'react-redux';
 import { fetchAlbum } from './../../actions/album_actions';
-import { clearSongs } from './../../actions/song_actions';
 import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
 
 class AlbumShow extends React.Component {

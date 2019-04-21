@@ -33,27 +33,33 @@ class ArtistShow extends React.Component {
       )
     }
 
-    let artist = '';
-    let songs = '';
-    let albums = '';
+    let artistName = '';
+    let artistImage = '';
+    let songIndex = '';
+    let albumIndex = '';
     if (this.props.artist) {
-      artist = this.props.artist.name;
+      const { artist, songs, albums } = this.props;
+     
+      artistName = artist.name;
+      artistImage = <img src={artist.image_url} alt={artist.name} />
 
-      let allSongs = this.props.songs;
+
+      
       let artistSongs = [];
       while (artistSongs.length < 5) {
-        let song = allSongs[Math.floor(Math.random() * allSongs.length)];
+        let song = songs[Math.floor(Math.random() * songs.length)];
         if (!artistSongs.includes(song)) artistSongs.push(song);
       }
-      songs = <SongIndex songs={artistSongs} />
+      songIndex = <SongIndex songs={artistSongs} />
 
-      albums = <AlbumIndex albums={this.props.albums} />
+      albumIndex = <AlbumIndex albums={albums} />
     }
     return(
       <div>
-        <h1>{artist}</h1>
-        <ul>{songs}</ul>
-        <ul>{albums}</ul>
+        <h1>{artistName}</h1>
+        <h2>{artistImage}</h2>
+        <ul>{songIndex}</ul>
+        <ul>{albumIndex}</ul>
       </div>
     )
   }

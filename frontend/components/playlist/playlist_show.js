@@ -73,7 +73,6 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
   return({
     fetchPlaylist: id => dispatch(fetchPlaylist(id)),
-    clearSongs: () => dispatch(clearSongs()),
     setLoadingTrue: () => dispatch(setLoadingTrue()),
     setLoadingFalse: () => dispatch(setLoadingFalse())
   });
