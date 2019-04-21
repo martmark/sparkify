@@ -1,30 +1,49 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import PlaylistIndex from './../playlist/playlist_index';
+import SongIndex from './../song/song_index';
 import CollectionNav from './collection_nav';
+import AlbumIndex from './../album/album_index';
 import { fetchPlaylists } from './../../actions/playlist_actions';
 import { fetchArtists } from './../../actions/artist_actions';
 import { fetchAlbums } from './../../actions/album_actions';
 import { fetchSongs } from './../../actions/song_actions';
 import { connect } from 'react-redux';
+import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
 
 class Collection extends React.Component {
 
   componentDidMount() {
-    this.props.fetchPlaylists();
-    this.props.fetchArtists();
-    this.props.fetchAlbums();
-    this.props.fetchSongs();
+    this.props.fetchPlaylists()
+    .then(() => this.props.fetchArtists())
+    .then(() => this.props.fetchAlbums())
+    .then(() => this.props.fetchSongs())
+    .then(() => this.props.setLoadingFalse());
+  }
+
+  componentWillUnmount() {
+    this.props.setLoadingTrue();
   }
 
   render() {
-    return (
-      <div>
-        <CollectionNav />
-        <Route exact path='/collection' render={() => <Redirect to='/collection/playlists' />} />
-        <Route path="/collection/playlists" component={PlaylistIndex} />
-      </div>
-    )
+    const { playlist, artists, albums, songs, loading } = this.props;
+    
+      if (loading) {
+        return(
+          <h1>Loading...</h1>
+        )
+      }
+
+      return (
+        <div>
+          <CollectionNav />
+          <Route exact path='/collection' render={() => <Redirect to='/collection/playlists' />} />
+          <Route path="/collection/playlists" component={PlaylistIndex} />
+          <Route path="/collection/albums" render={(props) => <AlbumIndex {...props} albums={albums} />} />
+          <Route path="/collection/tracks" render={(props) => <SongIndex {...props} songs={songs} />} />
+        </div>
+      )
+    
   }
 }
 
@@ -33,7 +52,8 @@ const msp = state => {
     playlists: Object.values(state.entities.playlists),
     artists: Object.values(state.entities.artists),
     albums: Object.values(state.entities.albums),
-    songs: Object.values(state.entities.songs)
+    songs: Object.values(state.entities.songs),
+    loading: state.ui.loading.status
   })
 }
 
@@ -42,7 +62,9 @@ const mdp = dispatch => {
     fetchPlaylists: () => dispatch(fetchPlaylists({ fetchType: 'collection' })),
     fetchArtists: () => dispatch(fetchArtists({ fetchType: 'collection' })),
     fetchAlbums: () => dispatch(fetchAlbums({ fetchType: 'collection' })),
-    fetchSongs: () => dispatch(fetchSongs({ fetchType: 'collection' }))
+    fetchSongs: () => dispatch(fetchSongs({ fetchType: 'collection' })),
+    setLoadingTrue: () => dispatch(setLoadingTrue()),
+    setLoadingFalse: () => dispatch(setLoadingFalse())
   })
 }
 

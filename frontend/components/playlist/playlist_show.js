@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { fetchPlaylist } from './../../actions/playlist_actions';
-import { clearSongs } from './../../actions/song_actions';
+import { setLoadingFalse, setLoadingTrue } from './../../actions/loading_actions';
 import React from 'react';
-import SongIndex from './../song/song_index';
+import SongIndex from '../song/song_index';
 
 class PlaylistShow extends React.Component {
 
@@ -11,7 +11,8 @@ class PlaylistShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchPlaylist(this.props.playlistId);
+    this.props.fetchPlaylist(this.props.playlistId)
+    .then(() => this.props.setLoadingFalse());
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -21,10 +22,18 @@ class PlaylistShow extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.clearSongs();
+    this.props.setLoadingTrue();
   }
 
   render() {
+    const { playlist, songs, loading } = this.props;
+
+    if (loading) {
+      return(
+        <h1>Loading...</h1>
+      )
+    }
+
     let title = '';
     let authorName = '';
     let trackCount = '';
@@ -52,18 +61,22 @@ const msp = (state, ownProps) => {
   let playlistId = ownProps.match.params.playlistId;
   let playlist = state.entities.playlists[playlistId];
   let songs = Object.values(state.entities.songs);
+  let loading = state.ui.loading.status;
   return({
     playlistId,
     playlist,
-    songs
-  })
-}
+    songs,
+    loading
+  });
+};
 
 const mdp = dispatch => {
   return({
     fetchPlaylist: id => dispatch(fetchPlaylist(id)),
-    clearSongs: () => dispatch(clearSongs())
-  })
-}
+    clearSongs: () => dispatch(clearSongs()),
+    setLoadingTrue: () => dispatch(setLoadingTrue()),
+    setLoadingFalse: () => dispatch(setLoadingFalse())
+  });
+};
 
 export default connect(msp, mdp)(PlaylistShow);

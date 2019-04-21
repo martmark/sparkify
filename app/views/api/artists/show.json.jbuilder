@@ -9,7 +9,8 @@ json.albums do
     json.set! album.id do
       json.id album.id
       json.title album.title
-      json.artistName album.artist.name
+      json.artistName @artist.name
+      json.artistId @artist.id
     end
   end
 end

@@ -3,12 +3,14 @@ import SongIndex from './../song/song_index';
 import { connect } from 'react-redux';
 import { fetchAlbum } from './../../actions/album_actions';
 import { clearSongs } from './../../actions/song_actions';
+import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
 
 class AlbumShow extends React.Component {
 
   componentDidMount() {
     // debugger;
-    this.props.fetchAlbum(this.props.albumId);
+    this.props.fetchAlbum(this.props.albumId).
+    then(() => this.props.setLoadingFalse());
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -18,18 +20,29 @@ class AlbumShow extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.clearSongs();
+    this.props.setLoadingTrue();
   }
 
   render() {
-    let album = '';
-    if (this.props.album) {
-      album = `${this.props.album.title} by ${this.props.album.artistName}`;
+    const { songs, album, loading } = this.props;
+
+    if (loading) {
+      return (
+        <h1>Loading...</h1>
+      )
+    }
+    
+    let albumInfo = '';
+    let songIndex = '';
+
+    if (album) {
+      albumInfo = <h1>{album.title} by {album.artistName}</h1>;
+      songIndex = <SongIndex songs={songs} />
     }
     return (
       <div>
-        {album}
-        <SongIndex songs={this.props.songs} />
+        {albumInfo}
+        {songIndex}
       </div>
     )
   }
@@ -39,17 +52,20 @@ const msp = (state, ownProps) => {
   let albumId = ownProps.match.params.albumId;
   let album = state.entities.albums[albumId];
   let songs = Object.values(state.entities.songs);
+  let loading = state.ui.loading.status;
   return ({
     albumId,
     album,
-    songs
+    songs,
+    loading
   })
 }
 
 const mdp = dispatch => {
   return ({
     fetchAlbum: id => dispatch(fetchAlbum(id)),
-    clearSongs: () => dispatch(clearSongs())
+    setLoadingFalse: () => dispatch(setLoadingFalse()),
+    setLoadingTrue: () => dispatch(setLoadingTrue())
   })
 }
 
