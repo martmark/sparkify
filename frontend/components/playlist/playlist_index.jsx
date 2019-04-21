@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class PlaylistIndex extends React.Component {
-  componentDidMount() {
-    this.props.fetchPlaylists();
-  }
-
-
+ 
   render() {
     return(
       <div>
@@ -18,4 +15,12 @@ class PlaylistIndex extends React.Component {
   }
 }
 
-export default PlaylistIndex;
+const msp = state => {
+  let playlists = [];
+  if (state.entities.playlists) playlists = Object.values(state.entities.playlists);
+  return({
+    playlists
+  })
+}
+
+export default connect(msp)(PlaylistIndex);

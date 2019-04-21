@@ -1,6 +1,6 @@
 class Api::PlaylistsController < ApplicationController
   def index
-    @playlists = current_user.playlists
+    @playlists = current_user.followed_playlists if params[:fetchType] == 'collection'
     render :index
   end
 
@@ -9,6 +9,7 @@ class Api::PlaylistsController < ApplicationController
     @playlist.user_id = current_user.id
 
     if @playlist.save
+      current_user.followed_playlists << @playlist
       render :show
     else
       render json: ["Unable to create playlist"], status: 401

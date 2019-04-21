@@ -6,31 +6,37 @@
   left: 0;
   z-index: 2;
   background: rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: Circular, Helvetica, Arial, sans-serif;
 }
 
-.modal-inner {
-  position: absolute;
-  top: 100px;
-  left: 50%;
-  margin-left: -220px;
+.modal-inner{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   width: 100%;
-  padding: 20px;
-  z-index: 3;
 }
-
 .playlist-form-div {
   display: flex;
   flex-direction: column;
   color: white;
+  width: 100%;
 }
 
 .playlist-form-buttons {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
-.playlist-form > input {
+.playlist-form-input {
   font-size: 60px;
-  background: rbg(39,39,39);
   width: 100%;
+  background: rbg(39,39,39);
+}
+
+.playlist-form-input > label {
+  font-size: 12px;
 }

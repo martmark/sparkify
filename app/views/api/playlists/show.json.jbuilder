@@ -1,7 +1,5 @@
 json.playlist do
-  json.extract! @playlist, :id, :title
-  json.authorName @playlist.user.username
-  json.trackCount @playlist.songs.count
+  json.partial! 'api/playlists/playlist', playlist: @playlist
 end
 
 if @playlist.songs

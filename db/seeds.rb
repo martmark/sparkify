@@ -14,6 +14,7 @@ spark = User.create({ username: 'Sparkify', password: 'martinsparkify' })
 demo = User.create({ username: 'DemoUser', password: 'sparkifyonline' })
 
 chill = demo.playlists.create(title: 'Chill Music')
+demo.followed_playlists << chill
 
 james = Artist.create({ name: 'James Brown', bio: 'coming soon'})
 caribe = Artist.create({ name: 'El Caribefunk', bio: 'coming soon'})

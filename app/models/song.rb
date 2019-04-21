@@ -9,4 +9,5 @@ class Song < ApplicationRecord
   has_one :artist,
     through: :album,
     source: :artist
+  has_many :follows, as: :followable
 end

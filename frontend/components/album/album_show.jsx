@@ -1,5 +1,8 @@
 import React from 'react';
-import SongIndexContainter from './../song/song_index_container';
+import SongIndex from './../song/song_index';
+import { connect } from 'react-redux';
+import { fetchAlbum } from './../../actions/album_actions';
+import { clearSongs } from './../../actions/song_actions';
 
 class AlbumShow extends React.Component {
 
@@ -26,10 +29,28 @@ class AlbumShow extends React.Component {
     return (
       <div>
         {album}
-        <SongIndexContainter />
+        <SongIndex songs={this.props.songs} />
       </div>
     )
   }
 }
 
-export default AlbumShow;
+const msp = (state, ownProps) => {
+  let albumId = ownProps.match.params.albumId;
+  let album = state.entities.albums[albumId];
+  let songs = Object.values(state.entities.songs);
+  return ({
+    albumId,
+    album,
+    songs
+  })
+}
+
+const mdp = dispatch => {
+  return ({
+    fetchAlbum: id => dispatch(fetchAlbum(id)),
+    clearSongs: () => dispatch(clearSongs())
+  })
+}
+
+export default connect(msp, mdp)(AlbumShow);

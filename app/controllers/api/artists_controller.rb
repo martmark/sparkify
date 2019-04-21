@@ -1,6 +1,6 @@
 class Api::ArtistsController < ApplicationController
   def index
-    @artists = Artist.all
+    @artists = current_user.followed_artists if params[:fetchType] == 'collection'
     render :index
   end
 

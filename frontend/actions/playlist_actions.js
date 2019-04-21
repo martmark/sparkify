@@ -18,8 +18,8 @@ const receivePlaylist = payload => {
   })
 }
 
-export const fetchPlaylists = () => dispatch => {
-  return PlaylistUtil.fetchPlaylists().then(playlists => {
+export const fetchPlaylists = (fetchType) => dispatch => {
+  return PlaylistUtil.fetchPlaylists(fetchType).then(playlists => {
     return dispatch(receivePlaylists(playlists))
   })
 }
@@ -31,8 +31,8 @@ export const fetchPlaylist = id => dispatch => {
 }
 
 export const createPlaylist = playlist => dispatch => {
-  return PlaylistUtil.createPlaylist(playlist).then(playlist => {
-    return dispatch(receivePlaylist(playlist));
+  return PlaylistUtil.createPlaylist(playlist).then(payload => {
+    return dispatch(receivePlaylist(payload));
   })
 }
 

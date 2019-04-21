@@ -1,7 +1,7 @@
 json.artist do
-  json.id @artist.id
-  json.name @artist.name
-  json.bio @artist.bio
+    json.id @artist.id
+    json.name @artist.name
+    json.bio @artist.bio
 end
 
 json.albums do

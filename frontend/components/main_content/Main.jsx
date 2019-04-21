@@ -6,7 +6,7 @@ import PlaylistShowContainer from './../playlist/playlist_show_container';
 import MainNav from './main_nav_container';
 import GreetingContainer from './../browse/greeting_container';
 import Page404 from '../page404';
-import AlbumShowContainer from './../album/album_show_container';
+import AlbumShow from './../album/album_show';
 import SettingsContainer from './settings_container';
 import ArtistShowContainer from './../artist/artist_show_container';
 import ModalContainer from './modal_container';
@@ -19,7 +19,7 @@ const Main = () => (
       <Route path="/search" component={GreetingContainer} />
       <Route path="/collection" component={Collection} />
       <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
-      <Route path="/album/:albumId" component={AlbumShowContainer} />
+      <Route path="/album/:albumId" component={AlbumShow} />
       <Route path="/artist/:artistId" component={ArtistShowContainer} />
       <Route path="/settings" component={SettingsContainer} />
   </div>

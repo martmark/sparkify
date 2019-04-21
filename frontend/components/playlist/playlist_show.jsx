@@ -1,5 +1,5 @@
 import React from 'react';
-import SongIndexContainter from './../song/song_index_container';
+import SongIndex from './../song/song_index';
 
 class PlaylistShow extends React.Component {
 
@@ -13,7 +13,7 @@ class PlaylistShow extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.playlistId !== prevProps.playlistId) {
-      this.props.fetchPlaylist(this.props.playlistId)
+      this.props.fetchPlaylist(this.props.playlistId);
     }
   }
 
@@ -28,16 +28,16 @@ class PlaylistShow extends React.Component {
     if (this.props.playlist) {
       title = this.props.playlist.title;
       authorName = this.props.playlist.authorName;
-      trackCount = `${this.props.playlist.trackCount}`;
+      trackCount = `${this.props.playlist.trackCount} SONGS`;
     }
     return(
       <div className='playlist-show'>
         <section className='playlist-header'>
           <h1>{title}</h1>
           <h2>{authorName}</h2>
-          <h3>{trackCount} SONGS</h3>
+          <h3>{trackCount}</h3>
         </section>
-        <SongIndexContainter />
+        <SongIndex songs={this.props.songs} />
       </div>
     )
   }

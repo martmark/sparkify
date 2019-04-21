@@ -23,8 +23,14 @@ class PlaylistForm extends React.Component {
   render() {
     return(
       <div className='playlist-form-div'>
+        <button id='playlist-form-x' onClick={this.props.closeModal}>x</button>
         <form onSubmit={this.handleSubmit} className="playlist-form">
-          <input id='playlist-form-input' type="text" value={this.state.title} onChange={this.updateTitle} placeholder={'Start typing...'}/>
+          <div className='playlist-form-input'>
+            <label>Playlist Name</label>
+            <input type="text" value={this.state.title} id='playlist-name-input'
+              onChange={this.updateTitle} placeholder={'Start typing...'}
+            />
+          </div>
         </form>
         <div className='playlist-form-buttons'>
           <button id='playlist-form-cancel' onClick={this.props.closeModal}>CANCEL</button>

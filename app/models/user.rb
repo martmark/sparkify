@@ -4,6 +4,23 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, allow_nil: true
 
   has_many :playlists
+  has_many :follows
+  has_many :followed_playlists,
+    through: :follows,
+    source: :followable,
+    source_type: 'Playlist'
+  has_many :followed_artists,
+    through: :follows,
+    source: :followable,
+    source_type: 'Artist'
+  has_many :followed_albums,
+    through: :follows,
+    source: :followable,
+    source_type: 'Album'
+  has_many :followed_songs,
+    through: :follows,
+    source: :followable,
+    source_type: 'Song'
   
   attr_reader :password
   after_initialize :ensure_session_token

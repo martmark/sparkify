@@ -1,14 +1,15 @@
 import { RECEIVE_CURRENT_USER } from './../actions/session_actions';
-import merge from 'lodash/merge';
 
-const usersReducer = (state = {}, action) => {
+const defaultState = {status: true};
+
+const loadingReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return action.user;
+      return {status: false};
     default:
       return state;
   }
 };
 
-export default usersReducer;
+export default loadingReducer;

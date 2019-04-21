@@ -1,7 +1,5 @@
 json.album do
-  json.id @album.id
-  json.title @album.title
-  json.artistName @album.artist.name
+  json.partial! 'api/albums/album', album: @album
 end
 
 if @album.songs
