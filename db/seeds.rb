@@ -16,35 +16,131 @@ demo = User.create({ username: 'DemoUser', password: 'sparkifyonline' })
 chill = demo.playlists.create(title: 'Chill Music')
 demo.followed_playlists << chill
 
-james = Artist.create({ name: 'James Brown', bio: 'coming soon', image_url: 'https://66.media.tumblr.com/54c414ae548800cd3cfe94852b8244d3/tumblr_pqc1w1dB371vud73ko9_1280.jpg'})
-caribe = Artist.create({ name: 'El Caribefunk', bio: 'coming soon', image_url: 'https://66.media.tumblr.com/5d23e99e0c95d7db803813ae6bc29487/tumblr_pqc1w1dB371vud73ko4_1280.jpg'})
-billie = Artist.create({ name: 'Billie Eilish', bio: 'coming soon', image_url: 'https://66.media.tumblr.com/e86a0339a454e12a201b8fbfc27824f6/tumblr_pqc1w1dB371vud73ko2_1280.jpg'})
-jack = Artist.create({ name: 'Jack Johnson', bio: 'coming soon', image_url: 'https://66.media.tumblr.com/6bd6d43596e3788f7680fb7f18d0fd9f/tumblr_pqc1w1dB371vud73ko8_1280.jpg'})
-air = Artist.create({ name: 'Air', bio: 'coming soon', image_url: 'https://66.media.tumblr.com/614ffbd8dfcdada188e6106da6caa213/tumblr_pqc1w1dB371vud73ko1_1280.jpg'})
-devendra = Artist.create({ name: 'Devendra Banhart', bio: 'coming soon', image_url: 'https://66.media.tumblr.com/d8749d92caefa2822c7c99a1ec91db79/tumblr_pqc1w1dB371vud73ko5_1280.jpg'})
-can = Artist.create({ name: 'Can', bio: 'coming soon', image_url: 'https://66.media.tumblr.com/24685b0ff44bc89ab5e311b7deaeedcc/tumblr_pqc1w1dB371vud73ko3_1280.jpg'})
-frank = Artist.create({ name: 'Frank Ocean', bio: 'coming soon', image_url: 'https://66.media.tumblr.com/51940d25f4a379bad209f11ce0d728ef/tumblr_pqc1w1dB371vud73ko7_1280.jpg'})
-elliott = Artist.create({ name: 'Elliott Smith', bio: 'coming soon', image_url: 'https://66.media.tumblr.com/53ee4d0581349198a7636ec5c96bf721/tumblr_pqc1w1dB371vud73ko6_1280.jpg'})
-floyd = Artist.create({ name: 'Pink Floyd', bio: 'coming soon', image_url: 'https://66.media.tumblr.com/726e68d09b4a5ed4ef724888ec130a12/tumblr_pqc243mo5z1vud73ko1_1280.jpg'})
-outkast = Artist.create({ name: 'OutKast', bio: 'coming soon', image_url: 'https://66.media.tumblr.com/393b8c8e941f99604e739cf996c2cfea/tumblr_pqc1w1dB371vud73ko10_1280.jpg'})
+james = Artist.create({ 
+  name: 'James Brown', 
+  bio: 'coming soon', 
+  image_url: 'https://66.media.tumblr.com/54c414ae548800cd3cfe94852b8244d3/tumblr_pqc1w1dB371vud73ko9_1280.jpg'
+})
+caribe = Artist.create({ 
+  name: 'El Caribefunk', 
+  bio: 'coming soon', 
+  image_url: 'https://66.media.tumblr.com/5d23e99e0c95d7db803813ae6bc29487/tumblr_pqc1w1dB371vud73ko4_1280.jpg'
+})
+billie = Artist.create({ 
+  name: 'Billie Eilish', 
+  bio: 'coming soon', 
+  image_url: 'https://66.media.tumblr.com/e86a0339a454e12a201b8fbfc27824f6/tumblr_pqc1w1dB371vud73ko2_1280.jpg'
+})
+jack = Artist.create({ 
+  name: 'Jack Johnson', 
+  bio: 'coming soon', 
+  image_url: 'https://66.media.tumblr.com/6bd6d43596e3788f7680fb7f18d0fd9f/tumblr_pqc1w1dB371vud73ko8_1280.jpg'
+})
+air = Artist.create({ 
+  name: 'Air', 
+  bio: 'coming soon', 
+  image_url: 'https://66.media.tumblr.com/614ffbd8dfcdada188e6106da6caa213/tumblr_pqc1w1dB371vud73ko1_1280.jpg'
+})
+devendra = Artist.create({ 
+  name: 'Devendra Banhart', 
+  bio: 'coming soon', 
+  image_url: 'https://66.media.tumblr.com/d8749d92caefa2822c7c99a1ec91db79/tumblr_pqc1w1dB371vud73ko5_1280.jpg'
+})
+can = Artist.create({ 
+  name: 'Can', 
+  bio: 'coming soon', 
+  image_url: 'https://66.media.tumblr.com/24685b0ff44bc89ab5e311b7deaeedcc/tumblr_pqc1w1dB371vud73ko3_1280.jpg'
+})
+frank = Artist.create({ 
+  name: 'Frank Ocean', 
+  bio: 'coming soon', 
+  image_url: 'https://66.media.tumblr.com/51940d25f4a379bad209f11ce0d728ef/tumblr_pqc1w1dB371vud73ko7_1280.jpg'
+})
+elliott = Artist.create({ 
+  name: 'Elliott Smith', 
+  bio: 'coming soon', 
+  image_url: 'https://66.media.tumblr.com/53ee4d0581349198a7636ec5c96bf721/tumblr_pqc1w1dB371vud73ko6_1280.jpg'
+})
+floyd = Artist.create({ 
+  name: 'Pink Floyd', 
+  bio: 'coming soon', 
+  image_url: 'https://66.media.tumblr.com/726e68d09b4a5ed4ef724888ec130a12/tumblr_pqc243mo5z1vud73ko1_1280.jpg'
+})
+outkast = Artist.create({ 
+  name: 'OutKast', 
+  bio: 'coming soon', 
+  image_url: 'https://66.media.tumblr.com/393b8c8e941f99604e739cf996c2cfea/tumblr_pqc1w1dB371vud73ko10_1280.jpg'
+})
 
 demo.followed_artists << can
 
 
-soul = james.albums.create({ title: 'Soul on Top', genre: 'Funk', year: 1970 })
-playa = caribe.albums.create({ title: 'El Playaman', genre: 'Latin', year: 2014 })
+soul = james.albums.create({ 
+  title: 'Soul on Top', 
+  genre: 'Funk', 
+  year: 1970,
+  image_url: 'https://66.media.tumblr.com/b843696452ecb2dc67a829977232e4e0/tumblr_pqc3eb7DCZ1vud73ko9_640.png'
+})
+playa = caribe.albums.create({ 
+  title: 'El Playaman', 
+  genre: 'Latin', 
+  year: 2014,
+  image_url: 'https://66.media.tumblr.com/3515aa4fa3d87dff65cce208801cb864/tumblr_pqc3eb7DCZ1vud73ko8_500.jpg'
+})
 asleep = billie.albums.create({ 
   title: 'WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?', 
-  genre: 'Pop', year: 2019
+  genre: 'Pop', year: 2019,
+  image_url: 'https://66.media.tumblr.com/e494f36def51bc1e72f9354386f57589/tumblr_pqc3esA8Lt1vud73ko2_1280.jpg'
 })
-onandon = jack.albums.create({ title: 'On and On', genre: 'Acoustic', year: 2003 })
-talkie = air.albums.create({ title: 'Talkie Walkie', genre: 'Electronic', year: 2004 })
-mala = devendra.albums.create({ title: 'Mala', genre: 'Acoustic', year: 2013 })
-ege = can.albums.create({ title: 'Ege Bamyasi', genre: 'Rock', year: 1972 })
-blonde = frank.albums.create({ title: 'Blonde', genre: 'Hip-Hop', year: 2016 })
-either = elliott.albums.create({ title: 'Either/Or', genre: 'Acoustic', year: 1997 })
-moon = floyd.albums.create({ title: 'Dark Side of the Moon', genre: 'Rock', year: 1973 })
-atliens = outkast.albums.create({ title: 'ATLiens', genre: 'Hip-Hop', year: 1996 })
+onandon = jack.albums.create({ 
+  title: 'On and On', 
+  genre: 'Acoustic', 
+  year: 2003,
+  image_url: 'https://66.media.tumblr.com/707ea101f1162bc4a5798dfbbb3deb36/tumblr_pqc3eb7DCZ1vud73ko7_640.jpg'
+})
+talkie = air.albums.create({ 
+  title: 'Talkie Walkie', 
+  genre: 'Electronic', 
+  year: 2004, 
+  image_url: 'https://66.media.tumblr.com/567eed828e244bae114d028fb278ccc9/tumblr_pqc3esA8Lt1vud73ko1_400.jpg' 
+})
+mala = devendra.albums.create({ 
+  title: 'Mala', 
+  genre: 'Acoustic', 
+  year: 2013,
+  image_url: 'https://66.media.tumblr.com/a311f4b82dfc7da995a3a8f091704e65/tumblr_pqc3eb7DCZ1vud73ko6_640.jpg'
+})
+ege = can.albums.create({ 
+  title: 'Ege Bamyasi', 
+  genre: 'Rock', 
+  year: 1972,
+  image_url: 'https://66.media.tumblr.com/123354f8dc18bf364a203dfda2ea3346/tumblr_pqc3eb7DCZ1vud73ko4_400.jpg'
+})
+blonde = frank.albums.create({ 
+  title: 'Blonde', 
+  genre: 'Hip-Hop', 
+  year: 2016 ,
+  image_url: 'https://66.media.tumblr.com/ef3756ed57dd995f2caabe87f59066b7/tumblr_pqc3eb7DCZ1vud73ko2_640.jpg'
+})
+either = elliott.albums.create({ 
+  title: 'Either/Or', 
+  genre: 'Acoustic', 
+  year: 1997,
+  image_url: 'https://66.media.tumblr.com/ad6fb7e7bdd44f231bdf7d14d4649c77/tumblr_pqc3eb7DCZ1vud73ko5_400.jpg'
+})
+moon = floyd.albums.create({ 
+  title: 'Dark Side of the Moon', 
+  genre: 'Rock', 
+  year: 1973,
+  image_url: 'https://66.media.tumblr.com/977c66295149f4861a6ba132e1edd52e/tumblr_pqc3eb7DCZ1vud73ko3_1280.jpg'
+})
+atliens = outkast.albums.create({ 
+  title: 'ATLiens', 
+  genre: 'Hip-Hop', 
+  year: 1996,
+  image_url: 'https://66.media.tumblr.com/bd1de7bf21cc6fe76773bc4a1b0e7504/tumblr_pqc3eb7DCZ1vud73ko1_640.png'
+})
+
 demo.followed_albums << mala
 demo.followed_albums << moon
 
@@ -62,6 +158,7 @@ soul.songs.create([
   { title: "Papa's Got A Brand New Bag", duration: '4:38' },
   { title: 'There Was A Time', duration: '3:05' }
 ])
+
 demo.followed_songs << soul.songs[3]
 
 playa.songs.create([
@@ -75,6 +172,7 @@ playa.songs.create([
   { title: 'Fastidiado De Lo Bien', duration: '3:10' },
   { title: 'San Antonio Hd', duration: '3:17' }
 ])
+
 demo.followed_songs << playa.songs[7]
 
 asleep.songs.create([
@@ -93,6 +191,7 @@ asleep.songs.create([
   { title: 'i love you', duration: '4:52' },
   { title: 'goodbye', duration: '1:59' }
 ])
+
 chill.songs << asleep.songs[9]
 demo.followed_songs << asleep.songs[5]
 
@@ -114,6 +213,7 @@ onandon.songs.create([
   { title: 'Mediocre Bad Guys', duration: '3:00' },
   { title: 'Symbol In My Driveway', duration: '2:51' },
 ])
+
 chill.songs << onandon.songs[7]
 
 talkie.songs.create([
@@ -128,6 +228,7 @@ talkie.songs.create([
   { title: 'Biological', duration: '6:05' },
   { title: 'Alone in Kyoto', duration: '4:51' }
 ])
+
 chill.songs << talkie.songs[5]
 
 mala.songs.create([
@@ -146,6 +247,7 @@ mala.songs.create([
   { title: 'Won''t You Come Home', duration: '3:32' },
   { title: 'Taurobolium', duration: '3:16' }
 ])
+
 chill.songs << mala.songs[3]
 
 ege.songs.create([
@@ -157,6 +259,7 @@ ege.songs.create([
   { title: 'I''m So Green', duration: '3:05' },
   { title: 'Spoon', duration: '3:06' }
 ])
+
 chill.songs << ege.songs[2]
 
 blonde.songs.create([
@@ -178,6 +281,7 @@ blonde.songs.create([
   { title: 'Godspeed', duration: '2:58' },
   { title: 'Futura Free', duration: '9:24' }
 ])
+
 chill.songs << blonde.songs[6]
 demo.followed_songs << blonde.songs[0]
 
@@ -195,6 +299,7 @@ either.songs.create([
   { title: '2:45 AM', duration: '3:19' },
   { title: 'Say Yes', duration: '2:19' },
 ])
+
 chill.songs << either.songs[11]
 
 moon.songs.create([
@@ -209,6 +314,7 @@ moon.songs.create([
   { title: 'Brain Damage', duration: '3:47' },
   { title: 'Eclipse', duration: '2:10' }
 ])
+
 chill.songs << moon.songs[6]
 
 atliens.songs.create([
@@ -227,4 +333,5 @@ atliens.songs.create([
   { title: 'E.T. (Extraterrestrial)', duration: '3:07' },
   { title: '13th Floor / Growing Old', duration: '6:51' }
 ])
+
 demo.followed_songs << atliens.songs[3]

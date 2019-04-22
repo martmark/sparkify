@@ -32,15 +32,18 @@ class AlbumShow extends React.Component {
     }
     
     let albumInfo = '';
+    let albumImage = '';
     let songIndex = '';
 
     if (album) {
       albumInfo = <h1>{album.title} by {album.artistName}</h1>;
       songIndex = <SongIndex songs={songs} />
+      albumImage = <img src={album.image_url} alt={album.title} />
     }
     return (
-      <div>
+      <div className='album-show'>
         {albumInfo}
+        {albumImage}
         {songIndex}
       </div>
     )

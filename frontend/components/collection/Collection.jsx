@@ -36,7 +36,7 @@ class Collection extends React.Component {
       }
 
       return (
-        <div>
+        <div className='collection-window'>
           <CollectionNav />
           <Route exact path='/collection' render={() => <Redirect to='/collection/playlists' />} />
           <Route path="/collection/playlists" render={(props) => <PlaylistIndex {...props} playlists={playlists} />} />
