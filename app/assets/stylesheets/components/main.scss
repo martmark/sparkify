@@ -1,6 +1,6 @@
 .main-content {
   display: flex;
-   height: 100vh;
+   height: 100%;
   flex-direction: row;
   background: rgb(39,39,39);
   color: white;
@@ -9,7 +9,7 @@
 
 .main-content-inner {
    margin-left: 300px;
-     height: 100vh;
+     height: auto;
      width: 100%
 }
 

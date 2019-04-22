@@ -1,6 +1,29 @@
 .artist-index-item > img {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  // height: ;
   border-radius: 50%;
+  object-fit: cover;
 }
 
+.artist-index {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.artist-index-item {
+  width: 25%;
+}
+
+.artist-show {
+  background: rgb(39,39,39);
+  height: 100vh;
+}
+
+.artist-show-image > img {
+  // position: ;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}

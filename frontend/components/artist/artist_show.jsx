@@ -55,9 +55,11 @@ class ArtistShow extends React.Component {
       albumIndex = <AlbumIndex albums={albums} />
     }
     return(
-      <div>
+      <div className='artist-show'>
         <h1>{artistName}</h1>
-        <h2>{artistImage}</h2>
+        <div className='artist-show-image'>
+          {artistImage}
+        </div>
         <ul>{songIndex}</ul>
         <ul>{albumIndex}</ul>
       </div>
