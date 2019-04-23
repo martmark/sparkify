@@ -114,7 +114,7 @@ ace = Artist.create({
 })
 
 jimi = Artist.create({ 
-  name: 'The Jimi Hendrix Experience', 
+  name: 'Jimi Hendrix', 
   bio: 'coming soon', 
   image_url: 'https://66.media.tumblr.com/1eb34c81de2a872978d7972ea8fad8dd/tumblr_pqcbwvDrs51vud73ko9_1280.jpg'
 })

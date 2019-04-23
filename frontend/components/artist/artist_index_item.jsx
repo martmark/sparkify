@@ -6,7 +6,7 @@ const artistIndexItem = ({ artist, history }) => {
   return (
     <li className='artist-index-item'>
       <img src={artist.image_url} alt={artist.name} />
-      <button onClick={(e) => {history.push(`/artist/${artist.id}`)}}>{artist.name}</button>
+      <Link to={`/artist/${artist.id}`}>{artist.name}</Link>
     </li>
   );
 }

@@ -63,8 +63,10 @@ class ArtistShow extends React.Component {
             {artistImage}
           </div>
         </div>
-        <ul className='artist-show-song-index'>{songIndex}</ul>
-        <ul className='artist-show-album-index'>{albumIndex}</ul>
+        <div className='artist-show-music'>
+          <ul className='artist-show-song-index'>{songIndex}</ul>
+          <ul className='artist-show-album-index'>{albumIndex}</ul>
+        </div>
       </div>
     )
   }

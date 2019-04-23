@@ -12,6 +12,10 @@
   width: 100%;
 }
 
+.artist-show-music {
+  margin-left: 230px;
+}
+
 .artist-index-item {
   width: 25%;
 }
@@ -24,10 +28,12 @@
       clip: rect(0px,1100px,400px,0);
       position: absolute;
       top: 0;
+      width: 100%;  
     }
 
     .artist-show-image {
       height: 400px;
+      z-index: 0;
     }
 
     .artist-show-image::after {
@@ -42,12 +48,13 @@
 
     .artist-show-name {
       position: absolute;
-      top: 0;
+      top: 45;
       left: 0;
       right: 10px;
       height: 400px;
       text-align: center;
       z-index: 1;
       color: white;
+      font-size: 50px;
     }
   }
