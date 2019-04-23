@@ -3,6 +3,7 @@ import ArtistIndexItem from './artist_index_item';
 
 class ArtistIndex extends React.Component {
   render() {
+    debugger;
     return (
       <div>
         <ul className="artist-index">

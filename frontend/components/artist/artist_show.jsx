@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { fetchArtist } from './../../actions/artist_actions';
 import SongIndex from './../song/song_index';
 import AlbumIndex from './../album/album_index';
@@ -56,12 +57,14 @@ class ArtistShow extends React.Component {
     }
     return(
       <div className='artist-show'>
-        <h1>{artistName}</h1>
-        <div className='artist-show-image'>
-          {artistImage}
+        <div className='artist-show-info'>
+          <span className='artist-show-name'>{artistName}</span>
+          <div className='artist-show-image'>
+            {artistImage}
+          </div>
         </div>
-        <ul>{songIndex}</ul>
-        <ul>{albumIndex}</ul>
+        <ul className='artist-show-song-index'>{songIndex}</ul>
+        <ul className='artist-show-album-index'>{albumIndex}</ul>
       </div>
     )
   }
@@ -93,4 +96,4 @@ const mdp = dispatch => {
   });
 };
 
-export default connect(msp, mdp)(ArtistShow);
+export default withRouter(connect(msp, mdp)(ArtistShow));

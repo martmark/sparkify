@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-const artistIndexItem = ({ artist }) => {
+const artistIndexItem = ({ artist, history }) => {
+  
   return (
     <li className='artist-index-item'>
       <img src={artist.image_url} alt={artist.name} />
-      <Link to={`/artist/${artist.id}`}>{artist.name}</Link>
+      <button onClick={(e) => {history.push(`/artist/${artist.id}`)}}>{artist.name}</button>
     </li>
   );
 }
 
-export default artistIndexItem;
+export default withRouter(artistIndexItem);

@@ -12,7 +12,7 @@ const songIndexItem = ({ song }) => {
         <span className='song-artist'>
           <Link to={`/artist/${song.artistId}`}>{song.artistName}</Link>
         </span>
-        <span className='song-album'>
+        <span>
           <Link to={`/album/${song.albumId}`}>{song.albumTitle}</Link>
         </span>
       </div>
