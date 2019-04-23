@@ -1,0 +1,10 @@
+.album-index-image > img {
+  width: 150px;
+  height: 150px;
+}
+
+.album-index {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

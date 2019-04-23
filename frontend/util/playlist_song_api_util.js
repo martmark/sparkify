@@ -3,6 +3,6 @@ export const addPlaylistSong = playlistSong => {
     url: '/api/playlist_songs',
     method: 'POST',
     data: playlistSong
-  })
-}
+  });
+};
 

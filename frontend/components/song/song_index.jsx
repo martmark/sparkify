@@ -1,6 +1,7 @@
 import React from 'react';
 import SongIndexItem from './song_index_item';
 
+
 class SongIndex extends React.Component {
   render() {
     return(
@@ -13,5 +14,11 @@ class SongIndex extends React.Component {
   }
 
 }
+
+// const mdp = dispatch => {
+//   return({
+
+//   })
+// }
 
 export default SongIndex;

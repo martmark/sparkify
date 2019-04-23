@@ -1,14 +1,36 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
 
-const artistIndexItem = ({ artist, history }) => {
-  
-  return (
-    <li className='artist-index-item'>
-      <img src={artist.image_url} alt={artist.name} />
-      <Link to={`/artist/${artist.id}`}>{artist.name}</Link>
-    </li>
-  );
+// const artistIndexItem = ({ artist, history }) => {
+
+class ArtistIndexItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.redirect = this.redirect.bind(this);
+  }
+
+  redirect() {
+    this.props.setLoadingTrue()
+    this.props.history.push(`/artist/${this.props.artist.id}`)
+  }
+
+  render() {
+    const { artist } = this.props;
+    return (
+      <li className='artist-index-item'>
+        <img src={artist.image_url} alt={artist.name} />
+        <button onClick={this.redirect}>{artist.name}</button>
+      </li>
+    );
+  }
 }
 
-export default withRouter(artistIndexItem);
+const mdp = dispatch => {
+  return({
+    setLoadingTrue: () => dispatch(setLoadingTrue())
+  })
+}
+
+export default withRouter(connect(null, mdp)(ArtistIndexItem));

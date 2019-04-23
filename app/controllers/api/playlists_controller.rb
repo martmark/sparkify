@@ -1,6 +1,9 @@
 class Api::PlaylistsController < ApplicationController
   def index
     @playlists = current_user.followed_playlists if params[:fetchType] == 'collection'
+    if params[:fetchType] == 'browse'
+      @playlists = Playlist.all.reject { |playlist| current_user.followed_playlists.include?(playlist) }
+    end
     render :index
   end
 

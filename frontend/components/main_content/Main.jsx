@@ -10,6 +10,7 @@ import AlbumShow from './../album/album_show';
 import SettingsContainer from './settings_container';
 import ArtistShow from './../artist/artist_show';
 import ModalContainer from './modal_container';
+import Browse from './../browse/browse';
 
 const Main = () => (
   <div className='main-content'>
@@ -17,7 +18,7 @@ const Main = () => (
       <MainNav />
       <div className='main-content-inner'>
         <Switch>
-          <Route path="/browse" component={GreetingContainer} />
+          <Route path="/browse" component={Browse} />
           <Route path="/search" component={GreetingContainer} />
           <Route path="/collection" component={Collection} />
           <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
