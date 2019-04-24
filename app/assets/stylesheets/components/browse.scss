@@ -2,6 +2,8 @@
   margin-left: 230px;
   width: 100%;
   box-sizing: border-box;
+  margin-block-end: 30px;
+  height: 100%;
 }
 
 .browse-nav {
@@ -18,4 +20,8 @@
   justify-content: space-between;
   width: 100%;
   font-size: 11px;
+}
+
+.browse-playlist-index {
+  height: 100vh;
 }

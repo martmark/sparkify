@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import SongIndexItem from './song_index_item';
+import { followSong, unfollowSong } from './../../actions/song_actions';
 
 
 class SongIndex extends React.Component {
@@ -7,7 +9,12 @@ class SongIndex extends React.Component {
     return(
       <div>
         <ul className="song-index">
-          {this.props.songs.map(song => <SongIndexItem song={song} key={song.id} />)}
+          {this.props.songs.map(song => <SongIndexItem 
+            song={song} 
+            key={song.id} 
+            followSong={this.props.followSong} 
+            unfollowSong={this.props.unfollowSong}
+          />)}
         </ul>
       </div>
     )
@@ -15,10 +22,11 @@ class SongIndex extends React.Component {
 
 }
 
-// const mdp = dispatch => {
-//   return({
+const mdp = dispatch => {
+  return({
+    followSong: id => dispatch(followSong(id)),
+    unfollowSong: id => dispatch(unfollowSong(id))
+  })
+}
 
-//   })
-// }
-
-export default SongIndex;
+export default connect(null, mdp)(SongIndex);

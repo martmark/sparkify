@@ -12,4 +12,18 @@ class Api::SongsController < ApplicationController
     end
   end
 
+  def follow
+    @song = Song.find(params[:id])
+    current_user.followed_songs << @song
+    current_user.followed_albums << @song.album
+    render :show
+  end
+
+  def unfollow
+    @song = Song.find(params[:id])
+    @follow = Follow.find_by(followable_id: @song.id, followable_type: 'Song', user_id: current_user.id)
+    @follow.destroy
+    render :show
+  end
+
 end

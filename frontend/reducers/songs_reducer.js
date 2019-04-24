@@ -1,7 +1,7 @@
 import { RECEIVE_PLAYLIST } from './../actions/playlist_actions';
 import merge from 'lodash/merge';
 import { RECEIVE_ALBUM } from './../actions/album_actions';
-import { RECEIVE_SONGS } from './../actions/song_actions';
+import { RECEIVE_SONGS, RECEIVE_SONG } from './../actions/song_actions';
 import { RECEIVE_ARTIST } from './../actions/artist_actions';
 
 const songsReducer = (state = {}, action) => {
@@ -9,6 +9,8 @@ const songsReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_SONGS:
       return action.songs;
+    // case RECEIVE_SONG:
+    //   return merge({}, state, { [action.song.id]: action.song });
     case RECEIVE_PLAYLIST:
       if (action.payload.songs) {
         return action.payload.songs;

@@ -1261,16 +1261,16 @@ argue.songs.create([
 ])
 
 thriller.songs.create([
-  {title: "Wanna Be Startin' Somethin'", duration: ":"},
-  {title: "Baby Be Mine", duration: ":"},
-  {title: "The Girl Is Mine", duration: ":"},
-  {title: "Thriller", duration: ":"},
-  {title: "Beat It", duration: ":"},
-  {title: "Billie Jean", duration: ":"},
-  {title: "Human Nature", duration: ":"},
-  {title: "P.Y.T. (Pretty Young Thing)", duration: ":"},
-  {title: "The Lady In My Life", duration: ":"},
-  {title: "Excerpt From Thriller Voiceover Session", duration: ":"} 
+  {title: "Wanna Be Startin' Somethin'", duration: "6:01"},
+  {title: "Baby Be Mine", duration: "4:19"},
+  {title: "The Girl Is Mine", duration: "3:41"},
+  {title: "Thriller", duration: "5:56"},
+  {title: "Beat It", duration: "4:17"},
+  {title: "Billie Jean", duration: "4:53"},
+  {title: "Human Nature", duration: "4:04"},
+  {title: "P.Y.T. (Pretty Young Thing)", duration: "3:58"},
+  {title: "The Lady In My Life", duration: "4:58"},
+  {title: "Excerpt From Thriller Voiceover Session", duration: "0:24"} 
 ])
 
 creep.songs.create([

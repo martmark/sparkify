@@ -4,13 +4,37 @@ import { Link } from 'react-router-dom';
 class SongIndexItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = { saved: props.song.followed }
+    this.followSong = this.followSong.bind(this);
+    this.unfollowSong = this.unfollowSong.bind(this);
   }
+
+  followSong() {
+    let id = this.props.song.id;
+    this.props.followSong(id)
+    .then(() => this.setState({ saved: true }));
+  }
+
+  unfollowSong() {
+    let id = this.props.song.id;
+    this.props.unfollowSong(id)
+    .then(() => this.setState({ saved: false }));
+  }
+
   render() {
     const { song } = this.props;
+    let button = '';
+    if (!this.state.saved) {
+      button = <button onClick={this.followSong}>Save Song</button>;
+    } else {
+      button = <button onClick={this.unfollowSong}>Unfollow Song</button>;
+    }
     return (
       <li className="song-index-item">
         <div className='song-title-info'> 
           <span className='song-title'>{song.title}</span>
+          {button}
           <span className='song-duration'>{song.duration}</span>
         </div>
         <div className='song-artist-info'>
@@ -25,5 +49,8 @@ class SongIndexItem extends React.Component {
     );
   }
 }
+
+
+
 
 export default SongIndexItem;

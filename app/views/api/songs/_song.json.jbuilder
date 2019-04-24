@@ -6,4 +6,5 @@ json.set! song.id do
   json.artistName song.artist.name
   json.artistId song.artist.id
   json.duration song.duration
+  json.followed current_user.followed_songs.include?(song)
 end
