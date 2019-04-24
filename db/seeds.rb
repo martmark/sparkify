@@ -20,139 +20,121 @@ demo = User.create({ username: 'DemoUser', password: 'sparkifyonline' })
 frank = Artist.create({ 
   name: 'Frank Ocean', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/51940d25f4a379bad209f11ce0d728ef/tumblr_pqc1w1dB371vud73ko7_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/cf6e5522c26fbdcab113cb70eb3908ee/tumblr_pqfxpxLIzk1vud73ko2_1280.jpg'
 })
 
 jack = Artist.create({ 
   name: 'Jack Johnson', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/6bd6d43596e3788f7680fb7f18d0fd9f/tumblr_pqc1w1dB371vud73ko8_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/d69d621e2f38787d28fbfcbe95c85fa9/tumblr_pqfxpxLIzk1vud73ko3_1280.jpg'
 })
 
 tune = Artist.create({
   name: 'tUnE-yArDs',
   bio: 'coming',
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/bad55a2c484d0be57183d822a124d0b2/tumblr_pqfxpxLIzk1vud73ko8_1280.jpg'
 })
 
 air = Artist.create({ 
   name: 'Air', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/614ffbd8dfcdada188e6106da6caa213/tumblr_pqc1w1dB371vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/d630bb21f54c6b4bdc8aa4a162499dde/tumblr_pqft7jLN6y1vud73ko1_1280.jpg'
 })
 
 can = Artist.create({ 
   name: 'Can', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/24685b0ff44bc89ab5e311b7deaeedcc/tumblr_pqc1w1dB371vud73ko3_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/0356a83e1e09193be09af15f3abb757a/tumblr_pqftbii0dD1vud73ko1_1280.jpg'
 })
 
 elliott = Artist.create({ 
   name: 'Elliott Smith', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/53ee4d0581349198a7636ec5c96bf721/tumblr_pqc1w1dB371vud73ko6_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/b2f63220929d644fd12c08ef11314bc9/tumblr_pqfxpxLIzk1vud73ko1_1280.jpg'
 })
 
 floyd = Artist.create({ 
   name: 'Pink Floyd', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/726e68d09b4a5ed4ef724888ec130a12/tumblr_pqc243mo5z1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/de7eac93cc7b29b0db9a4d040ffd6896/tumblr_pqftwrvkQ01vud73ko1_1280.jpg'
 })
 
 billie = Artist.create({ 
   name: 'Billie Eilish', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/e86a0339a454e12a201b8fbfc27824f6/tumblr_pqc1w1dB371vud73ko2_1280.jpg'
-})
-
-sublime = Artist.create({
-   name: 'Sublime',
-   bio: 'coming soon',
-   image_url: 'https://66.media.tumblr.com/348a1c99b2da93c6feb935ba2ad45249/tumblr_pqcbzbXTLl1vud73ko3_640.jpg'
+  image_url: 'https://66.media.tumblr.com/f42a75f3919494be841e0b9cb357257e/tumblr_pqftotfBnp1vud73ko1_1280.jpg'
 })
 
 regina = Artist.create({
   name: 'Regina Spektor',
   bio: "coming",
-  image_url: "coming"
+  image_url: "https://66.media.tumblr.com/2b80af84a2f85030a8fc45f88d7fd875/tumblr_pqfyr0N7fQ1vud73ko1_1280.jpg"
 })
 
 michael = Artist.create({
    name: 'Michael Jackson',
    bio: 'coming soon',
-   image_url: 'https://66.media.tumblr.com/17192fa4e6755ecde088fe66f7f20eb4/tumblr_pqcbxz2yiC1vud73ko5_1280.jpg'
+   image_url: 'https://66.media.tumblr.com/f7e77f9a6446bc0c9a3f0587538a9f78/tumblr_pqfxuy2rrw1vud73ko1_1280.jpg'
 })
 
 sufjan = Artist.create({
    name: 'Sufjan Stevens',
    bio: 'coming soon',
-   image_url: 'https://66.media.tumblr.com/759fc16a29c9677a64d59486ed57e508/tumblr_pqcbzbXTLl1vud73ko4_1280.jpg'
+   image_url: 'https://66.media.tumblr.com/499b1c7bbd3f2cc4c3d9346459e227da/tumblr_pqfxpxLIzk1vud73ko7_1280.jpg'
 })
 
 theroots = Artist.create({
    name: 'The Roots',
    bio: 'coming soon',
-   image_url: 'https://66.media.tumblr.com/01dc50d28983d4f5ce6ea504d66e2a36/tumblr_pqcbzbXTLl1vud73ko5_1280.jpg'
+   image_url: 'https://66.media.tumblr.com/15a14ba857d9a2d23d6b3f2b23fa66ce/tumblr_pqg00iAow61vud73ko1_1280.jpg'
 })
 
 rihanna = Artist.create({
    name: 'Rihanna',
    bio: 'coming soon',
-   image_url: 'https://66.media.tumblr.com/a448918ca0d1bb42625802356f2c66cf/tumblr_pqcbzbXTLl1vud73ko1_1280.jpg'
+   image_url: 'https://66.media.tumblr.com/dab657e3cd9b411b05d829dc9c8effbc/tumblr_pqfy9tV3Qz1vud73ko1_1280.jpg'
 })
 
 smiths = Artist.create({
   name: 'The Smiths',
   bio: 'coming',
-  image_url: 'coming'
-})
-
-velvet = Artist.create({
-   name: 'The Velvet Underground',
-   bio: 'coming soon',
-   image_url: 'https://66.media.tumblr.com/d2fc69b631461182f6fb5a3b081f5574/tumblr_pqccj70zl71vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/f5ab97e18f0cd44338b1601548e7a4e2/tumblr_pqfyxlEoNM1vud73ko1_1280.jpg'
 })
 
 nirvana = Artist.create({
    name: 'Nirvana',
    bio: 'coming soon',
-   image_url: 'https://66.media.tumblr.com/5205cb5cca11525bf08a7648c88c73fc/tumblr_pqcbxz2yiC1vud73ko7_1280.jpg'
+   image_url: 'https://66.media.tumblr.com/ebeca8813a17b699bc40841b5a3eb6f0/tumblr_pqfzveKOHw1vud73ko1_1280.jpg'
 })
 
 gin = Artist.create({ 
   name: 'Gin Blossoms', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/dae3748f1620bd923042d624fdebbc46/tumblr_pqcbwvDrs51vud73ko6_1280.jpg'
-})
-
-ace = Artist.create({ 
-  name: 'Ace of Base', 
-  bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/144abd42b704da7af0d1462e57adcb9b/tumblr_pqcbuxwbES1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/d85e08743b08bea322e751f3bf0811aa/tumblr_pqg1m59PW41vud73ko1_1280.jpg'
 })
 
 jimi = Artist.create({ 
   name: 'Jimi Hendrix', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/1eb34c81de2a872978d7972ea8fad8dd/tumblr_pqcbwvDrs51vud73ko9_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/a07c8b63e8ce85c6c2944eb34ac9ee63/tumblr_pqg1s9X30V1vud73ko1_1280.jpg'
 })
 
 kraft = Artist.create({ 
   name: 'Kraftwerk', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/365bf60aa4aaaae4dabd7eeedf80654b/tumblr_pqcbxz2yiC1vud73ko1_1280.gif'
+  image_url: 'https://66.media.tumblr.com/59ce8f9c82df12bf5384cb5d45fdecbc/tumblr_pqg21rHAg81vud73ko1_1280.jpg'
 })
 
 vogue = Artist.create({ 
   name: 'En Vogue', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/f2393f204b1e6c102f75958d9f1d8728/tumblr_pqcbzbXTLl1vud73ko9_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/e62ae63646c845fab3e2ce268347ebc7/tumblr_pqg25rrppX1vud73ko1_1280.jpg'
 })
 
 celine = Artist.create({ 
   name: 'Celine Dion', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/bdf724cf8497504a9e32902958847a1e/tumblr_pqcbuxwbES1vud73ko7_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/569e2c863b28dbfc9cf76f1967072f30/tumblr_pqg2d1XeO61vud73ko1_1280.jpg'
 })
 
 blood = Artist.create({ 
@@ -164,55 +146,55 @@ blood = Artist.create({
 bomba = Artist.create({ 
   name: 'Bomba Estereo', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/40bacfb8fc9419ce04031970f9e2ec0c/tumblr_pqcbuxwbES1vud73ko6_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/ca2e6a269d222858c4b813eae5bde7c6/tumblr_pqg2g64TBM1vud73ko1_1280.jpg'
 })
 
 william = Artist.create({ 
   name: 'William Onyeabor', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/28addf5b53a5721dbdb60383281c1a2d/tumblr_pqcbxz2yiC1vud73ko9_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/49e049a229811b79a8c14fcb3265651b/tumblr_pqg2nmysMf1vud73ko1_1280.jpg'
 })
 
 dylan = Artist.create({ 
   name: 'Bob Dylan', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/07fd19d5684bad849dd719e4baf5464e/tumblr_pqcbwvDrs51vud73ko4_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/abd4abe15e43dfd5bb46c5aa873905ee/tumblr_pqg2ukPqUM1vud73ko1_1280.jpg'
 })
 
 gogol = Artist.create({
   name: 'Gogol Bordello',
   bio: 'coming',
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/e3b5e06eb23737b15ec64d1f9f46ff56/tumblr_pqg2y49xXi1vud73ko1_1280.jpg'
 })
 
 amy = Artist.create({ 
   name: 'Amy Winehouse', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/4a85ee4ee5fad709faf140163dcb28cd/tumblr_pqcbuxwbES1vud73ko2_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/2653d0146b3115245ddf3a4e7addfcc3/tumblr_pqg32imeZq1vud73ko1_1280.jpg'
 })
 
 beatles = Artist.create({
   name: 'The Beatles',
   bio: 'coming soon',
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/090648bbbc76b885ae11f18828e372fd/tumblr_pqg3c8zKwW1vud73ko1_1280.jpg'
 })
 
 madonna = Artist.create({ 
   name: 'Madonna', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/ddbfd22b28a94e7e2a36559908b161c9/tumblr_pqcbxz2yiC1vud73ko3_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/2e45c032c781a0e2406df14d2070d586/tumblr_pqg3njwXlA1vud73ko1_1280.jpg'
 })
 
 britney = Artist.create({ 
   name: 'Britney Spears', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/28053e69b7a3f017be9e7bcca8d599ba/tumblr_pqcbuxwbES1vud73ko8_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/a58514c7ed6fe12a3ff43dd092b64e47/tumblr_pqg3uep8031vud73ko1_1280.jpg'
 })
 
 jayz = Artist.create({
   name: 'Jay-Z',
   bio: 'coming',
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/36b5de5c042605fb2f8372d6855ab434/tumblr_pqg45sn8yP1vud73ko1_1280.jpg'
 })
 
 cranberries = Artist.create({ 
@@ -224,13 +206,13 @@ cranberries = Artist.create({
 yeah = Artist.create({ 
   name: 'Yeah Yeah Yeahs', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/9ca19b2ac13eead8ac3ee112a05fa971/tumblr_pqcbzr4PUE1vud73ko2_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/c14b8313ba33ee5cb708aca6b36bab1e/tumblr_pqg4ia3uUr1vud73ko1_640.jpg'
 })
 
 pearl = Artist.create({
   name: 'Pearl Jam',
   bio: 'coming',
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/fb45fb7aa7377d8f558ceedeb6b32e7f/tumblr_pqg4os6rQK1vud73ko1_1280.jpg'
 })
 
 dua = Artist.create({ 
@@ -242,19 +224,13 @@ dua = Artist.create({
 ariana = Artist.create({ 
   name: 'Ariana Grande', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/acc4a392af8bfba8dc3cd2c7f4cea272/tumblr_pqcbuxwbES1vud73ko3_1280.jpg'
-})
-
-beach = Artist.create({ 
-  name: 'The Beach Boys', 
-  bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/c7962772e5b1b97fa0af3b3c428367ae/tumblr_pqcbuxwbES1vud73ko4_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/e64e65a2374062e69ec39e89279ef429/tumblr_pqg54ucEmx1vud73ko1_1280.jpg'
 })
 
 gaga = Artist.create({
   name: 'Lady Gaga',
   bio: 'coming soon',
-
+  image_url: 'https://66.media.tumblr.com/a39be3c58390fc0a67df26396b998c84/tumblr_pqg5t0A3aF1vud73ko1_1280.jpg'
 })
 
 waits = Artist.create({ 
@@ -267,12 +243,6 @@ toro = Artist.create({
   name: 'Toro Y Moi', 
   bio: 'coming soon', 
   image_url: 'https://66.media.tumblr.com/60ccee3d576acd8c84eeb2091426087f/tumblr_pqcbzbXTLl1vud73ko7_1280.jpg'
-})
-
-shehim = Artist.create({ 
-  name: 'She & Him', 
-  bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/88e2b09418dbd8c122984afa3e80ebc8/tumblr_pqccpf0CrU1vud73ko1_1280.jpg'
 })
 
 blake = Artist.create({ 
@@ -290,31 +260,25 @@ miles = Artist.create({
 jbalvin = Artist.create({
   name: 'J Balvin',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/5eb7f06a1ad9d7432733ce9934af05ca/tumblr_pqdt04J9C21vud73ko3_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/0905d6c04100abf8fa7cc789eeecef31/tumblr_pqfxpxLIzk1vud73ko9_1280.jpg'
 })
 
 marvin = Artist.create({
   name: 'Marvin Gaye',
   bio: 'coming',
-  image_url: 'coming'
-})
-
-joy = Artist.create({
-  name: 'Joy Division',
-  bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/b410860ecdea5d42340d93300e870fc2/tumblr_pqdt04J9C21vud73ko4_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/5e5646095bc623e83e4b142b7c904186/tumblr_pqg66qoPsi1vud73ko1_1280.jpg'
 })
 
 maluma = Artist.create({
   name: 'Maluma',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/6d407aa1d22e60af54227f7fcab6f271/tumblr_pqdt04J9C21vud73ko7_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/0c95db78243d59c22a36ad82bfef3743/tumblr_pqfxpxLIzk1vud73ko4_1280.jpg'
 })
 
 metro = Artist.create({
   name: 'Metronomy',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/5b371473d6c5afeea6e7e25040c0faeb/tumblr_pqdt04J9C21vud73ko8_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/88707535ec4c3585033a4f4662c757e0/tumblr_pqg6hbof2L1vud73ko1_1280.jpg'
 })
 
 lauryn = Artist.create({
@@ -327,12 +291,6 @@ leon = Artist.create({
   name: 'Leon Bridges',
   bio: 'coming',
   image_url: 'https://66.media.tumblr.com/c2928bafe4689c34bc794babd500217b/tumblr_pqdt04J9C21vud73ko6_1280.jpg'
-})
-
-arlo = Artist.create({
-  name: 'Arlo Guthrie',
-  bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/ef86db35877caf035fe2ba8b9f94d6f9/tumblr_pqdt04J9C21vud73ko1_1280.jpg'
 })
 
 
@@ -376,21 +334,21 @@ vital = pearl.albums.create({
   title: 'Vitalogy',
   genre: 'Rock',
   year: 1993,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/65cac1b59f0c7deec40fd058dccbf3da/tumblr_pqg7towvJ31vud73ko2_500.jpg'
 })
 
 doubt = jayz.albums.create({
   title: "Reasonable Doubt",
   genre: "Hip-Hop",
   year: 1995,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/b36490aa9e4ce9be493c9178f790b164/tumblr_pqg7t3L2Ej1vud73ko7_500.jpg'
 })
 
 puravida = gogol.albums.create({
   title: 'Pura Vida Conspiracy',
   genre: 'Alternative',
   year: 2012,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/4fc1b13422927315343dd7c3fa72c09c/tumblr_pqg7t3L2Ej1vud73ko5_500.jpg'
 })
 
 either = elliott.albums.create({ 
@@ -421,13 +379,6 @@ round = miles.albums.create({
   image_url: 'https://66.media.tumblr.com/b04ec0336996cebe6bedf968c9f8da96/tumblr_pqduc6BOk31vud73ko5_1280.jpg'
 })
 
-sign = ace.albums.create({
-  title: 'The Sign',
-  genre: 'Pop',
-  year: 1992,
-  image_url: 'https://66.media.tumblr.com/d6d55aa178692cd7b8ec58bbd3338533/tumblr_pqducoOQAG1vud73ko4_400.jpg'
-})
-
 whois = william.albums.create({
   title: "Who Is William Onyeabor?",
   genre: "Funk",
@@ -439,14 +390,14 @@ rubber = beatles.albums.create({
   title: "Rubber Soul",
   genre: 'Rock',
   year: 1964,
-  image: 'coming'
+  image_url: 'https://66.media.tumblr.com/3f45bc020ba7e06c290e4b802c081136/tumblr_pqg7towvJ31vud73ko7_1280.jpg'
 })
 
 born = gaga.albums.create({
   title: 'Born This Way',
   genre: 'Pop',
   year: 2010,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/65325c0d8e15a63b63ae0273091eca8e/tumblr_pqg7t3L2Ej1vud73ko4_540.jpg'
 })
 
 carrie = sufjan.albums.create({
@@ -454,13 +405,6 @@ carrie = sufjan.albums.create({
   genre: "Alternative",
   year: 2014,
   image_url: "https://66.media.tumblr.com/b72c1d1638169faacc2a2e1ec3eee618/tumblr_pqduavefa41vud73ko9_1280.jpg"
-})
-
-volume = shehim.albums.create({
-  title: "Volume Two",
-  genre: "Alternative",
-  year: 2009,
-  image_url: "https://66.media.tumblr.com/249c7ce0cfd0c1b474e35a9620ca9a44/tumblr_pqducoOQAG1vud73ko3_400.jpg"
 })
 
 vibras = jbalvin.albums.create({
@@ -484,39 +428,32 @@ badasme = waits.albums.create({
   image_url: 'https://66.media.tumblr.com/35c8e230fa3de08c60551be09b1381fd/tumblr_pqduavefa41vud73ko2_400.png'
 })
 
-sublime_album = sublime.albums.create({
-  title: "Sublime",
-  genre: "Rock",
-  year: 1991,
-  image_url: "https://66.media.tumblr.com/04506027f53cf0ab87c1abaca3650b5a/tumblr_pqducoOQAG1vud73ko5_1280.jpg"
-})
-
 letsget = marvin.albums.create({
   title: "Let's Get It On",
   genre: "Soul",
   year: 1972,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/5b8d9ef328272bf3a70228fed1e17000/tumblr_pqg7t3L2Ej1vud73ko9_640.jpg'
 })
 
 figure = elliott.albums.create({
   title: 'Figure 8',
   genre: 'Alternative',
   year: 1999,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/efeae70827f57811e96c5a393280aa3b/tumblr_pqg7t3L2Ej1vud73ko3_400.jpg'
 })
 
 creep = tune.albums.create({
   title: "I Can Feel You Creep Into My Private Life",
   genre: 'Alternative',
   year: 2017,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/81befb8b21b6b76e06f5cf40e700f48c/tumblr_pqg7t3L2Ej1vud73ko2_640.jpg'
 })
 
 cheap = regina.albums.create({
   title: 'What We Saw From The Cheap Seats',
   genre: 'Alternative',
   year: 2011,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/6682eaf5482d4fa57ba0d7d7ee5310ea/tumblr_pqg7towvJ31vud73ko5_400.jpg'
 })
 
 dua_album = dua.albums.create({
@@ -530,21 +467,14 @@ revolver = beatles.albums.create({
   title: 'Revolver',
   genre: 'Rock',
   year: 1965,
-  image_url: 'coming'
-})
-
-loaded = velvet.albums.create({
-  title: "Loaded",
-  genre: 'Rock',
-  year: 1969,
-  image_url: 'https://66.media.tumblr.com/a6bae62b68fec47a8765eeec91ba422b/tumblr_pqduc6BOk31vud73ko2_640.jpg'
+  image_url: 'https://66.media.tumblr.com/738a0c14ee5238b29224ccdec93a34b5/tumblr_pqg7towvJ31vud73ko6_1280.jpg'
 })
 
 joanne = gaga.albums.create({
   title: 'Joanne',
   genre: 'Pop',
   year: 2015,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/cd052e0baf3f76cc7b64d4e8256b6ef7/tumblr_pqg7t3L2Ej1vud73ko8_1280.jpg'
 })
 
 oops = britney.albums.create({
@@ -575,18 +505,11 @@ thriller = michael.albums.create({
   image_url: 'https://66.media.tumblr.com/3789f02d47cb48080886ae874263f022/tumblr_pqducoOQAG1vud73ko6_500.jpg'
 })
 
-pleasures = joy.albums.create({
-  title: 'Unknown Pleasures',
-  genre: 'Alternative',
-  year: 1978,
-  image_url: 'https://66.media.tumblr.com/1a57636c5e7fa698fa67b7c57323185c/tumblr_pqdubhNjAt1vud73ko8_1280.jpg'
-})
-
 ten = pearl.albums.create({
   title: 'Ten',
   genre: 'Rock',
   year: 1990,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/59333d78d5ce814c17822c9f9428ee42/tumblr_pqg7towvJ31vud73ko3_400.jpg'
 })
 
 unplugged = nirvana.albums.create({
@@ -603,6 +526,13 @@ outer = toro.albums.create({
   image_url: 'https://66.media.tumblr.com/b57483926bc5b8a203297c0ce9a50e99/tumblr_pqducoOQAG1vud73ko7_500.jpg'
 })
 
+smiths_album = smiths.albums.create({
+  title: 'The Smiths',
+  genre: 'Alternative',
+  year: 1983,
+  image_url: 'https://66.media.tumblr.com/d007f6713b31922bbd8da1a6c30a3a20/tumblr_pqg7towvJ31vud73ko8_400.jpg'
+})
+
 fame = maluma.albums.create({
   title: 'F.A.M.E',
   genre: 'Latin',
@@ -617,6 +547,20 @@ nevermind = nirvana.albums.create({
   image_url: 'https://66.media.tumblr.com/cd4ff673bbebfceef24b3e35e9d54c49/tumblr_pqfcpyajHc1vud73ko1_1280.jpg'
 })
 
+blueprint = jayz.albums.create({
+  title: 'The Blueprint',
+  genre: 'Hip-Hop',
+  year: 2000,
+  image_url: 'https://66.media.tumblr.com/16366c0202a03e7f7a15f4cb138d898e/tumblr_pqg7t3L2Ej1vud73ko1_1280.jpg'
+})
+
+nights = metro.albums.create({
+  title: 'Nights Out',
+  genre: 'Electronic',
+  year: 2008,
+  image_url: 'https://66.media.tumblr.com/9077961ba17a1d0898a238e491af8928/tumblr_pqgwvfkQ4b1vud73ko1_500.jpg'
+})
+
 english = metro.albums.create({
   title: 'The English Riviera',
   genre: 'Electronic',
@@ -628,14 +572,14 @@ whatsgoing = marvin.albums.create({
   title: "What's Going On",
   genre: 'Soul',
   year: 1970,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/d74e707503a459f85bb8aca0fd9e99bc/tumblr_pqg7t3L2Ej1vud73ko6_500.jpg'
 })
 
 whokill = tune.albums.create({
   title: "W H O K I L L",
   genre: 'Alternative',
   year: 2010,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/4fe46323ebe6abf2b5f403909df6023e/tumblr_pqg7u2RsvO1vud73ko1_640.jpg'
 })
 
 anti = rihanna.albums.create({
@@ -645,11 +589,18 @@ anti = rihanna.albums.create({
   image_url: 'https://66.media.tumblr.com/37eed4cd9147b6580b4e6bc8065d258b/tumblr_pqduavefa41vud73ko1_1280.png'
 })
 
+bestone = smiths.albums.create({
+  title: 'The Best Of... Vol. 1',
+  genre: 'Alternative',
+  year: 1991,
+  image_url: 'https://66.media.tumblr.com/d7ff879281ce5e054808a57d2c827654/tumblr_pqg7towvJ31vud73ko9_400.jpg'
+})
+
 remember = regina.albums.create({
   title: "Remember Us To Life",
   genre: 'Alternative',
   year: 2015,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/310118934d248979a0fb30fe32c50e82/tumblr_pqg7towvJ31vud73ko1_400.png'
 })
 
 mised = lauryn.albums.create({
@@ -663,7 +614,7 @@ queen = smiths.albums.create({
   title: 'The Queen Is Dead',
   genre: 'Rock',
   year: 1985,
-  image_url: 'coming'
+  image_url: 'https://66.media.tumblr.com/c86ce8d29500b283282fb97e738b7423/tumblr_pqg7towvJ31vud73ko4_640.jpg'
 })
 
 exper = jimi.albums.create({
@@ -671,13 +622,6 @@ exper = jimi.albums.create({
   genre: 'Rock',
   year: 1967,
   image_url: "https://66.media.tumblr.com/db9cbfd1ef26d21440e76263e93e8fd9/tumblr_pqdubhNjAt1vud73ko6_1280.jpg"
-})
-
-pet = beach.albums.create({
-  title: 'Pet Sounds',
-  genre: 'Rock',
-  year: 1965,
-  image_url: 'https://66.media.tumblr.com/46040495fa5101ce921819c6f755290c/tumblr_pqduc6BOk31vud73ko8_400.jpg'
 })
 
 phren = theroots.albums.create({
@@ -699,13 +643,6 @@ cominghome = leon.albums.create({
   genre: 'Soul',
   year: 2015,
   image_url: 'https://66.media.tumblr.com/edc9c7c1f002853e099e45c91c329639/tumblr_pqduc6BOk31vud73ko1_400.jpg'
-})
-
-alice = arlo.albums.create({
-  title: "Alice's Restaurant",
-  genre: 'Folk',
-  year: 1966,
-  image_url: 'https://66.media.tumblr.com/7cdcaf8b967d1db3696fac17735353da/tumblr_pqduavefa41vud73ko3_640.jpg'
 })
 
 trans = kraft.albums.create({
@@ -840,6 +777,21 @@ talkie.songs.create([
   { title: 'Alone in Kyoto', duration: '4:51' }
 ])
 
+nights.songs.create([
+  {title: "Nights Out", duration: "2:41"},
+  {title: "The End Of You Too", duration: "3:45"},
+  {title: "Radio Ladio", duration: "3:35"},
+  {title: "My Heart Rate Rapid", duration: "4:11"},
+  {title: "Heartbreaker", duration: "4:14"},
+  {title: "On The Motorway", duration: "2:36"},
+  {title: "Side 2", duration: "3:31"},
+  {title: "Holiday", duration: "4:16"},
+  {title: "A Thing For Me", duration: "3:30"},
+  {title: "Back On The Motorway", duration: "3:56"},
+  {title: "On Dancefloors", duration: "4:45"},
+  {title: "Nights Outro", duration: "3:12"}
+])
+
 ege.songs.create([
   { title: 'Pinch', duration: '9:29' },
   { title: 'Sing Swan Song', duration: '4:49' },
@@ -850,7 +802,7 @@ ege.songs.create([
   { title: 'Spoon', duration: '3:06' }
 ])
 
-revolver.songs.create({
+revolver.songs.create([
   {title: "Taxman", duration: "2:39"},
   {title: "Eleanor Rigby", duration: "2:07"},
   {title: "I'm Only Sleeping", duration: "3:00"},
@@ -865,7 +817,7 @@ revolver.songs.create({
   {title: "I Want To Tell You", duration: "2:28"},
   {title: "Got To Get You Into My Life", duration: "2:29"},
   {title: "Tomorrow Never Knows", duration: "3:02"}
-})
+])
 
 blonde.songs.create([  
   { title: 'Nikes', duration: '5:14' },
@@ -992,6 +944,23 @@ figure.songs.create([
   {title: "Bye", duration: "1:53"}
 ])
 
+bestone.songs.create([
+  {title: "This Charming Man", duration: "2:42"},
+  {title: "William, It Was Really Nothing", duration: "2:10"},
+  {title: "What Difference Does It Make?", duration: "3:51"},
+  {title: "Stop Me If You Think You've Heard This One Before", duration: "3:34"},
+  {title: "Girlfriend In A Coma", duration: "2:04"},
+  {title: "Half A Person", duration: "3:36"},
+  {title: "Rubber Ring", duration: "3:50"},
+  {title: "How Soon Is Now?", duration: "6:47"},
+  {title: "Hand In Glove", duration: "3:25"},
+  {title: "Shoplifters Of The World Unite", duration: "3:00"},
+  {title: "Sheila Take A Bow", duration: "2:42"},
+  {title: "Some Girls Are Bigger Than Others", duration: "3:16"},
+  {title: "Panic", duration: "2:20"},
+  {title: "Please, Please, Please, Let Me Get What I Want", duration: "1:54"}
+])
+
 moon.songs.create([  
   { title: 'Speak to Me', duration: '1:07' },
   { title: 'Breath (In The Air)', duration: '2:50' },
@@ -1004,6 +973,8 @@ moon.songs.create([
   { title: 'Brain Damage', duration: '3:47' },
   { title: 'Eclipse', duration: '2:13' }
 ])
+
+
 
 black.songs.create([
   {title: 'Rehab', duration: '3:35'},
@@ -1032,21 +1003,6 @@ round.songs.create([
   {title: "Sweet Sue, Just You", duration: "3:40"}
 ])
 
-sign.songs.create([ 
-  {title: "All That She Wants", duration: "3:34"},
-  {title: "Don't Turn Around", duration: "3:52"},
-  {title: "Young And Proud", duration: "3:57"},
-  {title: "The Sign", duration: "3:12"},
-  {title: "Living In Danger", duration: "3:44"},
-  {title: "Dancer In A Daydream", duration: "3:39"},
-  {title: "Wheel Of Fortune", duration: "3:54"},
-  {title: "Waiting For Magic (Total Remix)", duration: "3:53"},
-  {title: "Happy Nation", duration: "4:17"},
-  {title: "Voulez-Vous Danser", duration: "3:20"},
-  {title: "My Mind (Mindless Mix)", duration: "4:12"},
-  {title: "All That She Wants (Banghra Version)", duration: "4:14"}
-])
-
 whois.songs.create([  
   {title: "Body And Soul", duration: "10:09"},
   {title: "Atomic Bomb", duration: "8:00"},
@@ -1071,22 +1027,6 @@ carrie.songs.create([
   {title: "John My Beloved", duration: "5:05"},
   {title: "No Shade In The Shadow Of The Cross", duration: "2:41"},
   {title: "Blue Bucket Of Gold", duration: "4:44"}
-])
-
-volume.songs.create([
-  {title: "Thieves", duration: "4:08"},
-  {title: "In The Sun", duration: "2:51"},
-  {title: "Don't Look Back", duration: "3:23"},
-  {title: "Ridin' In My Car", duration: "3:15"},
-  {title: "Lingering Still", duration: "3:02"},
-  {title: "Me & You", duration: "3:20"},
-  {title: "Gonna Get Along Without You Now", duration: "2:32"},
-  {title: "Home", duration: "4:41"},
-  {title: "I'm Gonna Make It Better", duration: "3:32"},
-  {title: "Sing", duration: "3:14"}, 
-  {title: "Over It Over Again", duration: "3:30"}, 
-  {title: "Brand New Shoes", duration: "3:04"}, 
-  {title: "If You Can't Sleep", duration: "2:49"}
 ])
 
 vibras.songs.create([
@@ -1153,29 +1093,6 @@ vital.songs.create([
   {title: "Stupidmop", duration: "7:28"}
 ])
 
-sublime_album.songs.create([
-  {title: "Waiting For My Ruca", duration: "2:20"},
-  {title: "40 Oz. To Freedom", duration: "3:03"},
-  {title: "Smoke Two Joints", duration: "2:53"},
-  {title: "We're Only Gonna Die For Our Arrogance", duration: "3:07"},
-  {title: "Don't Push", duration: "4:19"},
-  {title: "54-46 That's My Number / Ball And Chain", duration: "5:18"},
-  {title: "Badfish", duration: "3:05"},
-  {title: "Let's Go Get Stoned", duration: "3:33"},
-  {title: "New Thrash", duration: "1:30"},
-  {title: "Scarlet Begonias", duration: "3:32"},
-  {title: "Live At E's", duration: "3:09"},
-  {title: "DJs", duration: "3:18"},
-  {title: "Chica Me Tipo", duration: "2:16"},
-  {title: "Right Back", duration: "2:49"},
-  {title: "What Happened", duration: "3:28"},
-  {title: "New Song", duration: "3:14"},
-  {title: "Ebin", duration: "3:32"},
-  {title: "Date Rape", duration: "3:38"},
-  {title: "Hope", duration: "1:43"},
-  {title: "KRS-One", duration: "4:23"}
-])
-
 whatsgoing.songs.create([
   {title: "What's Going On", duration: "3:53"},
   {title: "What's Happening Brother", duration: "2:44"},
@@ -1215,19 +1132,6 @@ dua_album.songs.create([
   {title: "New Rules", duration: "3:32"},
   {title: "Begging", duration: "3:14"},
   {title: "Homesick", duration: "3:50"},
-])
-
-loaded.songs.create([
-  {title: "Who Loves The Sun", duration: "2:47"},
-  {title: "Sweet Jane", duration: "3:18"},
-  {title: "Rock & Roll", duration: "4:40"},
-  {title: "Cool It Down", duration: "3:05"},
-  {title: "New Age", duration: "4:40"},
-  {title: "Head Held High", duration: "2:58"},
-  {title: "Lonesome Cowboy Bill", duration: "2:45"},
-  {title: "I Found A Reason", duration: "4:16"},
-  {title: "Train Round The Bend", duration: "3:22"},
-  {title: "Oh! Sweet Nuthin'", duration: "7:24"}, 
 ])
 
 ten.songs.create([
@@ -1323,19 +1227,6 @@ thriller.songs.create([
   {title: "Excerpt From Thriller Voiceover Session", duration: ":"} 
 ])
 
-pleasures.songs.create([
-  {title: "Disorder", duration: "3:32"},
-  {title: "Day Of The Lords", duration: "4:49"},
-  {title: "Candidate", duration: "3:05"},
-  {title: "Insight", duration: "4:29"},
-  {title: "New Dawn Fades", duration: "4:48"},
-  {title: "She's Lost Control", duration: "3:57"},
-  {title: "Shadowplay", duration: "3:56"},
-  {title: "Wilderness", duration: "2:39"},
-  {title: "Interzone", duration: "2:16"},
-  {title: "I Remember Nothing", duration: "5:54"}, 
-])
-
 creep.songs.create([
   {title: "Heart Attack", duration: "3:44"},
   {title: "Coast To Coast", duration: "3:56"},
@@ -1396,6 +1287,20 @@ outer.songs.create([
   {title: "Who Am I", duration: "3:29"},
   {title: "Monte Carlo", duration: "2:05"},
   {title: "50-50", duration: "3:27"}
+])
+
+smiths_album.songs.create([
+  {title: "Reel Around The Fountain", duration: "5:56"},
+  {title: "You've Got Everything Now", duration: "4:00"},
+  {title: "Miserable Lie", duration: "4:28"},
+  {title: "Pretty Girls Make Graves", duration: "3:43"},
+  {title: "The Hand That Rocks The Cradle", duration: "4:38"},
+  {title: "This Charming Man", duration: "2:43"},
+  {title: "Still Ill", duration: "3:21"},
+  {title: "Hand In Glove", duration: "3:23"},
+  {title: "What Difference Does It Make?", duration: "3:50"},
+  {title: "I Don't Owe You Anything", duration: "4:05"},
+  {title: "Suffer Little Children", duration: "5:28"}
 ])
 
 fame.songs.create([
@@ -1500,23 +1405,6 @@ exper.songs.create([
   {title: "Red House", duration: "3:50"}
 ])
 
-pet.songs.create([
-  {title: "Wouldn't It Be Nice", duration: ":"},
-  {title: "You Still Believe In Me", duration: ":"},
-  {title: "That's Not Me", duration: ":"},
-  {title: "Don't Talk (Put Your Head On My Shoulder)", duration: ":"},
-  {title: "I'm Waiting For The Day", duration: ":"},
-  {title: "Let's Go Away For Awhile", duration: ":"},
-  {title: "Sloop John B", duration: ":"},
-  {title: "God Only Knows", duration: ":"},
-  {title: "I Know There's An Answer", duration: ":"},
-  {title: "Here Today", duration: ":"},
-  {title: "I Just Wasn't Made For These Times", duration: ":"},
-  {title: "Pet Sounds", duration: ":"},
-  {title: "Caroline No", duration: ":"},
-  {title: "Hang On To Your Ego", duration: ":"},
-])
-
 phren.songs.create([
   {title: "Phrentrow", duration: "0:18"},
   {title: "Rock You", duration: "3:13"},
@@ -1573,16 +1461,6 @@ cominghome.songs.create([
   {title: "Pull Away", duration: "3:02"},
   {title: "Twistin' & Groovin'", duration: "4:14"},
   {title: "River", duration: "3:59"},
-])
-
-alice.songs.create([
-  {title: "Alice's Restaurant Massacree", duration: "18:37"},
-  {title: "Chilling Of The Evening", duration: "3:05"},
-  {title: "Ring-Around-A-Rosy Rag", duration: "2:16"},
-  {title: "Now And Then", duration: "2:24"},
-  {title: "I'm Going Home", duration: "3:18"},
-  {title: "The Motorcycle Song", duration: "2:51"},
-  {title: "Highway In The Wind", duration: "2:42"}
 ])
 
 trans.songs.create([
@@ -1697,6 +1575,22 @@ swan.songs.create([
   {title: "Some", duration: "3:33"}
 ])
 
+blueprint.songs.create([
+  {title: "The Ruler's Back", duration: "3:50"},
+  {title: "Takeover", duration: "5:13"},
+  {title: "Izzo (H.O.V.A.)", duration: "4:01"},
+  {title: "Girls, Girls, Girls", duration: "4:35"},
+  {title: "Jigga That N***a", duration: "3:24"},
+  {title: "U Don't Know", duration: "3:19"},
+  {title: "Hova' Hovito", duration: "4:33"},
+  {title: "Heart Of The City (Ain't No Love)", duration: "3:43"},
+  {title: "Never Change", duration: "3:59"},
+  {title: "Song Cry", duration: "5:04"},
+  {title: "All I Need", duration: "4:29"},
+  {title: "Renegade", duration: "5:38"},
+  {title: "Blueprint (Momma Loves Me)", duration: "12:08"}
+])
+
 selfportrait.songs.create([
   {title: "All The Tired Horses", duration: "3:12"},
   {title: "Alberta #1", duration: "2:57"},
@@ -1757,8 +1651,6 @@ demo.followed_playlists << gym
 study.songs << asleep.songs[5]
 study.songs << phren.songs[12]
 study.songs << nevermind.songs[2]
-study.songs << pleasures.songs[5]
-study.songs << pet.songs[0]
 
 gym.songs << outer.songs[6]
 gym.songs << mised.songs[4]
