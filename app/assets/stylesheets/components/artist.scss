@@ -1,19 +1,22 @@
-.artist-index-item > img {
-  width: 100%;
-  // height: ;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.artist-index {
+.artist-index-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
+  padding-bottom: 25px;
 }
-
 
 .artist-index-item {
-  width: 25%;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 12px;
 }
 
+.artist-index-item-image {
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 5px;
+}

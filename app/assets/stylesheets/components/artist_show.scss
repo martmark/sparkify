@@ -10,16 +10,15 @@
 
     img {
       // clip: rect(0px,1100px,400px,0);
+      object-fit: cover;  
       height: 400px;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      width: 100%;  
+      overflow: hidden;
     }
 
     .artist-image {
       height: 400px;
       z-index: 0;
+      overflow: hidden;
     }
 
     .artist-image::after {

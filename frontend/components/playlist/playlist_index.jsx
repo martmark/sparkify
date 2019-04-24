@@ -7,8 +7,8 @@ class PlaylistIndex extends React.Component {
  
   render() {
     return(
-      <div>
-        <ul>
+      <div className='playlist-index'>
+        <ul className='playlist-index-list'>
           {this.props.playlists.map(playlist => <PlaylistIndexItem key={playlist.id} playlist={playlist} />)}
         </ul>
       </div>

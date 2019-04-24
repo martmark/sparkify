@@ -20,277 +20,323 @@ demo = User.create({ username: 'DemoUser', password: 'sparkifyonline' })
 frank = Artist.create({ 
   name: 'Frank Ocean', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/cf6e5522c26fbdcab113cb70eb3908ee/tumblr_pqfxpxLIzk1vud73ko2_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/cf6e5522c26fbdcab113cb70eb3908ee/tumblr_pqfxpxLIzk1vud73ko2_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/6bafbdd4ae30a95fc8c2ee09f13e6689/tumblr_pqhglyXc051vud73ko8_640.jpg'
 })
 
 jack = Artist.create({ 
   name: 'Jack Johnson', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/d69d621e2f38787d28fbfcbe95c85fa9/tumblr_pqfxpxLIzk1vud73ko3_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/d69d621e2f38787d28fbfcbe95c85fa9/tumblr_pqfxpxLIzk1vud73ko3_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/6ec499379057a0f5d63eff9b23f9126a/tumblr_pqhgmsJ8GI1vud73ko3_640.jpg'
 })
 
 tune = Artist.create({
   name: 'tUnE-yArDs',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/bad55a2c484d0be57183d822a124d0b2/tumblr_pqfxpxLIzk1vud73ko8_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/bad55a2c484d0be57183d822a124d0b2/tumblr_pqfxpxLIzk1vud73ko8_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/50230cbfaf85fcb8aa269b80d7d6a691/tumblr_pqhgo2Tmgn1vud73ko6_640.jpg'
 })
 
 air = Artist.create({ 
   name: 'Air', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/d630bb21f54c6b4bdc8aa4a162499dde/tumblr_pqft7jLN6y1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/d630bb21f54c6b4bdc8aa4a162499dde/tumblr_pqft7jLN6y1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/ccb164e0c7633c4daa5c97be68abdf2d/tumblr_pqhgl5XpJJ1vud73ko1_540.jpg'
 })
 
 can = Artist.create({ 
   name: 'Can', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/0356a83e1e09193be09af15f3abb757a/tumblr_pqftbii0dD1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/0356a83e1e09193be09af15f3abb757a/tumblr_pqftbii0dD1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/6a699afe5f1af7dae5ae358f3257fb8c/tumblr_pqhglyXc051vud73ko1_1280.jpg'
 })
 
 elliott = Artist.create({ 
   name: 'Elliott Smith', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/b2f63220929d644fd12c08ef11314bc9/tumblr_pqfxpxLIzk1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/b2f63220929d644fd12c08ef11314bc9/tumblr_pqfxpxLIzk1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/a7aeb06d35ca771f282e0aa43b3b5ae4/tumblr_pqhglyXc051vud73ko6_1280.jpg'
 })
 
 floyd = Artist.create({ 
   name: 'Pink Floyd', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/de7eac93cc7b29b0db9a4d040ffd6896/tumblr_pqftwrvkQ01vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/de7eac93cc7b29b0db9a4d040ffd6896/tumblr_pqftwrvkQ01vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/b48ede41b7508d663af645277fa1f229/tumblr_pqhglyXc051vud73ko7_640.jpg'
 })
 
 billie = Artist.create({ 
   name: 'Billie Eilish', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/f42a75f3919494be841e0b9cb357257e/tumblr_pqftotfBnp1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/f42a75f3919494be841e0b9cb357257e/tumblr_pqftotfBnp1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/9c8908e461cd1943c65e4d23a5ce35dd/tumblr_pqhgl5XpJJ1vud73ko5_1280.jpg'
 })
 
 regina = Artist.create({
   name: 'Regina Spektor',
   bio: "coming",
-  image_url: "https://66.media.tumblr.com/2b80af84a2f85030a8fc45f88d7fd875/tumblr_pqfyr0N7fQ1vud73ko1_1280.jpg"
+  image_url: "https://66.media.tumblr.com/2b80af84a2f85030a8fc45f88d7fd875/tumblr_pqfyr0N7fQ1vud73ko1_1280.jpg",
+  small_image_url: 'https://66.media.tumblr.com/72a2bb5f254a235f67f29353e7d59300/tumblr_pqhgnhuYyF1vud73ko9_1280.jpg'
 })
 
 michael = Artist.create({
    name: 'Michael Jackson',
    bio: 'coming soon',
-   image_url: 'https://66.media.tumblr.com/f7e77f9a6446bc0c9a3f0587538a9f78/tumblr_pqfxuy2rrw1vud73ko1_1280.jpg'
+   image_url: 'https://66.media.tumblr.com/f7e77f9a6446bc0c9a3f0587538a9f78/tumblr_pqfxuy2rrw1vud73ko1_1280.jpg',
+   small_image_url: 'https://66.media.tumblr.com/77be4488cd8d5fcb7b73bf3f420061c9/tumblr_pqhgnhuYyF1vud73ko5_1280.jpg'
 })
 
 sufjan = Artist.create({
    name: 'Sufjan Stevens',
    bio: 'coming soon',
-   image_url: 'https://66.media.tumblr.com/499b1c7bbd3f2cc4c3d9346459e227da/tumblr_pqfxpxLIzk1vud73ko7_1280.jpg'
+   image_url: 'https://66.media.tumblr.com/499b1c7bbd3f2cc4c3d9346459e227da/tumblr_pqfxpxLIzk1vud73ko7_1280.jpg',
+   small_image_url: 'https://66.media.tumblr.com/6ccd3e403f07a20a82e4c7e27c4b3eae/tumblr_pqhgo2Tmgn1vud73ko4_1280.jpg'
 })
 
 theroots = Artist.create({
    name: 'The Roots',
    bio: 'coming soon',
-   image_url: 'https://66.media.tumblr.com/15a14ba857d9a2d23d6b3f2b23fa66ce/tumblr_pqg00iAow61vud73ko1_1280.jpg'
+   image_url: 'https://66.media.tumblr.com/15a14ba857d9a2d23d6b3f2b23fa66ce/tumblr_pqg00iAow61vud73ko1_1280.jpg',
+   small_image_url: 'https://66.media.tumblr.com/95e93ed5e904040a74acfe8328fb427f/tumblr_pqhgo2Tmgn1vud73ko2_640.jpg'
 })
 
 rihanna = Artist.create({
    name: 'Rihanna',
    bio: 'coming soon',
-   image_url: 'https://66.media.tumblr.com/dab657e3cd9b411b05d829dc9c8effbc/tumblr_pqfy9tV3Qz1vud73ko1_1280.jpg'
+   image_url: 'https://66.media.tumblr.com/dab657e3cd9b411b05d829dc9c8effbc/tumblr_pqfy9tV3Qz1vud73ko1_1280.jpg',
+   small_image_url: 'https://66.media.tumblr.com/7acc0a6475e590113e813c4436574ce7/tumblr_pqhgo2Tmgn1vud73ko1_640.jpg'
 })
 
 smiths = Artist.create({
   name: 'The Smiths',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/f5ab97e18f0cd44338b1601548e7a4e2/tumblr_pqfyxlEoNM1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/f5ab97e18f0cd44338b1601548e7a4e2/tumblr_pqfyxlEoNM1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/39f99783fcbdc165120691bea534fe97/tumblr_pqhgo2Tmgn1vud73ko3_1280.jpg'
 })
 
 nirvana = Artist.create({
    name: 'Nirvana',
    bio: 'coming soon',
-   image_url: 'https://66.media.tumblr.com/ebeca8813a17b699bc40841b5a3eb6f0/tumblr_pqfzveKOHw1vud73ko1_1280.jpg'
+   image_url: 'https://66.media.tumblr.com/ebeca8813a17b699bc40841b5a3eb6f0/tumblr_pqfzveKOHw1vud73ko1_1280.jpg',
+   small_image_url: 'https://66.media.tumblr.com/a45edfa53567e274acd785bff773b7ac/tumblr_pqhgnhuYyF1vud73ko7_1280.jpg'
 })
 
 gin = Artist.create({ 
   name: 'Gin Blossoms', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/d85e08743b08bea322e751f3bf0811aa/tumblr_pqg1m59PW41vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/d85e08743b08bea322e751f3bf0811aa/tumblr_pqg1m59PW41vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/4baf5714d274997a921ea4ef4ea600f1/tumblr_pqhgmsJ8GI1vud73ko1_640.jpg'
 })
 
 jimi = Artist.create({ 
   name: 'Jimi Hendrix', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/a07c8b63e8ce85c6c2944eb34ac9ee63/tumblr_pqg1s9X30V1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/a07c8b63e8ce85c6c2944eb34ac9ee63/tumblr_pqg1s9X30V1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/826b56720ae87df7b5f11cdb01c1df09/tumblr_pqhgmsJ8GI1vud73ko6_640.jpg'
 })
 
 kraft = Artist.create({ 
   name: 'Kraftwerk', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/59ce8f9c82df12bf5384cb5d45fdecbc/tumblr_pqg21rHAg81vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/59ce8f9c82df12bf5384cb5d45fdecbc/tumblr_pqg21rHAg81vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/0511705b63e14e194bd98a2bbb0ecafe/tumblr_pqhgmsJ8GI1vud73ko7_640.jpg'
 })
 
 vogue = Artist.create({ 
   name: 'En Vogue', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/e62ae63646c845fab3e2ce268347ebc7/tumblr_pqg25rrppX1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/e62ae63646c845fab3e2ce268347ebc7/tumblr_pqg25rrppX1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/970dbe0fbe137dd51c8f2b61f4696e1b/tumblr_pqhgo2Tmgn1vud73ko7_1280.jpg'
 })
 
 celine = Artist.create({ 
   name: 'Celine Dion', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/569e2c863b28dbfc9cf76f1967072f30/tumblr_pqg2d1XeO61vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/569e2c863b28dbfc9cf76f1967072f30/tumblr_pqg2d1XeO61vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/80ab1c7d99caf77f2167084f18185704/tumblr_pqhglyXc051vud73ko2_640.jpg'
 })
 
 blood = Artist.create({ 
   name: 'Blood Orange', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/91a2aac79c055dd9452f01b05606d486/tumblr_pqcbuxwbES1vud73ko5_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/91a2aac79c055dd9452f01b05606d486/tumblr_pqcbuxwbES1vud73ko5_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/e16f8f8bd4da16b48ea68f3dffdd09b6/tumblr_pqhgl5XpJJ1vud73ko7_1280.jpg'
 })
 
 bomba = Artist.create({ 
   name: 'Bomba Estereo', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/ca2e6a269d222858c4b813eae5bde7c6/tumblr_pqg2g64TBM1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/ca2e6a269d222858c4b813eae5bde7c6/tumblr_pqg2g64TBM1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/1f9dc53fb6b1b06f591920204b5780e7/tumblr_pqhgl5XpJJ1vud73ko8_640.jpg'
 })
 
 william = Artist.create({ 
   name: 'William Onyeabor', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/49e049a229811b79a8c14fcb3265651b/tumblr_pqg2nmysMf1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/49e049a229811b79a8c14fcb3265651b/tumblr_pqg2nmysMf1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/265984e1cebfa280fecfd59664b2d49d/tumblr_pqhgo2Tmgn1vud73ko9_500.jpg'
 })
 
 dylan = Artist.create({ 
   name: 'Bob Dylan', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/abd4abe15e43dfd5bb46c5aa873905ee/tumblr_pqg2ukPqUM1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/abd4abe15e43dfd5bb46c5aa873905ee/tumblr_pqg2ukPqUM1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/a622efe604f473c8772bfbc9869b8758/tumblr_pqhglyXc051vud73ko5_1280.jpg'
 })
 
 gogol = Artist.create({
   name: 'Gogol Bordello',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/e3b5e06eb23737b15ec64d1f9f46ff56/tumblr_pqg2y49xXi1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/e3b5e06eb23737b15ec64d1f9f46ff56/tumblr_pqg2y49xXi1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/9c5404b1f17a89778af0d7198d64cb36/tumblr_pqhgmsJ8GI1vud73ko2_1280.jpg'
 })
 
 amy = Artist.create({ 
   name: 'Amy Winehouse', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/2653d0146b3115245ddf3a4e7addfcc3/tumblr_pqg32imeZq1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/2653d0146b3115245ddf3a4e7addfcc3/tumblr_pqg32imeZq1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/90847b577c557f56ce8c284770d600be/tumblr_pqhgl5XpJJ1vud73ko2_1280.jpg'
 })
 
 beatles = Artist.create({
   name: 'The Beatles',
   bio: 'coming soon',
-  image_url: 'https://66.media.tumblr.com/090648bbbc76b885ae11f18828e372fd/tumblr_pqg3c8zKwW1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/090648bbbc76b885ae11f18828e372fd/tumblr_pqg3c8zKwW1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/7bf825eb70bbd1512b176e3b91789da8/tumblr_pqhgl5XpJJ1vud73ko4_1280.jpg'
 })
 
 madonna = Artist.create({ 
   name: 'Madonna', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/2e45c032c781a0e2406df14d2070d586/tumblr_pqg3njwXlA1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/2e45c032c781a0e2406df14d2070d586/tumblr_pqg3njwXlA1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/9a91b0dbd4c3e0d52d87235a6371125b/tumblr_pqhgnhuYyF1vud73ko1_640.jpg'
 })
 
 britney = Artist.create({ 
   name: 'Britney Spears', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/a58514c7ed6fe12a3ff43dd092b64e47/tumblr_pqg3uep8031vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/a58514c7ed6fe12a3ff43dd092b64e47/tumblr_pqg3uep8031vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/6655a53df076a7b49dad073b19a2ba78/tumblr_pqhgl5XpJJ1vud73ko9_1280.jpg'
 })
 
 jayz = Artist.create({
   name: 'Jay-Z',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/36b5de5c042605fb2f8372d6855ab434/tumblr_pqg45sn8yP1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/36b5de5c042605fb2f8372d6855ab434/tumblr_pqg45sn8yP1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/448745ae3091281ea49b30603266a471/tumblr_pqhgmsJ8GI1vud73ko4_1280.jpg'
 })
 
 cranberries = Artist.create({ 
   name: 'The Cranberries', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/61f9abccdbe3b81f9cc4d4c91dae715b/tumblr_pqcbwvDrs51vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/61f9abccdbe3b81f9cc4d4c91dae715b/tumblr_pqcbwvDrs51vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/789ca58beab2b503e4b28ce676d5335a/tumblr_pqhglyXc051vud73ko3_1280.jpg'
 })
 
 yeah = Artist.create({ 
   name: 'Yeah Yeah Yeahs', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/c14b8313ba33ee5cb708aca6b36bab1e/tumblr_pqg4ia3uUr1vud73ko1_640.jpg'
+  image_url: 'https://66.media.tumblr.com/c14b8313ba33ee5cb708aca6b36bab1e/tumblr_pqg4ia3uUr1vud73ko1_640.jpg',
+  small_image_url: 'https://66.media.tumblr.com/145fb081860b3eeabd046be4a018f177/tumblr_pqhgp2LGTw1vud73ko1_400.jpg'
 })
 
 pearl = Artist.create({
   name: 'Pearl Jam',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/fb45fb7aa7377d8f558ceedeb6b32e7f/tumblr_pqg4os6rQK1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/fb45fb7aa7377d8f558ceedeb6b32e7f/tumblr_pqg4os6rQK1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/a185bc4f52fdbf19a87111d1797a3eb0/tumblr_pqhgnhuYyF1vud73ko8_1280.jpg'
 })
 
 dua = Artist.create({ 
   name: 'Dua Lipa', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/798dc6fc69aa7022cad7f4be73e6ab97/tumblr_pqcbwvDrs51vud73ko3_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/798dc6fc69aa7022cad7f4be73e6ab97/tumblr_pqcbwvDrs51vud73ko3_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/171c945f89c9eead5839c80c528135ce/tumblr_pqhglyXc051vud73ko4_1280.jpg'
 })
 
 ariana = Artist.create({ 
   name: 'Ariana Grande', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/e64e65a2374062e69ec39e89279ef429/tumblr_pqg54ucEmx1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/e64e65a2374062e69ec39e89279ef429/tumblr_pqg54ucEmx1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/96b99964b8478291d1f26444217dd3cb/tumblr_pqhgl5XpJJ1vud73ko3_1280.jpg'
 })
 
 gaga = Artist.create({
   name: 'Lady Gaga',
   bio: 'coming soon',
-  image_url: 'https://66.media.tumblr.com/a39be3c58390fc0a67df26396b998c84/tumblr_pqg5t0A3aF1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/a39be3c58390fc0a67df26396b998c84/tumblr_pqg5t0A3aF1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/e2678615aa9e1e3c2c562843a979a906/tumblr_pqhglyXc051vud73ko9_640.jpg'
 })
 
 waits = Artist.create({ 
   name: 'Tom Waits', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/776c9f9c96e7dacc742500a05fe5b2de/tumblr_pqcbzr4PUE1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/776c9f9c96e7dacc742500a05fe5b2de/tumblr_pqcbzr4PUE1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/2e73ac6e2a077c686f76e9f3c4254820/tumblr_pqhgo2Tmgn1vud73ko8_1280.jpg'
 })
 
 toro = Artist.create({ 
   name: 'Toro Y Moi', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/60ccee3d576acd8c84eeb2091426087f/tumblr_pqcbzbXTLl1vud73ko7_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/60ccee3d576acd8c84eeb2091426087f/tumblr_pqcbzbXTLl1vud73ko7_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/081394ef75b77a52b8ba6b163e7b92da/tumblr_pqhgo2Tmgn1vud73ko5_1280.jpg'
 })
 
 blake = Artist.create({ 
   name: 'James Blake', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/74cba11920d9de2f30056bd186a6064c/tumblr_pqdt04J9C21vud73ko2_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/74cba11920d9de2f30056bd186a6064c/tumblr_pqdt04J9C21vud73ko2_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/d4f4ebccfd6b55a345270f1252fbdb16/tumblr_pqhgl5XpJJ1vud73ko6_1280.jpg'
 })
 
 miles = Artist.create({
   name: 'Miles Davis',
   bio: 'coming soon',
-  image_url: 'https://66.media.tumblr.com/dd397e20e0411dbe7abd4c09cce864a2/tumblr_pqdt04J9C21vud73ko9_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/dd397e20e0411dbe7abd4c09cce864a2/tumblr_pqdt04J9C21vud73ko9_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/6e92cd1520d9c9f0f92c4c39faa56c6a/tumblr_pqhgnhuYyF1vud73ko6_640.jpg'
 })
 
 jbalvin = Artist.create({
   name: 'J Balvin',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/0905d6c04100abf8fa7cc789eeecef31/tumblr_pqfxpxLIzk1vud73ko9_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/0905d6c04100abf8fa7cc789eeecef31/tumblr_pqfxpxLIzk1vud73ko9_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/1db999df736e15e08440e13171aa4d26/tumblr_pqhgmsJ8GI1vud73ko5_640.jpg'
 })
 
 marvin = Artist.create({
   name: 'Marvin Gaye',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/5e5646095bc623e83e4b142b7c904186/tumblr_pqg66qoPsi1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/5e5646095bc623e83e4b142b7c904186/tumblr_pqg66qoPsi1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/8179c637b6eef44a9241b9bd021df453/tumblr_pqhgnhuYyF1vud73ko3_1280.jpg'
 })
 
 maluma = Artist.create({
   name: 'Maluma',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/0c95db78243d59c22a36ad82bfef3743/tumblr_pqfxpxLIzk1vud73ko4_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/0c95db78243d59c22a36ad82bfef3743/tumblr_pqfxpxLIzk1vud73ko4_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/c8426bd650b13b523799214630c829ab/tumblr_pqhgnhuYyF1vud73ko2_500.jpg'
 })
 
 metro = Artist.create({
   name: 'Metronomy',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/88707535ec4c3585033a4f4662c757e0/tumblr_pqg6hbof2L1vud73ko1_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/88707535ec4c3585033a4f4662c757e0/tumblr_pqg6hbof2L1vud73ko1_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/16ddcfab3ed143eec20f289b92eaa156/tumblr_pqhgnhuYyF1vud73ko4_1280.jpg'
 })
 
 lauryn = Artist.create({
   name: 'Lauryn Hill',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/cb25fb2919e475fcf604c88c278ff284/tumblr_pqdt04J9C21vud73ko5_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/cb25fb2919e475fcf604c88c278ff284/tumblr_pqdt04J9C21vud73ko5_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/cba4dfcd3a33730d63a62f03af0190e1/tumblr_pqhgmsJ8GI1vud73ko8_1280.jpg'
 })
 
 leon = Artist.create({
   name: 'Leon Bridges',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/c2928bafe4689c34bc794babd500217b/tumblr_pqdt04J9C21vud73ko6_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/c2928bafe4689c34bc794babd500217b/tumblr_pqdt04J9C21vud73ko6_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/8792169498631cdc4177bebc614593b6/tumblr_pqhgmsJ8GI1vud73ko9_1280.jpg'
 })
 
 
@@ -991,7 +1037,7 @@ black.songs.create([
 ])
 
 round.songs.create([ 
-  {title: "`Round Midnight`", duration: "5:58"},
+  {title: "`Round Midnight", duration: "5:58"},
   {title: "Ah-Leu-Cha", duration: "5:53"},
   {title: "All Of You", duration: "7:03"},
   {title: "Bye Bye Blackbird", duration: "7:57"},

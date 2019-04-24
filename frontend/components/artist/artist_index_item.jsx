@@ -20,7 +20,9 @@ class ArtistIndexItem extends React.Component {
     const { artist } = this.props;
     return (
       <li className='artist-index-item'>
-        <img src={artist.image_url} alt={artist.name} />
+        <div className='artist-index-item-image'>
+          <img onClick={this.redirect} src={artist.small_image_url} alt={artist.name} />
+        </div>
         <button onClick={this.redirect}>{artist.name}</button>
       </li>
     );
