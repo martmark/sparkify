@@ -17,34 +17,51 @@ class BrowseAlbumIndex extends React.Component {
   render() {
     const { albums, loading } = this.props;
 
+    var shuffle = function (array) {
+      var currentIndex = array.length;
+      var temporaryValue, randomIndex;
+
+      while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+
+      return array;
+    };
+
+    let browseAlbums = shuffle(albums.slice());
+
     if (loading) {
       return (
         <h1>Loading...</h1>
-      )
-    }
+      );
+    };
 
     return (
       <div className='browse-album-index'>
-        <AlbumIndex albums={albums} />
+        <AlbumIndex albums={browseAlbums} />
       </div>
-    )
-
-  }
-}
+    );
+  };
+};
 
 const msp = state => {
   return ({
     albums: Object.values(state.entities.albums),
     loading: state.ui.loading.status
-  })
-}
+  });
+};
 
 const mdp = dispatch => {
   return ({
     fetchAlbums: () => dispatch(fetchAlbums({ fetchType: 'browse' })),
     setLoadingTrue: () => dispatch(setLoadingTrue()),
     setLoadingFalse: () => dispatch(setLoadingFalse())
-  })
-}
+  });
+};
 
 export default connect(msp, mdp)(BrowseAlbumIndex);

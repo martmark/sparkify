@@ -1,5 +1,5 @@
 import React from 'react';
-import PlaylistFormContainer from './../playlist/playlist_form_container';
+import PlaylistForm from './../playlist/playlist_form';
 
 class Modal extends React.Component {
 
@@ -11,7 +11,7 @@ class Modal extends React.Component {
     let component;
     switch (this.props.modalType) {
       case 'playlistForm':
-        component = <PlaylistFormContainer />;
+        component = <PlaylistForm />;
         break;
       default:
         return null;

@@ -1,10 +1,30 @@
-.album-show > img {
-  height: 150px;
-  width: 150px;
-  object-fit: cover;
-}
-
 .album-show {
   height: 100vh;
   margin-left: 230px;
+  margin-top: 30px;
+}
+
+.album-show-info {
+  margin-left: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.album-show-image {
+  height: 150px;
+  width: 150px;
+}
+
+.album-show-details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+}
+
+.album-show-album-title {
+  font-size: 40px;
+}
+
+.album-show-year {
+  font-size: 12px;
 }

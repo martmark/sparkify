@@ -1,13 +1,13 @@
 import React from 'react';
 import SongIndex from './../song/song_index';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchAlbum } from './../../actions/album_actions';
 import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
 
 class AlbumShow extends React.Component {
 
   componentDidMount() {
-    // debugger;
     this.props.fetchAlbum(this.props.albumId).
     then(() => this.props.setLoadingFalse());
   }
@@ -31,19 +31,29 @@ class AlbumShow extends React.Component {
       )
     }
     
-    let albumInfo = '';
+    let albumArtistName = '';
+    let albumTitle = '';
     let albumImage = '';
     let songIndex = '';
+    let albumInfo = '';
 
     if (album) {
-      albumInfo = <h1>{album.title} by {album.artistName}</h1>;
-      songIndex = <SongIndex songs={songs} />
-      albumImage = <img src={album.image_url} alt={album.title} />
+      albumArtistName = <span className='album-show-artist-name'>by <Link to={`/artist/${album.artistId}`}>{album.artistName}</Link></span>
+      albumTitle = <span className='album-show-album-title'>{album.title}</span>
+      songIndex = <div className='album-show-song-index'><SongIndex songs={songs} /></div>
+      albumImage = <div className='album-show-image'><img src={album.image_url} alt={album.title} /></div>
+      albumInfo = <span className='album-show-year'>{album.year} • {album.trackCount} SONGS</span>
     }
     return (
       <div className='album-show'>
-        {albumInfo}
-        {albumImage}
+        <div className='album-show-info'>
+          {albumImage}
+          <div className='album-show-details'>
+            {albumTitle}
+            {albumArtistName}
+            {albumInfo}
+          </div>
+        </div>
         {songIndex}
       </div>
     )

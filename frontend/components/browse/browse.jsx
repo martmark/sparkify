@@ -8,7 +8,6 @@ import BrowseNav from './browse_nav';
 
 class Browse extends React.Component {
 
-
   render() {
 
     return (
@@ -20,10 +19,8 @@ class Browse extends React.Component {
         <Route exact path="/browse/tracks" component={BrowseSongIndex} />
         <Route exact path="/browse/artists" component={BrowseArtistIndex} />
       </div>
-    )
-
-  }
-}
-
+    );
+  };
+};
 
 export default Browse;

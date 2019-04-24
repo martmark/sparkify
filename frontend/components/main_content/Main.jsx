@@ -1,11 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Collection from './../collection/Collection';
-import { AuthRoute, ProtectedRoute } from './../../util/route_util';
+import Collection from '../collection/collection';
 import PlaylistShowContainer from '../playlist/playlist_show';
 import MainNav from './main_nav_container';
 import GreetingContainer from './../browse/greeting_container';
-import Page404 from '../page404';
 import AlbumShow from './../album/album_show';
 import SettingsContainer from './settings_container';
 import ArtistShow from './../artist/artist_show';

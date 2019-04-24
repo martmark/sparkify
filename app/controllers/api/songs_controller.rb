@@ -1,6 +1,8 @@
 class Api::SongsController < ApplicationController
+
   def index
     @songs = current_user.followed_songs if params[:fetchType] == 'collection'
+
     if params[:fetchType] == 'browse'
       @songs = []
       while @songs.length < 30
@@ -9,4 +11,5 @@ class Api::SongsController < ApplicationController
       end
     end
   end
+
 end

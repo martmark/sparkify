@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createPlaylist } from './../../actions/playlist_actions';
+import { closeModal } from './../../actions/modal_actions';
 
 class PlaylistForm extends React.Component {
   constructor(props) {
@@ -6,7 +9,6 @@ class PlaylistForm extends React.Component {
     this.state = {title: ''};
     this.updateTitle = this.updateTitle.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    
   }
 
   updateTitle(e) {
@@ -17,8 +19,6 @@ class PlaylistForm extends React.Component {
     this.props.createPlaylist(this.state)
       .then(() => this.props.closeModal());
   }
-
- 
 
   render() {
     return(
@@ -41,4 +41,9 @@ class PlaylistForm extends React.Component {
   }
 }
 
-export default PlaylistForm;
+const mdp = (dispatch) => ({
+  createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
+  closeModal: () => dispatch(closeModal())
+})
+
+export default connect(null, mdp)(PlaylistForm);

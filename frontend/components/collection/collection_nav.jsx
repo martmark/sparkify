@@ -1,15 +1,13 @@
 import React from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
-import PlaylistFormContainer from './../playlist/playlist_form_container';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openModal } from './../../actions/modal_actions';
 
 const mdp = dispatch => {
   return({
     openModal: () => dispatch(openModal({modalType: 'playlistForm'}))
-  })
-}
-
+  });
+};
 
 class collectionNav extends React.Component {
 
