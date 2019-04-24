@@ -9,13 +9,6 @@ import CollectionNav from './collection_nav';
 class Collection extends React.Component {
 
   render() {
-    const { artists, albums, songs, loading } = this.props;
-    
-      if (loading) {
-        return(
-          <h1>Loading...</h1>
-        )
-      }
 
       return (
         <div className='collection-window'>
