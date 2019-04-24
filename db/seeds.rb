@@ -320,7 +320,7 @@ ege = can.albums.create({
   title: 'Ege Bamyasi', 
   genre: 'Rock', 
   year: 1972,
-  image_url: 'https://66.media.tumblr.com/123354f8dc18bf364a203dfda2ea3346/tumblr_pqc3eb7DCZ1vud73ko4_400.jpg'
+  image_url: 'https://66.media.tumblr.com/8da43d2c22187c31e757f5c6f58a63df/tumblr_pqh9jxjOKj1vud73ko1_400.jpg'
 })
 
 blonde = frank.albums.create({ 
@@ -586,7 +586,7 @@ anti = rihanna.albums.create({
   title: 'ANTI',
   genre: 'R&B',
   year: 2015,
-  image_url: 'https://66.media.tumblr.com/37eed4cd9147b6580b4e6bc8065d258b/tumblr_pqduavefa41vud73ko1_1280.png'
+  image_url: 'https://66.media.tumblr.com/6740afa6a06b06eca3ae3c39fbef8ecb/tumblr_pqh9czxbur1vud73ko1_640.jpg'
 })
 
 bestone = smiths.albums.create({

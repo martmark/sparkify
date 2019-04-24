@@ -1,8 +1,10 @@
 .artist-show {
   width: 100%;
+  background: rgb(24,24,24);  
 }
 
-.artist-show-info {
+.artist-show {
+  .info {
     position: relative;
     height: 400px;
 
@@ -15,22 +17,22 @@
       width: 100%;  
     }
 
-    .artist-show-image {
+    .artist-image {
       height: 400px;
       z-index: 0;
     }
 
-    .artist-show-image::after {
+    .artist-image::after {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(transparent -30%, black);
+      background: linear-gradient(transparent -30%, rgb(24,24,24));
     }
 
-    .artist-show-name {
+    .artist-name {
       position: absolute;
       top: 145px;
       left: 230px;
@@ -42,6 +44,30 @@
     }
   }
 
-.artist-show-music {
-  margin-left: 230px;
+  .music {
+    margin-left: 230px;
+    margin-top: 40px;
+    // width: 100%;
+    box-sizing: border-box;
+  }
+
+  .music {
+    .featured {
+      margin-left: 30px;
+      font-size: 30px;
+    }
+    .song-index {
+      // width: 100%;
+      margin-bottom: 15px;
+    }
+    .artist-albums {
+      width: 100%;
+      margin-left: 30px;
+      font-size: 30px;
+    }
+    .artist-album-index {
+      width: 100%;
+      margin-left: 30px;
+    }
+  }
 }

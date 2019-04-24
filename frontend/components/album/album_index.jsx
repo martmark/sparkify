@@ -4,11 +4,9 @@ import AlbumIndexItem from './album_index_item';
 class AlbumIndex extends React.Component {
   render() {
     return (
-      <div>
         <ul className="album-index">
           {this.props.albums.map(album => <AlbumIndexItem album={album} key={album.id} />)}
         </ul>
-      </div>
     )
   }
 

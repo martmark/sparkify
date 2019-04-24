@@ -1,10 +1,25 @@
-.album-index-image > img {
-  width: 150px;
-  height: 150px;
-}
-
 .album-index {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  padding-top: 20px;
+  height: 100%;
+}
+
+.album-index-item {
+  width: 20%;
+  box-sizing: border-box;
+  text-align: center;
+  padding-right: 10px;
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.album-index-item-info {
+  width: 100%;
+}
+
+.album-index-item-image > img {
+  width: 100%;
+  object-fit: contain;
 }

@@ -21,8 +21,8 @@ class collectionNav extends React.Component {
 };
 
 const mdp = dispatch => {
-  return({
-    openModal: () => dispatch(openModal({modalType: 'playlistForm'}))
+  return ({
+    openModal: () => dispatch(openModal({ modalType: 'playlistForm' }))
   });
 };
 

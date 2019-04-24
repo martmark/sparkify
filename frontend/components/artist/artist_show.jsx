@@ -57,15 +57,17 @@ class ArtistShow extends React.Component {
     }
     return(
       <div className='artist-show'>
-        <div className='artist-show-info'>
-          <span className='artist-show-name'>{artistName}</span>
-          <div className='artist-show-image'>
+        <div className='info'>
+          <span className='artist-name'>{artistName}</span>
+          <div className='artist-image'>
             {artistImage}
           </div>
         </div>
-        <div className='artist-show-music'>
-          <ul className='artist-show-song-index'>{songIndex}</ul>
-          <ul className='artist-show-album-index'>{albumIndex}</ul>
+        <div className='music'>
+          <span className='featured'>Featured</span>
+          <div className='song-index'>{songIndex}</div>
+          <span className='artist-albums'>Albums</span>
+          <div className='artist-album-index'>{albumIndex}</div>
         </div>
       </div>
     )
