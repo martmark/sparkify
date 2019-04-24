@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Collection from './../collection/collection';
+import Collection from './../collection/Collection';
 import PlaylistShowContainer from '../playlist/playlist_show';
 import MainNav from './main_nav_container';
 import GreetingContainer from './../browse/greeting_container';
