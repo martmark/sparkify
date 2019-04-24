@@ -1628,8 +1628,7 @@ overgrown.songs.create([
   {title: "Digital Lion", duration: "4:47"},
   {title: "Voyeur", duration: "4:17"},
   {title: "To The Last", duration: "4:19"},
-  {title: "Our Love Comes Back", duration: "3:39"},
-  {title: "Every Day I Ran (Bonus Track)", duration: "3:24"}
+  {title: "Our Love Comes Back", duration: "3:39"}
 ])
 
 
