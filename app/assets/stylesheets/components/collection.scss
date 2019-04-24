@@ -4,7 +4,9 @@
   flex-direction: column;
   justify-content: space-between;
   bottom: 0;
-  margin-right: 30px;
+  margin: 40px 80px;
+  
+
 }
 
 .collection-nav-links {
@@ -12,10 +14,27 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  font-size: 11px;
 }
 
 .collection-window {
   // width: 100%;
   height: 100%;
   margin-left: 230px;
+}
+
+#new-playlist-button {
+  background: rgb(30,167,73);
+  height: 30px;
+  margin: 30px auto;
+  width: 140px;
+  border-radius: 30px;
+  font-family: Circular, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  transition: 0.3s;
+  color: white;
+  
+  text-align: center;
 }

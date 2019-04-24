@@ -8,7 +8,7 @@ import Page404 from './page404';
 import Main from './main_content/Main';
 
 const App = () => (
-  <div className='app-window'>
+  <div>
     <Switch>
       <AuthRoute exact path="/" component={SplashContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />

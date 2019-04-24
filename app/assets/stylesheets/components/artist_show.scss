@@ -1,0 +1,47 @@
+.artist-show {
+  width: 100%;
+}
+
+.artist-show-info {
+    position: relative;
+    height: 400px;
+
+    img {
+      // clip: rect(0px,1100px,400px,0);
+      height: 400px;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      width: 100%;  
+    }
+
+    .artist-show-image {
+      height: 400px;
+      z-index: 0;
+    }
+
+    .artist-show-image::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(transparent -30%, black);
+    }
+
+    .artist-show-name {
+      position: absolute;
+      top: 145px;
+      left: 230px;
+      right: 10px;
+      text-align: center;
+      z-index: 1;
+      color: white;
+      font-size: 60px;
+    }
+  }
+
+.artist-show-music {
+  margin-left: 230px;
+}

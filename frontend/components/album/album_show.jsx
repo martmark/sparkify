@@ -38,7 +38,7 @@ class AlbumShow extends React.Component {
     let albumInfo = '';
 
     if (album) {
-      albumArtistName = <span className='album-show-artist-name'>by <Link to={`/artist/${album.artistId}`}>{album.artistName}</Link></span>
+      albumArtistName = <span className='album-show-artist-name'>By <Link to={`/artist/${album.artistId}`}>{album.artistName}</Link></span>
       albumTitle = <span className='album-show-album-title'>{album.title}</span>
       songIndex = <div className='album-show-song-index'><SongIndex songs={songs} /></div>
       albumImage = <div className='album-show-image'><img src={album.image_url} alt={album.title} /></div>
