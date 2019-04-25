@@ -43,7 +43,7 @@ class BrowseSongIndex extends React.Component {
 
     return (
       <div className='browse-song-index'>
-        <SongIndex songs={browseSongs} />
+        <SongIndex songs={browseSongs} indexType={'browse'}/>
       </div>
     )
 

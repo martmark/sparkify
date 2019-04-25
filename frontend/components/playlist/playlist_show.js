@@ -49,7 +49,7 @@ class PlaylistShow extends React.Component {
           <h2>{authorName}</h2>
           <h3>{trackCount}</h3>
         </section>
-        <SongIndex songs={this.props.songs} />
+        <SongIndex songs={this.props.songs} indexType={'playlist'}/>
       </div>
     )
   }

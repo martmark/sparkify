@@ -24,6 +24,7 @@ class SongIndexItem extends React.Component {
 
   render() {
     const { song, indexType } = this.props;
+
     let button = '';
     if (!this.state.saved) {
       if (indexType === 'collection') {
@@ -34,6 +35,19 @@ class SongIndexItem extends React.Component {
     } else {
       button = <button onClick={this.unfollowSong}>Unfollow Song</button>;
     }
+
+    let artistAlbumInfo = '';
+    if (indexType === 'collection' || indexType === 'playlist' || indexType === 'browse') {
+      artistAlbumInfo = <div className='song-artist-info'>
+        <span className='song-artist'>
+          <Link to={`/artist/${song.artistId}`}>{song.artistName}</Link>
+        </span>
+        <span>
+          <Link to={`/album/${song.albumId}`}>{song.albumTitle}</Link>
+        </span>
+      </div>;
+    }
+
     return (
       <li className="song-index-item">
         <div className='song-title-info'> 
@@ -41,14 +55,7 @@ class SongIndexItem extends React.Component {
           {button}
           <span className='song-duration'>{song.duration}</span>
         </div>
-        <div className='song-artist-info'>
-          <span className='song-artist'>
-            <Link to={`/artist/${song.artistId}`}>{song.artistName}</Link>
-          </span>
-          <span>
-            <Link to={`/album/${song.albumId}`}>{song.albumTitle}</Link>
-          </span>
-        </div>
+        {artistAlbumInfo}
       </li>
     );
   }
