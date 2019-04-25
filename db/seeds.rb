@@ -443,7 +443,7 @@ born = gaga.albums.create({
   title: 'Born This Way',
   genre: 'Pop',
   year: 2010,
-  image_url: 'https://66.media.tumblr.com/65325c0d8e15a63b63ae0273091eca8e/tumblr_pqg7t3L2Ej1vud73ko4_540.jpg'
+  image_url: 'https://66.media.tumblr.com/d62ae5c1b1ee918d09d5a86321bfabde/tumblr_pqhxmauSH41vud73ko1_400.jpg'
 })
 
 carrie = sufjan.albums.create({

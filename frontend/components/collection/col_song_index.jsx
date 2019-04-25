@@ -25,7 +25,7 @@ class CollectionSongIndex extends React.Component {
 
     return (
       <div className='collection-song-index'>
-        <SongIndex songs={songs} />
+        <SongIndex songs={songs} indexType={'collection'}/>
       </div>
     )
 

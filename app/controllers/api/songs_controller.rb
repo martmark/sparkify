@@ -15,7 +15,7 @@ class Api::SongsController < ApplicationController
   def follow
     @song = Song.find(params[:id])
     current_user.followed_songs << @song
-    current_user.followed_albums << @song.album
+    current_user.followed_albums << @song.album unless current_user.followed_albums.include?(@song.album)
     render :show
   end
 

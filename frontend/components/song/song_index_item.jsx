@@ -23,10 +23,14 @@ class SongIndexItem extends React.Component {
   }
 
   render() {
-    const { song } = this.props;
+    const { song, indexType } = this.props;
     let button = '';
     if (!this.state.saved) {
-      button = <button onClick={this.followSong}>Save Song</button>;
+      if (indexType === 'collection') {
+        return null;
+      } else {
+        button = <button onClick={this.followSong}>Save Song</button>;
+      }
     } else {
       button = <button onClick={this.unfollowSong}>Unfollow Song</button>;
     }

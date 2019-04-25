@@ -12,3 +12,17 @@ export const fetchArtists = fetchType => {
     data: fetchType
   });
 };
+
+export const followArtist = id => {
+  return $.ajax({
+    url: `/api/artists/${id}/follow`,
+    method: "POST"
+  });
+};
+
+export const unfollowArtist = id => {
+  return $.ajax({
+    url: `/api/artists/${id}/unfollow`,
+    method: 'DELETE'
+  });
+};

@@ -3,6 +3,7 @@ json.artist do
     json.name @artist.name
     json.bio @artist.bio
     json.image_url @artist.image_url
+    json.followed current_user.followed_artists.include?(@artist)
 end
 
 json.albums do

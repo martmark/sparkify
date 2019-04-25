@@ -5,15 +5,24 @@ import { fetchArtist } from './../../actions/artist_actions';
 import SongIndex from './../song/song_index';
 import AlbumIndex from './../album/album_index';
 import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
-import { artistShowSongsSelector } from './../../reducers/selectors';
+import { followArtist, unfollowArtist } from './../../util/artist_api_util';
 
 class ArtistShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { followed: false };
+    if (this.props.artist && this.props.artist.followed) {
+      this.state = { followed: true };
+    } else {
+      this.state = { followed: false };
+    }
+    this.followArtist = this.followArtist.bind(this);
+    this.unfollowArtist = this.unfollowArtist.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchArtist(this.props.artistId)
+    .then(() => this.setState({ followed: this.props.artist.followed }))
     .then(() => this.props.setLoadingFalse());
   }
 
@@ -27,11 +36,30 @@ class ArtistShow extends React.Component {
     this.props.setLoadingTrue();
   }
 
+  followArtist() {
+    let id = this.props.artist.id;
+    this.props.followArtist(id)
+      .then(() => this.setState({ followed: true }));
+  }
+
+  unfollowArtist() {
+    let id = this.props.artist.id;
+    this.props.unfollowArtist(id)
+      .then(() => this.setState({ followed: false }));
+  }
+
   render() {
     if (this.props.loading) {
       return (
         <h1>Loading...</h1>
       )
+    }
+
+    let button = '';
+    if (!this.state.followed) {
+      button = <button onClick={this.followArtist}>Follow Artist</button>;
+    } else {
+      button = <button onClick={this.unfollowArtist}>Unfollow Artist</button>;
     }
 
     let artistName = '';
@@ -58,7 +86,7 @@ class ArtistShow extends React.Component {
     return(
       <div className='artist-show'>
         <div className='info'>
-          <span className='artist-name'>{artistName}</span>
+          <span className='artist-name'>{artistName} {button}</span>
           <div className='artist-image'>
             {artistImage}
           </div>
@@ -96,7 +124,9 @@ const mdp = dispatch => {
   return ({
     fetchArtist: id => dispatch(fetchArtist(id)),
     setLoadingFalse: () => dispatch(setLoadingFalse()),
-    setLoadingTrue: () => dispatch(setLoadingTrue())
+    setLoadingTrue: () => dispatch(setLoadingTrue()),
+    followArtist: id => followArtist(id),
+    unfollowArtist: id => unfollowArtist(id)
   });
 };
 

@@ -15,4 +15,17 @@ class Api::ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
     render :show
   end
+
+  def follow
+    @artist = Artist.find(params[:id])
+    current_user.followed_artists << @artist unless current_user.followed_artists.include?(@artist)
+    render status: 200
+  end
+
+  def unfollow
+    @artist = Artist.find(params[:id])
+    @follow = Follow.find_by(followable_id: @artist.id, followable_type: 'Artist', user_id: current_user.id)
+    @follow.destroy
+    render status: 200
+  end
 end

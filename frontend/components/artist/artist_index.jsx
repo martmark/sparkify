@@ -12,7 +12,7 @@ class ArtistIndex extends React.Component {
       </div>
     )
   }
-
 }
+
 
 export default ArtistIndex;
