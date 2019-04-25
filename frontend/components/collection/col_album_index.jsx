@@ -18,9 +18,7 @@ class CollectionAlbumIndex extends React.Component {
     const { albums, loading } = this.props;
 
     if (loading) {
-      return (
-        <h1>Loading...</h1>
-      )
+      return null;
     }
 
     return (

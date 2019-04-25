@@ -36,10 +36,8 @@ class BrowseAlbumIndex extends React.Component {
     let browseAlbums = shuffle(albums.slice());
 
     if (loading) {
-      return (
-        <h1>Loading...</h1>
-      );
-    };
+      return null;
+    }
 
     return (
       <div className='browse-album-index'>

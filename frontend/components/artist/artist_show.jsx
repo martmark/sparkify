@@ -79,7 +79,7 @@ class ArtistShow extends React.Component {
         let song = songs[Math.floor(Math.random() * songs.length)];
         if (!artistSongs.includes(song)) artistSongs.push(song);
       }
-      songIndex = <SongIndex songs={artistSongs} />
+      songIndex = <SongIndex songs={artistSongs} indexType={'artist'}/>
 
       albumIndex = <AlbumIndex albums={albums} />
     }

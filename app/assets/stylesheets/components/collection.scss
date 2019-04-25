@@ -38,3 +38,19 @@
   
   text-align: center;
 }
+
+.content-nav-links > li {
+  color: gray;
+  transition: 0.3s;
+}
+
+.content-nav-links > li:hover {
+  color: white;
+  transition: 0.3s;
+}
+
+
+  .content-link-active {
+    color: white;
+    border-bottom: 2px solid green;
+  }

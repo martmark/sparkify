@@ -29,9 +29,7 @@ class PlaylistShow extends React.Component {
     const { playlist, songs, loading } = this.props;
 
     if (loading) {
-      return(
-        <h1>Loading...</h1>
-      )
+      return null;
     }
 
     let title = '';

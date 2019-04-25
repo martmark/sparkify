@@ -18,9 +18,7 @@ class CollectionPlaylistIndex extends React.Component {
     const { playlists, loading } = this.props;
     
     if (loading) {
-      return (
-        <h1>Loading...</h1>
-      )
+      return null;
     }
 
     return (
