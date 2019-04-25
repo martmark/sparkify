@@ -13,4 +13,17 @@ class Api::AlbumsController < ApplicationController
   def show
     @album = Album.find(params[:id])
   end
+
+  def follow
+    album = Album.find(params[:id])
+    current_user.followed_albums << album unless current_user.followed_albums.include?(album)
+    render status: 200
+  end
+
+  def unfollow
+    @album = Album.find(params[:id])
+    @follow = Follow.find_by(followable_id: @album.id, followable_type: 'Album', user_id: current_user.id)
+    @follow.destroy
+    render status: 200
+  end
 end
