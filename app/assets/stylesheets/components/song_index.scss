@@ -18,26 +18,35 @@
   display: flex;
   flex-direction: row;
 }
-
-.song-index-details {
+.song-index-item-details {
+  width: 100%;
+  padding-left: 10px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 100%;
   justify-content: center;
-  padding-left: 10px;
+}
+
+.song-index-item-top {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  
   box-sizing: border-box;
 }
 
-.song-title-info {
+.song-index-item-title {
   font-size: 14px;
-  display: flex;
-  justify-content: space-between;
+  
 }
 
 .song-artist-info {
   font-size: 10px;
   display: flex;
 }
+
+
 
 .song-index > li:hover {
   background: rgba(0,0,0,0.5);
@@ -54,4 +63,13 @@
 
 .song-index-item > button {
   color: green;
+}
+
+.song-duration {
+  // width: px;
+  padding-left: 15px;
+}
+
+.song-index-item-buttons {
+  font-size: 12px;
 }
