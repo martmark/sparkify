@@ -24,7 +24,12 @@ class SongIndexItem extends React.Component {
   }
 
   playSong() {
-    this.props.setCurrentSong(this.props.song);
+    let idx = this.props.allSongs.indexOf(this.props.song);
+    this.props.setCurrentSong({
+      currentSong: this.props.song,
+      currentIdx: idx,
+      queue: this.props.allSongs
+    });
   }
 
   render() {

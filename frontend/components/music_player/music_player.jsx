@@ -8,6 +8,7 @@ class MusicPlayer extends React.Component {
     this.state = {
       playing: props.playing,
       currentSong: props.currentSong,
+      currentIdx: 0,
       queue: props.queue
     };
 
@@ -43,12 +44,16 @@ class MusicPlayer extends React.Component {
     this.refs.musicPlayer.pause();
   }
 
+  next() {
+    let current = this.s
+  }
+
   render() {
 
     return (
       <div>
         <h1>{this.state.currentSong.title}</h1>
-        <button onClick={this.play}>Play</button>
+        <button onClick={this.play}>Sing For Richard</button>
         <button onClick={this.pause}>Pause</button>
 
         <audio src={this.state.currentSong.track_url} autoPlay={this.state.playing} preload="none" ref="musicPlayer"></audio>
@@ -60,6 +65,7 @@ class MusicPlayer extends React.Component {
 const msp = state => {
   return({
     currentSong: state.ui.musicPlayer.currentSong,
+    currentIdx: state.ui.musicPlayer.currentIdx,
     playing: state.ui.musicPlayer.playing,
     queue: state.ui.musicPlayer.queue
   });

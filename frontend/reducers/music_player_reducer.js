@@ -7,7 +7,8 @@ const defaultState = {
     title: 'bury a friend'
   },
   playing: false,
-  queue: []
+  queue: [],
+  currentIdx: 0
 };
 
 const musicPlayerReducer = (state = defaultState, action) => {
@@ -15,8 +16,10 @@ const musicPlayerReducer = (state = defaultState, action) => {
   switch (action.type) {
     case SET_CURRENT_SONG:
       return merge({}, state, { 
-        currentSong: action.song,
-        playing: true
+        currentSong: action.queueInfo.currentSong,
+        playing: true,
+        currentIdx: action.queueInfo.currentIdx,
+        queue: action.queueInfo.queue
       });
     case TOGGLE_PLAY:
       let newState = merge({},state);
@@ -27,7 +30,7 @@ const musicPlayerReducer = (state = defaultState, action) => {
       }
       return newState;
     case SET_QUEUE:
-      return merge({}, state, { queue: action.queue });
+      return merge({}, state, { queue: action.queue, currentIdx: action.currentIdx });
     default:
       return state;
   }
