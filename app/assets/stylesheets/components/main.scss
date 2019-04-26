@@ -9,11 +9,12 @@
 }
 
 .main-content-inner {
-  // margin-left: 230px;
+  margin-bottom: 90px;
+  display: flex;
+  width: 100%;
   height: 100%;
-  width: 100vh;
-  background: rgb(39,39,39);
 }
+
 
 .main-nav {
   position: fixed;
@@ -22,19 +23,18 @@
   color: white;
   background: rgba(0,0,0,0.8);
   width: 230px;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   z-index: 1;
-  
 }
 
 .main-nav-links {
   display: flex;
   flex-direction: column;
   padding: 30px;
-  margin-bottom: 90px;
+  
 }
 
 .main-nav-links > li {
@@ -43,4 +43,5 @@
 
 .main-nav-username {
   padding: 30px;
+  margin-bottom: 90px;
 }

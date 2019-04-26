@@ -3,13 +3,13 @@ import merge from 'lodash/merge';
 
 const defaultState = {
   currentSong: {
-    track_url: 'https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/10.mp3',
-    title: 'bury a friend'
+    track_url: 'xx',
+    title: ''
   },
   playing: false,
   queue: [{
-    track_url: 'https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/10.mp3',
-    title: 'bury a friend'
+    track_url: 'xx',
+    title: ''
   }],
   currentIdx: 0
 };

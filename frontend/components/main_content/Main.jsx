@@ -14,14 +14,17 @@ import MusicPlayer from './../music_player/music_player';
 const Main = () => (
   <div className='main-content'>
       <ModalContainer />
-      <MainNav />
-      <Route path="/browse" component={Browse} />
-      <Route path="/search" component={GreetingContainer} />
-      <Route path="/collection" component={Collection} />
-      <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
-      <Route path="/album/:albumId" component={AlbumShow} />
-      <Route path="/artist/:artistId" component={ArtistShow} />
-      <Route path="/settings" component={SettingsContainer} />
+      
+      <div className='main-content-inner'>
+        <MainNav />
+        <Route path="/browse" component={Browse} />
+        <Route path="/search" component={GreetingContainer} />
+        <Route path="/collection" component={Collection} />
+        <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
+        <Route path="/album/:albumId" component={AlbumShow} />
+        <Route path="/artist/:artistId" component={ArtistShow} />
+        <Route path="/settings" component={SettingsContainer} />
+      </div>
       <MusicPlayer />
   </div>
 );

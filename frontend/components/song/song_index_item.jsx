@@ -67,10 +67,11 @@ class SongIndexItem extends React.Component {
 
     return (
       <li className="song-index-item">
+        <button onClick={this.playSong}>play</button>
         {albumImage}
         <div className='song-index-details'>
           <div className='song-title-info'>
-            <button onClick={this.playSong}>Play</button>
+            
             <span className='song-title'>{song.title}</span>
             {button}
             <span className='song-duration'>{song.duration}</span>

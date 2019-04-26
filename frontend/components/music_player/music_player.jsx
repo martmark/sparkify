@@ -82,7 +82,7 @@ class MusicPlayer extends React.Component {
 
     return (
       <div className='music-player'>
-        <h1>{this.state.currentSong.title}</h1>
+        <h1>{this.state.currentSong.title} - {this.state.currentSong.artistName}</h1>
         <button onClick={this.previous}>Previous</button>
         {button}
         <button onClick={this.next}>Next</button>
