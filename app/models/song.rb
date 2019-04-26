@@ -11,5 +11,5 @@ class Song < ApplicationRecord
     source: :artist
   has_many :follows, as: :followable
 
-  
+  has_one_attached :track
 end

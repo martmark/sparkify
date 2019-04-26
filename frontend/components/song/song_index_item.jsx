@@ -5,9 +5,10 @@ class SongIndexItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { saved: props.song.followed }
+    this.state = { saved: props.song.followed };
     this.followSong = this.followSong.bind(this);
     this.unfollowSong = this.unfollowSong.bind(this);
+    this.playSong = this.playSong.bind(this);
   }
 
   followSong() {
@@ -22,8 +23,12 @@ class SongIndexItem extends React.Component {
     .then(() => this.setState({ saved: false }));
   }
 
+  playSong() {
+    this.props.setCurrentSong(this.props.song);
+  }
+
   render() {
-    const { song, indexType } = this.props;
+    const { song, indexType} = this.props;
 
     let button = '';
     if (!this.state.saved) {
@@ -59,7 +64,8 @@ class SongIndexItem extends React.Component {
       <li className="song-index-item">
         {albumImage}
         <div className='song-index-details'>
-          <div className='song-title-info'> 
+          <div className='song-title-info'>
+            <button onClick={this.playSong}>Play</button>
             <span className='song-title'>{song.title}</span>
             {button}
             <span className='song-duration'>{song.duration}</span>

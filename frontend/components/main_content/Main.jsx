@@ -9,6 +9,7 @@ import SettingsContainer from './settings_container';
 import ArtistShow from './../artist/artist_show';
 import ModalContainer from './modal_container';
 import Browse from './../browse/browse';
+import MusicPlayer from './../music_player/music_player';
 
 const Main = () => (
   <div className='main-content'>
@@ -21,6 +22,7 @@ const Main = () => (
       <Route path="/album/:albumId" component={AlbumShow} />
       <Route path="/artist/:artistId" component={ArtistShow} />
       <Route path="/settings" component={SettingsContainer} />
+      <MusicPlayer />
   </div>
 );
 

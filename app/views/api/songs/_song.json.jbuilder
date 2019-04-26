@@ -8,4 +8,5 @@ json.set! song.id do
   json.duration song.duration
   json.followed current_user.followed_songs.include?(song)
   json.image_url song.album.image_url
+  json.track_url song.track_url
 end
