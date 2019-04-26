@@ -14,6 +14,8 @@ class MusicPlayer extends React.Component {
 
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
+    this.next = this.next.bind(this);
+    this.previous = this.previous.bind(this);
   }
 
   componentDidMount() {
@@ -24,7 +26,7 @@ class MusicPlayer extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (this.props.currentSong.id !== newProps.currentSong.id) this.pause();
-    this.setState({ currentSong: newProps.currentSong, queue: newProps.queue });
+    this.setState({ currentSong: newProps.currentSong, queue: newProps.queue, currentIdx: newProps.currentIdx });
     if (newProps.playing === true) {
       this.setState({playing: true});
       this.play();
@@ -45,16 +47,45 @@ class MusicPlayer extends React.Component {
   }
 
   next() {
-    let current = this.s
+    let current = this.state.currentIdx;
+    if (current >= this.state.queue.length - 1) {
+      this.pause();
+      this.setState({currentIdx: 0, currentSong: this.state.queue[0]});
+    } else {
+      current = current + 1;
+      this.setState({currentIdx: current, currentSong: this.state.queue[current]});
+      this.refs.musicPlayer.src = this.state.currentSong.track_url;
+      this.play();
+    }
+  }
+
+  previous() {
+    let current = this.state.currentIdx;
+    if (current === 0) {
+      this.pause();
+    } else {
+      current = current - 1;
+      this.setState({ currentIdx: current, currentSong: this.state.queue[current] });
+      this.refs.musicPlayer.src = this.state.currentSong.track_url;
+      this.play();
+    }
   }
 
   render() {
 
+    let button;
+    if (this.state.playing) {
+      button = <button onClick={this.pause}>Pause</button>;
+    } else {
+      button = <button onClick={this.play}>Play</button>;
+    }
+
     return (
-      <div>
+      <div className='music-player'>
         <h1>{this.state.currentSong.title}</h1>
-        <button onClick={this.play}>Sing For Richard</button>
-        <button onClick={this.pause}>Pause</button>
+        <button onClick={this.previous}>Previous</button>
+        {button}
+        <button onClick={this.next}>Next</button>
 
         <audio src={this.state.currentSong.track_url} autoPlay={this.state.playing} preload="none" ref="musicPlayer"></audio>
       </div>

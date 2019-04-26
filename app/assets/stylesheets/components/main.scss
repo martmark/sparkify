@@ -27,12 +27,14 @@
   flex-direction: column;
   justify-content: space-between;
   z-index: 1;
+  
 }
 
 .main-nav-links {
   display: flex;
   flex-direction: column;
   padding: 30px;
+  margin-bottom: 90px;
 }
 
 .main-nav-links > li {
