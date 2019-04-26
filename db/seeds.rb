@@ -246,8 +246,8 @@ yeah = Artist.create({
 pearl = Artist.create({
   name: 'Pearl Jam',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/fb45fb7aa7377d8f558ceedeb6b32e7f/tumblr_pqg4os6rQK1vud73ko1_1280.jpg',
-  small_image_url: 'https://66.media.tumblr.com/a185bc4f52fdbf19a87111d1797a3eb0/tumblr_pqhgnhuYyF1vud73ko8_1280.jpg'
+  image_url: 'https://66.media.tumblr.com/6d395179118b71c4adb3f75aac3d596d/tumblr_pqjzqc5juq1vud73ko2_1280.jpg',
+  small_image_url: 'https://66.media.tumblr.com/6dbca35d054a8ff7df227c89e4b89515/tumblr_pqjzqc5juq1vud73ko1_1280.jpg'
 })
 
 dua = Artist.create({ 
@@ -765,7 +765,7 @@ asleep.songs.create([
   { title: 'you should see me in a crown', duration: '3:01', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/4.mp3" },
   { title: 'all the good girls go to hell', duration: '2:49', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/5.mp3" },
   { title: 'wish you were gay', duration: '3:42', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/6.mp3" },
-  { title: 'when the party''s over', duration: '3:16', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/7.mp3" },
+  { title: "when the party's over", duration: '3:16', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/7.mp3" },
   { title: '8', duration: '2:53', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/8.mp3"},
   { title: 'my strange addiction', duration: '3:00', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/9.mp3"},
   { title: 'bury a friend', duration: '3:13', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/10.mp3"},
@@ -911,7 +911,7 @@ either.songs.create([
   { title: 'Rose Parade', duration: '3:28', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/either/7.mp3"},
   { title: 'Punch And Judy', duration: '2:26', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/either/8.mp3"},
   { title: 'Angeles', duration: '2:57', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/either/9.mp3"},
-  { title: 'Cupid''s Trick', duration: '3:05', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/either/10.mp3"},
+  { title: "Cupid's Trick", duration: '3:05', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/either/10.mp3"},
   { title: '2:45 AM', duration: '3:19', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/either/11.mp3"},
   { title: 'Say Yes', duration: '2:19', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/either/12.mp3"}
 ])
@@ -1680,17 +1680,39 @@ overgrown.songs.create([
 
 #### SPARKIFY PLAYLISTS
 
-party = spark.playlists.create({title: 'Party Time'})
-chill = spark.playlists.create({title: 'Chill Out'})
-bedroom = spark.playlists.create({title: 'In the Bedroom'})
-work = spark.playlists.create({title: "Gettin' to Work"})
+party = spark.playlists.create({title: 'Party Up!', image_url: 'https://66.media.tumblr.com/281ea889b137d2401f64074930e9154c/tumblr_pqkwaw6EdD1vud73ko1_500.png'})
+chill = spark.playlists.create({title: 'Chill Hits', image_url: 'https://66.media.tumblr.com/10cead22e649ce8527ba102040e9b8eb/tumblr_pqkwgaYLSV1vud73ko3_640.png'})
+bedroom = spark.playlists.create({title: 'Bedroom Jams', image_url: 'https://66.media.tumblr.com/196d8dddf6d23b2e618acb9721dd18e9/tumblr_pqkwgaYLSV1vud73ko1_400.png'})
+work = spark.playlists.create({title: "Workday Lounge", image_url: 'https://66.media.tumblr.com/1e2afcbad911bc08972265410d56a391/tumblr_pqkwgaYLSV1vud73ko2_640.png'})
 
+party.songs << outer.songs[6]
+party.songs << mised.songs[4]
+party.songs << trans.songs[3]
+party.songs << blitz.songs[1]
+party.songs << thriller.songs[4]
+
+bedroom.songs << falling.songs[0]
+bedroom.songs << channel.songs[1]
+bedroom.songs << anti.songs[6]
+bedroom.songs << prayer.songs[0]
+bedroom.songs << cominghome.songs[3]
+
+chill.songs << onandon.songs[7]
+chill.songs << blonde.songs[6]
+chill.songs << prayer.songs[0]
+chill.songs << talkie.songs[3]
+chill.songs << asleep.songs[9]
+
+work.songs << onandon.songs[13]
+work.songs << overgrown.songs[0]
+work.songs << round.songs[0]
+work.songs << rubber.songs[2]
 
 #### DEMO USER PLAYLISTS
 
-study = demo.playlists.create({title: 'Study Music'})
+study = demo.playlists.create({title: 'Study Music', image_url: 'https://66.media.tumblr.com/e494f36def51bc1e72f9354386f57589/tumblr_pqc3esA8Lt1vud73ko2_1280.jpg'})
 demo.followed_playlists << study
-gym = demo.playlists.create({title: "Workout Music"})
+gym = demo.playlists.create({title: "Workout Music", image_url: 'https://66.media.tumblr.com/b57483926bc5b8a203297c0ce9a50e99/tumblr_pqducoOQAG1vud73ko7_500.jpg'})
 demo.followed_playlists << gym
 
 study.songs << asleep.songs[5]

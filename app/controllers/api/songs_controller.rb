@@ -10,6 +10,11 @@ class Api::SongsController < ApplicationController
         @songs << song if !@songs.include?(song) && !current_user.followed_songs.include?(song)
       end
     end
+
+    if params[:fetchType] == 'search'
+      search_term = params[:searchTerm]
+      @songs = Song.where('lower(title) like ?', "%#{search_term.downcase}%").limit(15)
+    end
   end
 
   def follow

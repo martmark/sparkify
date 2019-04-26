@@ -1,6 +1,8 @@
 .artist-show {
   width: 100%;
   background: rgb(24,24,24);  
+  
+  
 }
 
 .artist-show {
@@ -40,7 +42,13 @@
       z-index: 1;
       color: white;
       font-size: 60px;
+      display: flex;
+      flex-direction: column;
     }
+  }
+
+  .artist-show-follow-button {
+    font-size: 20px;
   }
 
   .music {
@@ -48,6 +56,9 @@
     margin-top: 40px;
     // width: 100%;
     box-sizing: border-box;
+    height: 100%;
+    background: rgb(24,24,24);
+    
   }
 
   .music {
@@ -67,6 +78,7 @@
     .artist-album-index {
       // width: 100%;
       margin-left: 30px;
+      background: rbg(24,24,24);
     }
   }
 }

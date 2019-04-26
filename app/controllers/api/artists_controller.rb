@@ -1,12 +1,12 @@
 class Api::ArtistsController < ApplicationController
   def index
-    @artists = current_user.followed_artists if params[:fetchType] == 'collection'
-    if params[:fetchType] == 'browse'
-      @artists = []
-      while @artists.length < 15
-        artist = Artist.all.sample
-        @artists << artist if !@artists.include?(artist) && !current_user.followed_artists.include?(artist)
-      end
+    if params[:fetchType] == 'collection'
+      @artists = current_user.followed_artists
+    elsif params[:fetchType] == 'browse'
+      @artists = Artist.browse_artists(current_user.followed_artist_ids)
+    elsif params[:fetchType] == 'search'
+      search_term = params[:searchTerm]
+      @artists = Artist.where('lower(name) like ?', "%#{search_term.downcase}%")
     end
     render :index
   end

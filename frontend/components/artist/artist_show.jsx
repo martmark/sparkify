@@ -79,14 +79,18 @@ class ArtistShow extends React.Component {
         let song = songs[Math.floor(Math.random() * songs.length)];
         if (!artistSongs.includes(song)) artistSongs.push(song);
       }
-      songIndex = <SongIndex songs={artistSongs} indexType={'artist'}/>
+      songIndex = <SongIndex songs={artistSongs} allSongs={songs} indexType={'artist'}/>
 
       albumIndex = <AlbumIndex albums={albums} />
     }
     return(
       <div className='artist-show'>
         <div className='info'>
-          <span className='artist-name'>{artistName} {button}</span>
+          <span className='artist-name'>
+            {artistName}
+            <span className='artist-show-follow-button'>{button}</span>
+          </span>
+        
           <div className='artist-image'>
             {artistImage}
           </div>

@@ -6,9 +6,23 @@
   display: flex;
   z-index: 2;
   background: rgb(39,39,39);
-  justify-content: space-between;
+  
   border-top: 1px solid black;
   padding: 0 20px;
   box-sizing: border-box;
-  align-content: center;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.music-player-controls {
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  justify-content: space-between;
+}
+
+.music-player-song-info {
+  font-size: 12px;
 }

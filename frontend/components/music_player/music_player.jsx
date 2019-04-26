@@ -82,11 +82,14 @@ class MusicPlayer extends React.Component {
 
     return (
       <div className='music-player'>
-        <h1>{this.state.currentSong.title} - {this.state.currentSong.artistName}</h1>
-        <button onClick={this.previous}>Previous</button>
-        {button}
-        <button onClick={this.next}>Next</button>
-
+        <div className='music-player-controls'>
+          <button onClick={this.previous}>Previous</button>
+          {button}
+          <button onClick={this.next}>Next</button>
+        </div>
+        <div className='music-player-song-info'>
+          <h1>{this.state.currentSong.title} - {this.state.currentSong.artistName} </h1>
+        </div>
         <audio src={this.state.currentSong.track_url} autoPlay={this.state.playing} preload="none" ref="musicPlayer"></audio>
       </div>
     );

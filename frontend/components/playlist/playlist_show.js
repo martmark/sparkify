@@ -8,6 +8,12 @@ class PlaylistShow extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = { followed: false };
+    if (this.props.playlist && this.props.playlist.followed) {
+      this.state = { followed: true };
+    } else {
+      this.state = { followed: false };
+    }
   }
 
   componentDidMount() {
@@ -26,28 +32,35 @@ class PlaylistShow extends React.Component {
   }
 
   render() {
-    const { playlist, songs, loading } = this.props;
+    const { songs, playlist, loading } = this.props;
 
     if (loading) {
       return null;
     }
 
-    let title = '';
-    let authorName = '';
-    let trackCount = '';
-    if (this.props.playlist) {
-      title = this.props.playlist.title;
-      authorName = this.props.playlist.authorName;
-      trackCount = `${this.props.playlist.trackCount} SONGS`;
+
+    
+    let playlistTitle = '';
+    let playlistImage = '';
+    let songIndex = '';
+    let playlistInfo = '';
+
+    if (playlist) {
+      playlistTitle = <span className='album-show-album-title'>{playlist.title}</span>
+      songIndex = <div className='album-show-song-index'><SongIndex songs={songs} indexType='playlist' /></div>
+      playlistImage = <div className='album-show-image'><img src={playlist.image_url} alt={playlist.title} /></div>
+      playlistInfo = <span className='album-show-year'>by {playlist.authorName} • {playlist.trackCount} SONGS</span>
     }
     return (
-      <div className='playlist-show'>
-        <section className='playlist-header'>
-          <h1>{title}</h1>
-          <h2>{authorName}</h2>
-          <h3>{trackCount}</h3>
-        </section>
-        <SongIndex songs={this.props.songs} indexType={'playlist'}/>
+      <div className='album-show'>
+        <div className='album-show-info'>
+          {playlistImage}
+          <div className='album-show-details'>
+            {playlistTitle}
+            {playlistInfo}
+          </div>
+        </div>
+        {songIndex}
       </div>
     )
   }
@@ -60,11 +73,13 @@ const msp = (state, ownProps) => {
   let playlist = state.entities.playlists[playlistId];
   let songs = Object.values(state.entities.songs);
   let loading = state.ui.loading.status;
+  let currentUserId = state.session.currentUserId;
   return({
     playlistId,
     playlist,
     songs,
-    loading
+    loading,
+    currentUserId
   });
 };
 

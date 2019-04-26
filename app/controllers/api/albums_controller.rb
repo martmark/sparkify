@@ -1,12 +1,16 @@
 class Api::AlbumsController < ApplicationController
   def index
-    @albums = current_user.followed_albums if params[:fetchType] == 'collection'
-    if params[:fetchType] == 'browse'
+    if params[:fetchType] == 'collection'
+      @albums = current_user.followed_albums
+    elsif params[:fetchType] == 'browse'
       @albums = []
-      while @albums.length < 15
+      while @albums.length < 20
         album = Album.all.sample
         @albums << album if !@albums.include?(album) && !current_user.followed_albums.include?(album)
       end
+    elsif params[:fetchType] == 'search'
+      search_term = params[:searchTerm]
+      @albums = Album.where('lower(title) like ?', "%#{search_term.downcase}%")
     end
   end
 

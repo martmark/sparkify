@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { fetchAlbum } from './../../actions/album_actions';
 import { followAlbum, unfollowAlbum } from './../../util/album_api_util';
 import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
+import { setCurrentSong, setQueue } from './../../actions/music_actions';
+
 
 class AlbumShow extends React.Component {
   constructor(props) {
@@ -109,7 +111,8 @@ const mdp = dispatch => {
     setLoadingFalse: () => dispatch(setLoadingFalse()),
     setLoadingTrue: () => dispatch(setLoadingTrue()),
     followAlbum: id => followAlbum(id),
-    unfollowAlbum: id => unfollowAlbum(id)
+    unfollowAlbum: id => unfollowAlbum(id),
+    
   })
 }
 

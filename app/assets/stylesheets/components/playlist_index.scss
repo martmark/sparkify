@@ -1,3 +1,23 @@
-.playlist-index {
+.playlist-index-list {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.playlist-index-item {
+  width: 25%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.playlist-index-item-image > img {
+  width: 100%;
+}
+
+.playlist-index-item-info > h4 {
+  font-size: 12px;
 }

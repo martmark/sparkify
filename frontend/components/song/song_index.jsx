@@ -7,7 +7,14 @@ import { setCurrentSong, setQueue } from './../../actions/music_actions';
 
 
 class SongIndex extends React.Component {
+  
   render() {
+    let allSongs;
+    if (this.props.allSongs) {
+      allSongs = this.props.allSongs;
+    } else {
+      allSongs = this.props.songs;
+    }
     return(
       <div>
         <ul className="song-index">
@@ -18,8 +25,7 @@ class SongIndex extends React.Component {
             unfollowSong={this.props.unfollowSong}
             indexType={this.props.indexType}
             setCurrentSong={this.props.setCurrentSong}
-            allSongs={this.props.songs}
-            setQueue={this.props.setQueue}
+            allSongs={allSongs}
           />)}
         </ul>
       </div>
@@ -32,8 +38,7 @@ const mdp = dispatch => {
   return({
     followSong: id => followSong(id),
     unfollowSong: id => unfollowSong(id),
-    setCurrentSong: song => dispatch(setCurrentSong(song)),
-    setQueue: queueInfo => dispatch(setQueue(queueInfo))
+    setCurrentSong: song => dispatch(setCurrentSong(song))
   })
 }
 

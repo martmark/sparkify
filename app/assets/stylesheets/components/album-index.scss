@@ -2,9 +2,13 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 0 20px;
-  padding-top: 20px;
+  background: rbg(24,24,24);
   height: 100%;
+  // padding-bottom: 90px;
+  box-sizing: border-box;
+  margin: 0 20px;
+  
+  box-sizing: border-box;
 }
 
 .album-index-item {
