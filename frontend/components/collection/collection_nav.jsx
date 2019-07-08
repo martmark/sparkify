@@ -10,7 +10,7 @@ class collectionNav extends React.Component {
       <div className="collection-nav">
         <ul className="collection-nav-links content-nav-links">
           <li key={1}><NavLink activeClassName="content-link-active" to={'/collection/playlists'}>PLAYLISTS</NavLink></li>
-          <li key={2}><NavLink activeClassName="content-link-active" to={'/collection/tracks'}>FAVORITE SONGS</NavLink></li>
+          <li key={2}><NavLink activeClassName="content-link-active" to={'/collection/tracks'}>LIKED SONGS</NavLink></li>
           <li key={3}><NavLink activeClassName="content-link-active" to={'/collection/albums'}>ALBUMS</NavLink></li>
           <li key={4}><NavLink activeClassName="content-link-active" to={'/collection/artists'}>ARTISTS</NavLink></li>
         </ul>

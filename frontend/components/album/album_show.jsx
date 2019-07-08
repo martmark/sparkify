@@ -58,9 +58,9 @@ class AlbumShow extends React.Component {
     
     let button = '';
     if (!this.state.followed) {
-      button = <button onClick={this.followAlbum}>Follow Album</button>;
+      button = <i class="far fa-heart" onClick={this.followAlbum}></i>
     } else {
-      button = <button onClick={this.unfollowAlbum}>Unfollow Album</button>;
+      button = <i class="fas fa-heart" onClick={this.unfollowAlbum}></i>;
     }
 
     let albumArtistName = '';
@@ -74,7 +74,7 @@ class AlbumShow extends React.Component {
       albumTitle = <span className='album-show-album-title'>{album.title}</span>
       songIndex = <div className='album-show-song-index'><SongIndex songs={songs} /></div>
       albumImage = <div className='album-show-image'><img src={album.image_url} alt={album.title} /></div>
-      albumInfo = <span className='album-show-year'>{album.year} • {album.trackCount} SONGS • {button} </span>
+      albumInfo = <span className='album-show-year'>{album.year} • {album.trackCount} SONGS</span>
     }
     return (
       <div className='album-show'>
@@ -84,6 +84,9 @@ class AlbumShow extends React.Component {
             {albumTitle}
             {albumArtistName}
             {albumInfo}
+            <div className='album-show-follow-btn'>
+              {button}
+            </div>
           </div>
         </div>
         <div className='album-show-songs'>{songIndex}</div>
