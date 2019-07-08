@@ -10,20 +10,21 @@ import { followArtist, unfollowArtist } from './../../util/artist_api_util';
 class ArtistShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { followed: false };
-    if (this.props.artist && this.props.artist.followed) {
-      this.state = { followed: true };
-    } else {
-      this.state = { followed: false };
-    }
+    this.state = { followed: false, featuredSongs: [] };
+    // if (this.props.artist && this.props.artist.followed) {
+    //   this.state = { followed: true };
+    // } else {
+    //   this.state = { followed: false };
+    // }
     this.followArtist = this.followArtist.bind(this);
     this.unfollowArtist = this.unfollowArtist.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchArtist(this.props.artistId)
-    .then(() => this.setState({ followed: this.props.artist.followed }))
-    .then(() => this.props.setLoadingFalse());
+      .then(() => this.setState({ followed: this.props.artist.followed }))
+      .then(() => this.addFeaturedSongs())
+      .then(() => this.props.setLoadingFalse());
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -48,6 +49,15 @@ class ArtistShow extends React.Component {
       .then(() => this.setState({ followed: false }));
   }
 
+  addFeaturedSongs() {
+    let artistSongs = [];
+    while (artistSongs.length < 5) {
+      let song = this.props.songs[Math.floor(Math.random() * this.props.songs.length)];
+      if (!artistSongs.includes(song)) artistSongs.push(song);
+    }
+    this.setState({ featuredSongs: artistSongs });
+  }
+
   render() {
     if (this.props.loading) {
       return (
@@ -57,9 +67,9 @@ class ArtistShow extends React.Component {
 
     let button = '';
     if (!this.state.followed) {
-      button = <button onClick={this.followArtist}>Follow Artist</button>;
+      button = <button onClick={this.followArtist}>FOLLOW</button>;
     } else {
-      button = <button onClick={this.unfollowArtist}>Unfollow Artist</button>;
+      button = <button onClick={this.unfollowArtist}>UNFOLLOW</button>;
     }
 
     let artistName = '';
@@ -71,16 +81,10 @@ class ArtistShow extends React.Component {
      
       artistName = artist.name;
       artistImage = <img src={artist.image_url} alt={artist.name} />
-
-
-      
-      let artistSongs = [];
-      while (artistSongs.length < 5) {
-        let song = songs[Math.floor(Math.random() * songs.length)];
-        if (!artistSongs.includes(song)) artistSongs.push(song);
-      }
-      songIndex = <SongIndex songs={artistSongs} allSongs={songs} indexType={'artist'}/>
-
+      songIndex = <SongIndex 
+        songs={this.state.featuredSongs} 
+        allSongs={songs} 
+        indexType={'artist'} />
       albumIndex = <AlbumIndex albums={albums} />
     }
     return(
@@ -112,9 +116,6 @@ const msp = (state, ownProps) => {
   let artist = state.entities.artists[artistId];
   let albums = Object.values(state.entities.albums);
   let loading = state.ui.loading.status
-  // if (state.entities.songs) {
-  //   songs = artistShowSongsSelector(state, artistId);
-  // };
   return ({
     artistId,
     artist,

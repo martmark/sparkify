@@ -11,7 +11,7 @@
   padding: 0 20px;
   box-sizing: border-box;
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   padding: 20px 0;
 }
@@ -19,10 +19,79 @@
 .music-player-controls {
   display: flex;
   flex-direction: row;
-  width: 30%;
-  justify-content: space-between;
+  width: 20%;
+  justify-content: center;
+  align-items: center;
+}
+
+.music-player-controls > i {
+  padding: 5px;
 }
 
 .music-player-song-info {
   font-size: 12px;
+  text-align: left;
+  display: flex;
+  width: 40%;
+}
+
+.music-player-album-image {
+  height: 80px;
+  width: 80px;
+  padding: 10px;
+}
+
+.music-player-text-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mp-track-title {
+  font-size: 15px;
+}
+
+.mp-track-title:hover {
+  text-decoration: underline;
+}
+
+.mp-volume-control {
+  width: 40%;
+}
+
+.mp-artist-name {
+  font-size: 11px;
+  color: lightgrey;
+}
+
+.mp-artist-name:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.far {
+  font-size: 30px;
+  cursor: pointer;
+  transition: 50ms;
+  color: lightgrey;
+}
+
+.far:hover {
+  font-size: 32px;
+  color: white;
+}
+
+.play-pause {
+  width: 75px;
+  display: flex;
+  justify-content: center;
+}
+
+.fas {
+  cursor: pointer;
+  color: lightgrey;
+}
+
+.fas:hover {
+  color: white;
 }

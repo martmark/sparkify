@@ -12,9 +12,14 @@
 .collection-nav-links {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  // justify-content: space-betwee;
+  justify-content: center;
   width: 100%;
-  font-size: 11px;
+  font-size: 12px;
+}
+
+.collection-nav-links > li {
+  padding: 0 20px;
 }
 
 .collection-window {

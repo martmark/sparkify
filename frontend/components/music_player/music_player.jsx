@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { togglePlay } from './../../actions/music_actions';
+import {Link} from 'react-router-dom';
 
 class MusicPlayer extends React.Component {
   constructor(props) {
@@ -75,21 +76,39 @@ class MusicPlayer extends React.Component {
 
     let button;
     if (this.state.playing) {
-      button = <button onClick={this.pause}>Pause</button>;
+      button = <i class="far fa-pause-circle" onClick={this.pause}></i>;
     } else {
-      button = <button onClick={this.play}>Play</button>;
+      button = <i class="far fa-play-circle" onClick={this.play}></i>;
+    }
+
+    let song = this.state.currentSong;
+
+    let albumArt = <img src='https://66.media.tumblr.com/792fa57dd5110fe51e7d8f3208a17f40/tumblr_pqkwj8ErPL1vud73ko1_500.png' alt='' />
+    if (song.title) {
+      albumArt = <Link to={`/album/${song.albumId}`}><img src={song.image_url} alt={song.albumTitle} /></Link>
     }
 
     return (
       <div className='music-player'>
-        <div className='music-player-controls'>
-          <button onClick={this.previous}>Previous</button>
-          {button}
-          <button onClick={this.next}>Next</button>
-        </div>
         <div className='music-player-song-info'>
-          <h1>{this.state.currentSong.title} - {this.state.currentSong.artistName} </h1>
+          <div className='music-player-album-image'>
+            {albumArt}
+          </div>
+          <div className='music-player-text-info'>
+            <span className='mp-track-title'>
+              <Link to={`/album/${song.albumId}`}>{song.title}</Link>
+            </span>
+            <span className='mp-artist-name'>
+              <Link to={`/artist/${song.artistId}`}>{song.artistName}</Link>
+            </span>
+          </div>
         </div>
+        <div className='music-player-controls'>
+          <i class="fas fa-step-backward" onClick={this.previous}></i>
+          <div className='play-pause'>{button}</div>
+          <i class="fas fa-step-forward" onClick={this.next}></i>
+        </div>
+        <div className='mp-volume-control'></div>
         <audio src={this.state.currentSong.track_url} autoPlay={this.state.playing} preload="none" ref="musicPlayer"></audio>
       </div>
     );

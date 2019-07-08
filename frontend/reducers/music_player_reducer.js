@@ -4,12 +4,12 @@ import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 
 const defaultState = {
   currentSong: {
-    track_url: 'xx',
+    track_url: '',
     title: ''
   },
   playing: false,
   queue: [{
-    track_url: 'xx',
+    track_url: '',
     title: ''
   }],
   currentIdx: 0

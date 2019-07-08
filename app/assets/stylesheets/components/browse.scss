@@ -15,10 +15,16 @@
 .browse-nav-links {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-  font-size: 11px;
+  font-size: 12px;
 }
+
+.browse-nav-links > li {
+  padding: 0 20px;
+}
+
+
 
 .browse-playlist-index {
   height: 100vh;

@@ -1,7 +1,7 @@
 .artist-show {
   width: 100%;
   background: rgb(24,24,24);  
-  
+  height: 100%;
   
 }
 
@@ -48,7 +48,18 @@
   }
 
   .artist-show-follow-button {
-    font-size: 20px;
+    font-size: 15px;
+    height: 30px;
+    background-color: black, 0.5;
+    width: 130px;
+    border-radius: 30px;
+    align-content: center;
+    margin: auto;
+    padding-top: 5px;
+  }
+
+  .artist-show-follow-button:hover {
+    background-color: green;
   }
 
   .music {

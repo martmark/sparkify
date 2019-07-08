@@ -1,33 +1,43 @@
 .album-show {
   // height: 100vh;
   margin-left: 230px;
-  margin-top: 30px;
+  margin-top: 50px;
   width: 100%;
-  
+  display: flex;
 }
 
 .album-show-info {
-  margin-left: 50px;
+  margin-left: 15px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 30%;
+  align-items: center;
 }
 
 .album-show-image {
-  height: 150px;
-  width: 150px;
+  height: 230px;
+  width: 230px;
 }
 
 .album-show-details {
   display: flex;
   flex-direction: column;
-  margin-left: 40px;
+  // margin-left: 40px;
+  width: 100%;
   font-size: 13px;
+  text-align: center;
 }
 
 .album-show-album-title {
   font-size: 28px;
+  width: 100%;
+  padding: 10px 0;
 }
 
 .album-show-year {
   font-size: 11px;
+}
+
+.album-show-songs {
+  width: 70%;
 }

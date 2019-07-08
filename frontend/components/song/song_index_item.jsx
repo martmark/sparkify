@@ -47,13 +47,14 @@ class SongIndexItem extends React.Component {
     }
 
     let artistAlbumInfo = '';
-    if (indexType === 'collection' || indexType === 'playlist' || indexType === 'browse') {
+    if (indexType === 'collection' || indexType === 'playlist' || indexType === 'browse' || indexType === 'search') {
       artistAlbumInfo = <div className='song-artist-info'>
         <span className='song-artist'>
-          <Link to={`/artist/${song.artistId}`}>{song.artistName}</Link>
+          <Link to={`/artist/${song.artistId}`}>{song.artistName} </Link>
         </span>
+        <span> • </span>
         <span>
-          <Link to={`/album/${song.albumId}`}>{song.albumTitle}</Link>
+          <Link to={`/album/${song.albumId}`}> {song.albumTitle}</Link>
         </span>
       </div>;
     }
