@@ -27,7 +27,7 @@ class PlaylistForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="playlist-form">
           <div className='playlist-form-input'>
             <label>Playlist Name</label>
-            <input type="text" value={this.state.title} id='playlist-name-input'
+            <input type="text" value={this.state.title} className='playlist-name-input'
               onChange={this.updateTitle} placeholder={'Start typing...'}
             />
           </div>
