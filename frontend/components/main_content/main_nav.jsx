@@ -11,7 +11,7 @@ class mainNav extends React.Component {
     return(
       <div className="main-nav">
         <section className='main-nav-top'>
-          <span className='nav-title'><Link to={'/browse'}>Sparkfiy</Link></span>
+          <span className='nav-title'><Link to={'/browse'}>Sparkify</Link></span>
           <ul className="main-nav-links">
             <li key={1}>
               <NavLink 
