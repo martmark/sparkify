@@ -17,20 +17,20 @@ class mainNav extends React.Component {
               <NavLink 
                 activeClassName='mn-active' 
                 to={'/browse'}>
-                  <i class="fas fa-home"></i>Home
+                  <i className="fas fa-home"></i>Home
               </NavLink>
             </li>
             <li key={2}>
               <NavLink 
                 activeClassName='mn-active' 
                 to={'/search'}>
-                  <i class="fas fa-search"></i>Search
+                  <i className="fas fa-search"></i>Search
               </NavLink></li>
             <li key={3}>
               <NavLink
                 activeClassName='mn-active'
                 to={'/collection'}>
-                  <i class="fas fa-stream"></i>Your Library
+                  <i className="fas fa-stream"></i>Your Library
               </NavLink>
             </li>
           </ul>

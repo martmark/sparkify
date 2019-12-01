@@ -76,9 +76,9 @@ class MusicPlayer extends React.Component {
 
     let button;
     if (this.state.playing) {
-      button = <i class="far fa-pause-circle" onClick={this.pause}></i>;
+      button = <i className="far fa-pause-circle" onClick={this.pause}></i>;
     } else {
-      button = <i class="far fa-play-circle" onClick={this.play}></i>;
+      button = <i className="far fa-play-circle" onClick={this.play}></i>;
     }
 
     let song = this.state.currentSong;
@@ -104,9 +104,9 @@ class MusicPlayer extends React.Component {
           </div>
         </div>
         <div className='music-player-controls'>
-          <i class="fas fa-step-backward" onClick={this.previous}></i>
+          <i className="fas fa-step-backward" onClick={this.previous}></i>
           <div className='play-pause'>{button}</div>
-          <i class="fas fa-step-forward" onClick={this.next}></i>
+          <i className="fas fa-step-forward" onClick={this.next}></i>
         </div>
         <div className='mp-volume-control'></div>
         <audio src={this.state.currentSong.track_url} autoPlay={this.state.playing} preload="none" ref="musicPlayer"></audio>

@@ -1,6 +1,11 @@
+#root {
+    background: rgb(39,39,39);
+    height: 100vh;
+}
+
 .main-content {
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: row;
   background: rgb(39,39,39);
   color: white;
