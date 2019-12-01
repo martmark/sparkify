@@ -58,9 +58,9 @@ class AlbumShow extends React.Component {
     
     let button = '';
     if (!this.state.followed) {
-      button = <i class="far fa-heart" onClick={this.followAlbum}></i>
+      button = <i className="far fa-heart" onClick={this.followAlbum}></i>
     } else {
-      button = <i class="fas fa-heart" onClick={this.unfollowAlbum}></i>;
+      button = <i className="fas fa-heart" onClick={this.unfollowAlbum}></i>;
     }
 
     let albumArtistName = '';

@@ -342,7 +342,7 @@ leon = Artist.create({
 })
 
 
-### ALBUMS
+## ALBUMS
 
 asleep = billie.albums.create({ 
   title: 'WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?', 
@@ -1680,65 +1680,65 @@ overgrown.songs.create([
 
 #### SPARKIFY PLAYLISTS
 
-party = spark.playlists.create({title: 'Party Up!', image_url: 'https://66.media.tumblr.com/281ea889b137d2401f64074930e9154c/tumblr_pqkwaw6EdD1vud73ko1_500.png'})
-chill = spark.playlists.create({title: 'Chill Hits', image_url: 'https://66.media.tumblr.com/10cead22e649ce8527ba102040e9b8eb/tumblr_pqkwgaYLSV1vud73ko3_640.png'})
-bedroom = spark.playlists.create({title: 'Bedroom Jams', image_url: 'https://66.media.tumblr.com/196d8dddf6d23b2e618acb9721dd18e9/tumblr_pqkwgaYLSV1vud73ko1_400.png'})
-work = spark.playlists.create({title: "Workday Lounge", image_url: 'https://66.media.tumblr.com/1e2afcbad911bc08972265410d56a391/tumblr_pqkwgaYLSV1vud73ko2_640.png'})
+# party = spark.playlists.create({title: 'Party Up!', image_url: 'https://66.media.tumblr.com/281ea889b137d2401f64074930e9154c/tumblr_pqkwaw6EdD1vud73ko1_500.png'})
+# chill = spark.playlists.create({title: 'Chill Hits', image_url: 'https://66.media.tumblr.com/10cead22e649ce8527ba102040e9b8eb/tumblr_pqkwgaYLSV1vud73ko3_640.png'})
+# bedroom = spark.playlists.create({title: 'Bedroom Jams', image_url: 'https://66.media.tumblr.com/196d8dddf6d23b2e618acb9721dd18e9/tumblr_pqkwgaYLSV1vud73ko1_400.png'})
+# work = spark.playlists.create({title: "Workday Lounge", image_url: 'https://66.media.tumblr.com/1e2afcbad911bc08972265410d56a391/tumblr_pqkwgaYLSV1vud73ko2_640.png'})
 
-party.songs << outer.songs[6]
-party.songs << mised.songs[4]
-party.songs << trans.songs[3]
-party.songs << blitz.songs[1]
-party.songs << thriller.songs[4]
+# party.songs << outer.songs[6]
+# party.songs << mised.songs[4]
+# party.songs << trans.songs[3]
+# party.songs << blitz.songs[1]
+# party.songs << thriller.songs[4]
 
-bedroom.songs << falling.songs[0]
-bedroom.songs << channel.songs[1]
-bedroom.songs << anti.songs[6]
-bedroom.songs << prayer.songs[0]
-bedroom.songs << cominghome.songs[3]
+# bedroom.songs << falling.songs[0]
+# bedroom.songs << channel.songs[1]
+# bedroom.songs << anti.songs[6]
+# bedroom.songs << prayer.songs[0]
+# bedroom.songs << cominghome.songs[3]
 
-chill.songs << onandon.songs[7]
-chill.songs << blonde.songs[6]
-chill.songs << prayer.songs[0]
-chill.songs << talkie.songs[3]
-chill.songs << asleep.songs[9]
+# chill.songs << onandon.songs[7]
+# chill.songs << blonde.songs[6]
+# chill.songs << prayer.songs[0]
+# chill.songs << talkie.songs[3]
+# chill.songs << asleep.songs[9]
 
-work.songs << onandon.songs[13]
-work.songs << overgrown.songs[0]
-work.songs << round.songs[0]
-work.songs << rubber.songs[2]
+# work.songs << onandon.songs[13]
+# work.songs << overgrown.songs[0]
+# work.songs << round.songs[0]
+# work.songs << rubber.songs[2]
 
-#### DEMO USER PLAYLISTS
+# #### DEMO USER PLAYLISTS
 
-study = demo.playlists.create({title: 'Study Music', image_url: 'https://66.media.tumblr.com/e494f36def51bc1e72f9354386f57589/tumblr_pqc3esA8Lt1vud73ko2_1280.jpg'})
-demo.followed_playlists << study
-gym = demo.playlists.create({title: "Workout Music", image_url: 'https://66.media.tumblr.com/b57483926bc5b8a203297c0ce9a50e99/tumblr_pqducoOQAG1vud73ko7_500.jpg'})
-demo.followed_playlists << gym
+# study = demo.playlists.create({title: 'Study Music', image_url: 'https://66.media.tumblr.com/e494f36def51bc1e72f9354386f57589/tumblr_pqc3esA8Lt1vud73ko2_1280.jpg'})
+# demo.followed_playlists << study
+# gym = demo.playlists.create({title: "Workout Music", image_url: 'https://66.media.tumblr.com/b57483926bc5b8a203297c0ce9a50e99/tumblr_pqducoOQAG1vud73ko7_500.jpg'})
+# demo.followed_playlists << gym
 
-study.songs << asleep.songs[5]
-study.songs << phren.songs[12]
-study.songs << nevermind.songs[2]
+# study.songs << asleep.songs[5]
+# study.songs << phren.songs[12]
+# study.songs << nevermind.songs[2]
 
-gym.songs << outer.songs[6]
-gym.songs << mised.songs[4]
-gym.songs << trans.songs[3]
-gym.songs << blitz.songs[1]
-gym.songs << thriller.songs[4]
+# gym.songs << outer.songs[6]
+# gym.songs << mised.songs[4]
+# gym.songs << trans.songs[3]
+# gym.songs << blitz.songs[1]
+# gym.songs << thriller.songs[4]
 
 
-# #### DEMO USER FOLLOWS
+# # #### DEMO USER FOLLOWS
 
-demo.followed_artists << theroots
-demo.followed_artists << sufjan
-demo.followed_artists << vogue
-demo.followed_artists << waits
+# demo.followed_artists << theroots
+# demo.followed_artists << sufjan
+# demo.followed_artists << vogue
+# demo.followed_artists << waits
 
-demo.followed_albums << asleep
-demo.followed_albums << outer
-demo.followed_albums << falling
-demo.followed_albums << vibras
+# demo.followed_albums << asleep
+# demo.followed_albums << outer
+# demo.followed_albums << falling
+# demo.followed_albums << vibras
 
-demo.followed_songs << selfportrait.songs[14]
-demo.followed_songs << mised.songs[2]
-demo.followed_songs << outside.songs[2]
-demo.followed_songs << whois.songs[8]
+# demo.followed_songs << selfportrait.songs[14]
+# demo.followed_songs << mised.songs[2]
+# demo.followed_songs << outside.songs[2]
+# demo.followed_songs << whois.songs[8]
