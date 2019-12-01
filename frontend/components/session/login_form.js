@@ -37,7 +37,7 @@ class LoginForm extends React.Component {
     const errorsList = this.props.errors.length > 0 ?
       (<ul className="session-errors">{this.props.errors.map((error, idx) => (<li key={idx}>{error}</li>))} </ul>) : null
     return (
-      <div className="login">
+      <div className="sessionform">
         <header className='login-header'><Link to={'/'}>Sparkify</Link></header>
         <section className="login-main">
           <h1>To continue, log in to Sparkify.</h1>

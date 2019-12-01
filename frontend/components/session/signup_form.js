@@ -32,7 +32,7 @@ class SignupForm extends React.Component {
     const errorsList = this.props.errors.length > 0 ? 
       (<ul className="session-errors">{this.props.errors.map((error, idx) => (<li key={idx}>{error}</li>))} </ul>) : null
     return (
-      <div className="signup">
+      <div className="sessionform">
         <header className='signup-header'><Link to={'/'}>Sparkify</Link></header>
         <section className="signup-main">
           <div className='signup-demo-button'>
