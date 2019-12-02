@@ -9,13 +9,18 @@ end
 json.albums do
   @artist.albums.each do |album|
     json.set! album.id do
-      json.partial! 'api/albums/album', album: album
+      json.partial! 'api/albums/album', album: album, artist: @artist
     end
   end
 end
 
 json.songs do
+  # debugger
   @artist.songs.each do |song|
-    json.partial! 'api/songs/song', song: song
+    json.set! song.id do
+      album = song.album
+      json.partial! 'api/songs/song', song: song, artist: @artist, album: album
+      json.followed @followed_song_ids.include?(song.id)
+    end
   end
 end

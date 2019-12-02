@@ -1,6 +1,7 @@
 class Api::SongsController < ApplicationController
 
   def index
+    @followed_song_ids = current_user.followed_song_ids
     @songs = current_user.followed_songs if params[:fetchType] == 'collection'
 
     if params[:fetchType] == 'browse'
@@ -18,6 +19,7 @@ class Api::SongsController < ApplicationController
   end
 
   def follow
+    @followed_song_ids = current_user.followed_song_ids
     @song = Song.find(params[:id])
     current_user.followed_songs << @song
     current_user.followed_albums << @song.album unless current_user.followed_albums.include?(@song.album)
@@ -25,6 +27,7 @@ class Api::SongsController < ApplicationController
   end
 
   def unfollow
+    @followed_song_ids = current_user.followed_song_ids
     @song = Song.find(params[:id])
     @follow = Follow.find_by(followable_id: @song.id, followable_type: 'Song', user_id: current_user.id)
     @follow.destroy

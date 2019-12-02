@@ -15,7 +15,8 @@ class Api::AlbumsController < ApplicationController
   end
 
   def show
-    @album = Album.find(params[:id])
+    @followed_song_ids = current_user.followed_song_ids
+    @album = Album.includes(:songs, :artist).find(params[:id])
   end
 
   def follow

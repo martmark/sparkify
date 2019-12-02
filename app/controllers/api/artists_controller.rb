@@ -13,6 +13,7 @@ class Api::ArtistsController < ApplicationController
 
   def show
     @artist = Artist.includes(albums: :songs).find(params[:id])
+    @followed_song_ids = current_user.followed_song_ids
     render :show
   end
 
