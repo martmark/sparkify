@@ -1,12 +1,16 @@
 .sessionform {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+}
+
+.login {
+  bottom: 25px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: white;
-  // position: relative;
+  width: 100%;
   font-family: Circular, Helvetica, Arial, sans-serif;
 }
 

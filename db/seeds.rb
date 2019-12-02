@@ -22,29 +22,29 @@ demo = User.create({ username: 'DemoUser', password: 'sparkifyonline' })
 frank = Artist.create({ 
   name: 'Frank Ocean', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/cf6e5522c26fbdcab113cb70eb3908ee/tumblr_pqfxpxLIzk1vud73ko2_1280.jpg',
-  small_image_url: 'https://66.media.tumblr.com/6bafbdd4ae30a95fc8c2ee09f13e6689/tumblr_pqhglyXc051vud73ko8_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/frank.jpg',
+  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/frank-small.jpg'
 })
 
 jack = Artist.create({ 
   name: 'Jack Johnson', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/d69d621e2f38787d28fbfcbe95c85fa9/tumblr_pqfxpxLIzk1vud73ko3_1280.jpg',
-  small_image_url: 'https://66.media.tumblr.com/6ec499379057a0f5d63eff9b23f9126a/tumblr_pqhgmsJ8GI1vud73ko3_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/jack.jpg',
+  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/jack-small.jpg'
 })
 
 tune = Artist.create({
   name: 'tUnE-yArDs',
   bio: 'coming',
-  image_url: 'https://66.media.tumblr.com/bad55a2c484d0be57183d822a124d0b2/tumblr_pqfxpxLIzk1vud73ko8_1280.jpg',
-  small_image_url: 'https://66.media.tumblr.com/50230cbfaf85fcb8aa269b80d7d6a691/tumblr_pqhgo2Tmgn1vud73ko6_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/tune.jpg',
+  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/tune-small.jpg'
 })
 
 air = Artist.create({ 
   name: 'Air', 
   bio: 'coming soon', 
-  image_url: 'https://66.media.tumblr.com/d630bb21f54c6b4bdc8aa4a162499dde/tumblr_pqft7jLN6y1vud73ko1_1280.jpg',
-  small_image_url: 'https://66.media.tumblr.com/ccb164e0c7633c4daa5c97be68abdf2d/tumblr_pqhgl5XpJJ1vud73ko1_540.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/air.jpg',
+  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/air-small.jpg'
 })
 
 can = Artist.create({ 
@@ -250,6 +250,13 @@ pearl = Artist.create({
   small_image_url: 'https://66.media.tumblr.com/6dbca35d054a8ff7df227c89e4b89515/tumblr_pqjzqc5juq1vud73ko1_1280.jpg'
 })
 
+devendra = Artist.create({
+  name: 'Devendra Banhart',
+  bio: 'coming',
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/devendra.jpg',
+  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/devendra-small.jpg'
+})
+
 dua = Artist.create({ 
   name: 'Dua Lipa', 
   bio: 'coming soon', 
@@ -334,6 +341,13 @@ lauryn = Artist.create({
   small_image_url: 'https://66.media.tumblr.com/cba4dfcd3a33730d63a62f03af0190e1/tumblr_pqhgmsJ8GI1vud73ko8_1280.jpg'
 })
 
+flaming = Artist.create({
+  name: 'Flaming Lips',
+  bio: 'coming',
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/flaming.jpeg',
+  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/flaming-small.jpeg'
+})
+
 leon = Artist.create({
   name: 'Leon Bridges',
   bio: 'coming',
@@ -349,6 +363,71 @@ asleep = billie.albums.create({
   genre: 'Pop', year: 2019,
   image_url: 'https://66.media.tumblr.com/e494f36def51bc1e72f9354386f57589/tumblr_pqc3esA8Lt1vud73ko2_1280.jpg'
 })
+
+asleep_songs = [
+  { title: '!!!!!!!', duration: '0:14' },
+  { title: 'bad guy', duration: '3:14' },
+  { title: 'xanny', duration: '4:04' },
+  { title: 'you should see me in a crown', duration: '3:01' },
+  { title: 'all the good girls go to hell', duration: '2:49' },
+  { title: 'wish you were gay', duration: '3:42' },
+  { title: "when the party's over", duration: '3:16' },
+  { title: '8', duration: '2:53' },
+  { title: 'my strange addiction', duration: '3:00' },
+  { title: 'bury a friend', duration: '3:13' },
+  { title: 'ilomilo', duration: '2:36' },
+  { title: 'listen before i go', duration: '4:03' },
+  { title: 'i love you', duration: '4:52' },
+  { title: 'goodbye', duration: '1:59' }
+]
+
+asleep_songs.each_with_index do |song, idx|
+  i = idx + 1
+  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/#{i}.mp3"
+  title = song[:title]
+  duration = song[:duration]
+  asleep.songs.create({
+    title: "#{title}",
+    duration: "#{duration}",
+    track_url: "#{url}"
+  })
+end
+
+whatwill = devendra.albums.create({
+  title: 'What Will We Be',
+  genre: 'Folk',
+  year: 2009,
+  image_url: "https://sparkifyimages.s3.amazonaws.com/whatwill.jpg"
+})
+
+whatwill_songs = [
+  { title: "Can't Help But Smiling", duration: "2:24"},
+  { title: "Angelika", duration: "3:23"},
+  { title: "Baby", duration: "3:06"},
+  { title: "Goin' Back", duration: "3:44"},
+  { title: "First Song for B", duration: "3:00"},
+  { title: "Last Song for B", duration: "3:02"},
+  { title: "Chin Chin & Muck Muck", duration: "5:25"},
+  { title: "16th & Valencia, Roxy Music", duration: "3:00"},
+  { title: "Rats", duration: "5:08"},
+  { title: "Maria Lionza", duration: "5:50"},
+  { title: "Brindo", duration: "3:42"},
+  { title: "Meet Me at Lookout Point", duration: "3:40"},
+  { title: "Walilamdzi", duration: "2:11"},
+  { title: "Foolin'", duration: "2:43"}
+]
+
+whatwill_songs.each_with_index do |song, idx|
+  i = idx + 1
+  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/whatwill/#{i}.mp3"
+  title = song[:title]
+  duration = song[:duration]
+  whatwill.songs.create({
+    title: "#{title}",
+    duration: "#{duration}",
+    track_url: "#{url}"
+  })
+end
 
 onandon = jack.albums.create({ 
   title: 'On and On', 
@@ -390,6 +469,13 @@ doubt = jayz.albums.create({
   genre: "Hip-Hop",
   year: 1995,
   image_url: 'https://66.media.tumblr.com/b36490aa9e4ce9be493c9178f790b164/tumblr_pqg7t3L2Ej1vud73ko7_500.jpg'
+})
+
+yoshimi = flaming.albums.create({
+  title: 'Yoshimi Battles the Pink Robots',
+  genre: 'Rock',
+  year: 2002,
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/yoshimi.jpg'
 })
 
 puravida = gogol.albums.create({
@@ -758,21 +844,36 @@ overgrown = blake.albums.create({
 
 ### SONGS
 
-asleep.songs.create([  
-  { title: '!!!!!!!', duration: '0:14', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/1.mp3" },
-  { title: 'bad guy', duration: '3:14', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/2.mp3" },
-  { title: 'xanny', duration: '4:04', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/3.mp3" },
-  { title: 'you should see me in a crown', duration: '3:01', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/4.mp3" },
-  { title: 'all the good girls go to hell', duration: '2:49', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/5.mp3" },
-  { title: 'wish you were gay', duration: '3:42', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/6.mp3" },
-  { title: "when the party's over", duration: '3:16', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/7.mp3" },
-  { title: '8', duration: '2:53', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/8.mp3"},
-  { title: 'my strange addiction', duration: '3:00', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/9.mp3"},
-  { title: 'bury a friend', duration: '3:13', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/10.mp3"},
-  { title: 'ilomilo', duration: '2:36', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/11.mp3"},
-  { title: 'listen before i go', duration: '4:03', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/12.mp3"},
-  { title: 'i love you', duration: '4:52', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/13.mp3"},
-  { title: 'goodbye', duration: '1:59', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/14.mp3"}
+
+# asleep.songs.create([  
+#   { title: '!!!!!!!', duration: '0:14', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/1.mp3" },
+#   { title: 'bad guy', duration: '3:14', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/2.mp3" },
+#   { title: 'xanny', duration: '4:04', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/3.mp3" },
+#   { title: 'you should see me in a crown', duration: '3:01', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/4.mp3" },
+#   { title: 'all the good girls go to hell', duration: '2:49', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/5.mp3" },
+#   { title: 'wish you were gay', duration: '3:42', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/6.mp3" },
+#   { title: "when the party's over", duration: '3:16', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/7.mp3" },
+#   { title: '8', duration: '2:53', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/8.mp3"},
+#   { title: 'my strange addiction', duration: '3:00', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/9.mp3"},
+#   { title: 'bury a friend', duration: '3:13', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/10.mp3"},
+#   { title: 'ilomilo', duration: '2:36', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/11.mp3"},
+#   { title: 'listen before i go', duration: '4:03', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/12.mp3"},
+#   { title: 'i love you', duration: '4:52', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/13.mp3"},
+#   { title: 'goodbye', duration: '1:59', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/14.mp3"}
+# ])
+
+yoshimi.songs.create([
+  {title: "Fight Test", duration: "4:05", track_url: "https://sparkify2019.s3.us-east-2.amazonaws.com/yoshimi/1.mp3"},
+  {title: "One More Robot/Sympathy 3000-21", duration: "5:00", track_url: "https://sparkify2019.s3.us-east-2.amazonaws.com/yoshimi/2.mp3"},
+  {title: "Yoshimi Battles the Pink Robots, Pt. 1", duration: "4:48", track_url: "https://sparkify2019.s3.us-east-2.amazonaws.com/yoshimi/3.mp3"},
+  {title: "Yoshimi Battles the Pink Robots, Pt. 2", duration: "2:58", track_url: "https://sparkify2019.s3.us-east-2.amazonaws.com/yoshimi/4.mp3"},
+  {title: "In the Morning of the Magicians", duration: "6:19", track_url: "https://sparkify2019.s3.us-east-2.amazonaws.com/yoshimi/5.mp3"},
+  {title: "Ego Tripping at the Gates of Hell", duration: "4:35", track_url: "https://sparkify2019.s3.us-east-2.amazonaws.com/yoshimi/6.mp3"},
+  {title: "Are You a Hypnotist??", duration: "4:44", track_url: "https://sparkify2019.s3.us-east-2.amazonaws.com/yoshimi/7.mp3"},
+  {title: "It's Summertime", duration: "4:20", track_url: "https://sparkify2019.s3.us-east-2.amazonaws.com/yoshimi/8.mp3"},
+  {title: "Do You Realize??", duration: "3:33", track_url: "https://sparkify2019.s3.us-east-2.amazonaws.com/yoshimi/9.mp3"},
+  {title: "All We Have Is Now", duration: "3:53", track_url: "https://sparkify2019.s3.us-east-2.amazonaws.com/yoshimi/10.mp3"},
+  {title: "Approaching Pavonis Mons by Balloon (Utopia Planitia)", duration: "3:09", track_url: "https://sparkify2019.s3.us-east-2.amazonaws.com/yoshimi/11.mp3"}
 ])
 
 
@@ -1730,13 +1831,14 @@ gym.songs << thriller.songs[4]
 
 demo.followed_artists << theroots
 demo.followed_artists << sufjan
-demo.followed_artists << vogue
+demo.followed_artists << devendra
 demo.followed_artists << waits
 
-demo.followed_albums << asleep
+demo.followed_albums << yoshimi
 demo.followed_albums << outer
 demo.followed_albums << falling
 demo.followed_albums << vibras
+demo.followed_albums << blonde
 
 demo.followed_songs << selfportrait.songs[14]
 demo.followed_songs << mised.songs[2]
