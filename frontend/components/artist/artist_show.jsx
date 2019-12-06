@@ -61,7 +61,15 @@ class ArtistShow extends React.Component {
   render() {
     if (this.props.loading) {
       return (
-        <h1>Loading...</h1>
+        <div className='spinner-outer'>
+          <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+          </div>
+        </div>
       )
     }
 
