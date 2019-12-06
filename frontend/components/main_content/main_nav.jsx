@@ -13,24 +13,43 @@ class mainNav extends React.Component {
         <section className='main-nav-top'>
           <span className='nav-title'><Link to={'/browse'}>Sparkify</Link></span>
           <ul className="main-nav-links">
-            <li key={1}>
+            <li key={1} className='main-nav-link-outer'>
               <NavLink 
+                className='main-navlink'
                 activeClassName='mn-active' 
                 to={'/browse'}>
-                  <i className="fas fa-home"></i>Home
+                  <div className='main-nav-link-inner'>
+                    <div className='main-nav-icon'>
+                      <i className="fas fa-home"></i>
+                    </div>
+                    <span className='main-nav-link-title'>Home</span>
+                  </div>  
               </NavLink>
             </li>
-            <li key={2}>
+            <li key={2} className='main-nav-link-outer'>
               <NavLink 
+                className='main-navlink'
                 activeClassName='mn-active' 
                 to={'/search'}>
-                  <i className="fas fa-search"></i>Search
-              </NavLink></li>
-            <li key={3}>
+                  <div className='main-nav-link-inner'>
+                    <div className='main-nav-icon'>
+                      <i className="fas fa-search"></i>
+                    </div>
+                    <span className='main-nav-link-title'>Search</span>
+                  </div>
+              </NavLink>
+            </li>
+            <li key={3} className='main-nav-link-outer'>
               <NavLink
+                className='main-navlink'
                 activeClassName='mn-active'
                 to={'/collection'}>
-                  <i className="fas fa-stream"></i>Your Library
+                  <div className='main-nav-link-inner'>
+                    <div className='main-nav-icon'>
+                      <i className="fas fa-stream"></i>
+                    </div>
+                    <span className='main-nav-link-title'>Your Library</span>
+                  </div>
               </NavLink>
             </li>
           </ul>
