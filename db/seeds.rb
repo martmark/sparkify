@@ -257,6 +257,13 @@ devendra = Artist.create({
   small_image_url: 'https://sparkifyimages.s3.amazonaws.com/devendra-small.jpg'
 })
 
+dela = Artist.create({
+  name: 'De La Soul',
+  bio: 'coming',
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/dela.jpg',
+  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/dela-small.jpg'
+})
+
 dua = Artist.create({ 
   name: 'Dua Lipa', 
   bio: 'coming soon', 
@@ -423,6 +430,52 @@ whatwill_songs.each_with_index do |song, idx|
   title = song[:title]
   duration = song[:duration]
   whatwill.songs.create({
+    title: "#{title}",
+    duration: "#{duration}",
+    track_url: "#{url}"
+  })
+end
+
+threefeet = dela.albums.create({
+  title: '3 Feet High and Rising',
+  genre: 'Hip-Hop',
+  year: 1989,
+  image_url: "https://sparkifyimages.s3.amazonaws.com/threefeet.jpg"
+})
+
+threefeet_songs = [
+ { title: "Intro", duration: "1:42" },
+ { title: "The Magic Number", duration: "3:17" },
+ { title: "Change in Speak", duration: "2:33" },
+ { title: "Cool Breeze on the Rocks", duration: "0:48" },
+ { title: "Can U Keep a Secret", duration: "1:41" },
+ { title: "Jenifa Taught Me (Derwin's Revenge)", duration: "3:25" },
+ { title: "Ghetto Thang", duration: "3:36" },
+ { title: "Transmitting Live from Mars", duration: "1:12" },
+ { title: "Eye Know", duration: "4:13" },
+ { title: "Take It Off", duration: "1:53" },
+ { title: "A Little Bit of Soap", duration: "0:50" },
+ { title: "Tread Water", duration: "3:53" },
+ { title: "Potholes in My Lawn", duration: "3:50" },
+ { title: "Say No Go", duration: "4:20" },
+ { title: "Do as De La Does", duration: "2:06" },
+ { title: "Plug Tunin' (Last Chance to Comprehend)", duration: "4:13" },
+ { title: "De La Orgee", duration: "1:14" },
+ { title: "Buddy", duration: "4:55" },
+ { title: "Description", duration: "1:32" },
+ { title: "Me Myself and I", duration: "3:41" },
+ { title: "This Is a Recording 4 Living in a Fulltime Era (L.I.F.E.)", duration: "3:19" },
+ { title: "I Can Do Anything (Delacratic)", duration: "0:41" },
+ { title: "D.A.I.S.Y. Age", duration: "4:43" },
+ { title: "Plug Tunin' (Original 12\" Version)", duration: "3:44" }
+]
+
+threefeet_songs.each_with_index do |song, idx|
+  i = idx + 1
+  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/threefeet/#{i}.mp3"
+  title = song[:title]
+  duration = song[:duration]
+  threefeet.songs.create({
     title: "#{title}",
     duration: "#{duration}",
     track_url: "#{url}"
