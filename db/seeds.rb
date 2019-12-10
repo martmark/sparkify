@@ -436,6 +436,45 @@ whatwill_songs.each_with_index do |song, idx|
   })
 end
 
+mosaic = dela.albums.create({
+  title: "Art Official Intelligence: Mosaic Thump",
+  genre: "Hip-Hop",
+  year: 2000,
+  image_url: "https://sparkifyimages.s3.amazonaws.com/mosaic.jpg"
+})
+
+mosaic_songs = [
+  { title: "Spitkicker.com / Say R. (Intro)", duration: "1:20" },
+  { title: "U Can Do (Life)", duration: "4:24" },
+  { title: "My Writes", duration: "5:30" },
+  { title: "Oooh.", duration: "5:24" },
+  { title: "Thru Ya City", duration: "3:29" },
+  { title: "I.C. Y'All", duration: "3:22" },
+  { title: "View", duration: "4:19" },
+  { title: "Set The Mood", duration: "4:24" },
+  { title: "All Good?", duration: "4:59" },
+  { title: "Declaration", duration: "2:56" },
+  { title: "Squat!", duration: "4:15" },
+  { title: "Words From The Chief Rocker", duration: "1:02" },
+  { title: "With Me", duration: "4:51" },
+  { title: "Copa (Cabanga)", duration: "4:06" },
+  { title: "Foolin'", duration: "4:23" },
+  { title: "The Art of Getting Jumped", duration: "3:48" },
+  { title: "U Don't Wanna B.D.S.", duration: "4:14" }
+]
+
+mosaic_songs.each_with_index do |song, idx|
+  i = idx + 1
+  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/mosaic/#{i}.mp3"
+  title = song[:title]
+  duration = song[:duration]
+  mosaic.songs.create({
+    title: "#{title}",
+    duration: "#{duration}",
+    track_url: "#{url}"
+  })
+end
+
 threefeet = dela.albums.create({
   title: '3 Feet High and Rising',
   genre: 'Hip-Hop',
