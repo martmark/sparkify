@@ -278,6 +278,13 @@ ariana = Artist.create({
   small_image_url: 'https://66.media.tumblr.com/96b99964b8478291d1f26444217dd3cb/tumblr_pqhgl5XpJJ1vud73ko3_1280.jpg'
 })
 
+brandy = Artist.create({
+  name: "Brandy",
+  bio: 'coming',
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/brandy.jpg',
+  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/brandy-small.jpg'
+})
+
 gaga = Artist.create({
   name: 'Lady Gaga',
   bio: 'coming soon',
@@ -515,6 +522,42 @@ threefeet_songs.each_with_index do |song, idx|
   title = song[:title]
   duration = song[:duration]
   threefeet.songs.create({
+    title: "#{title}",
+    duration: "#{duration}",
+    track_url: "#{url}"
+  })
+end
+
+brandyalbum = brandy.albums.create({
+  title: "Brandy",
+  genre: "R&B",
+  year: 1994,
+  image_url: "https://sparkifyimages.s3.amazonaws.com/brandyalbum.jpg"
+})
+
+brandyalbum_songs = [
+  { title: "Movin' On", duration: "4:28" },
+  { title: "Baby", duration: "5:13" },
+  { title: "Best Friend", duration: "4:49" },
+  { title: "I Wanna Be Down", duration: "4:52" },
+  { title: "I Dedicate (Part I)", duration: "1:29" },
+  { title: "Brokenhearted", duration: "5:55" },
+  { title: "I'm Yours", duration: "4:02" },
+  { title: "Sunny Day", duration: "4:30" },
+  { title: "As Long as You're Here", duration: "4:46" },
+  { title: "Always on My Mind", duration: "4:06" },
+  { title: "I Dedicate (Part II)", duration: "0:56" },
+  { title: "Love Is on My Side", duration: "5:10" },
+  { title: "Give Me You", duration: "4:26" },
+  { title: "I Dedicate (Part III)", duration: "1:02" }
+]
+
+brandyalbum_songs.each_with_index do |song, idx|
+  i = idx + 1
+  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/brandyalbum/#{i}.mp3"
+  title = song[:title]
+  duration = song[:duration]
+  brandyalbum.songs.create({
     title: "#{title}",
     duration: "#{duration}",
     track_url: "#{url}"
