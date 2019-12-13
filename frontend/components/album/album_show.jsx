@@ -28,8 +28,8 @@ class AlbumShow extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    this.props.setLoadingTrue();
     if (this.props.albumId !== prevProps.albumId) {
+      this.props.setLoadingTrue();
       this.props.fetchAlbum(this.props.albumId)
         .then(() => this.setState({ followed: this.props.album.followed }))
         .then(() => this.props.setLoadingFalse());
