@@ -414,6 +414,13 @@ whatwill = devendra.albums.create({
   image_url: "https://sparkifyimages.s3.amazonaws.com/whatwill.jpg"
 })
 
+threefeet = dela.albums.create({
+  title: '3 Feet High and Rising',
+  genre: 'Hip-Hop',
+  year: 1989,
+  image_url: "https://sparkifyimages.s3.amazonaws.com/threefeet.jpg"
+})
+
 whatwill_songs = [
   { title: "Can't Help But Smiling", duration: "2:24"},
   { title: "Angelika", duration: "3:23"},
@@ -481,13 +488,6 @@ mosaic_songs.each_with_index do |song, idx|
     track_url: "#{url}"
   })
 end
-
-threefeet = dela.albums.create({
-  title: '3 Feet High and Rising',
-  genre: 'Hip-Hop',
-  year: 1989,
-  image_url: "https://sparkifyimages.s3.amazonaws.com/threefeet.jpg"
-})
 
 threefeet_songs = [
  { title: "Intro", duration: "1:42" },

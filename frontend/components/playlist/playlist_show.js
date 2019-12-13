@@ -18,12 +18,14 @@ class PlaylistShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchPlaylist(this.props.playlistId)
-    .then(() => this.props.setLoadingFalse());
+      .then(() => this.props.setLoadingFalse());
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.playlistId !== prevProps.playlistId) {
-      this.props.fetchPlaylist(this.props.playlistId);
+      this.props.setLoadingTrue();
+      this.props.fetchPlaylist(this.props.playlistId)
+        .then(() => this.props.setLoadingFalse());
     }
   }
 

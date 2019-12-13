@@ -29,7 +29,11 @@ class ArtistShow extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.artistId !== prevProps.artistId) {
-      this.props.fetchArtist(this.props.artistId);
+      this.props.setLoadingTrue();
+      this.props.fetchArtist(this.props.artistId)
+        .then(() => this.setState({ followed: this.props.artist.followed }))
+        .then(() => this.addFeaturedSongs())
+        .then(() => this.props.setLoadingFalse());
     }
   }
 
