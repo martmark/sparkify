@@ -564,6 +564,42 @@ brandyalbum_songs.each_with_index do |song, idx|
   })
 end
 
+mala = devendra.albums.create({
+  title: "Mala",
+  genre: "Alternative",
+  year: 2013,
+  image_url: "https://sparkifyimages.s3.amazonaws.com/mala.jpg"
+})
+
+mala_songs = [
+  { title: "Golden Girls", duration: "1:36" },
+  { title: "Daniel", duration: "3:06" },
+  { title: "Für Hildegard von Bingen", duration: "2:36" },
+  { title: "Never Seen Such Good Things", duration: "3:14" },
+  { title: "Mi Negrita", duration: "3:25" },
+  { title: "Your Fine Petting Duck", duration: "5:46" },
+  { title: "The Ballad of Keenan Milton", duration: "2:17" },
+  { title: "A Gain", duration: "1:35" },
+  { title: "Won't You Come Over", duration: "3:37" },
+  { title: "Cristobal Risquez", duration: "2:28" },
+  { title: "Hatchet Wound", duration: "3:10" },
+  { title: "Mala", duration: "1:08" },
+  { title: "Won't You Come Home", duration: "3:32" },
+  { title: "Taurobolium", duration: "3:17" }
+]
+
+mala_songs.each_with_index do |song, idx|
+  i = idx + 1
+  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/mala/#{i}.mp3"
+  title = song[:title]
+  duration = song[:duration]
+  mala.songs.create({
+    title: "#{title}",
+    duration: "#{duration}",
+    track_url: "#{url}"
+  })
+end
+
 onandon = jack.albums.create({ 
   title: 'On and On', 
   genre: 'Acoustic', 
