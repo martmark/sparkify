@@ -12,7 +12,7 @@ class Api::PlaylistsController < ApplicationController
     @followed_playlist_ids = current_user.followed_playlist_ids
     @playlist = Playlist.new(playlist_params)
     @playlist.user_id = current_user.id
-    @playlist.image_url = 'https://66.media.tumblr.com/792fa57dd5110fe51e7d8f3208a17f40/tumblr_pqkwj8ErPL1vud73ko1_500.png'
+    @playlist.image_url = 'https://sparkifyimages.s3.amazonaws.com/blank.jpg'
 
     if @playlist.save
       current_user.followed_playlists << @playlist

@@ -267,8 +267,8 @@ yeah = Artist.create({
 flaming = Artist.create({
   name: 'Flaming Lips',
   bio: 'coming',
-  image_url: 'https://sparkifyimages.s3.amazonaws.com/flaming.jpeg',
-  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/flaming-small.jpeg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/flaming.jpg',
+  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/flaming-small.jpg'
 })
 
 pearl = Artist.create({
@@ -375,7 +375,7 @@ leon = Artist.create({
 asleep = billie.albums.create({ 
   title: 'WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?', 
   genre: 'Pop', year: 2019,
-  image_url: 'https://66.media.tumblr.com/e494f36def51bc1e72f9354386f57589/tumblr_pqc3esA8Lt1vud73ko2_1280.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/asleep.jpg'
 })
 
 asleep_songs = [
@@ -568,42 +568,42 @@ onandon = jack.albums.create({
   title: 'On and On', 
   genre: 'Acoustic', 
   year: 2003,
-  image_url: 'https://66.media.tumblr.com/4a34e2d77517a4222ddaeb950a54ed20/tumblr_pqjlsyZEwJ1vud73ko1_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/onandon.jpg'
 })
 
 talkie = air.albums.create({ 
   title: 'Talkie Walkie', 
   genre: 'Electronic', 
   year: 2004, 
-  image_url: 'https://66.media.tumblr.com/567eed828e244bae114d028fb278ccc9/tumblr_pqc3esA8Lt1vud73ko1_400.jpg' 
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/talkie.jpg'
 })
 
 ege = can.albums.create({ 
   title: 'Ege Bamyasi', 
   genre: 'Rock', 
   year: 1972,
-  image_url: 'https://66.media.tumblr.com/8da43d2c22187c31e757f5c6f58a63df/tumblr_pqh9jxjOKj1vud73ko1_400.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/ege.jpg'
 })
 
 blonde = frank.albums.create({ 
   title: 'Blonde', 
   genre: 'Hip-Hop', 
   year: 2016 ,
-  image_url: 'https://66.media.tumblr.com/ef3756ed57dd995f2caabe87f59066b7/tumblr_pqc3eb7DCZ1vud73ko2_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/blonde.jpg'
 })
 
 vital = pearl.albums.create({
   title: 'Vitalogy',
   genre: 'Rock',
   year: 1993,
-  image_url: 'https://66.media.tumblr.com/65cac1b59f0c7deec40fd058dccbf3da/tumblr_pqg7towvJ31vud73ko2_500.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/vital.jpg'
 })
 
 doubt = jayz.albums.create({
   title: "Reasonable Doubt",
   genre: "Hip-Hop",
   year: 1995,
-  image_url: 'https://66.media.tumblr.com/b36490aa9e4ce9be493c9178f790b164/tumblr_pqg7t3L2Ej1vud73ko7_500.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/doubt.jpg'
 })
 
 yoshimi = flaming.albums.create({
@@ -617,385 +617,368 @@ puravida = gogol.albums.create({
   title: 'Pura Vida Conspiracy',
   genre: 'Alternative',
   year: 2012,
-  image_url: 'https://66.media.tumblr.com/4fc1b13422927315343dd7c3fa72c09c/tumblr_pqg7t3L2Ej1vud73ko5_500.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/puravida.jpg'
 })
 
 either = elliott.albums.create({ 
   title: 'Either/Or', 
   genre: 'Acoustic', 
   year: 1997,
-  image_url: 'https://66.media.tumblr.com/ad6fb7e7bdd44f231bdf7d14d4649c77/tumblr_pqc3eb7DCZ1vud73ko5_400.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/either.jpg'
 })
 
 moon = floyd.albums.create({ 
   title: 'Dark Side of the Moon', 
   genre: 'Rock', 
   year: 1972,
-  image_url: 'https://66.media.tumblr.com/977c66295149f4861a6ba132e1edd52e/tumblr_pqc3eb7DCZ1vud73ko3_1280.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/moon.jpg'
 })
 
 black = amy.albums.create({
   title: 'Back To Black',
   genre: 'Alternative',
   year: 2006,
-  image_url: 'https://66.media.tumblr.com/c38c0b60e5e482ee86e8bb1a0d076bb6/tumblr_pqduavefa41vud73ko5_1280.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/black.jpg'
 })
 
 round = miles.albums.create({
   title: "`Round About Midnight",
   genre: 'Jazz',
   year: 1957,
-  image_url: 'https://66.media.tumblr.com/b04ec0336996cebe6bedf968c9f8da96/tumblr_pqduc6BOk31vud73ko5_1280.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/round.jpg'
 })
 
 whois = william.albums.create({
   title: "Who Is William Onyeabor?",
   genre: "Funk",
   year: 1992,
-  image_url: "https://66.media.tumblr.com/97366fe38dabf53b1287bf88d53dfb18/tumblr_pqdud29vBu1vud73ko2_500.jpg"
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/whois.jpg'
 })
 
 rubber = beatles.albums.create({
   title: "Rubber Soul",
   genre: 'Rock',
   year: 1964,
-  image_url: 'https://66.media.tumblr.com/3f45bc020ba7e06c290e4b802c081136/tumblr_pqg7towvJ31vud73ko7_1280.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/rubber.jpg'
 })
 
 born = gaga.albums.create({
   title: 'Born This Way',
   genre: 'Pop',
   year: 2010,
-  image_url: 'https://66.media.tumblr.com/d62ae5c1b1ee918d09d5a86321bfabde/tumblr_pqhxmauSH41vud73ko1_400.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/born.jpg'
 })
 
 carrie = sufjan.albums.create({
   title: "Carrie & Lowell",
   genre: "Alternative",
   year: 2014,
-  image_url: "https://66.media.tumblr.com/b72c1d1638169faacc2a2e1ec3eee618/tumblr_pqduavefa41vud73ko9_1280.jpg"
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/carrie.jpg'
 })
 
 vibras = jbalvin.albums.create({
   title: 'Vibras',
   genre: 'Latin',
   year: 2017,
-  image_url: 'https://66.media.tumblr.com/1ea58f185d4ea28bfecb6b452625292d/tumblr_pqdud29vBu1vud73ko1_500.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/vibras.jpg'
 })
 
 aman = bomba.albums.create({
   title: 'Amanecer',
   genre: 'Latin',
   year: 2014,
-  image_url: 'https://66.media.tumblr.com/6f61ba1ccc4cd550ba05c0d93867d3ac/tumblr_pqduavefa41vud73ko8_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/aman.jpg'
 })
 
 badasme = waits.albums.create({
   title: "Bad As Me",
   genre: "Rock",
   year: 2010,
-  image_url: 'https://66.media.tumblr.com/35c8e230fa3de08c60551be09b1381fd/tumblr_pqduavefa41vud73ko2_400.png'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/badasme.jpg'
 })
 
 letsget = marvin.albums.create({
   title: "Let's Get It On",
   genre: "Soul",
   year: 1972,
-  image_url: 'https://66.media.tumblr.com/5b8d9ef328272bf3a70228fed1e17000/tumblr_pqg7t3L2Ej1vud73ko9_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/letsget.jpg'
 })
 
 figure = elliott.albums.create({
   title: 'Figure 8',
   genre: 'Alternative',
   year: 1999,
-  image_url: 'https://66.media.tumblr.com/efeae70827f57811e96c5a393280aa3b/tumblr_pqg7t3L2Ej1vud73ko3_400.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/figure.jpg'
 })
 
 creep = tune.albums.create({
   title: "I Can Feel You Creep Into My Private Life",
   genre: 'Alternative',
   year: 2017,
-  image_url: 'https://66.media.tumblr.com/81befb8b21b6b76e06f5cf40e700f48c/tumblr_pqg7t3L2Ej1vud73ko2_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/creep.jpg'
 })
 
 cheap = regina.albums.create({
   title: 'What We Saw From The Cheap Seats',
   genre: 'Alternative',
   year: 2011,
-  image_url: 'https://66.media.tumblr.com/6682eaf5482d4fa57ba0d7d7ee5310ea/tumblr_pqg7towvJ31vud73ko5_400.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/cheap.jpg'
 })
 
 dua_album = dua.albums.create({
   title: "Dua Lipa",
   genre: 'Pop',
   year: 2016,
-  image_url: 'https://66.media.tumblr.com/c3e82aa7289b920cab882c7a37ab6e1d/tumblr_pqdubhNjAt1vud73ko2_400.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/dua_album.jpg'
 })
 
 revolver = beatles.albums.create({
   title: 'Revolver',
   genre: 'Rock',
   year: 1965,
-  image_url: 'https://66.media.tumblr.com/738a0c14ee5238b29224ccdec93a34b5/tumblr_pqg7towvJ31vud73ko6_1280.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/revolver.jpg'
 })
 
 joanne = gaga.albums.create({
   title: 'Joanne',
   genre: 'Pop',
   year: 2015,
-  image_url: 'https://66.media.tumblr.com/cd052e0baf3f76cc7b64d4e8256b6ef7/tumblr_pqg7t3L2Ej1vud73ko8_1280.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/joanne.jpg'
 })
 
 oops = britney.albums.create({
   title: "Oops!... I Did It Again",
   genre: "Pop",
   year: 1999,
-  image_url: 'https://66.media.tumblr.com/51b9137d99127191b02fec4e162a932e/tumblr_pqduc6BOk31vud73ko7_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/oops.jpg'
 })
 
 sweet = ariana.albums.create({
   title: "Sweetener",
   genre: "Pop",
   year: 2017,
-  image_url: 'https://66.media.tumblr.com/0b4e2e2b5b8bdaffc1cb9720aea8f4aa/tumblr_pqducoOQAG1vud73ko2_400.png'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/sweet.jpg'
 })
 
 argue = cranberries.albums.create({
   title: "No Need To Argue",
   genre: "Alternative",
   year: 1993,
-  image_url: "https://66.media.tumblr.com/644deb6f59c18e6e3da1591d2f275c83/tumblr_pqduavefa41vud73ko4_400.jpg"
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/argue.jpg'
 })
 
 thriller = michael.albums.create({
   title: "Thriller",
   genre: "Pop",
   year: 1982,
-  image_url: 'https://66.media.tumblr.com/3789f02d47cb48080886ae874263f022/tumblr_pqducoOQAG1vud73ko6_500.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/thriller.jpg'
 })
 
 ten = pearl.albums.create({
   title: 'Ten',
   genre: 'Rock',
   year: 1990,
-  image_url: 'https://66.media.tumblr.com/59333d78d5ce814c17822c9f9428ee42/tumblr_pqg7towvJ31vud73ko3_400.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/ten.jpg'
 })
 
 unplugged = nirvana.albums.create({
   title: "MTV Unplugged in New York",
   genre: 'Alternative',
   year: 1993,
-  image_url: 'https://66.media.tumblr.com/22c53b2a458a3ede009431f6f0062227/tumblr_pqducoOQAG1vud73ko9_540.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/unplugged.jpg'
 })
 
 outer = toro.albums.create({
   title: "Outer Peace",
   genre: "Alternative",
   year: 2018,
-  image_url: 'https://66.media.tumblr.com/b57483926bc5b8a203297c0ce9a50e99/tumblr_pqducoOQAG1vud73ko7_500.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/outer.jpg'
 })
 
 smiths_album = smiths.albums.create({
   title: 'The Smiths',
   genre: 'Alternative',
   year: 1983,
-  image_url: 'https://66.media.tumblr.com/d007f6713b31922bbd8da1a6c30a3a20/tumblr_pqg7towvJ31vud73ko8_400.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/smiths_album.jpg'
 })
 
 fame = maluma.albums.create({
   title: 'F.A.M.E',
   genre: 'Latin',
   year: 2017,
-  image_url: 'https://66.media.tumblr.com/faab4f8e903dfb77e3a25798cf974a48/tumblr_pqduc6BOk31vud73ko4_400.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/fame.jpg'
 })
 
 nevermind = nirvana.albums.create({
   title: 'Nevermind',
   genre: 'Alternative',
   year: 1990,
-  image_url: 'https://66.media.tumblr.com/cd4ff673bbebfceef24b3e35e9d54c49/tumblr_pqfcpyajHc1vud73ko1_1280.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/nevermind.jpg'
 })
 
 blueprint = jayz.albums.create({
   title: 'The Blueprint',
   genre: 'Hip-Hop',
   year: 2000,
-  image_url: 'https://66.media.tumblr.com/16366c0202a03e7f7a15f4cb138d898e/tumblr_pqg7t3L2Ej1vud73ko1_1280.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/blueprint.jpg'
 })
 
 nights = metro.albums.create({
   title: 'Nights Out',
   genre: 'Electronic',
   year: 2008,
-  image_url: 'https://66.media.tumblr.com/9077961ba17a1d0898a238e491af8928/tumblr_pqgwvfkQ4b1vud73ko1_500.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/nights.jpg'
 })
 
 english = metro.albums.create({
   title: 'The English Riviera',
   genre: 'Electronic',
   year: 2010,
-  image_url: 'https://66.media.tumblr.com/3528ab36280c0422df43339b3e981a53/tumblr_pqdubhNjAt1vud73ko5_540.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/english.jpg'
 })
 
 whatsgoing = marvin.albums.create({
   title: "What's Going On",
   genre: 'Soul',
   year: 1970,
-  image_url: 'https://66.media.tumblr.com/d74e707503a459f85bb8aca0fd9e99bc/tumblr_pqg7t3L2Ej1vud73ko6_500.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/whatsgoing.jpg'
 })
 
 whokill = tune.albums.create({
   title: "W H O K I L L",
   genre: 'Alternative',
   year: 2010,
-  image_url: 'https://66.media.tumblr.com/4fe46323ebe6abf2b5f403909df6023e/tumblr_pqg7u2RsvO1vud73ko1_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/whokill.jpg'
 })
 
 anti = rihanna.albums.create({
   title: 'ANTI',
   genre: 'R&B',
   year: 2015,
-  image_url: 'https://66.media.tumblr.com/6740afa6a06b06eca3ae3c39fbef8ecb/tumblr_pqh9czxbur1vud73ko1_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/anti.jpg'
 })
 
 bestone = smiths.albums.create({
   title: 'The Best Of... Vol. 1',
   genre: 'Alternative',
   year: 1991,
-  image_url: 'https://66.media.tumblr.com/d7ff879281ce5e054808a57d2c827654/tumblr_pqg7towvJ31vud73ko9_400.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/bestone.jpg'
 })
 
 remember = regina.albums.create({
   title: "Remember Us To Life",
   genre: 'Alternative',
   year: 2015,
-  image_url: 'https://66.media.tumblr.com/310118934d248979a0fb30fe32c50e82/tumblr_pqg7towvJ31vud73ko1_400.png'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/remember.jpg'
 })
 
 mised = lauryn.albums.create({
   title: 'The Miseducation Of Lauryn Hill',
   genre: "R&B",
   year: 1997,
-  image_url: 'https://66.media.tumblr.com/2e4852fcd8ee3d203c740a7dce04a42a/tumblr_pqdubhNjAt1vud73ko9_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/mised.jpg'
 })
 
 queen = smiths.albums.create({
   title: 'The Queen Is Dead',
   genre: 'Rock',
   year: 1985,
-  image_url: 'https://66.media.tumblr.com/c86ce8d29500b283282fb97e738b7423/tumblr_pqg7towvJ31vud73ko4_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/queen.jpg'
 })
 
 exper = jimi.albums.create({
   title: 'Are You Experienced',
   genre: 'Rock',
   year: 1967,
-  image_url: "https://66.media.tumblr.com/db9cbfd1ef26d21440e76263e93e8fd9/tumblr_pqdubhNjAt1vud73ko6_1280.jpg"
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/exper.jpg'
 })
 
 phren = roots.albums.create({
   title: 'Phrenology',
   genre: 'Hip-Hop',
   year: 2001,
-  image_url: 'https://66.media.tumblr.com/724b3e551e68f612017c2d1f1296a481/tumblr_pqduc6BOk31vud73ko9_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/phren.jpg'
 })
 
 blitz = yeah.albums.create({
   title: "It's Blitz",
   genre: 'Alternative',
   year: 2008,
-  image_url: 'https://66.media.tumblr.com/2b20050df19efe2d5f786b135fc69364/tumblr_pqduavefa41vud73ko7_1280.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/blitz.jpg'
 })
 
 cominghome = leon.albums.create({
   title: 'Coming Home',
   genre: 'Soul',
   year: 2015,
-  image_url: 'https://66.media.tumblr.com/edc9c7c1f002853e099e45c91c329639/tumblr_pqduc6BOk31vud73ko1_400.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/cominghome.jpg'
 })
 
 trans = kraft.albums.create({
   title: "Trans Europe Express",
   genre: "Electronic",
   year: 1976,
-  image_url: 'https://66.media.tumblr.com/7fe9d4882e7d7529da159ff79e01ade0/tumblr_pqducoOQAG1vud73ko8_1280.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/trans.jpg'
 })
 
 outside = gin.albums.create({
   title: "Outside Looking In: The Best Of The Gin Blossoms",
   genre: 'Alternative',
   year: 1998,
-  image_url: 'https://66.media.tumblr.com/cc5233144ea91763026fbe59b430ba1f/tumblr_pqdubhNjAt1vud73ko7_500.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/outside.jpg'
 })
 
 falling = celine.albums.create({
   title: "Falling Into You",
   genre: "Pop",
   year: 1995,
-  image_url: "https://66.media.tumblr.com/645684383a8ab062a6695dd4bfd76370/tumblr_pqdubhNjAt1vud73ko1_400.jpg"
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/falling.jpg'
 })
 
 electric = vogue.albums.create({
   title: 'Electric Café',
   genre: 'R&B',
   year: 2017,
-  image_url: 'https://66.media.tumblr.com/55d89475d7bc0998381ce4750f833b6a/tumblr_pqdubhNjAt1vud73ko4_400.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/electric.jpg'
 })
 
 prayer = madonna.albums.create({
   title: 'Like A Prayer',
   genre: 'Pop',
   year: 1988,
-  image_url: 'https://66.media.tumblr.com/544e1f71e6293722395cfccff1f17fed/tumblr_pqduc6BOk31vud73ko3_500.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/prayer.jpg'
 })
 
 channel = frank.albums.create({
   title: 'channel ORANGE',
   genre: 'R&B',
   year: 2012,
-  image_url: 'https://66.media.tumblr.com/5132350b1202938f2d0c8ce384ff5f8b/tumblr_pqf73gwbp91vud73ko1_1280.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/channel.jpg'
 })
 
 swan = blood.albums.create({
   title: 'Negro Swan',
   genre: 'R&B',
   year: 2018,
-  image_url: 'https://66.media.tumblr.com/d84282eda49c4437225abb26a1765bc2/tumblr_pqducoOQAG1vud73ko1_540.png'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/swan.jpg'
 })
 
 selfportrait = dylan.albums.create({
   title: 'Self Portrait',
   genre: 'Folk',
   year: 1970,
-  image_url: 'https://66.media.tumblr.com/0e97ec0b8a940a9cb95f1cab1bd1bab6/tumblr_pqdubhNjAt1vud73ko3_400.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/selfportrait.jpg'
 })
 
 overgrown = blake.albums.create({
   title: 'Overgrown',
   genre: 'Alternative',
   year: 2013,
-  image_url: 'https://66.media.tumblr.com/ed722a6ca5d134c45081a42a64477e53/tumblr_pqduavefa41vud73ko6_640.jpg'
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/overgrown.jpg'
 })
 
 ### SONGS
 
-
-# asleep.songs.create([  
-#   { title: '!!!!!!!', duration: '0:14', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/1.mp3" },
-#   { title: 'bad guy', duration: '3:14', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/2.mp3" },
-#   { title: 'xanny', duration: '4:04', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/3.mp3" },
-#   { title: 'you should see me in a crown', duration: '3:01', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/4.mp3" },
-#   { title: 'all the good girls go to hell', duration: '2:49', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/5.mp3" },
-#   { title: 'wish you were gay', duration: '3:42', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/6.mp3" },
-#   { title: "when the party's over", duration: '3:16', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/7.mp3" },
-#   { title: '8', duration: '2:53', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/8.mp3"},
-#   { title: 'my strange addiction', duration: '3:00', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/9.mp3"},
-#   { title: 'bury a friend', duration: '3:13', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/10.mp3"},
-#   { title: 'ilomilo', duration: '2:36', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/11.mp3"},
-#   { title: 'listen before i go', duration: '4:03', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/12.mp3"},
-#   { title: 'i love you', duration: '4:52', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/13.mp3"},
-#   { title: 'goodbye', duration: '1:59', track_url: "https://s3.us-east-2.amazonaws.com/sparkify2019/asleep/14.mp3"}
-# ])
 
 yoshimi.songs.create([
   {title: "Fight Test", duration: "4:05", track_url: "https://sparkify2019.s3.us-east-2.amazonaws.com/yoshimi/1.mp3"},
@@ -1916,10 +1899,10 @@ overgrown.songs.create([
 
 #### SPARKIFY PLAYLISTS
 
-party = spark.playlists.create({title: 'Party Up!', image_url: 'https://66.media.tumblr.com/281ea889b137d2401f64074930e9154c/tumblr_pqkwaw6EdD1vud73ko1_500.png'})
-chill = spark.playlists.create({title: 'Chill Hits', image_url: 'https://66.media.tumblr.com/10cead22e649ce8527ba102040e9b8eb/tumblr_pqkwgaYLSV1vud73ko3_640.png'})
-bedroom = spark.playlists.create({title: 'Bedroom Jams', image_url: 'https://66.media.tumblr.com/196d8dddf6d23b2e618acb9721dd18e9/tumblr_pqkwgaYLSV1vud73ko1_400.png'})
-work = spark.playlists.create({title: "Workday Lounge", image_url: 'https://66.media.tumblr.com/1e2afcbad911bc08972265410d56a391/tumblr_pqkwgaYLSV1vud73ko2_640.png'})
+party = spark.playlists.create({title: 'Party Up!', image_url: 'https://sparkifyimages.s3.amazonaws.com/party.jpg'})
+chill = spark.playlists.create({title: 'Chill Hits', image_url: 'https://sparkifyimages.s3.amazonaws.com/chill.jpg'})
+bedroom = spark.playlists.create({title: 'Bedroom Jams', image_url: 'https://sparkifyimages.s3.amazonaws.com/bedroom.jpg'})
+work = spark.playlists.create({title: "Workday Lounge", image_url: 'https://sparkifyimages.s3.amazonaws.com/work.jpg'})
 
 party.songs << outer.songs[6]
 party.songs << mised.songs[4]
@@ -1946,9 +1929,9 @@ work.songs << rubber.songs[2]
 
 #### DEMO USER PLAYLISTS
 
-study = demo.playlists.create({title: 'Study Music', image_url: 'https://66.media.tumblr.com/e494f36def51bc1e72f9354386f57589/tumblr_pqc3esA8Lt1vud73ko2_1280.jpg'})
+study = demo.playlists.create({title: 'Study Music', image_url: 'https://sparkifyimages.s3.amazonaws.com/study.jpg'})
 demo.followed_playlists << study
-gym = demo.playlists.create({title: "Workout Music", image_url: 'https://66.media.tumblr.com/b57483926bc5b8a203297c0ce9a50e99/tumblr_pqducoOQAG1vud73ko7_500.jpg'})
+gym = demo.playlists.create({title: "Workout Music", image_url: 'https://sparkifyimages.s3.amazonaws.com/gym.jpg'})
 demo.followed_playlists << gym
 
 study.songs << asleep.songs[5]
@@ -1968,6 +1951,9 @@ demo.followed_artists << roots
 demo.followed_artists << sufjan
 demo.followed_artists << devendra
 demo.followed_artists << waits
+demo.followed_artists << lauryn
+demo.followed_artists << regina
+demo.followed_artists << brandy
 
 demo.followed_albums << yoshimi
 demo.followed_albums << outer

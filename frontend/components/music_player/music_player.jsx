@@ -83,7 +83,7 @@ class MusicPlayer extends React.Component {
 
     let song = this.state.currentSong;
 
-    let albumArt = <img src='https://66.media.tumblr.com/792fa57dd5110fe51e7d8f3208a17f40/tumblr_pqkwj8ErPL1vud73ko1_500.png' alt='' />
+    let albumArt = <img src='https://sparkifyimages.s3.amazonaws.com/blank.jpg' alt='' />
     if (song.title) {
       albumArt = <Link to={`/album/${song.albumId}`}><img src={song.image_url} alt={song.albumTitle} /></Link>
     }
