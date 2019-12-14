@@ -9,6 +9,7 @@ import { setCurrentSong, setQueue } from './../../actions/music_actions';
 class SongIndex extends React.Component {
   
   render() {
+    // debugger;
     let allSongs;
     if (this.props.allSongs) {
       allSongs = this.props.allSongs;
@@ -26,6 +27,9 @@ class SongIndex extends React.Component {
             indexType={this.props.indexType}
             setCurrentSong={this.props.setCurrentSong}
             allSongs={allSongs}
+            playlistId={this.props.playlistId}
+            playlistTitle={this.props.playlistTitle}
+            ownedPlaylist={this.props.ownedPlaylist}
           />)}
         </ul>
       </div>

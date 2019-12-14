@@ -18,7 +18,10 @@ class AddSongToPlaylist extends React.Component {
   }
 
   handleClick(playlistId) {
+    let that = this;
     return e => {
+      that;
+      // debugger;
       this.props.addPlaylistSong({ playlistId: playlistId, songId: this.props.songId })
         .then(() => this.props.closeModal());
     }
@@ -55,17 +58,20 @@ class AddSongToPlaylist extends React.Component {
         <ul className='addsong-idx'>
           {playlistLis}
         </ul>
+        <button id="new-playlist-button" onClick={this.props.closeModal}>CANCEL</button>
       </div>
     )
 
   }
 }
 
-const msp = state => {
-  return ({
+const msp = (state, ownProps) => {
+  ownProps;
+  // debugger;
+  return {
     playlists: Object.values(state.entities.playlists),
     songId: state.ui.modal.songId
-  })
+  }
 }
 
 const mdp = dispatch => {

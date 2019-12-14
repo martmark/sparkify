@@ -46,10 +46,17 @@ class PlaylistShow extends React.Component {
     let playlistImage = '';
     let songIndex = '';
     let playlistInfo = '';
-
+    // debugger
     if (playlist) {
       playlistTitle = <span className='album-show-album-title'>{playlist.title}</span>
-      songIndex = <div className='album-show-songs'><SongIndex songs={songs} indexType='playlist' /></div>
+      songIndex = <div className='album-show-songs'>
+        <SongIndex songs={songs} 
+          indexType='playlist' 
+          playlistId={playlist.id}
+          playlistTitle={playlist.title}
+          ownedPlaylist={playlist.userId == this.props.currentUserId}
+        />
+      </div>
       playlistImage = <div className='album-show-image'><img src={playlist.image_url} alt={playlist.title} /></div>
       playlistInfo = <span className='album-show-year'>by {playlist.authorName} • {playlist.trackCount} SONGS</span>
     }

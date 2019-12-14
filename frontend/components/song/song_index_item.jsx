@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from './../../actions/modal_actions';
+import { removeSongFromPlaylist } from './../../actions/playlist_actions';
 
 class SongIndexItem extends React.Component {
   constructor(props) {
@@ -12,6 +13,8 @@ class SongIndexItem extends React.Component {
     this.unfollowSong = this.unfollowSong.bind(this);
     this.playSong = this.playSong.bind(this);
     this.addToPlaylist = this.addToPlaylist.bind(this);
+    this.reveal = this.reveal.bind(this);
+    this.hideDropdown = this.hideDropdown.bind(this);
   }
 
   followSong() {
@@ -38,6 +41,16 @@ class SongIndexItem extends React.Component {
   addToPlaylist() {
     this.props.openModal({ songId: this.props.song.id, modalType: 'addsong' })
   }
+
+  reveal()  {
+    $(`#${this.props.song.id}`).removeClass('hidden');
+    $(document).on('click', this.hideDropdown);
+  };
+
+  hideDropdown() {
+    $(`#${this.props.song.id}`).addClass('hidden');
+    $(document).off('click', this.hideDropdown);
+  };
 
   render() {
     const { song, indexType} = this.props;
@@ -69,6 +82,19 @@ class SongIndexItem extends React.Component {
       </div>;
     }
 
+    let removeButton;
+    if (this.props.ownedPlaylist) {
+      removeButton = <li key={'aj38ch3'}>
+        <button onClick={() => this.props.removeSongFromPlaylist({
+            playlistId: this.props.playlistId, 
+            songId: song.id})
+          }
+        >
+          {`Remove from ${this.props.playlistTitle}`}
+        </button>
+      </li>
+    }
+
     let albumImage = '';
     if (indexType === 'artist') {
       albumImage = <div className='song-index-item-image'>
@@ -84,7 +110,16 @@ class SongIndexItem extends React.Component {
           <section className='song-index-item-top'>
             <span className='song-index-item-title'>{song.title}</span>
             <div className='song-index-item-buttons'>
-              {button}<span> • </span>{addSong}
+              <button onClick={this.reveal} className='songdropdown-btn'>•••</button>
+              <ul id={song.id} className="songdropdown hidden">
+                {removeButton}
+                <li key={1}>
+                  {button}
+                </li>
+                <li key={2}>
+                  {addSong}
+                </li>
+              </ul>
               <span className='song-duration'>{song.duration}</span>
             </div>
           </section>
@@ -99,7 +134,8 @@ class SongIndexItem extends React.Component {
 const mdp = dispatch => {
   return {
     openModal: modalInfo => dispatch(openModal(modalInfo)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    removeSongFromPlaylist: playlistSong => dispatch(removeSongFromPlaylist(playlistSong))
   }
 }
 

@@ -72,8 +72,36 @@
 .song-duration {
   // width: px;
   padding-left: 15px;
+  width: 30px; 
+  // align-items: right;
+  // justify-items: right;
 }
 
 .song-index-item-buttons {
   font-size: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.songdropdown {
+  position: absolute;
+  background-color: rgb(39,39,39);
+  right: 100px;
+  border: 1px solid black;
+
+  li {
+    padding: 4px;
+  }
+
+  li:hover {
+    color: rgb(30,167,73);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.songdropdown-btn:hover {
+  color: rgb(30,167,73);
 }
