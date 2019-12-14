@@ -34,6 +34,7 @@ class Api::PlaylistsController < ApplicationController
     @playlist = current_user.playlists.find(params[:id])
     if @playlist.update(playlist_params)
       @followed_playlist_ids = current_user.followed_playlist_ids
+      @followed_song_ids = current_user.followed_song_ids
       render :show
     end
   end
