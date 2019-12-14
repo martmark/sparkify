@@ -17,7 +17,7 @@ class SongIndex extends React.Component {
       allSongs = this.props.songs;
     }
     return(
-      <div>
+      <div className='song-idx-outer'>
         <ul className="song-index">
           {this.props.songs.map(song => <SongIndexItem 
             song={song} 

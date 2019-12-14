@@ -2,7 +2,7 @@
   // padding: 20px;
   // color: white;
   // // font-weight: 300;
-  // // width: 100%;
+  width: 100%;
   // margin: 0 30px;
   background: rbg(24,24,24);
   // height: 100%;
@@ -14,9 +14,13 @@
   padding: 10px;
 }
 
+.song-idx-outer {
+  width: 100%;
+}
+
 .song-index-item {
-  height: 60px;
-  max-height: 60px;
+  // height: 60px;
+  // max-height: 60px;
   display: flex;
   flex-direction: row;
   align-content: center;

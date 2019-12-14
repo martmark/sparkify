@@ -27,9 +27,11 @@ class SongSearch extends React.Component {
         </div>
       )
     } else {
-      return(
-        <div><h2>No results</h2></div>
-      )
+      return (
+        <div className="noresults-outer">
+          <h2 className="noresults">No results</h2>
+        </div>
+      );
     }
   }
 }
