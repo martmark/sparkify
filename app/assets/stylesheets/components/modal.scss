@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   color: white;
-  width: 250px;
+  min-width: 50vw;
   justify-content: center;
   align-items: center;
 }
@@ -35,7 +35,8 @@
 .playlist-form-buttons {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
+  width: 450px;
 }
 
 .playlist-form-input {
@@ -44,18 +45,17 @@
   background: rbg(39,39,39);
 }
 
-.playlist-form-input > label {
-  font-size: 12px;
-}
-
 .playlist-name-input {
   background-color: gray;
+  text-align: center;
+  // border-radius: 5%;
 }
 
-.playlist-input-label {
-  margin: 45%;
-}
+// .playlist-input-label {
+//   margin: 45%;
+// }
 
 .playlist-form-x {
-  font-size: 24px;
+  margin: 0 auto;
+  padding-bottom: 15px;
 }

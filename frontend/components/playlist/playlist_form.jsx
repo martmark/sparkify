@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createPlaylist } from './../../actions/playlist_actions';
 import { closeModal } from './../../actions/modal_actions';
+import { IconContext } from "react-icons";
+import { MdClose } from "react-icons/md";
 
 class PlaylistForm extends React.Component {
   constructor(props) {
@@ -21,23 +23,41 @@ class PlaylistForm extends React.Component {
   }
 
   render() {
-    return(
-      <div className='playlist-form-div'>
-        <button id='playlist-form-x' onClick={this.props.closeModal}>x</button>
+    return (
+      <div className="playlist-form-div">
+        <div className='playlist-form-x'>
+          <IconContext.Provider
+            value={{
+              className: "reacticon",
+              size: "1.75em"
+              // color: 'white'
+              // color: "rgb(30,167,73)"
+            }}
+          >
+            <MdClose onClick={this.props.closeModal} />
+          </IconContext.Provider>
+        </div>
         <form onSubmit={this.handleSubmit} className="playlist-form">
-          <div className='playlist-form-input'>
-            <label className='playlist-input-label'>Playlist Name</label>
-            <input type="text" value={this.state.title} className='playlist-name-input'
-              onChange={this.updateTitle} placeholder={'Start typing...'}
+          <div className="playlist-form-input">
+            <input
+              type="text"
+              value={this.state.title}
+              className="playlist-name-input"
+              onChange={this.updateTitle}
+              placeholder={"Playlist Name"}
             />
           </div>
         </form>
-        <div className='playlist-form-buttons'>
-          <button id='playlist-form-cancel' onClick={this.props.closeModal}>CANCEL</button>
-          <button id='playlist-form-submit' onClick={this.handleSubmit}>CREATE</button>
+        <div className="playlist-form-buttons">
+          <button id="new-playlist-button" onClick={this.props.closeModal}>
+            CANCEL
+          </button>
+          <button id="new-playlist-button" onClick={this.handleSubmit}>
+            CREATE
+          </button>
         </div>
       </div>
-    )
+    );
   }
 }
 

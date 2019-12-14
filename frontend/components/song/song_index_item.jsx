@@ -46,12 +46,12 @@ class SongIndexItem extends React.Component {
   }
 
   reveal()  {
-    $(`#${this.props.song.id}`).removeClass('hidden');
+    $(`#drop${this.props.song.id}`).removeClass('hidden');
     $(document).on('click', this.hideDropdown);
   };
 
   hideDropdown() {
-    $(`#${this.props.song.id}`).addClass('hidden');
+    $(`#drop${this.props.song.id}`).addClass('hidden');
     $(document).off('click', this.hideDropdown);
   };
 
@@ -107,7 +107,7 @@ class SongIndexItem extends React.Component {
 
     let removeButton;
     if (this.props.ownedPlaylist) {
-      removeButton = <li key={'aj38ch3'}>
+      removeButton = <li key={'aj38ch3'} className='song-idx-remove-btn'>
         <button onClick={() => this.props.removeSongFromPlaylist({
             playlistId: this.props.playlistId, 
             songId: song.id})
@@ -127,15 +127,23 @@ class SongIndexItem extends React.Component {
 
     return (
       <li className="song-index-item">
-        <div className='song-idx-list-icon'>
+        <div className="song-idx-list-icon">
           {musicNote}
           {playButton}
         </div>
         {albumImage}
-        <div className="song-index-item-details">
-          <section className="song-index-item-top">
-            <span className="song-index-item-title">{song.title}</span>
+        <div className='song-idx-item-info'>
+          <div className="song-index-item-details">
+            <section className="song-index-item-left">
+              <span className="song-index-item-title">{song.title}</span>
+              {artistAlbumInfo}
+            </section>
             <div className="song-index-item-buttons">
+              <ul id={`drop${song.id}`} className="songdropdown hidden">
+                {removeButton}
+                <li key={1}>{button}</li>
+                <li key={2}>{addSong}</li>
+              </ul>
               <IconContext.Provider
                 value={{
                   className: "song-index-item-add reacticon",
@@ -144,15 +152,9 @@ class SongIndexItem extends React.Component {
               >
                 <IoMdAddCircle onClick={this.reveal} />
               </IconContext.Provider>
-              <ul id={song.id} className="songdropdown hidden">
-                {removeButton}
-                <li key={1}>{button}</li>
-                <li key={2}>{addSong}</li>
-              </ul>
               <span className="song-duration">{song.duration}</span>
             </div>
-          </section>
-          {artistAlbumInfo}
+          </div>
         </div>
       </li>
     );

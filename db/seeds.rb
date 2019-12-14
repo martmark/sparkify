@@ -1965,9 +1965,9 @@ work.songs << rubber.songs[2]
 
 #### DEMO USER PLAYLISTS
 
-study = demo.playlists.create({title: 'Study Music', image_url: 'https://sparkifyimages.s3.amazonaws.com/study.jpg'})
+study = demo.playlists.create({title: 'Study Music', image_url: 'https://sparkifyimages.s3.amazonaws.com/asleep.jpg'})
 demo.followed_playlists << study
-gym = demo.playlists.create({title: "Workout Music", image_url: 'https://sparkifyimages.s3.amazonaws.com/gym.jpg'})
+gym = demo.playlists.create({title: "Workout Music", image_url: 'https://sparkifyimages.s3.amazonaws.com/outer.jpg'})
 demo.followed_playlists << gym
 
 study.songs << asleep.songs[5]
@@ -1990,12 +1990,21 @@ demo.followed_artists << waits
 demo.followed_artists << lauryn
 demo.followed_artists << regina
 demo.followed_artists << brandy
+demo.followed_artists << rihanna
+demo.followed_artists << marvin
+demo.followed_artists << madonna
 
 demo.followed_albums << yoshimi
 demo.followed_albums << outer
 demo.followed_albums << falling
 demo.followed_albums << vibras
 demo.followed_albums << blonde
+demo.followed_albums << sweet
+demo.followed_albums << round
+demo.followed_albums << threefeet
+demo.followed_albums << rubber
+demo.followed_albums << black
+
 
 demo.followed_songs << selfportrait.songs[14]
 demo.followed_songs << mised.songs[2]
