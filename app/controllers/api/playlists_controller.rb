@@ -30,6 +30,15 @@ class Api::PlaylistsController < ApplicationController
     render :show
   end
 
+  def update
+    @playlist = current_user.playlists.find(params[:id])
+    @playlist.title = params[:playlist][:title]
+    if @playlist.save
+      @followed_playlist_ids = current_user.followed_playlist_ids
+      render :show
+    end
+  end
+
   def follow
     @playlist = Playlist.find(params[:id])
     current_user.followed_playlists << @playlist unless current_user.followed_playlists.include?(@playlist)

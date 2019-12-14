@@ -1,6 +1,7 @@
 import React from 'react';
 import PlaylistForm from './../playlist/playlist_form';
 import AddSongToPlaylistIndex from './../playlist/add_song_playlist_index.jsx';
+import EditPlaylistForm from './../playlist/edit_playlist_form';
 
 class Modal extends React.Component {
 
@@ -16,6 +17,9 @@ class Modal extends React.Component {
         break;
       case 'addsong':
         component = <AddSongToPlaylistIndex />;
+        break;
+      case 'editPlaylist':
+        component = <EditPlaylistForm />;
         break;
       default:
         return null;

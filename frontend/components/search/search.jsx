@@ -28,7 +28,7 @@ class Search extends React.Component {
     return (
       <div className='search-window'>
         <div className='search-form'>
-          <input type="text" value={this.state.searchTerm} placeholder='Start typing...' onChange={this.updateSearchTerm} />
+          <input type="text" value={this.state.searchTerm} placeholder='Start typing here...' onChange={this.updateSearchTerm} />
         </div>
         {searchResults}
       </div>

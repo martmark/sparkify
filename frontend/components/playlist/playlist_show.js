@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchPlaylist } from './../../actions/playlist_actions';
 import { setLoadingFalse, setLoadingTrue } from './../../actions/loading_actions';
+import { openModal } from "./../../actions/modal_actions";
 import React from 'react';
 import SongIndex from '../song/song_index';
 import { followPlaylist, unfollowPlaylist } from "./../../util/playlist_api_util";
@@ -18,6 +19,7 @@ class PlaylistShow extends React.Component {
     this.deletePlaylist = this.deletePlaylist.bind(this);
     this.reveal = this.reveal.bind(this);
     this.hideDropdown = this.hideDropdown.bind(this);
+    this.editPlaylist = this.editPlaylist.bind(this);
   }
 
   componentDidMount() {
@@ -71,6 +73,10 @@ class PlaylistShow extends React.Component {
     $("#playlistdropdown").addClass("hidden");
     $("#revealcog").removeClass("hidden");
     $(document).off("click", this.hideDropdown);
+  }
+
+  editPlaylist(e) {
+    this.props.openModal({ modalType: 'editPlaylist', playlist: this.props.playlist })
   }
 
   render() {
@@ -155,10 +161,10 @@ class PlaylistShow extends React.Component {
             {button}
             <ul id="playlistdropdown" className="playlistdropdown hidden">
               <li key={1}>
-                <button onClick={this.deletePlaylist}>Delete Playlist</button>
+                <button onClick={this.editPlaylist}>Edit Playlist</button>
               </li>
               <li key={2}>
-                <span>Coming Soon</span>
+                <button onClick={this.deletePlaylist}>Delete Playlist</button>
               </li>
             </ul>
           </div>
@@ -193,7 +199,8 @@ const mdp = dispatch => {
     setLoadingFalse: () => dispatch(setLoadingFalse()),
     followPlaylist: id => followPlaylist(id),
     unfollowPlaylist: id => unfollowPlaylist(id),
-    deletePlaylist: id => dispatch(deletePlaylist(id))
+    deletePlaylist: id => dispatch(deletePlaylist(id)),
+    openModal: modalInfo => dispatch(openModal(modalInfo))
   };
 };
 
