@@ -2,6 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { togglePlay } from './../../actions/music_actions';
 import {Link} from 'react-router-dom';
+import { IconContext } from "react-icons";
+import {
+  MdPlayCircleOutline,
+  MdPauseCircleOutline,
+  MdSkipNext,
+  MdSkipPrevious
+} from "react-icons/md";
 
 class MusicPlayer extends React.Component {
   constructor(props) {
@@ -38,6 +45,9 @@ class MusicPlayer extends React.Component {
   }
 
   play() {
+    if (this.state.queue.length == 0) {
+      return;
+    }
     this.setState({ playing: true });
     this.refs.musicPlayer.play();
   }
@@ -76,9 +86,21 @@ class MusicPlayer extends React.Component {
 
     let button;
     if (this.state.playing) {
-      button = <i className="far fa-pause-circle" onClick={this.pause}></i>;
+      button = (
+        <IconContext.Provider
+          value={{ className: "play-icon reacticon", size: "3em" }}
+        >
+          <MdPauseCircleOutline onClick={this.pause} />
+        </IconContext.Provider>
+      );
     } else {
-      button = <i className="far fa-play-circle" onClick={this.play}></i>;
+      button = (
+        <IconContext.Provider
+          value={{ className: "play-icon reacticon", size: "3em" }}
+        >
+          <MdPlayCircleOutline onClick={this.play} />
+        </IconContext.Provider>
+      );
     }
 
     let song = this.state.currentSong;
@@ -89,27 +111,38 @@ class MusicPlayer extends React.Component {
     }
 
     return (
-      <div className='music-player'>
-        <div className='music-player-song-info'>
-          <div className='music-player-album-image'>
-            {albumArt}
-          </div>
-          <div className='music-player-text-info'>
-            <span className='mp-track-title'>
+      <div className="music-player">
+        <div className="music-player-song-info">
+          <div className="music-player-album-image">{albumArt}</div>
+          <div className="music-player-text-info">
+            <span className="mp-track-title">
               <Link to={`/album/${song.albumId}`}>{song.title}</Link>
             </span>
-            <span className='mp-artist-name'>
+            <span className="mp-artist-name">
               <Link to={`/artist/${song.artistId}`}>{song.artistName}</Link>
             </span>
           </div>
         </div>
-        <div className='music-player-controls'>
-          <i className="fas fa-step-backward" onClick={this.previous}></i>
-          <div className='play-pause'>{button}</div>
-          <i className="fas fa-step-forward" onClick={this.next}></i>
+        <div className="music-player-controls">
+          <IconContext.Provider
+            value={{ className: "play-icon reacticon", size: "2em" }}
+          >
+            <MdSkipPrevious onClick={this.previous} />
+          </IconContext.Provider>
+          <div className="play-pause">{button}</div>
+          <IconContext.Provider
+            value={{ className: "play-icon reacticon", size: "2em" }}
+          >
+            <MdSkipNext onClick={this.next} />
+          </IconContext.Provider>
         </div>
-        <div className='mp-volume-control'></div>
-        <audio src={this.state.currentSong.track_url} autoPlay={this.state.playing} preload="none" ref="musicPlayer"></audio>
+        <div className="mp-volume-control"></div>
+        <audio
+          src={this.state.currentSong.track_url}
+          autoPlay={this.state.playing}
+          preload="none"
+          ref="musicPlayer"
+        ></audio>
       </div>
     );
   }

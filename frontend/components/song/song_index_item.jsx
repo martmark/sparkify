@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from './../../actions/modal_actions';
 import { removeSongFromPlaylist } from './../../actions/playlist_actions';
+import { IconContext } from "react-icons";
+import { MdPlayArrow, MdMusicNote } from "react-icons/md";
+import { IoMdAddCircle } from "react-icons/io";
 
 class SongIndexItem extends React.Component {
   constructor(props) {
@@ -68,6 +71,26 @@ class SongIndexItem extends React.Component {
 
     let addSong = <button onClick={this.addToPlaylist}>Add to Playlist</button>;
 
+    let musicNote = (
+      <IconContext.Provider
+        value={{ className: "song-index-item-note reacticon", size: "1.5em" }}
+      >
+        <MdMusicNote />
+      </IconContext.Provider>
+    );
+
+    let playButton = (
+      <IconContext.Provider
+        value={{
+          className: "song-index-item-play reacticon",
+          size: "1.5em",
+          color: "rgb(30,167,73)"
+        }}
+      >
+        <MdPlayArrow onClick={this.playSong} />
+      </IconContext.Provider>
+    );
+
 
     let artistAlbumInfo = '';
     if (indexType === 'collection' || indexType === 'playlist' || indexType === 'browse' || indexType === 'search') {
@@ -104,23 +127,27 @@ class SongIndexItem extends React.Component {
 
     return (
       <li className="song-index-item">
-        <button onClick={this.playSong}>play</button>
+        {musicNote}
+        {playButton}
         {albumImage}
-        <div className='song-index-item-details'>
-          <section className='song-index-item-top'>
-            <span className='song-index-item-title'>{song.title}</span>
-            <div className='song-index-item-buttons'>
-              <button onClick={this.reveal} className='songdropdown-btn'>•••</button>
+        <div className="song-index-item-details">
+          <section className="song-index-item-top">
+            <span className="song-index-item-title">{song.title}</span>
+            <div className="song-index-item-buttons">
+              <IconContext.Provider
+                value={{
+                  className: "song-index-item-add reacticon",
+                  size: "1.25em"
+                }}
+              >
+                <IoMdAddCircle onClick={this.reveal} />
+              </IconContext.Provider>
               <ul id={song.id} className="songdropdown hidden">
                 {removeButton}
-                <li key={1}>
-                  {button}
-                </li>
-                <li key={2}>
-                  {addSong}
-                </li>
+                <li key={1}>{button}</li>
+                <li key={2}>{addSong}</li>
               </ul>
-              <span className='song-duration'>{song.duration}</span>
+              <span className="song-duration">{song.duration}</span>
             </div>
           </section>
           {artistAlbumInfo}

@@ -50,12 +50,6 @@
   padding-right: 4px;
 }
 
-
-
-.song-index > li:hover {
-  background: rgba(0,0,0,0.5);
-}
-
 .song-index-item-image {
   padding-left: 10px;
 }
@@ -71,10 +65,12 @@
 
 .song-duration {
   // width: px;
-  padding-left: 15px;
-  width: 30px; 
+  // padding-left: 25px;
+  width: 40px; 
   // align-items: right;
-  // justify-items: right;
+  // justify-items: right;3
+  display: flex;
+  justify-content: flex-end;
 }
 
 .song-index-item-buttons {
@@ -86,7 +82,7 @@
 .songdropdown {
   position: absolute;
   background-color: rgb(39,39,39);
-  right: 100px;
+  right: 145px;
   border: 1px solid black;
 
   li {
@@ -104,4 +100,24 @@
 
 .songdropdown-btn:hover {
   color: rgb(30,167,73);
+}
+
+.song-index-item-play {
+  display: none;
+}
+
+.song-index > li:hover {
+  background: rgba(0,0,0,0.5);
+  
+  .song-index-item-play {
+    display: block;
+  }
+
+  .song-index-item-note {
+    display: none;
+  }
+
+  .song-index-item-add {
+    color: rgb(30,167,73);
+  }
 }

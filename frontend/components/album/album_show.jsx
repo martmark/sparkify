@@ -6,6 +6,8 @@ import { fetchAlbum } from './../../actions/album_actions';
 import { followAlbum, unfollowAlbum } from './../../util/album_api_util';
 import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
 import { setCurrentSong, setQueue } from './../../actions/music_actions';
+import { IconContext } from "react-icons";
+import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 
 
 class AlbumShow extends React.Component {
@@ -73,9 +75,19 @@ class AlbumShow extends React.Component {
     
     let button = '';
     if (!this.state.followed) {
-      button = <i className="far fa-heart" onClick={this.followAlbum}></i>
+      button = (
+        <IconContext.Provider value={{ className: "custom-icon reacticon", size: '3em' }}>
+          <IoMdHeartEmpty onClick={this.followAlbum} />
+        </IconContext.Provider>
+      );
     } else {
-      button = <i className="fas fa-heart" onClick={this.unfollowAlbum}></i>;
+      button = (
+        <IconContext.Provider
+          value={{ className: "heart-icon reacticon", size: "3em" }}
+        >
+          <IoMdHeart onClick={this.unfollowAlbum} />
+        </IconContext.Provider>
+      );
     }
 
     let albumArtistName = '';
