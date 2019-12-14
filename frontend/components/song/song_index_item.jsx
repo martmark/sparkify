@@ -83,7 +83,7 @@ class SongIndexItem extends React.Component {
       <IconContext.Provider
         value={{
           className: "song-index-item-play reacticon",
-          size: "1.5em",
+          size: "1.75em",
           color: "rgb(30,167,73)"
         }}
       >
@@ -127,8 +127,10 @@ class SongIndexItem extends React.Component {
 
     return (
       <li className="song-index-item">
-        {musicNote}
-        {playButton}
+        <div className='song-idx-list-icon'>
+          {musicNote}
+          {playButton}
+        </div>
         {albumImage}
         <div className="song-index-item-details">
           <section className="song-index-item-top">

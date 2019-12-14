@@ -15,9 +15,19 @@
 }
 
 .song-index-item {
+  height: 60px;
   display: flex;
   flex-direction: row;
+  align-content: center;
 }
+
+.song-idx-list-icon {
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .song-index-item-details {
   width: 100%;
   padding-left: 10px;
