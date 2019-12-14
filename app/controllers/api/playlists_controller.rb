@@ -2,6 +2,7 @@ class Api::PlaylistsController < ApplicationController
   def index
     @followed_playlist_ids = current_user.followed_playlist_ids
     @playlists = current_user.followed_playlists if params[:fetchType] == 'collection'
+    @playlists = current_user.playlists if params[:fetchType] == 'addsong'
     if params[:fetchType] == 'browse'
       @playlists = Playlist.all.reject { |playlist| current_user.followed_playlists.include?(playlist) }
     end

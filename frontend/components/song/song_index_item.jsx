@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { openModal, closeModal } from './../../actions/modal_actions';
 
 class SongIndexItem extends React.Component {
   constructor(props) {
@@ -9,6 +11,7 @@ class SongIndexItem extends React.Component {
     this.followSong = this.followSong.bind(this);
     this.unfollowSong = this.unfollowSong.bind(this);
     this.playSong = this.playSong.bind(this);
+    this.addToPlaylist = this.addToPlaylist.bind(this);
   }
 
   followSong() {
@@ -32,10 +35,14 @@ class SongIndexItem extends React.Component {
     });
   }
 
+  addToPlaylist() {
+    this.props.openModal({ songId: this.props.song.id, modalType: 'addsong' })
+  }
+
   render() {
     const { song, indexType} = this.props;
 
-    let button = '';
+    let button;
     if (!this.state.saved) {
       if (indexType === 'collection') {
         return null;
@@ -45,6 +52,9 @@ class SongIndexItem extends React.Component {
     } else {
       button = <button onClick={this.unfollowSong}>Unfollow Song</button>;
     }
+
+    let addSong = <button onClick={this.addToPlaylist}>Add to Playlist</button>;
+
 
     let artistAlbumInfo = '';
     if (indexType === 'collection' || indexType === 'playlist' || indexType === 'browse' || indexType === 'search') {
@@ -74,7 +84,7 @@ class SongIndexItem extends React.Component {
           <section className='song-index-item-top'>
             <span className='song-index-item-title'>{song.title}</span>
             <div className='song-index-item-buttons'>
-              {button}
+              {button}<span> • </span>{addSong}
               <span className='song-duration'>{song.duration}</span>
             </div>
           </section>
@@ -86,6 +96,11 @@ class SongIndexItem extends React.Component {
 }
 
 
+const mdp = dispatch => {
+  return {
+    openModal: modalInfo => dispatch(openModal(modalInfo)),
+    closeModal: () => dispatch(closeModal())
+  }
+}
 
-
-export default SongIndexItem;
+export default connect(null, mdp)(SongIndexItem);

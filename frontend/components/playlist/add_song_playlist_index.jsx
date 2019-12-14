@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import { fetchPlaylists } from './../../actions/playlist_actions';
-import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
+// import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
 import { addPlaylistSong } from './../../util/playlist_song_api_util';
 import React from 'react';
+import { closeModal } from './../../actions/modal_actions';
 
 class AddSongToPlaylist extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class AddSongToPlaylist extends React.Component {
   handleClick(playlistId) {
     return e => {
       this.props.addPlaylistSong({ playlistId: playlistId, songId: this.props.songId })
-        .then(() => this.props.closePlaylistModal());
+        .then(() => this.props.closeModal());
     }
   }
 
@@ -65,14 +66,16 @@ class AddSongToPlaylist extends React.Component {
 const msp = state => {
   return ({
     playlists: Object.values(state.entities.playlists),
-    loading: state.ui.loading.status
+    loading: state.ui.loading.status,
+    songId: state.ui.modal.songId
   })
 }
 
 const mdp = dispatch => {
   return ({
     fetchPlaylists: () => dispatch(fetchPlaylists({ fetchType: 'addsong' })),
-    addPlaylistSong: playlistSong => dispatch(addPlaylistSong(playlistSong))
+    addPlaylistSong: playlistSong => addPlaylistSong(playlistSong),
+    closeModal: () => dispatch(closeModal())
   })
 }
 
