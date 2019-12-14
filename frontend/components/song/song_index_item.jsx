@@ -60,10 +60,10 @@ class SongIndexItem extends React.Component {
       if (indexType === 'collection') {
         return null;
       } else {
-        button = <button onClick={this.followSong}>Save Song</button>;
+        button = <button onClick={this.followSong}>Add to Library</button>;
       }
     } else {
-      button = <button onClick={this.unfollowSong}>Unfollow Song</button>;
+      button = <button onClick={this.unfollowSong}>Remove from Libary</button>;
     }
 
     let addSong = <button onClick={this.addToPlaylist}>Add to Playlist</button>;
