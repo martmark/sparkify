@@ -23,7 +23,7 @@
 }
 
 .song-idx-list-icon {
-  width: 30px;
+  width: 35px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,6 +55,7 @@
 .song-artist-info {
   font-size: 12px;
   display: flex;
+  // justify-content: center;
   width: 100%;
 }
 
@@ -63,13 +64,23 @@
 }
 
 .song-index-item-image {
-  padding-left: 10px;
+  width: 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 0 5px;
+  margin-bottom: 5px;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
 }
 
-.song-index-item-image > img {
-  height: 50px;
-  width: 50px;  
-}
+
 
 .song-index-item > button {
   color: green;

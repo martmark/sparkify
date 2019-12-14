@@ -118,11 +118,15 @@ class SongIndexItem extends React.Component {
       </li>
     }
 
-    let albumImage = '';
+    let albumImage;
     if (indexType === 'artist') {
-      albumImage = <div className='song-index-item-image'>
-        <img src={song.image_url} alt={song.albumName} />
-      </div>
+      albumImage = (
+        <div className="song-index-item-image">
+          <Link to={`/album/${song.albumId}`}>
+            <img src={song.image_url} alt={song.albumName} />
+          </Link>
+        </div>
+      );
     }
 
     return (
