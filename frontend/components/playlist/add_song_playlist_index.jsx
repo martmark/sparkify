@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchPlaylists } from './../../actions/playlist_actions';
+import { fetchCurrentUserPlaylists } from './../../actions/playlist_actions';
 // import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
 import { addPlaylistSong } from './../../util/playlist_song_api_util';
 import React from 'react';
@@ -72,7 +72,7 @@ const msp = (state) => {
 
 const mdp = dispatch => {
   return ({
-    fetchPlaylists: () => dispatch(fetchPlaylists({ fetchType: 'addsong' })),
+    fetchPlaylists: () => dispatch(fetchCurrentUserPlaylists({ fetchType: 'addsong' })),
     addPlaylistSong: playlistSong => addPlaylistSong(playlistSong),
     closeModal: () => dispatch(closeModal())
   })

@@ -4,6 +4,7 @@ import * as PlaylistSongApiUtil from './../util/playlist_song_api_util';
 export const RECEIVE_PLAYLISTS = 'RECEIVE_PLAYLISTS';
 export const RECEIVE_PLAYLIST = 'RECEIVE_PLAYLIST';
 export const REMOVE_PLAYLIST = 'REMOVE_PLAYLIST';
+export const RECEIVE_MODAL_PLAYLISTS = 'RECEIVE_MODAL_PLAYLISTS';
 
 const receivePlaylists = playlists => {
   return({
@@ -19,6 +20,13 @@ const receivePlaylist = payload => {
   })
 }
 
+const receiveModalPlaylists = playlists => {
+  return {
+    type: RECEIVE_MODAL_PLAYLISTS,
+    playlists
+  }
+}
+
 const removePlaylist = playlistId => {
   return({
     type: REMOVE_PLAYLIST,
@@ -29,6 +37,12 @@ const removePlaylist = playlistId => {
 export const fetchPlaylists = (fetchType) => dispatch => {
   return PlaylistAPIUtil.fetchPlaylists(fetchType).then(playlists => {
     return dispatch(receivePlaylists(playlists))
+  })
+}
+
+export const fetchCurrentUserPlaylists = (fetchType) => dispatch => {
+  return PlaylistAPIUtil.fetchPlaylists(fetchType).then(playlists => {
+    return dispatch(receiveModalPlaylists(playlists))
   })
 }
 
