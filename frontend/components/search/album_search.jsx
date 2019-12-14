@@ -6,10 +6,12 @@ import AlbumIndex from './../album/album_index';
 class AlbumSearch extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { loading: true };
   }
 
   componentDidMount() {
     this.props.fetchAlbums({ fetchType: 'search', searchTerm: this.props.searchTerm })
+      .then(() => this.setState({ loading: false}));
   }
 
   componentDidUpdate(prevProps) {
@@ -20,6 +22,11 @@ class AlbumSearch extends React.Component {
 
   render() {
     if (!this.props.searchTerm) return null;
+
+    if (this.state.loading) {
+      return null;
+    }
+
     if (this.props.albums.length > 0) {
       return (
         <div className='search-album-index'>

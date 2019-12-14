@@ -6,10 +6,12 @@ import SongIndex from './../song/song_index';
 class SongSearch extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { loading: true }
   }
 
   componentDidMount() {
     this.props.fetchSongs({fetchType: 'search', searchTerm: this.props.searchTerm})
+      .then(() => this.setState({ loading: false }));
   }
 
   componentDidUpdate(prevProps) {
@@ -20,6 +22,11 @@ class SongSearch extends React.Component {
 
   render() {
     if (!this.props.searchTerm) return null;
+
+    if (this.state.loading) {
+      return null;
+    }
+
     if (this.props.songs.length > 0) {
       return(
         <div className='search-song-index'>
