@@ -32,8 +32,7 @@ class Api::PlaylistsController < ApplicationController
 
   def update
     @playlist = current_user.playlists.find(params[:id])
-    @playlist.title = params[:playlist][:title]
-    if @playlist.save
+    if @playlist.update(playlist_params)
       @followed_playlist_ids = current_user.followed_playlist_ids
       render :show
     end
