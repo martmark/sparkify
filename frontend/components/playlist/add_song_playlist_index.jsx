@@ -51,12 +51,10 @@ class AddSongToPlaylist extends React.Component {
     })
 
     return (
-      <div className="modal-bg" onClick={this.props.closePlaylistModal}>
-        <div className="modal-inner" onClick={e => e.stopPropagation()}>
-          <ul className='addsong-idx'>
-            {playlistLis}
-          </ul>
-        </div>
+      <div className="addsong-idx-outer">
+        <ul className='addsong-idx'>
+          {playlistLis}
+        </ul>
       </div>
     )
 
@@ -66,7 +64,6 @@ class AddSongToPlaylist extends React.Component {
 const msp = state => {
   return ({
     playlists: Object.values(state.entities.playlists),
-    loading: state.ui.loading.status,
     songId: state.ui.modal.songId
   })
 }
