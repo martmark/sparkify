@@ -6,11 +6,15 @@ class Settings extends React.Component {
   }
 
   render() {
-    return(
-      <div className='account-settings'>
-        <button className="logout-button" onClick={this.props.logout}>Log Out</button>
+    return (
+      <div className="account-settings">
+        <div className="settings-inner">
+          <button className="logout-button" onClick={this.props.logout}>
+            LOGOUT
+          </button>
+        </div>
       </div>
-    )
+    );
   }
 }
 

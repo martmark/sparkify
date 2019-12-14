@@ -6,6 +6,8 @@ import SongIndex from './../song/song_index';
 import AlbumIndex from './../album/album_index';
 import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
 import { followArtist, unfollowArtist } from './../../util/artist_api_util';
+import { IconContext } from "react-icons";
+import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 
 class ArtistShow extends React.Component {
   constructor(props) {
@@ -79,11 +81,23 @@ class ArtistShow extends React.Component {
       )
     }
 
-    let button = '';
+    let button;
     if (!this.state.followed) {
-      button = <button onClick={this.followArtist}>FOLLOW</button>;
+      button = (
+        <IconContext.Provider
+          value={{ className: "custom-icon reacticon", size: "3em" }}
+        >
+          <IoMdHeartEmpty onClick={this.followArtist} />
+        </IconContext.Provider>
+      );
     } else {
-      button = <button onClick={this.unfollowArtist}>UNFOLLOW</button>;
+      button = (
+        <IconContext.Provider
+          value={{ className: "heart-icon reacticon", size: "3em" }}
+        >
+          <IoMdHeart onClick={this.unfollowArtist} />
+        </IconContext.Provider>
+      );
     }
 
     let artistName = '';

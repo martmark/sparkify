@@ -6,6 +6,7 @@ import {
   MdSearch,
   MdLibraryMusic
 } from "react-icons/md";
+import { FiUser } from "react-icons/fi";
 
 
 class mainNav extends React.Component {
@@ -87,9 +88,35 @@ class mainNav extends React.Component {
           </ul>
         </section>
         <span className="main-nav-username">
-          <Link to={"/settings/account"}>
+          <ul>
+            <li key={3} className="main-nav-link-outer">
+              <NavLink
+                className="main-navlink"
+                activeClassName="mn-active"
+                to={"/settings/account"}
+              >
+                <div className="main-nav-link-inner">
+                  <div className="main-nav-icon">
+                    <IconContext.Provider
+                      value={{
+                        className: "main-nav-icon-inner reacticon",
+                        size: "1.5em"
+                      }}
+                    >
+                      <FiUser />
+                    </IconContext.Provider>
+                  </div>
+                  <span className="main-nav-link-title">
+                    {this.props.currentUser.username}
+                  </span>
+                </div>
+              </NavLink>
+            </li>
+          </ul>
+
+          {/* <Link to={"/settings/account"}>
             {this.props.currentUser.username}
-          </Link>
+          </Link> */}
         </span>
       </div>
     );

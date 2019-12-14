@@ -75,8 +75,8 @@ html {
 }
 
 .main-nav-username {
-  padding: 30px;
-  margin-bottom: 90px;
+  // padding: 30px;
+  margin-bottom: 120px;
 }
 
 .main-nav-link-inner {
@@ -185,4 +185,38 @@ html {
 
 .reacticon {
   cursor: pointer;
+}
+
+.account-settings {
+  margin-left: 230px;
+  // margin-bottom: 90px;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+.settings-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 90px;
+  box-sizing: border-box;
+}
+
+.logout-button {
+  margin: auto;
+   background: rgb(30,167,73);
+  height: 30px;
+  // margin: 30px auto;
+  width: 140px;
+  border-radius: 30px;
+  font-family: Circular, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  transition: 0.3s;
+  color: white;
+  
+  text-align: center;
 }
