@@ -26,7 +26,8 @@ class AddSongToPlaylist extends React.Component {
   }
 
   render() {
-    const { playlists } = this.props;
+    const { playlistsObject } = this.props;
+    
 
     if (this.state.loading) {
       return (
@@ -41,6 +42,9 @@ class AddSongToPlaylist extends React.Component {
         </div>
       )
     }
+
+    // debugger;
+    let playlists = Object.values(playlistsObject);
 
     let playlistLis = playlists.map(playlist => {
       return (
@@ -64,8 +68,9 @@ class AddSongToPlaylist extends React.Component {
 }
 
 const msp = (state) => {
+  // debugger;
   return {
-    playlists: Object.values(state.entities.playlists),
+    playlistsObject: state.ui.modal.playlists,
     songId: state.ui.modal.songId
   }
 }

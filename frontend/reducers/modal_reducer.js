@@ -9,7 +9,7 @@ const modalReducer = (state = {}, action) => {
     case CLOSE_MODAL:
       return {modalType: null};
     case RECEIVE_MODAL_PLAYLISTS:
-      let newState = Object.assign({}, state, action.playlists);
+      let newState = Object.assign({}, state, { playlists: action.playlists });
       return newState;
     default:
       return state;
