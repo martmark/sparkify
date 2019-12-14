@@ -7,7 +7,7 @@ import SongIndex from '../song/song_index';
 import { followPlaylist, unfollowPlaylist } from "./../../util/playlist_api_util";
 import { deletePlaylist } from './../../actions/playlist_actions';
 import { IconContext } from "react-icons";
-import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
+import { IoMdHeartEmpty, IoMdHeart, IoIosCog } from "react-icons/io";
 
 class PlaylistShow extends React.Component {
   constructor(props) {
@@ -16,6 +16,8 @@ class PlaylistShow extends React.Component {
     this.followPlaylist = this.followPlaylist.bind(this);
     this.unfollowPlaylist = this.unfollowPlaylist.bind(this);
     this.deletePlaylist = this.deletePlaylist.bind(this);
+    this.reveal = this.reveal.bind(this);
+    this.hideDropdown = this.hideDropdown.bind(this);
   }
 
   componentDidMount() {
@@ -40,18 +42,35 @@ class PlaylistShow extends React.Component {
 
   followPlaylist() {
     // let id = this.props.playlist.id;
-    this.props.followPlaylist(this.props.playlist.id).then(() => this.setState({ followed: true }));
+    this.props
+      .followPlaylist(this.props.playlist.id)
+      .then(() => this.setState({ followed: true }));
   }
 
   unfollowPlaylist() {
     let id = this.props.playlist.id;
-    this.props.unfollowPlaylist(id).then(() => this.setState({ followed: false }));
+    this.props
+      .unfollowPlaylist(id)
+      .then(() => this.setState({ followed: false }));
   }
 
   deletePlaylist() {
-    this.props.setLoadingTrue()
-    this.props.deletePlaylist(this.props.playlist.id)
-      .then(() => this.props.history.push('/collection'))
+    this.props.setLoadingTrue();
+    this.props
+      .deletePlaylist(this.props.playlist.id)
+      .then(() => this.props.history.push("/collection"));
+  }
+
+  reveal() {
+    $("#revealcog").addClass("hidden");
+    $("#playlistdropdown").removeClass("hidden");
+    $(document).on("click", this.hideDropdown);
+  }
+
+  hideDropdown() {
+    $("#playlistdropdown").addClass("hidden");
+    $("#revealcog").removeClass("hidden");
+    $(document).off("click", this.hideDropdown);
   }
 
   render() {
@@ -112,7 +131,19 @@ class PlaylistShow extends React.Component {
         );
       }
     } else {
-      button = <button onClick={this.deletePlaylist}>DELETE</button>
+      button = (
+        <div id="revealcog">
+          <IconContext.Provider
+            value={{
+              className: "playlist-follow-btn reacticon",
+              size: "2em"
+            }}
+          >
+            <IoIosCog onClick={this.reveal} />
+          </IconContext.Provider>
+        </div>
+      );
+      // button = <button onClick={this.deletePlaylist}>DELETE</button>
     }
     return (
       <div className="album-show">
@@ -122,6 +153,14 @@ class PlaylistShow extends React.Component {
             {playlistTitle}
             {playlistInfo}
             {button}
+            <ul id="playlistdropdown" className="playlistdropdown hidden">
+              <li key={1}>
+                <button onClick={this.deletePlaylist}>Delete Playlist</button>
+              </li>
+              <li key={2}>
+                <span>Coming Soon</span>
+              </li>
+            </ul>
           </div>
         </div>
         {songIndex}
