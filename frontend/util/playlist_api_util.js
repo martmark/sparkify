@@ -35,3 +35,17 @@ export const deletePlaylist = id => {
     method: 'DELETE'
   })
 }
+
+export const followPlaylist = id => {
+  return $.ajax({
+    url: `/api/playlists/${id}/follow`,
+    method: "POST"
+  });
+};
+
+export const unfollowPlaylist = id => {
+  return $.ajax({
+    url: `/api/playlists/${id}/unfollow`,
+    method: "DELETE"
+  });
+};

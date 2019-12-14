@@ -30,6 +30,19 @@ class Api::PlaylistsController < ApplicationController
     render :show
   end
 
+  def follow
+    @playlist = Playlist.find(params[:id])
+    current_user.followed_playlists << @playlist unless current_user.followed_playlists.include?(@playlist)
+    render status: 200
+  end
+
+  def unfollow
+    @playlist = Playlist.find(params[:id])
+    @follow = Follow.find_by(followable_id: @playlist.id, followable_type: 'Playlist', user_id: current_user.id)
+    @follow.destroy
+    render status: 200
+  end
+
   private
   def playlist_params
     params.require(:playlist).permit(:title, :description)

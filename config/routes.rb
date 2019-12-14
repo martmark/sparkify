@@ -27,7 +27,13 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :playlists, only: [:index, :show, :create, :destroy]
+    resources :playlists, only: [:index, :show, :create, :destroy] do
+      member do
+        post :follow
+        delete :unfollow
+      end
+    end
+    
     resources :playlist_songs, only: [:create, :destroy]
     resources :follows, only: [:create, :destroy]
   end
