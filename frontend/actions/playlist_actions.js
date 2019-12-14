@@ -1,4 +1,4 @@
-import * as PlaylistUtil from './../util/playlist_api_util';
+import * as PlaylistAPIUtil from './../util/playlist_api_util';
 import * as PlaylistSongApiUtil from './../util/playlist_song_api_util';
 
 export const RECEIVE_PLAYLISTS = 'RECEIVE_PLAYLISTS';
@@ -19,27 +19,40 @@ const receivePlaylist = payload => {
   })
 }
 
+const removePlaylist = playlistId => {
+  return({
+    type: REMOVE_PLAYLIST,
+    playlistId
+  })
+}
+
 export const fetchPlaylists = (fetchType) => dispatch => {
-  return PlaylistUtil.fetchPlaylists(fetchType).then(playlists => {
+  return PlaylistAPIUtil.fetchPlaylists(fetchType).then(playlists => {
     return dispatch(receivePlaylists(playlists))
   })
 }
 
 export const fetchPlaylist = id => dispatch => {
-  return PlaylistUtil.fetchPlaylist(id).then(payload => {
+  return PlaylistAPIUtil.fetchPlaylist(id).then(payload => {
     return dispatch(receivePlaylist(payload));
   })
 }
 
 export const createPlaylist = playlist => dispatch => {
-  return PlaylistUtil.createPlaylist(playlist).then(payload => {
+  return PlaylistAPIUtil.createPlaylist(playlist).then(payload => {
     return dispatch(receivePlaylist(payload));
   })
 }
 
 export const updatePlaylist = playlist => dispatch => {
-  return PlaylistUtil.updatePlaylist(playlist).then(playlist => {
+  return PlaylistAPIUtil.updatePlaylist(playlist).then(playlist => {
     return dispatch(receivePlaylist(playlist));
+  })
+}
+
+export const deletePlaylist = id => dispatch => {
+  return PlaylistAPIUtil.deletePlaylist(id).then(() => {
+    return dispatch(removePlaylist(id));
   })
 }
 

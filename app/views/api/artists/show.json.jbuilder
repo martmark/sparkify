@@ -15,7 +15,6 @@ json.albums do
 end
 
 json.songs do
-  # debugger
   @artist.songs.each do |song|
     json.set! song.id do
       album = song.album

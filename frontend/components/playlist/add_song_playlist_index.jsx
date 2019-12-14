@@ -20,8 +20,6 @@ class AddSongToPlaylist extends React.Component {
   handleClick(playlistId) {
     let that = this;
     return e => {
-      that;
-      // debugger;
       this.props.addPlaylistSong({ playlistId: playlistId, songId: this.props.songId })
         .then(() => this.props.closeModal());
     }
@@ -65,9 +63,7 @@ class AddSongToPlaylist extends React.Component {
   }
 }
 
-const msp = (state, ownProps) => {
-  ownProps;
-  // debugger;
+const msp = (state) => {
   return {
     playlists: Object.values(state.entities.playlists),
     songId: state.ui.modal.songId

@@ -43,6 +43,12 @@ class Api::PlaylistsController < ApplicationController
     render status: 200
   end
 
+  def destroy
+    playlist = current_user.playlists.find(params[:id])
+    playlist.destroy
+    render :json => {}, status: 200
+  end
+
   private
   def playlist_params
     params.require(:playlist).permit(:title, :description)

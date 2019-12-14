@@ -1,6 +1,5 @@
 class Api::PlaylistSongsController < ApplicationController
   def create
-    # debugger
     playlist = Playlist.find(params[:playlistId])
     song = Song.find(params[:songId])
     playlist.songs << song
@@ -12,7 +11,6 @@ class Api::PlaylistSongsController < ApplicationController
   end
 
   def destroy
-    # debugger
     playlist = Playlist.find(params[:playlistId])
     song = Song.find(params[:songId])
     @followed_playlist_ids = current_user.followed_playlist_ids

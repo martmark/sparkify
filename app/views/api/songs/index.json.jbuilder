@@ -1,5 +1,4 @@
 @songs.each do |song|
-  # debugger
   json.set! song.id do
     artist = song.artist
     album = song.album

@@ -1,9 +1,11 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { fetchPlaylist } from './../../actions/playlist_actions';
 import { setLoadingFalse, setLoadingTrue } from './../../actions/loading_actions';
 import React from 'react';
 import SongIndex from '../song/song_index';
 import { followPlaylist, unfollowPlaylist } from "./../../util/playlist_api_util";
+import { deletePlaylist } from './../../actions/playlist_actions';
 import { IconContext } from "react-icons";
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 
@@ -13,6 +15,7 @@ class PlaylistShow extends React.Component {
     this.state = { followed: false };
     this.followPlaylist = this.followPlaylist.bind(this);
     this.unfollowPlaylist = this.unfollowPlaylist.bind(this);
+    this.deletePlaylist = this.deletePlaylist.bind(this);
   }
 
   componentDidMount() {
@@ -45,6 +48,12 @@ class PlaylistShow extends React.Component {
     this.props.unfollowPlaylist(id).then(() => this.setState({ followed: false }));
   }
 
+  deletePlaylist() {
+    this.props.setLoadingTrue()
+    this.props.deletePlaylist(this.props.playlist.id)
+      .then(() => this.props.history.push('/collection'))
+  }
+
   render() {
     const { songs, playlist, loading } = this.props;
 
@@ -56,7 +65,6 @@ class PlaylistShow extends React.Component {
     let playlistImage = "";
     let songIndex = "";
     let playlistInfo = "";
-    // debugger
     if (playlist) {
       playlistTitle = (
         <span className="album-show-album-title">{playlist.title}</span>
@@ -103,6 +111,8 @@ class PlaylistShow extends React.Component {
           </IconContext.Provider>
         );
       }
+    } else {
+      button = <button onClick={this.deletePlaylist}>DELETE</button>
     }
     return (
       <div className="album-show">
@@ -143,8 +153,9 @@ const mdp = dispatch => {
     setLoadingTrue: () => dispatch(setLoadingTrue()),
     setLoadingFalse: () => dispatch(setLoadingFalse()),
     followPlaylist: id => followPlaylist(id),
-    unfollowPlaylist: id => unfollowPlaylist(id)
+    unfollowPlaylist: id => unfollowPlaylist(id),
+    deletePlaylist: id => dispatch(deletePlaylist(id))
   };
 };
 
-export default connect(msp, mdp)(PlaylistShow);
+export default withRouter(connect(msp, mdp)(PlaylistShow));
