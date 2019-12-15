@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import Collection from './../collection/Collection';
 import PlaylistShowContainer from '../playlist/playlist_show';
 import MainNav from './main_nav_container';
-import GreetingContainer from './../browse/greeting_container';
 import AlbumShow from './../album/album_show';
 import SettingsContainer from './settings_container';
 import ArtistShow from './../artist/artist_show';

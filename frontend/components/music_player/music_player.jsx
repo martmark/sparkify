@@ -49,7 +49,18 @@ class MusicPlayer extends React.Component {
       return;
     }
     this.setState({ playing: true });
-    this.refs.musicPlayer.play();
+    const audioPromise = this.refs.musicPlayer.play();
+    if (audioPromise !== undefined) {
+      audioPromise
+        .then(_ => {
+          // autoplay started
+          return;
+        })
+        .catch(err => {
+          // catch dom exception
+          return;
+        });
+    }
   }
 
   pause() {
@@ -142,6 +153,7 @@ class MusicPlayer extends React.Component {
           autoPlay={this.state.playing}
           preload="none"
           ref="musicPlayer"
+          type="audio/mp3"
         ></audio>
       </div>
     );

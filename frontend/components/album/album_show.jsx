@@ -105,16 +105,18 @@ class AlbumShow extends React.Component {
     }
     return (
       <div className='album-show'>
-        <div className='album-show-info'>
-          {albumImage}
-          <div className='album-show-details'>
-            {albumTitle}
-            {albumArtistName}
-            {albumInfo}
-            <div className='album-show-follow-btn'>
-              {button}
+        {/* <div className='album-show-info-outer'> */}
+          <div className='album-show-info'>
+            {albumImage}
+            <div className='album-show-details'>
+              {albumTitle}
+              {albumArtistName}
+              {albumInfo}
+              <div className='album-show-follow-btn'>
+                {button}
+              </div>
             </div>
-          </div>
+          {/* </div> */}
         </div>
         <div className='album-show-songs'>{songIndex}</div>
       </div>

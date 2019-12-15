@@ -4,7 +4,7 @@ class Api::PlaylistsController < ApplicationController
     @playlists = current_user.followed_playlists if params[:fetchType] == 'collection'
     @playlists = current_user.playlists if params[:fetchType] == 'addsong'
     if params[:fetchType] == 'browse'
-      @playlists = Playlist.all.reject { |playlist| current_user.followed_playlists.include?(playlist) }
+      @playlists = Playlist.all.reject { |playlist| @followed_playlist_ids.include?(playlist.id) }
     end
     render :index
   end

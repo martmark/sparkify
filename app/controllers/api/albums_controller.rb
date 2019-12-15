@@ -1,12 +1,14 @@
 class Api::AlbumsController < ApplicationController
   def index
+    followed_album_ids = current_user.followed_album_ids
     if params[:fetchType] == 'collection'
       @albums = current_user.followed_albums
     elsif params[:fetchType] == 'browse'
       @albums = []
+      allalbums = Album.all
       while @albums.length < 15
-        album = Album.all.sample
-        @albums << album if !@albums.include?(album) && !current_user.followed_albums.include?(album)
+        album = allalbums.sample
+        @albums << album if !@albums.include?(album) && !followed_album_ids.include?(album.id)
       end
     elsif params[:fetchType] == 'search'
       search_term = params[:searchTerm]
