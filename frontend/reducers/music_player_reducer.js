@@ -19,12 +19,12 @@ const musicPlayerReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case SET_CURRENT_SONG:
-      return merge({}, state, { 
+      return { 
         currentSong: action.queueInfo.currentSong,
         playing: true,
         currentIdx: action.queueInfo.currentIdx,
         queue: action.queueInfo.queue
-      });
+      };
     case TOGGLE_PLAY:
       let newState = merge({},state);
       if (newState.playing === true) {
