@@ -83,14 +83,26 @@ class MusicPlayer extends React.Component {
 
   clickNext() {
     let current = this.state.currentIdx;
-    if (current >= this.state.queue.length - 1) {
-      this.pause();
-      this.setState({ currentIdx: 0, currentSong: this.state.queue[0] });
-    } else {
-      current = current + 1;
-      this.setState({ currentIdx: current, currentSong: this.state.queue[current] });
+    if (this.state.shuffle) {
+      let queue = this.state.queue;
+      let nextSong = queue[[Math.floor(Math.random() * queue.length)]];
+      while (nextSong == this.state.currentSong) {
+        nextSong = queue[[Math.floor(Math.random() * queue.length)]];
+      }
+      let nextIdx = queue.indexOf(nextSong);
+      this.setState({ currentIdx: nextIdx, currentSong: nextSong });
       this.refs.musicPlayer.src = this.state.currentSong.track_url;
       this.play();
+    } else {
+      if (current >= this.state.queue.length - 1) {
+        this.pause();
+        this.setState({ currentIdx: 0, currentSong: this.state.queue[0] });
+      } else {
+        current = current + 1;
+        this.setState({ currentIdx: current, currentSong: this.state.queue[current] });
+        this.refs.musicPlayer.src = this.state.currentSong.track_url;
+        this.play();
+      }
     }
   }
 
