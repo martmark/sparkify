@@ -9,6 +9,7 @@ import {
   MdSkipNext,
   MdSkipPrevious
 } from "react-icons/md";
+import { IoIosRepeat, IoIosShuffle } from 'react-icons/io';
 
 class MusicPlayer extends React.Component {
   constructor(props) {
@@ -17,13 +18,17 @@ class MusicPlayer extends React.Component {
       playing: props.playing,
       currentSong: props.currentSong,
       currentIdx: 0,
-      queue: props.queue
+      queue: props.queue,
+      repeat: false
     };
 
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
+    this.clickNext = this.clickNext.bind(this);
+    this.toggleRepeat = this.toggleRepeat.bind(this);
+    this.toggleShuffle = this.toggleShuffle.bind(this);
   }
 
   componentDidMount() {
@@ -69,13 +74,21 @@ class MusicPlayer extends React.Component {
   }
 
   next() {
+    if (this.state.repeat) {
+      this.play();
+    } else {
+      this.clickNext();
+    }
+  }
+
+  clickNext() {
     let current = this.state.currentIdx;
     if (current >= this.state.queue.length - 1) {
       this.pause();
-      this.setState({currentIdx: 0, currentSong: this.state.queue[0]});
+      this.setState({ currentIdx: 0, currentSong: this.state.queue[0] });
     } else {
       current = current + 1;
-      this.setState({currentIdx: current, currentSong: this.state.queue[current]});
+      this.setState({ currentIdx: current, currentSong: this.state.queue[current] });
       this.refs.musicPlayer.src = this.state.currentSong.track_url;
       this.play();
     }
@@ -91,6 +104,16 @@ class MusicPlayer extends React.Component {
       this.refs.musicPlayer.src = this.state.currentSong.track_url;
       this.play();
     }
+  }
+
+  toggleRepeat() {
+    let repeat = this.state.repeat;
+    this.setState({ repeat: !repeat });
+  }
+
+  toggleShuffle() {
+    let shuffle = this.state.shuffle;
+    this.setState({ shuffle: !shuffle });
   }
 
   render() {
@@ -114,6 +137,36 @@ class MusicPlayer extends React.Component {
       );
     }
 
+    let shuffleButton;
+    if (this.state.shuffle) {
+      shuffleButton = <IconContext.Provider
+        value={{ className: "toggle-shuffle repeat-on", size: "1.25em" }}
+      >
+        <IoIosShuffle onClick={this.toggleShuffle} />
+      </IconContext.Provider>
+    } else {
+      shuffleButton = <IconContext.Provider
+        value={{ className: "toggle-shuffle", size: "1.25em" }}
+      >
+        <IoIosShuffle onClick={this.toggleShuffle} />
+      </IconContext.Provider>
+    }
+
+    let repeatButton;
+    if (this.state.repeat) {
+      repeatButton = <IconContext.Provider
+        value={{ className: "toggle-repeat repeat-on", size: "1.25em" }}
+      >
+        <IoIosRepeat onClick={this.toggleRepeat} />
+      </IconContext.Provider>
+    } else {
+      repeatButton = <IconContext.Provider
+        value={{ className: "toggle-repeat", size: "1.25em" }}
+      >
+        <IoIosRepeat onClick={this.toggleRepeat} />
+      </IconContext.Provider>
+    }
+
     let song = this.state.currentSong;
 
     let albumArt = <img src='https://sparkifyimages.s3.amazonaws.com/blank.jpg' alt='' />
@@ -135,6 +188,7 @@ class MusicPlayer extends React.Component {
           </div>
         </div>
         <div className="music-player-controls">
+          {shuffleButton}
           <IconContext.Provider
             value={{ className: "play-icon reacticon", size: "2em" }}
           >
@@ -144,8 +198,9 @@ class MusicPlayer extends React.Component {
           <IconContext.Provider
             value={{ className: "play-icon reacticon", size: "2em" }}
           >
-            <MdSkipNext onClick={this.next} />
+            <MdSkipNext onClick={this.clickNext} />
           </IconContext.Provider>
+          {repeatButton}
         </div>
         <div className="mp-volume-control"></div>
         <audio
