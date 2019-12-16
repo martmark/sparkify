@@ -9,7 +9,12 @@ import {
   MdSkipNext,
   MdSkipPrevious
 } from "react-icons/md";
-import { IoIosRepeat, IoIosShuffle } from 'react-icons/io';
+import { 
+  IoIosRepeat, 
+  IoIosShuffle, 
+  IoMdVolumeHigh, 
+  IoMdVolumeOff 
+} from 'react-icons/io';
 
 class MusicPlayer extends React.Component {
   constructor(props) {
@@ -19,7 +24,9 @@ class MusicPlayer extends React.Component {
       currentSong: props.currentSong,
       currentIdx: 0,
       queue: props.queue,
-      repeat: false
+      repeat: false,
+      volume: 100,
+      prevVolume: null
     };
 
     this.play = this.play.bind(this);
@@ -29,6 +36,9 @@ class MusicPlayer extends React.Component {
     this.clickNext = this.clickNext.bind(this);
     this.toggleRepeat = this.toggleRepeat.bind(this);
     this.toggleShuffle = this.toggleShuffle.bind(this);
+    this.setVolume = this.setVolume.bind(this);
+    this.mutePlayer = this.mutePlayer.bind(this);
+    this.unmutePlayer = this.unmutePlayer.bind(this);
   }
 
   componentDidMount() {
@@ -128,6 +138,32 @@ class MusicPlayer extends React.Component {
     this.setState({ shuffle: !shuffle });
   }
 
+  setVolume(e) {
+    var player = document.getElementById('the-music-player');
+    this.setState({ volume: e.target.value });
+    // console.log('Before: ' + player.volume);
+    player.volume = e.target.value / 100;
+    // console.log('After: ' + player.volume);
+  }
+
+  mutePlayer() {
+    var player = document.getElementById('the-music-player');
+    player.volume = 0;
+    this.setState({ prevVolume: this.state.volume, volume: 0 });
+  }
+
+  unmutePlayer() {
+    var player = document.getElementById('the-music-player');
+    let newVol;
+    if (this.state.prevVolume) {
+      newVol = this.state.prevVolume;
+    } else {
+      newVol = 50;
+    }
+    player.volume = newVol / 100;
+    this.setState({ volume: newVol, prevVolume: null });
+  }
+
   render() {
 
     let button;
@@ -179,6 +215,21 @@ class MusicPlayer extends React.Component {
       </IconContext.Provider>
     }
 
+    let volumeButton;
+    if (this.state.volume > 3) {
+      volumeButton = <IconContext.Provider
+        value={{ className: "volume-button", size: "1.25em" }}
+      >
+        <IoMdVolumeHigh onClick={this.mutePlayer} />
+      </IconContext.Provider>;
+    } else {
+      volumeButton = <IconContext.Provider
+        value={{ className: "volume-button", size: "1.25em" }}
+      >
+        <IoMdVolumeOff onClick={this.unmutePlayer} />
+      </IconContext.Provider>;
+    }
+
     let song = this.state.currentSong;
 
     let albumArt = <img src='https://sparkifyimages.s3.amazonaws.com/blank.jpg' alt='' />
@@ -214,10 +265,25 @@ class MusicPlayer extends React.Component {
           </IconContext.Provider>
           {repeatButton}
         </div>
-        <div className="mp-volume-control"></div>
+        <div className="mp-volume-control">
+          {volumeButton}
+          <input 
+            id="vol-control" 
+            type="range" 
+            min="0" 
+            max="100" 
+            step="1" 
+            value={this.state.volume}
+            // value={document.getElementById('the-music-player').volume}
+            onInput={this.setVolume}
+            onChange={this.setVolume}
+          >
+          </input>
+        </div>
         <audio
           src={this.state.currentSong.track_url}
           autoPlay={this.state.playing}
+          id="the-music-player"
           preload="none"
           ref="musicPlayer"
           type="audio/mp3"

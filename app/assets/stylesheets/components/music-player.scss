@@ -55,9 +55,6 @@
   text-decoration: underline;
 }
 
-.mp-volume-control {
-  width: 40%;
-}
 
 .mp-artist-name {
   font-size: 11px;
@@ -108,4 +105,18 @@
 
 .repeat-on {
   color: rgb(30,167,73);
+}
+
+.mp-volume-control {
+  width: 40%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 35px;
+  // margin-right: 25px;
+  box-sizing: border-box;
+}
+
+.volume-button {
+  padding-right: 5px;
+  cursor: pointer;
 }
