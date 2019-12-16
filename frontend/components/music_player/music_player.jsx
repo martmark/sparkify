@@ -256,7 +256,9 @@ class MusicPlayer extends React.Component {
   }
 
   changeCursorPosition(e) {
+    // debugger;
     var player = document.getElementById('the-music-player');
+    if (!player.currentTime) return;
     let duration = player.duration;
     let pos = e.target.value;
     let currentTime = duration * (pos / 100);
@@ -383,7 +385,7 @@ class MusicPlayer extends React.Component {
             <span className='current-time-display'>{this.state.currentTime}</span>
             <input
               // disabl={!this.state.playing}
-              disabled={this.isntPlaying()}
+              // disabled={this.isntPlaying()}
               id="the-progress-bar"
               type="range"
               min="0"

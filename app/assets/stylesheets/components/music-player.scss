@@ -216,19 +216,9 @@
   background: #ffffff;
 }
 
-#the-progress-bar:disabled {
-  #the-progress-bar::-ms-thumb {
-    background: gray;
-  }
-
-  #the-progress-bar::-moz-range-thumb {
-    background: gray;
-  }
-
-  #the-progress-bar::-webkit-slider-thumb {
-    background: gray;
-  }
-}
+// #the-progress-bar:disabled {
+//   cursor: default;
+// }
 
 .mp-progress {
   width: 100%;
