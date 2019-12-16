@@ -26,9 +26,13 @@ class MusicPlayer extends React.Component {
       queue: props.queue,
       repeat: false,
       volume: 100,
-      prevVolume: null
+      prevVolume: null,
+      cursorPosition: 0,
+      currentTime: "0:00"
     };
 
+    // this.blerp = 1;
+    this.positionInterval = null;
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
     this.next = this.next.bind(this);
@@ -39,17 +43,40 @@ class MusicPlayer extends React.Component {
     this.setVolume = this.setVolume.bind(this);
     this.mutePlayer = this.mutePlayer.bind(this);
     this.unmutePlayer = this.unmutePlayer.bind(this);
+    this.setCursorPosition = this.setCursorPosition.bind(this);
+    this.isntPlaying = this.isntPlaying.bind(this);
+    this.changeCursorPosition = this.changeCursorPosition.bind(this);
   }
 
   componentDidMount() {
+    // debugger;
     let musicPlayer = this.refs.musicPlayer;
     musicPlayer.addEventListener('ended', this.next);
     musicPlayer.addEventListener('error', this.next);
+    // this.setState({ duration: "0:00" });
+
+    this.positionInterval = setInterval(() => {
+      // console.log(`time ${this.blerp}`);
+      // console.log('timer');
+      this.setCursorPosition();
+      // this.blerp++;
+    }, 1000);
   }
 
   componentWillReceiveProps(newProps) {
+    // debugger;
     if (this.props.currentSong.id !== newProps.currentSong.id) this.pause();
-    this.setState({ currentSong: newProps.currentSong, queue: newProps.queue, currentIdx: newProps.currentIdx });
+    this.setState({ 
+      currentSong: newProps.currentSong, 
+      queue: newProps.queue, 
+      currentIdx: newProps.currentIdx,
+      currentTime: '0:00',
+      cursorPosition: 0
+     });
+    let span = document.getElementById('durationspan');
+    if (newProps.currentSong.duration) {
+      span.innerHTML = newProps.currentSong.duration;
+    }
     if (newProps.playing === true) {
       this.setState({playing: true});
       this.play();
@@ -59,8 +86,13 @@ class MusicPlayer extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.positionInterval);
+  }
+
   play() {
-    if (this.state.queue.length == 0) {
+    // debugger;
+    if (this.state.currentSong.title == "") {
       return;
     }
     this.setState({ playing: true });
@@ -85,6 +117,7 @@ class MusicPlayer extends React.Component {
 
   next() {
     if (this.state.repeat) {
+      this.setState({ currentTime: '0:00', cursorPosition: 0 });
       this.play();
     } else {
       this.clickNext();
@@ -100,16 +133,43 @@ class MusicPlayer extends React.Component {
         nextSong = queue[[Math.floor(Math.random() * queue.length)]];
       }
       let nextIdx = queue.indexOf(nextSong);
-      this.setState({ currentIdx: nextIdx, currentSong: nextSong });
+      this.setState({ 
+        currentIdx: nextIdx, 
+        currentSong: nextSong,
+        currentTime: '0:00',
+        cursorPosition: 0
+      });
+      let span = document.getElementById('durationspan');
+      if (nextSong.duration) {
+        span.innerHTML = nextSong.duration;
+      }
       this.refs.musicPlayer.src = this.state.currentSong.track_url;
       this.play();
     } else {
       if (current >= this.state.queue.length - 1) {
         this.pause();
-        this.setState({ currentIdx: 0, currentSong: this.state.queue[0] });
+        this.setState({ 
+          currentIdx: 0, 
+          currentSong: this.state.queue[0],
+          currentTime: '0:00',
+          cursorPosition: 0
+        });
+        let span = document.getElementById('durationspan');
+        if (this.state.queue[0].duration) {
+          span.innerHTML = this.state.queue[0].duration;
+        }
       } else {
         current = current + 1;
-        this.setState({ currentIdx: current, currentSong: this.state.queue[current] });
+        this.setState({ 
+          currentIdx: current, 
+          currentSong: this.state.queue[current],
+          currentTime: '0:00',
+          cursorPosition: 0
+        });
+        let span = document.getElementById('durationspan');
+        if (this.state.queue[current].duration) {
+          span.innerHTML = this.state.queue[current].duration;
+        }
         this.refs.musicPlayer.src = this.state.currentSong.track_url;
         this.play();
       }
@@ -122,7 +182,16 @@ class MusicPlayer extends React.Component {
       this.pause();
     } else {
       current = current - 1;
-      this.setState({ currentIdx: current, currentSong: this.state.queue[current] });
+      this.setState({ 
+        currentIdx: current, 
+        currentSong: this.state.queue[current],
+        currentTime: '0:00',
+        cursorPosition: 0
+      });
+      let span = document.getElementById('durationspan');
+      if (this.state.queue[current].duration) { 
+        span.innerHTML = this.state.queue[current].duration;
+      }
       this.refs.musicPlayer.src = this.state.currentSong.track_url;
       this.play();
     }
@@ -142,6 +211,8 @@ class MusicPlayer extends React.Component {
     var player = document.getElementById('the-music-player');
     this.setState({ volume: e.target.value });
     // console.log('Before: ' + player.volume);
+    // console.log(player.currentTime);
+    // debugger;
     player.volume = e.target.value / 100;
     // console.log('After: ' + player.volume);
   }
@@ -162,6 +233,46 @@ class MusicPlayer extends React.Component {
     }
     player.volume = newVol / 100;
     this.setState({ volume: newVol, prevVolume: null });
+  }
+
+  setCursorPosition() {
+    if (this.state.playing) {
+      var player = document.getElementById('the-music-player');
+      let currentTime = player.currentTime;
+      if (currentTime) {
+        let pos = Math.round(player.currentTime / player.duration * 100);
+        let minutes = Math.floor(currentTime / 60);
+        let seconds = Math.round(currentTime) % 60;
+        let secStr = seconds;
+        if (seconds < 10) {
+          secStr = '0' + seconds;
+        }
+        let newTime = minutes.toString() + ':' + secStr;
+        this.setState({ cursorPosition: pos, currentTime: newTime });
+      } else {
+        this.setState({ cursorPosition: 0, currentTime: '0:00'});
+      }
+    }
+  }
+
+  changeCursorPosition(e) {
+    var player = document.getElementById('the-music-player');
+    let duration = player.duration;
+    let pos = e.target.value;
+    let currentTime = duration * (pos / 100);
+    let minutes = Math.floor(currentTime / 60);
+    let seconds = Math.round(currentTime) % 60;
+    let secStr = seconds;
+    if (seconds < 10) {
+      secStr = '0' + seconds;
+    }
+    let newTime = minutes.toString() + ':' + secStr;
+    this.setState({ cursorPosition: pos, currentTime: newTime });
+    player.currentTime = currentTime;
+  }
+
+  isntPlaying() {
+    return !this.state.playing;
   }
 
   render() {
@@ -238,7 +349,7 @@ class MusicPlayer extends React.Component {
     if (song.title) {
       albumArt = <Link to={`/album/${song.albumId}`}><img src={song.image_url} alt={song.albumTitle} /></Link>
     }
-
+// debugger
     return (
       <div className="music-player">
         <div className="music-player-song-info">
@@ -252,20 +363,40 @@ class MusicPlayer extends React.Component {
             </span>
           </div>
         </div>
-        <div className="music-player-controls">
-          {shuffleButton}
-          <IconContext.Provider
-            value={{ className: "play-icon reacticon", size: "2em" }}
-          >
-            <MdSkipPrevious onClick={this.previous} />
-          </IconContext.Provider>
-          <div className="play-pause">{button}</div>
-          <IconContext.Provider
-            value={{ className: "play-icon reacticon", size: "2em" }}
-          >
-            <MdSkipNext onClick={this.clickNext} />
-          </IconContext.Provider>
-          {repeatButton}
+        <div className="music-player-center">
+          <div className="music-player-controls">
+            {shuffleButton}
+            <IconContext.Provider
+              value={{ className: "play-icon reacticon", size: "2em" }}
+            >
+              <MdSkipPrevious onClick={this.previous} />
+            </IconContext.Provider>
+            <div className="play-pause">{button}</div>
+            <IconContext.Provider
+              value={{ className: "play-icon reacticon", size: "2em" }}
+            >
+              <MdSkipNext onClick={this.clickNext} />
+            </IconContext.Provider>
+            {repeatButton}
+          </div>
+          <div className='mp-progress'>
+            <span className='current-time-display'>{this.state.currentTime}</span>
+            <input
+              // disabl={!this.state.playing}
+              disabled={this.isntPlaying()}
+              id="the-progress-bar"
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              // defaultValue='0'
+              value={this.state.cursorPosition}
+              // value={document.getElementById('the-music-player').volume}
+              onInput={this.changeCursorPosition}
+              onChange={this.changeCursorPosition}
+            />
+            <span className='duration-display' id='durationspan'>0:00</span>
+          </div>
         </div>
         <div className="mp-volume-control">
           {volumeButton}
