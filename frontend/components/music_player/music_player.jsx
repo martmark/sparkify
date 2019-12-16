@@ -60,7 +60,7 @@ class MusicPlayer extends React.Component {
       // console.log('timer');
       this.setCursorPosition();
       // this.blerp++;
-    }, 1000);
+    }, 250);
   }
 
   componentWillReceiveProps(newProps) {
@@ -240,7 +240,7 @@ class MusicPlayer extends React.Component {
       var player = document.getElementById('the-music-player');
       let currentTime = player.currentTime;
       if (currentTime) {
-        let pos = Math.round(player.currentTime / player.duration * 100);
+        let pos = Math.round(player.currentTime / player.duration * 500);
         let minutes = Math.floor(currentTime / 60);
         let seconds = Math.round(currentTime) % 60;
         let secStr = seconds;
@@ -261,7 +261,7 @@ class MusicPlayer extends React.Component {
     if (!player.currentTime) return;
     let duration = player.duration;
     let pos = e.target.value;
-    let currentTime = duration * (pos / 100);
+    let currentTime = duration * (pos / 500);
     let minutes = Math.floor(currentTime / 60);
     let seconds = Math.round(currentTime) % 60;
     let secStr = seconds;
@@ -389,7 +389,7 @@ class MusicPlayer extends React.Component {
               id="the-progress-bar"
               type="range"
               min="0"
-              max="100"
+              max="500"
               step="1"
               // defaultValue='0'
               value={this.state.cursorPosition}
