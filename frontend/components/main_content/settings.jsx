@@ -12,6 +12,11 @@ class Settings extends React.Component {
           <button className="logout-button" onClick={this.props.logout}>
             LOGOUT
           </button>
+          <div>
+            <p>
+              Sparkify is a non-commercial clone of Spotify<br></br> built by Martin Markaj.
+            </p>
+          </div>
         </div>
       </div>
     );

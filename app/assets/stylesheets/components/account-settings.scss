@@ -1,8 +1,47 @@
 .account-settings {
-  margin-left: 230px;
-  width: 100%;
+  padding-left: 230px;
+  padding-bottom: 90px;
+  width: 100vw;
   height: 100vh;
   box-sizing: border-box;
-  text-align: center;
+  display: flex;
+  // text-align: center;
   justify-items: center;
+}
+
+
+
+.settings-inner {
+  width: 400px;
+  // height: 250px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  // padding-bottom: 90px;
+  // box-sizing: border-box;
+
+  p {
+    padding-top: 20px;
+  }
+}
+
+.logout-button {
+  // margin: auto
+   background: rgb(30,167,73);
+  height: 30px;
+  // margin: 30px auto;
+  width: 140px;
+  border-radius: 30px;
+  font-family: Circular, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  transition: 0.3s;
+  color: white;
+  
+  text-align: center;
 }
