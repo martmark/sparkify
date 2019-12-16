@@ -27,7 +27,7 @@ class MusicPlayer extends React.Component {
       playing: props.playing,
       currentSong: props.currentSong,
       currentIdx: 0,
-      queue: props.queue,
+      queue: [],
       repeat: false,
       volume: 100,
       prevVolume: null,
@@ -56,7 +56,6 @@ class MusicPlayer extends React.Component {
   }
 
   componentDidMount() {
-    // debugger;
     let musicPlayer = this.refs.musicPlayer;
     musicPlayer.addEventListener('ended', this.next);
     musicPlayer.addEventListener('error', this.next);
@@ -71,7 +70,6 @@ class MusicPlayer extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    // debugger;
     if (newProps.upNext) {
       let newSong = newProps.upNext;
       let newUpNextArr = this.state.upNext.concat(newSong);
@@ -109,7 +107,6 @@ class MusicPlayer extends React.Component {
   }
 
   play() {
-    // debugger;
     if (this.state.currentSong.title == "") {
       return;
     }
@@ -151,7 +148,6 @@ class MusicPlayer extends React.Component {
         span.innerHTML = nextSong.duration;
       }
       this.refs.musicPlayer.src = nextSong.track_url;
-      // debugger;
       // this.setState({
       //   currentSong: nextSong,
       //   currentTime: '0:00',
@@ -170,7 +166,23 @@ class MusicPlayer extends React.Component {
       }
       // this.play();
     } else if (this.state.shuffle) {
+      
       let queue = this.state.queue;
+      if (queue.length == 0) {
+        // if (current >= this.state.queue.length - 1) {
+          this.pause();
+          this.setState({
+            currentIdx: 0,
+            currentSong: {title: '', duration: '0:00', track_url: ''},
+            currentTime: '0:00',
+            cursorPosition: 0,
+            playing: false
+          });
+          let span = document.getElementById('durationspan');
+          span.innerHTML = '0:00';
+          return;
+        // }
+      }
       let nextSong = queue[[Math.floor(Math.random() * queue.length)]];
       while (nextSong == this.state.currentSong) {
         nextSong = queue[[Math.floor(Math.random() * queue.length)]];
@@ -429,8 +441,18 @@ class MusicPlayer extends React.Component {
     let song = this.state.currentSong;
 
     let albumArt = <img src='https://sparkifyimages.s3.amazonaws.com/blank.jpg' alt='' />
-    if (song.title) {
-      albumArt = <Link to={`/album/${song.albumId}`}><img src={song.image_url} alt={song.albumTitle} /></Link>
+    let albumId;
+    let artistId;
+    let artistName;
+    let songTitle;
+    let trackUrl;
+    if (song && song.title != "") {
+      albumArt = <Link to={`/album/${song.albumId}`}><img src={song.image_url} alt={song.albumTitle} /></Link>;
+      albumId = song.albumId;
+      artistId = song.artistId;
+      songTitle = song.title;
+      artistName = song.artistName;
+      trackUrl = song.track_url;
     }
 // debugger
     return (
@@ -439,10 +461,10 @@ class MusicPlayer extends React.Component {
           <div className="music-player-album-image">{albumArt}</div>
           <div className="music-player-text-info">
             <span className="mp-track-title">
-              <Link to={`/album/${song.albumId}`}>{song.title}</Link>
+              <Link to={`/album/${albumId}`}>{songTitle}</Link>
             </span>
             <span className="mp-artist-name">
-              <Link to={`/artist/${song.artistId}`}>{song.artistName}</Link>
+              <Link to={`/artist/${artistId}`}>{artistName}</Link>
             </span>
           </div>
         </div>
@@ -498,7 +520,7 @@ class MusicPlayer extends React.Component {
           </input>
         </div>
         <audio
-          src={this.state.currentSong.track_url}
+          src={trackUrl}
           autoPlay={this.state.playing}
           id="the-music-player"
           preload="none"

@@ -23,7 +23,9 @@ class Api::AlbumsController < ApplicationController
 
   def follow
     album = Album.find(params[:id])
+    artist = Artist.find(album.artist_id)
     current_user.followed_albums << album unless current_user.followed_albums.include?(album)
+    current_user.followed_artists << artist unless current_user.followed_artists.include?(artist)
     render status: 200
   end
 
