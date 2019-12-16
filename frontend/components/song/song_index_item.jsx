@@ -136,11 +136,11 @@ class SongIndexItem extends React.Component {
     let artistAlbumInfo = '';
     if (indexType === 'collection' || indexType === 'playlist' || indexType === 'browse' || indexType === 'search' || indexType === 'queue') {
       artistAlbumInfo = <div className='song-artist-info'>
-        <span className='song-artist' onClick={this.linkToArtist}>
+        <span className='song-artist clickable' onClick={this.linkToArtist}>
           {song.artistName}
         </span>
         <span> • </span>
-        <span onClick={this.linkToAlbum}>
+        <span className='clickable' onClick={this.linkToAlbum}>
           {song.albumTitle}
         </span>
       </div>;
@@ -168,7 +168,7 @@ class SongIndexItem extends React.Component {
     let albumImage;
     if (indexType === 'artist' || indexType === 'collection' || indexType =='search' || indexType == 'queue' ) {
       albumImage = (
-        <div className="song-index-item-image" onClick={this.linkToAlbum}>
+        <div className="song-index-item-image clickable" onClick={this.linkToAlbum}>
           <img src={song.image_url} alt={song.albumName} />
         </div>
       );
