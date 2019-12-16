@@ -216,7 +216,9 @@ class MusicPlayer extends React.Component {
     }
 
     let volumeButton;
-    if (this.state.volume > 3) {
+    
+    var playerplayer = document.getElementById('the-music-player');
+    if (playerplayer && playerplayer.volume > 0.0) {
       volumeButton = <IconContext.Provider
         value={{ className: "volume-button", size: "1.25em" }}
       >
