@@ -18,7 +18,9 @@ class SongIndexItem extends React.Component {
     this.addToPlaylist = this.addToPlaylist.bind(this);
     this.reveal = this.reveal.bind(this);
     this.hideDropdown = this.hideDropdown.bind(this);
+    // this.albumStyling = this.albumStyling.bind(this);
   }
+
 
   followSong() {
     let id = this.props.song.id;
@@ -130,7 +132,7 @@ class SongIndexItem extends React.Component {
     }
 
     return (
-      <li className="song-index-item">
+      <li className="song-index-item" id='songindexitem'>
         <div className="song-idx-list-icon">
           {musicNote}
           {playButton}

@@ -26,7 +26,28 @@ class AlbumShow extends React.Component {
   componentDidMount() {
     this.props.fetchAlbum(this.props.albumId)
       .then(() => this.setState({ followed: this.props.album.followed }))
-      .then(() => this.props.setLoadingFalse());
+      .then(() => {
+        this.props.setLoadingFalse();
+        this.albumStyling();
+      });
+  }
+
+  // componentDidMount() {
+  //   this.albumStyling();
+  // }
+
+  albumStyling() {
+    // debugger
+    // if (this.props.indexType == "album") {
+    let songLis = document.getElementsByClassName('song-index-item');
+      // debugger;
+    for (let i = 0; i < songLis.length; i++) {
+      // let x = songLis[i];
+      songLis[i].classList.add('album-song-item');
+    }
+    // songLis.forEach(li => li.classList.add('album-song-item'))
+      
+    // }\
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -99,7 +120,7 @@ class AlbumShow extends React.Component {
     if (album) {
       albumArtistName = <span className='album-show-artist-name'><Link to={`/artist/${album.artistId}`}>{album.artistName}</Link></span>
       albumTitle = <span className='album-show-album-title'>{album.title}</span>
-      songIndex = <div className='album-show-song-index'><SongIndex songs={songs} /></div>
+      songIndex = <div className='album-show-song-index'><SongIndex songs={songs} indexType="album" /></div>
       albumImage = <div className='album-show-image'><img src={album.image_url} alt={album.title} /></div>
       albumInfo = <span className='album-show-year'>{album.year} • {album.trackCount} SONGS</span>
     }
