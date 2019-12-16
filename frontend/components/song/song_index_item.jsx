@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from './../../actions/modal_actions';
 import { removeSongFromPlaylist } from './../../actions/playlist_actions';
@@ -20,6 +20,9 @@ class SongIndexItem extends React.Component {
     this.reveal = this.reveal.bind(this);
     this.hideDropdown = this.hideDropdown.bind(this);
     this.addSongToQueue = this.addSongToQueue.bind(this);
+    this.removeFromQueue = this.removeFromQueue.bind(this);
+    this.linkToAlbum = this.linkToAlbum.bind(this);
+    this.linkToArtist = this.linkToArtist.bind(this);
     // this.albumStyling = this.albumStyling.bind(this);
   }
 
@@ -43,6 +46,9 @@ class SongIndexItem extends React.Component {
       currentIdx: idx,
       queue: this.props.allSongs
     });
+    if (this.props.indexType == 'queue') {
+      this.removeFromQueue();
+    }
   }
 
   addToPlaylist() {
@@ -61,6 +67,24 @@ class SongIndexItem extends React.Component {
 
   addSongToQueue() {
     this.props.addToQueue(this.props.song);
+  }
+
+  removeFromQueue() {
+    this.props.removeFromQueue(this.props.queueIdx);
+  }
+
+  linkToArtist() {
+    if (this.props.modalType == 'queue') {
+      this.props.closeModal();
+    }
+    this.props.history.push(`/artist/${this.props.song.artistId}`);
+  }
+
+  linkToAlbum() {
+    if (this.props.modalType == 'queue') {
+      this.props.closeModal();
+    }
+    this.props.history.push(`/album/${this.props.song.albumId}`);
   }
 
   render() {
@@ -99,16 +123,25 @@ class SongIndexItem extends React.Component {
       </IconContext.Provider>
     );
 
+    let removeFromQueueButton;
+    if (this.props.indexType == 'queue') {
+      removeFromQueueButton = <li key={'aj3557772d8ch3'} className='song-idx-remove-btn'>
+        <button onClick={this.removeFromQueue}>
+          Remove from Queue
+        </button>
+      </li>
+    }
+
 
     let artistAlbumInfo = '';
-    if (indexType === 'collection' || indexType === 'playlist' || indexType === 'browse' || indexType === 'search') {
+    if (indexType === 'collection' || indexType === 'playlist' || indexType === 'browse' || indexType === 'search' || indexType === 'queue') {
       artistAlbumInfo = <div className='song-artist-info'>
-        <span className='song-artist'>
-          <Link to={`/artist/${song.artistId}`}>{song.artistName} </Link>
+        <span className='song-artist' onClick={this.linkToArtist}>
+          {song.artistName}
         </span>
         <span> • </span>
-        <span>
-          <Link to={`/album/${song.albumId}`}> {song.albumTitle}</Link>
+        <span onClick={this.linkToAlbum}>
+          {song.albumTitle}
         </span>
       </div>;
     }
@@ -133,53 +166,95 @@ class SongIndexItem extends React.Component {
     </li>
 
     let albumImage;
-    if (indexType === 'artist' || indexType === 'collection' || indexType =='search') {
+    if (indexType === 'artist' || indexType === 'collection' || indexType =='search' || indexType == 'queue' ) {
       albumImage = (
-        <div className="song-index-item-image">
-          <Link to={`/album/${song.albumId}`}>
-            <img src={song.image_url} alt={song.albumName} />
-          </Link>
+        <div className="song-index-item-image" onClick={this.linkToAlbum}>
+          <img src={song.image_url} alt={song.albumName} />
         </div>
       );
     }
 
-    return (
-      <li className="song-index-item" id='songindexitem'>
-        <div className="song-idx-list-icon">
-          {musicNote}
-          {playButton}
-        </div>
-        {albumImage}
-        <div className='song-idx-item-info'>
-          <div className="song-index-item-details">
-            <section className="song-index-item-left">
-              <span className="song-index-item-title">{song.title}</span>
-              {artistAlbumInfo}
-            </section>
-            <div className="song-index-item-buttons">
-              <ul id={`drop${song.id}`} className="songdropdown hidden">
-                {removeButton}
-                {addToQueueButton}
-                <li key={1}>{button}</li>
-                <li key={2}>{addSong}</li>
-              </ul>
-              <IconContext.Provider
-                value={{
-                  className: "song-index-item-add reacticon",
-                  size: "1.25em"
-                }}
-              >
-                <IoMdAddCircle onClick={this.reveal} />
-              </IconContext.Provider>
-              <span className="song-duration">{song.duration}</span>
+    if (indexType === 'album') {
+      return (
+        <li className="song-index-item album-song-item" id='songindexitem'>
+          <div className="song-idx-list-icon">
+            {musicNote}
+            {playButton}
+          </div>
+          {albumImage}
+          <div className='song-idx-item-info'>
+            <div className="song-index-item-details">
+              <section className="song-index-item-left">
+                <span className="song-index-item-title">{song.title}</span>
+                {artistAlbumInfo}
+              </section>
+              <div className="song-index-item-buttons">
+                <ul id={`drop${song.id}`} className="songdropdown hidden">
+                  {removeFromQueueButton}
+                  {removeButton}
+                  {addToQueueButton}
+                  <li key={1}>{button}</li>
+                  <li key={2}>{addSong}</li>
+                </ul>
+                <IconContext.Provider
+                  value={{
+                    className: "song-index-item-add reacticon",
+                    size: "1.25em"
+                  }}
+                >
+                  <IoMdAddCircle onClick={this.reveal} />
+                </IconContext.Provider>
+                <span className="song-duration">{song.duration}</span>
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-    );
+        </li>
+      )
+    } else {
+      return (
+        <li className="song-index-item" id='songindexitem'>
+          <div className="song-idx-list-icon">
+            {musicNote}
+            {playButton}
+          </div>
+          {albumImage}
+          <div className='song-idx-item-info'>
+            <div className="song-index-item-details">
+              <section className="song-index-item-left">
+                <span className="song-index-item-title">{song.title}</span>
+                {artistAlbumInfo}
+              </section>
+              <div className="song-index-item-buttons">
+                <ul id={`drop${song.id}`} className="songdropdown hidden">
+                  {removeFromQueueButton}
+                  {removeButton}
+                  {addToQueueButton}
+                  <li key={1}>{button}</li>
+                  <li key={2}>{addSong}</li>
+                </ul>
+                <IconContext.Provider
+                  value={{
+                    className: "song-index-item-add reacticon",
+                    size: "1.25em"
+                  }}
+                >
+                  <IoMdAddCircle onClick={this.reveal} />
+                </IconContext.Provider>
+                <span className="song-duration">{song.duration}</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      )
+    }
   }
 }
 
+const msp = state => {
+  return {
+    modalType: state.ui.modal.modalType
+  };
+};
 
 const mdp = dispatch => {
   return {
@@ -190,4 +265,4 @@ const mdp = dispatch => {
   }
 }
 
-export default connect(null, mdp)(SongIndexItem);
+export default withRouter(connect(msp, mdp)(SongIndexItem));

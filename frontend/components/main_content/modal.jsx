@@ -2,6 +2,7 @@ import React from 'react';
 import PlaylistForm from './../playlist/playlist_form';
 import AddSongToPlaylistIndex from './../playlist/add_song_playlist_index.jsx';
 import EditPlaylistForm from './../playlist/edit_playlist_form';
+import QueueSongIndex from './../music_player/queue_song_index';
 
 class Modal extends React.Component {
 
@@ -20,6 +21,9 @@ class Modal extends React.Component {
         break;
       case 'editPlaylist':
         component = <EditPlaylistForm />;
+        break;
+      case 'queue':
+        component = <QueueSongIndex />;
         break;
       default:
         return null;

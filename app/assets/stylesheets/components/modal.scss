@@ -63,3 +63,19 @@
   margin: 0 auto;
   padding-bottom: 15px;
 }
+
+.queue-songs {
+  width: 50vw;
+  background: rgb(39,39,39);
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 24px;
+    padding-bottom: 20px;
+  }
+}

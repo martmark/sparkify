@@ -18,9 +18,9 @@ class SongIndex extends React.Component {
     return(
       <div className='song-idx-outer'>
         <ul className="song-index">
-          {this.props.songs.map(song => <SongIndexItem 
+          {this.props.songs.map((song, idx) => <SongIndexItem 
             song={song} 
-            key={song.id} 
+            key={Math.random() * song.id * idx} 
             followSong={this.props.followSong} 
             unfollowSong={this.props.unfollowSong}
             indexType={this.props.indexType}
@@ -29,6 +29,8 @@ class SongIndex extends React.Component {
             playlistId={this.props.playlistId}
             playlistTitle={this.props.playlistTitle}
             ownedPlaylist={this.props.ownedPlaylist}
+            removeFromQueue={this.props.removeFromQueue}
+            queueIdx={idx}
           />)}
         </ul>
       </div>

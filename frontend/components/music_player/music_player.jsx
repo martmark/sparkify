@@ -4,12 +4,14 @@ import { togglePlay } from './../../actions/music_actions';
 import {Link} from 'react-router-dom';
 import { IconContext } from "react-icons";
 import { clearUpNext } from './../../actions/music_actions';
+import { openModal } from './../../actions/modal_actions';
 
 import {
   MdPlayCircleOutline,
   MdPauseCircleOutline,
   MdSkipNext,
-  MdSkipPrevious
+  MdSkipPrevious,
+  MdQueueMusic
 } from "react-icons/md";
 import { 
   IoIosRepeat, 
@@ -49,6 +51,8 @@ class MusicPlayer extends React.Component {
     this.setCursorPosition = this.setCursorPosition.bind(this);
     this.isntPlaying = this.isntPlaying.bind(this);
     this.changeCursorPosition = this.changeCursorPosition.bind(this);
+    this.showQueue = this.showQueue.bind(this);
+    this.removeFromQueue = this.removeFromQueue.bind(this);
   }
 
   componentDidMount() {
@@ -75,6 +79,7 @@ class MusicPlayer extends React.Component {
         upNext: newUpNextArr
       }, () => {
         this.props.clearUpNext();
+        if (newProps.modalType == 'queue') this.showQueue();
       });
     } else if (this.props.currentSong.id !== newProps.currentSong.id) {
       this.pause();
@@ -159,6 +164,10 @@ class MusicPlayer extends React.Component {
       }, () => {
         this.play();
       });
+
+      if (this.props.modalType == 'queue') {
+        this.showQueue();
+      }
       // this.play();
     } else if (this.state.shuffle) {
       let queue = this.state.queue;
@@ -321,6 +330,19 @@ class MusicPlayer extends React.Component {
     return !this.state.playing;
   }
 
+  showQueue() {
+    this.props.openModal({ 
+      modalType: 'queue', 
+      upNext: this.state.upNext,
+      removeFromQueue: this.removeFromQueue
+    });
+  }
+
+  removeFromQueue(idx) {
+    this.state.upNext.splice(idx, 1);
+    this.showQueue();
+  }
+
   render() {
 
     let button;
@@ -389,6 +411,21 @@ class MusicPlayer extends React.Component {
       </IconContext.Provider>;
     }
 
+    let queueButton;
+    if (this.state.upNext.length > 0) {
+      queueButton = <IconContext.Provider
+        value={{ className: "queue-button queue-active", size: "1.25em" }}
+      >
+        <MdQueueMusic onClick={this.showQueue} />
+      </IconContext.Provider>;
+    } else {
+      queueButton = <IconContext.Provider
+        value={{ className: "queue-button", size: "1.25em" }}
+      >
+        <MdQueueMusic />
+      </IconContext.Provider>;
+    }
+
     let song = this.state.currentSong;
 
     let albumArt = <img src='https://sparkifyimages.s3.amazonaws.com/blank.jpg' alt='' />
@@ -445,6 +482,7 @@ class MusicPlayer extends React.Component {
           </div>
         </div>
         <div className="mp-volume-control">
+          {queueButton}
           {volumeButton}
           <input 
             id="vol-control" 
@@ -478,14 +516,16 @@ const msp = state => {
     currentIdx: state.ui.musicPlayer.currentIdx,
     playing: state.ui.musicPlayer.playing,
     queue: state.ui.musicPlayer.queue,
-    upNext: state.ui.musicPlayer.upNext
+    upNext: state.ui.musicPlayer.upNext,
+    modalType: state.ui.modal.modalType
   });
 };
 
 const mdp = dispatch => {
   return({
     togglePlay: () => dispatch(togglePlay()),
-    clearUpNext: () => dispatch(clearUpNext())
+    clearUpNext: () => dispatch(clearUpNext()),
+    openModal: modalInfo => dispatch(openModal(modalInfo))
   });
 };
 

@@ -28,26 +28,7 @@ class AlbumShow extends React.Component {
       .then(() => this.setState({ followed: this.props.album.followed }))
       .then(() => {
         this.props.setLoadingFalse();
-        this.albumStyling();
       });
-  }
-
-  // componentDidMount() {
-  //   this.albumStyling();
-  // }
-
-  albumStyling() {
-    // debugger
-    // if (this.props.indexType == "album") {
-    let songLis = document.getElementsByClassName('song-index-item');
-      // debugger;
-    for (let i = 0; i < songLis.length; i++) {
-      // let x = songLis[i];
-      songLis[i].classList.add('album-song-item');
-    }
-    // songLis.forEach(li => li.classList.add('album-song-item'))
-      
-    // }\
   }
 
   componentDidUpdate(prevProps, prevState) {
