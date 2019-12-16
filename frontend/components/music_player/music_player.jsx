@@ -60,7 +60,7 @@ class MusicPlayer extends React.Component {
       // console.log('timer');
       this.setCursorPosition();
       // this.blerp++;
-    }, 250);
+    }, 100);
   }
 
   componentWillReceiveProps(newProps) {
@@ -178,22 +178,32 @@ class MusicPlayer extends React.Component {
 
   previous() {
     let current = this.state.currentIdx;
-    if (current === 0) {
-      this.pause();
+    // debugger;
+    if (this.state.cursorPosition <= 10) {
+      if (current === 0) {
+        this.pause();
+      } else {
+        current = current - 1;
+        this.setState({ 
+          currentIdx: current, 
+          currentSong: this.state.queue[current],
+          currentTime: '0:00',
+          cursorPosition: 0
+        });
+        let span = document.getElementById('durationspan');
+        if (this.state.queue[current].duration) { 
+          span.innerHTML = this.state.queue[current].duration;
+        }
+        this.refs.musicPlayer.src = this.state.currentSong.track_url;
+        this.play();
+      }
     } else {
-      current = current - 1;
-      this.setState({ 
-        currentIdx: current, 
-        currentSong: this.state.queue[current],
+      this.setState({
         currentTime: '0:00',
         cursorPosition: 0
       });
-      let span = document.getElementById('durationspan');
-      if (this.state.queue[current].duration) { 
-        span.innerHTML = this.state.queue[current].duration;
-      }
-      this.refs.musicPlayer.src = this.state.currentSong.track_url;
-      this.play();
+      let player = document.getElementById('the-music-player');
+      player.currentTime = 0;
     }
   }
 
@@ -240,7 +250,7 @@ class MusicPlayer extends React.Component {
       var player = document.getElementById('the-music-player');
       let currentTime = player.currentTime;
       if (currentTime) {
-        let pos = Math.round(player.currentTime / player.duration * 500);
+        let pos = Math.round(player.currentTime / player.duration * 1000);
         let minutes = Math.floor(currentTime / 60);
         let seconds = Math.round(currentTime) % 60;
         let secStr = seconds;
@@ -261,7 +271,7 @@ class MusicPlayer extends React.Component {
     if (!player.currentTime) return;
     let duration = player.duration;
     let pos = e.target.value;
-    let currentTime = duration * (pos / 500);
+    let currentTime = duration * (pos / 1000);
     let minutes = Math.floor(currentTime / 60);
     let seconds = Math.round(currentTime) % 60;
     let secStr = seconds;
@@ -389,7 +399,7 @@ class MusicPlayer extends React.Component {
               id="the-progress-bar"
               type="range"
               min="0"
-              max="500"
+              max="1000"
               step="1"
               // defaultValue='0'
               value={this.state.cursorPosition}
