@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { openModal, closeModal } from './../../actions/modal_actions';
 import { removeSongFromPlaylist } from './../../actions/playlist_actions';
 import { IconContext } from "react-icons";
-import { MdPlayArrow, MdMusicNote } from "react-icons/md";
-import { IoMdAddCircle } from "react-icons/io";
+import { MdPlayArrow } from "react-icons/md";
+import { IoMdAddCircle, IoIosMusicalNotes } from "react-icons/io";
 
 class SongIndexItem extends React.Component {
   constructor(props) {
@@ -75,7 +75,7 @@ class SongIndexItem extends React.Component {
       <IconContext.Provider
         value={{ className: "song-index-item-note reacticon", size: "1.5em" }}
       >
-        <MdMusicNote />
+        <IoIosMusicalNotes />
       </IconContext.Provider>
     );
 
