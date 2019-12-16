@@ -33,7 +33,11 @@ class MusicPlayer extends React.Component {
       prevVolume: null,
       cursorPosition: 0,
       currentTime: "0:00",
-      upNext: []
+      upNext: [],
+      origQueue: [],
+      shuffleQueue: [],
+      origIndex: null,
+      shuffleIdx: null
     };
 
     // this.blerp = 1;
@@ -53,6 +57,7 @@ class MusicPlayer extends React.Component {
     this.changeCursorPosition = this.changeCursorPosition.bind(this);
     this.showQueue = this.showQueue.bind(this);
     this.removeFromQueue = this.removeFromQueue.bind(this);
+    this.shuffleArray = this.shuffleArray.bind(this);
   }
 
   componentDidMount() {
@@ -80,14 +85,40 @@ class MusicPlayer extends React.Component {
         if (newProps.modalType == 'queue') this.showQueue();
       });
     } else if (this.props.currentSong.id !== newProps.currentSong.id) {
+      // debugger
       this.pause();
-      this.setState({ 
-        currentSong: newProps.currentSong, 
-        queue: newProps.queue, 
-        currentIdx: newProps.currentIdx,
-        currentTime: '0:00',
-        cursorPosition: 0
-      });
+      if (newProps.queue.length > 0) {
+        if (this.state.shuffle) {
+          let currentSong = newProps.currentSong;
+          let shuffledQueue = this.shuffleArray(newProps.queue);
+          let shuffledQueueIdx = shuffledQueue.indexOf(currentSong);
+          shuffledQueue.splice(shuffledQueueIdx, 1);
+          shuffledQueue.unshift(currentSong);
+          this.setState({
+            currentSong: currentSong,
+            origQueue: newProps.queue,
+            origIndex: newProps.currentIdx,
+            shuffleQueue: shuffledQueue,
+            shuffleIdx: 0,
+            currentTime: '0:00',
+            cursorPosition: 0
+          })
+        } else { 
+          this.setState({ 
+            currentSong: newProps.currentSong, 
+            queue: newProps.queue, 
+            currentIdx: newProps.currentIdx,
+            currentTime: '0:00',
+            cursorPosition: 0
+          });
+        }
+      } else {
+        this.setState({
+          currentSong: newProps.currentSong,
+          currentTime: '0:00',
+          cursorPosition: 0
+        });
+      }
       let span = document.getElementById('durationspan');
       if (newProps.currentSong.duration) {
         span.innerHTML = newProps.currentSong.duration;
@@ -167,12 +198,13 @@ class MusicPlayer extends React.Component {
       // this.play();
     } else if (this.state.shuffle) {
       
-      let queue = this.state.queue;
-      if (queue.length == 0) {
+      let queue = this.state.shuffleQueue;
+      if (this.state.shuffleIdx == queue.length - 1) {
         // if (current >= this.state.queue.length - 1) {
           this.pause();
           this.setState({
             currentIdx: 0,
+            shuffleIdx: 0,
             currentSong: {title: '', duration: '0:00', track_url: ''},
             currentTime: '0:00',
             cursorPosition: 0,
@@ -183,13 +215,13 @@ class MusicPlayer extends React.Component {
           return;
         // }
       }
-      let nextSong = queue[[Math.floor(Math.random() * queue.length)]];
-      while (nextSong == this.state.currentSong) {
-        nextSong = queue[[Math.floor(Math.random() * queue.length)]];
-      }
-      let nextIdx = queue.indexOf(nextSong);
+      let nextIdx = this.state.shuffleIdx + 1;
+      let nextSong = this.state.shuffleQueue[nextIdx];
+      let origIdx = this.state.origQueue.indexOf(nextSong);
+      // debugger;
       this.setState({ 
-        currentIdx: nextIdx, 
+        shuffleIdx: nextIdx,
+        origIdx: origIdx,
         currentSong: nextSong,
         currentTime: '0:00',
         cursorPosition: 0
@@ -198,32 +230,49 @@ class MusicPlayer extends React.Component {
       if (nextSong.duration) {
         span.innerHTML = nextSong.duration;
       }
-      this.refs.musicPlayer.src = this.state.currentSong.track_url;
+      this.refs.musicPlayer.src = nextSong.track_url;
       this.play();
     } else {
       if (current >= this.state.queue.length - 1) {
-        this.pause();
-        this.setState({ 
-          currentIdx: 0, 
-          currentSong: this.state.queue[0],
-          currentTime: '0:00',
-          cursorPosition: 0
-        });
-        let span = document.getElementById('durationspan');
-        if (this.state.queue[0].duration) {
-          span.innerHTML = this.state.queue[0].duration;
+        let queue = this.state.queue;
+        if (queue.length == 0) {
+          // if (current >= this.state.queue.length - 1) {
+          this.pause();
+          this.setState({
+            currentIdx: 0,
+            currentSong: { title: '', duration: '0:00', track_url: '' },
+            currentTime: '0:00',
+            cursorPosition: 0,
+            playing: false
+          });
+          let span = document.getElementById('durationspan');
+          span.innerHTML = '0:00';
+          return;
+          // }
+        } else {
+          this.pause();
+          this.setState({ 
+            currentIdx: 0, 
+            currentSong: this.state.queue[0],
+            currentTime: '0:00',
+            cursorPosition: 0
+          });
+          let span = document.getElementById('durationspan');
+          if (this.state.queue[0].duration) {
+            span.innerHTML = this.state.queue[0].duration;
+          }
         }
       } else {
-        current = current + 1;
+        let currentIndex = this.state.currentIdx + 1;
         this.setState({ 
-          currentIdx: current, 
-          currentSong: this.state.queue[current],
+          currentIdx: currentIndex, 
+          currentSong: this.state.queue[currentIndex],
           currentTime: '0:00',
           cursorPosition: 0
         });
         let span = document.getElementById('durationspan');
-        if (this.state.queue[current].duration) {
-          span.innerHTML = this.state.queue[current].duration;
+        if (this.state.queue[currentIndex].duration) {
+          span.innerHTML = this.state.queue[currentIndex].duration;
         }
         this.refs.musicPlayer.src = this.state.currentSong.track_url;
         this.play();
@@ -232,11 +281,26 @@ class MusicPlayer extends React.Component {
   }
 
   previous() {
+    if (this.state.cursorPosition > 10) {
+      this.setState({
+        currentTime: '0:00',
+        cursorPosition: 0
+      });
+      let player = document.getElementById('the-music-player');
+      player.currentTime = 0;
+      return;
+    }
+
+    if (!this.state.shuffle) {
     let current = this.state.currentIdx;
-    // debugger;
-    if (this.state.cursorPosition <= 10) {
       if (current === 0) {
         this.pause();
+        this.setState({
+          currentTime: '0:00',
+          cursorPosition: 0
+        })
+        let player = document.getElementById('the-music-player');
+        player.currentTime = 0;
       } else {
         current = current - 1;
         this.setState({ 
@@ -252,14 +316,36 @@ class MusicPlayer extends React.Component {
         this.refs.musicPlayer.src = this.state.currentSong.track_url;
         this.play();
       }
-    } else {
-      this.setState({
-        currentTime: '0:00',
-        cursorPosition: 0
-      });
-      let player = document.getElementById('the-music-player');
-      player.currentTime = 0;
+      return;
     }
+
+    if (this.state.shuffle) {
+      let shuffleIndex = this.state.shuffleIdx;
+      if (shuffleIndex === 0) {
+        this.pause();
+        this.setState({
+          currentTime: '0:00',
+          cursorPosition: 0
+        })
+        let player = document.getElementById('the-music-player');
+        player.currentTime = 0;
+      } else {
+        shuffleIndex = shuffleIndex - 1;
+        this.setState({
+          shuffleIdx: shuffleIndex,
+          currentSong: this.state.shuffleQueue[shuffleIndex],
+          currentTime: '0:00',
+          cursorPosition: 0
+        });
+        let span = document.getElementById('durationspan');
+        if (this.state.queue[shuffleIndex].duration) {
+          span.innerHTML = this.state.shuffleQueue[shuffleIndex].duration;
+        }
+        this.refs.musicPlayer.src = this.state.currentSong.track_url;
+        this.play();
+      }
+    }
+    
   }
 
   toggleRepeat() {
@@ -269,7 +355,32 @@ class MusicPlayer extends React.Component {
 
   toggleShuffle() {
     let shuffle = this.state.shuffle;
-    this.setState({ shuffle: !shuffle });
+    if (this.state.queue.length === 0) {
+      this.setState({ shuffle: !shuffle });
+      return;
+    }
+    if (!shuffle) {
+      let currentSong = this.state.currentSong;
+      let shuffledQueue = this.shuffleArray(this.state.queue);
+      let shuffledQueueIdx = shuffledQueue.indexOf(currentSong);
+      let origQueueIdx = this.state.queue.indexOf(currentSong);
+      shuffledQueue.splice(shuffledQueueIdx, 1);
+      shuffledQueue.unshift(currentSong);
+      this.setState({
+        origQueue: this.state.queue,
+        origIndex: origQueueIdx,
+        shuffleQueue: shuffledQueue,
+        shuffleIdx: 0,
+        shuffle: true
+      })
+    } else {
+      let origIndex = this.state.origQueue.indexOf(this.state.currentSong);
+      this.setState({
+        queue: this.state.origQueue,
+        currentIdx: origIndex,
+        shuffle: false
+      })
+    }
   }
 
   setVolume(e) {
@@ -353,6 +464,15 @@ class MusicPlayer extends React.Component {
   removeFromQueue(idx) {
     this.state.upNext.splice(idx, 1);
     this.showQueue();
+  }
+
+  shuffleArray(arr) {
+    let newArr = [];
+    while (newArr.length < arr.length) {
+      let song = arr[Math.floor(Math.random() * arr.length)];
+      if (!newArr.includes(song)) newArr.push(song);
+    }
+    return newArr;
   }
 
   render() {
