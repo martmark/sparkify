@@ -1,4 +1,10 @@
-import { SET_CURRENT_SONG, TOGGLE_PLAY, SET_QUEUE } from './../actions/music_actions';
+import { 
+  SET_CURRENT_SONG, 
+  TOGGLE_PLAY, 
+  SET_QUEUE, 
+  CLEAR_UP_NEXT, 
+  ADD_TO_QUEUE 
+} from './../actions/music_actions';
 import merge from 'lodash/merge';
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 
@@ -38,6 +44,10 @@ const musicPlayerReducer = (state = defaultState, action) => {
       return merge({}, state, { queue: action.queue, currentIdx: action.currentIdx });
     case LOGOUT_CURRENT_USER:
       return defaultState;
+    case ADD_TO_QUEUE:
+      return Object.assign({}, state, { upNext: action.song });
+    case CLEAR_UP_NEXT:
+      return Object.assign({}, state, { upNext: null });
     default:
       return state;
   }

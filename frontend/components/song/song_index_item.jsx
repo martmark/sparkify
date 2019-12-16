@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from './../../actions/modal_actions';
 import { removeSongFromPlaylist } from './../../actions/playlist_actions';
+import { addToQueue } from './../../actions/music_actions';
 import { IconContext } from "react-icons";
 import { MdPlayArrow } from "react-icons/md";
 import { IoMdAddCircle, IoIosMusicalNotes } from "react-icons/io";
@@ -18,6 +19,7 @@ class SongIndexItem extends React.Component {
     this.addToPlaylist = this.addToPlaylist.bind(this);
     this.reveal = this.reveal.bind(this);
     this.hideDropdown = this.hideDropdown.bind(this);
+    this.addSongToQueue = this.addSongToQueue.bind(this);
     // this.albumStyling = this.albumStyling.bind(this);
   }
 
@@ -50,12 +52,16 @@ class SongIndexItem extends React.Component {
   reveal()  {
     $(`#drop${this.props.song.id}`).removeClass('hidden');
     $(document).on('click', this.hideDropdown);
-  };
+  }
 
   hideDropdown() {
     $(`#drop${this.props.song.id}`).addClass('hidden');
     $(document).off('click', this.hideDropdown);
-  };
+  }
+
+  addSongToQueue() {
+    this.props.addToQueue(this.props.song);
+  }
 
   render() {
     const { song, indexType} = this.props;
@@ -120,6 +126,12 @@ class SongIndexItem extends React.Component {
       </li>
     }
 
+    let addToQueueButton = <li key={'aMi*e23'} className='song-idx-queue-btn'>
+      <button onClick={this.addSongToQueue}>
+        Add to Queue
+      </button>
+    </li>
+
     let albumImage;
     if (indexType === 'artist' || indexType === 'collection' || indexType =='search') {
       albumImage = (
@@ -147,6 +159,7 @@ class SongIndexItem extends React.Component {
             <div className="song-index-item-buttons">
               <ul id={`drop${song.id}`} className="songdropdown hidden">
                 {removeButton}
+                {addToQueueButton}
                 <li key={1}>{button}</li>
                 <li key={2}>{addSong}</li>
               </ul>
@@ -172,7 +185,8 @@ const mdp = dispatch => {
   return {
     openModal: modalInfo => dispatch(openModal(modalInfo)),
     closeModal: () => dispatch(closeModal()),
-    removeSongFromPlaylist: playlistSong => dispatch(removeSongFromPlaylist(playlistSong))
+    removeSongFromPlaylist: playlistSong => dispatch(removeSongFromPlaylist(playlistSong)),
+    addToQueue: song => dispatch(addToQueue(song))
   }
 }
 

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { togglePlay } from './../../actions/music_actions';
 import {Link} from 'react-router-dom';
 import { IconContext } from "react-icons";
+import { clearUpNext } from './../../actions/music_actions';
+
 import {
   MdPlayCircleOutline,
   MdPauseCircleOutline,
@@ -28,7 +30,8 @@ class MusicPlayer extends React.Component {
       volume: 100,
       prevVolume: null,
       cursorPosition: 0,
-      currentTime: "0:00"
+      currentTime: "0:00",
+      upNext: []
     };
 
     // this.blerp = 1;
@@ -65,24 +68,34 @@ class MusicPlayer extends React.Component {
 
   componentWillReceiveProps(newProps) {
     // debugger;
-    if (this.props.currentSong.id !== newProps.currentSong.id) this.pause();
-    this.setState({ 
-      currentSong: newProps.currentSong, 
-      queue: newProps.queue, 
-      currentIdx: newProps.currentIdx,
-      currentTime: '0:00',
-      cursorPosition: 0
-     });
-    let span = document.getElementById('durationspan');
-    if (newProps.currentSong.duration) {
-      span.innerHTML = newProps.currentSong.duration;
-    }
-    if (newProps.playing === true) {
-      this.setState({playing: true});
-      this.play();
-    } else {
-      this.setState({playing: false});
+    if (newProps.upNext) {
+      let newSong = newProps.upNext;
+      let newUpNextArr = this.state.upNext.concat(newSong);
+      this.setState({
+        upNext: newUpNextArr
+      }, () => {
+        this.props.clearUpNext();
+      });
+    } else if (this.props.currentSong.id !== newProps.currentSong.id) {
       this.pause();
+      this.setState({ 
+        currentSong: newProps.currentSong, 
+        queue: newProps.queue, 
+        currentIdx: newProps.currentIdx,
+        currentTime: '0:00',
+        cursorPosition: 0
+      });
+      let span = document.getElementById('durationspan');
+      if (newProps.currentSong.duration) {
+        span.innerHTML = newProps.currentSong.duration;
+      }
+      if (newProps.playing === true) {
+        this.setState({playing: true});
+        this.play();
+      } else {
+        this.setState({playing: false});
+        this.pause();
+      }
     }
   }
 
@@ -126,7 +139,20 @@ class MusicPlayer extends React.Component {
 
   clickNext() {
     let current = this.state.currentIdx;
-    if (this.state.shuffle) {
+    if (this.state.upNext.length > 0) {
+      let nextSong = this.state.upNext.shift();
+      this.setState({
+        currentSong: nextSong,
+        currentTime: '0:00',
+        cursorPosition: 0
+      });
+      let span = document.getElementById('durationspan');
+      if (nextSong.duration) {
+        span.innerHTML = nextSong.duration;
+      }
+      this.refs.musicPlayer.src = this.state.currentSong.track_url;
+      this.play();
+    } else if (this.state.shuffle) {
       let queue = this.state.queue;
       let nextSong = queue[[Math.floor(Math.random() * queue.length)]];
       while (nextSong == this.state.currentSong) {
@@ -443,13 +469,15 @@ const msp = state => {
     currentSong: state.ui.musicPlayer.currentSong,
     currentIdx: state.ui.musicPlayer.currentIdx,
     playing: state.ui.musicPlayer.playing,
-    queue: state.ui.musicPlayer.queue
+    queue: state.ui.musicPlayer.queue,
+    upNext: state.ui.musicPlayer.upNext
   });
 };
 
 const mdp = dispatch => {
   return({
-    togglePlay: () => dispatch(togglePlay())
+    togglePlay: () => dispatch(togglePlay()),
+    clearUpNext: () => dispatch(clearUpNext())
   });
 };
 
