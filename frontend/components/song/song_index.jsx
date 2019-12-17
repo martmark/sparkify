@@ -31,6 +31,7 @@ class SongIndex extends React.Component {
             ownedPlaylist={this.props.ownedPlaylist}
             removeFromQueue={this.props.removeFromQueue}
             queueIdx={idx}
+            queueName={this.props.queueName}
           />)}
         </ul>
       </div>

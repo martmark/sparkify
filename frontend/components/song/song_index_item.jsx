@@ -44,7 +44,8 @@ class SongIndexItem extends React.Component {
     this.props.setCurrentSong({
       currentSong: this.props.song,
       currentIdx: idx,
-      queue: this.props.allSongs
+      queue: this.props.allSongs,
+      queueName: this.props.queueName
     });
     if (this.props.indexType == 'queue') {
       this.removeFromQueue();
@@ -134,7 +135,7 @@ class SongIndexItem extends React.Component {
 
 
     let artistAlbumInfo = '';
-    if (indexType === 'collection' || indexType === 'playlist' || indexType === 'browse' || indexType === 'search' || indexType === 'queue') {
+    if (indexType === 'collection' || indexType === 'playlist' || indexType === 'browse' || indexType === 'search' || indexType === 'queue' || indexType === 'notqueue') {
       artistAlbumInfo = <div className='song-artist-info'>
         <span className='song-artist clickable' onClick={this.linkToArtist}>
           {song.artistName}
@@ -166,7 +167,7 @@ class SongIndexItem extends React.Component {
     </li>
 
     let albumImage;
-    if (indexType === 'artist' || indexType === 'collection' || indexType =='search' || indexType == 'queue' ) {
+    if (indexType === 'artist' || indexType === 'collection' || indexType == 'search' || indexType == 'queue' || indexType === 'notqueue' ) {
       albumImage = (
         <div className="song-index-item-image clickable" onClick={this.linkToAlbum}>
           <img src={song.image_url} alt={song.albumName} />

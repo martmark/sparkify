@@ -112,7 +112,9 @@ class ArtistShow extends React.Component {
       songIndex = <SongIndex 
         songs={this.state.featuredSongs} 
         allSongs={songs} 
-        indexType={'artist'} />
+        indexType={'artist'} 
+        queueName={artistName}  
+      />
       albumIndex = <AlbumIndex albums={albums} />
     }
     return(

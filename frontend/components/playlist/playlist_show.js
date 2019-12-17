@@ -102,6 +102,7 @@ class PlaylistShow extends React.Component {
             playlistId={playlist.id}
             playlistTitle={playlist.title}
             ownedPlaylist={playlist.userId == this.props.currentUserId}
+            queueName={playlist.title}
           />
         </div>
       );

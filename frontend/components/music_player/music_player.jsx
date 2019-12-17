@@ -37,10 +37,10 @@ class MusicPlayer extends React.Component {
       origQueue: [],
       shuffleQueue: [],
       origIndex: null,
-      shuffleIdx: null
+      shuffleIdx: null,
+      queueName: null
     };
 
-    // this.blerp = 1;
     this.positionInterval = null;
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
@@ -64,13 +64,9 @@ class MusicPlayer extends React.Component {
     let musicPlayer = this.refs.musicPlayer;
     musicPlayer.addEventListener('ended', this.next);
     musicPlayer.addEventListener('error', this.next);
-    // this.setState({ duration: "0:00" });
 
     this.positionInterval = setInterval(() => {
-      // console.log(`time ${this.blerp}`);
-      // console.log('timer');
       this.setCursorPosition();
-      // this.blerp++;
     }, 100);
   }
 
@@ -85,7 +81,6 @@ class MusicPlayer extends React.Component {
         if (newProps.modalType == 'queue') this.showQueue();
       });
     } else if (this.props.currentSong.id !== newProps.currentSong.id) {
-      // debugger
       this.pause();
       if (newProps.queue.length > 0) {
         if (this.state.shuffle) {
@@ -101,7 +96,8 @@ class MusicPlayer extends React.Component {
             shuffleQueue: shuffledQueue,
             shuffleIdx: 0,
             currentTime: '0:00',
-            cursorPosition: 0
+            cursorPosition: 0,
+            queueName: newProps.queueName
           })
         } else { 
           this.setState({ 
@@ -109,7 +105,8 @@ class MusicPlayer extends React.Component {
             queue: newProps.queue, 
             currentIdx: newProps.currentIdx,
             currentTime: '0:00',
-            cursorPosition: 0
+            cursorPosition: 0,
+            queueName: newProps.queueName
           });
         }
       } else {
@@ -146,11 +143,9 @@ class MusicPlayer extends React.Component {
     if (audioPromise !== undefined) {
       audioPromise
         .then(_ => {
-          // autoplay started
           return;
         })
         .catch(err => {
-          // catch dom exception
           return;
         });
     }
@@ -179,11 +174,7 @@ class MusicPlayer extends React.Component {
         span.innerHTML = nextSong.duration;
       }
       this.refs.musicPlayer.src = nextSong.track_url;
-      // this.setState({
-      //   currentSong: nextSong,
-      //   currentTime: '0:00',
-      //   cursorPosition: 0
-      // });
+     
       this.setState({
         currentSong: nextSong,
         currentTime: '0:00',
@@ -195,12 +186,12 @@ class MusicPlayer extends React.Component {
       if (this.props.modalType == 'queue') {
         this.showQueue();
       }
-      // this.play();
+      
     } else if (this.state.shuffle) {
       
       let queue = this.state.shuffleQueue;
       if (this.state.shuffleIdx == queue.length - 1) {
-        // if (current >= this.state.queue.length - 1) {
+        
           this.pause();
           this.setState({
             currentIdx: 0,
@@ -213,12 +204,12 @@ class MusicPlayer extends React.Component {
           let span = document.getElementById('durationspan');
           span.innerHTML = '0:00';
           return;
-        // }
+        
       }
       let nextIdx = this.state.shuffleIdx + 1;
       let nextSong = this.state.shuffleQueue[nextIdx];
       let origIdx = this.state.origQueue.indexOf(nextSong);
-      // debugger;
+      
       this.setState({ 
         shuffleIdx: nextIdx,
         origIdx: origIdx,
@@ -236,7 +227,7 @@ class MusicPlayer extends React.Component {
       if (current >= this.state.queue.length - 1) {
         let queue = this.state.queue;
         if (queue.length == 0) {
-          // if (current >= this.state.queue.length - 1) {
+          
           this.pause();
           this.setState({
             currentIdx: 0,
@@ -248,7 +239,7 @@ class MusicPlayer extends React.Component {
           let span = document.getElementById('durationspan');
           span.innerHTML = '0:00';
           return;
-          // }
+          
         } else {
           this.pause();
           this.setState({ 
@@ -338,7 +329,7 @@ class MusicPlayer extends React.Component {
           cursorPosition: 0
         });
         let span = document.getElementById('durationspan');
-        if (this.state.queue[shuffleIndex].duration) {
+        if (this.state.shuffleQueue[shuffleIndex]) {
           span.innerHTML = this.state.shuffleQueue[shuffleIndex].duration;
         }
         this.refs.musicPlayer.src = this.state.currentSong.track_url;
@@ -386,11 +377,7 @@ class MusicPlayer extends React.Component {
   setVolume(e) {
     var player = document.getElementById('the-music-player');
     this.setState({ volume: e.target.value });
-    // console.log('Before: ' + player.volume);
-    // console.log(player.currentTime);
-    // debugger;
     player.volume = e.target.value / 100;
-    // console.log('After: ' + player.volume);
   }
 
   mutePlayer() {
@@ -432,7 +419,6 @@ class MusicPlayer extends React.Component {
   }
 
   changeCursorPosition(e) {
-    // debugger;
     var player = document.getElementById('the-music-player');
     if (!player.currentTime) return;
     let duration = player.duration;
@@ -454,11 +440,37 @@ class MusicPlayer extends React.Component {
   }
 
   showQueue() {
-    this.props.openModal({ 
-      modalType: 'queue', 
-      upNext: this.state.upNext,
-      removeFromQueue: this.removeFromQueue
-    });
+    // debugger;
+    if (this.state.shuffle) {
+      if (this.state.shuffleQueue.length > 0) {
+        let normalQueue = this.state.shuffleQueue.filter((song, idx) => idx > this.state.shuffleIdx);
+        this.props.openModal({
+          modalType: 'queue',
+          upNext: this.state.upNext,
+          removeFromQueue: this.removeFromQueue,
+          normalQueue,
+          queueName: this.state.queueName
+        });
+      } else {
+        this.props.openModal({
+          modalType: 'queue',
+          upNext: this.state.upNext,
+          removeFromQueue: this.removeFromQueue,
+          normalQueue: [],
+          queueName: this.state.queueName
+        });
+      }
+    } else {
+      // debugger;
+      let normalQueue = this.state.queue.filter((song, idx) => idx > this.state.currentIdx);
+      this.props.openModal({
+        modalType: 'queue',
+        upNext: this.state.upNext,
+        removeFromQueue: this.removeFromQueue,
+        normalQueue,
+        queueName: this.state.queueName
+      });
+    }
   }
 
   removeFromQueue(idx) {
@@ -552,9 +564,9 @@ class MusicPlayer extends React.Component {
       </IconContext.Provider>;
     } else {
       queueButton = <IconContext.Provider
-        value={{ className: "queue-button", size: "1.25em" }}
+        value={{ className: "queue-button clickable", size: "1.25em" }}
       >
-        <MdQueueMusic />
+        <MdQueueMusic onClick={this.showQueue} />
       </IconContext.Provider>;
     }
 
@@ -574,7 +586,6 @@ class MusicPlayer extends React.Component {
       artistName = song.artistName;
       trackUrl = song.track_url;
     }
-// debugger
     return (
       <div className="music-player">
         <div className="music-player-song-info">
@@ -607,16 +618,12 @@ class MusicPlayer extends React.Component {
           <div className='mp-progress'>
             <span className='current-time-display'>{this.state.currentTime}</span>
             <input
-              // disabl={!this.state.playing}
-              // disabled={this.isntPlaying()}
               id="the-progress-bar"
               type="range"
               min="0"
               max="1000"
               step="1"
-              // defaultValue='0'
               value={this.state.cursorPosition}
-              // value={document.getElementById('the-music-player').volume}
               onInput={this.changeCursorPosition}
               onChange={this.changeCursorPosition}
             />
@@ -633,7 +640,6 @@ class MusicPlayer extends React.Component {
             max="100" 
             step="1" 
             value={this.state.volume}
-            // value={document.getElementById('the-music-player').volume}
             onInput={this.setVolume}
             onChange={this.setVolume}
           >
@@ -659,7 +665,8 @@ const msp = state => {
     playing: state.ui.musicPlayer.playing,
     queue: state.ui.musicPlayer.queue,
     upNext: state.ui.musicPlayer.upNext,
-    modalType: state.ui.modal.modalType
+    modalType: state.ui.modal.modalType,
+    queueName: state.ui.musicPlayer.queueName
   });
 };
 

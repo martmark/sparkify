@@ -16,14 +16,40 @@ class QueueSongIndex extends React.Component {
   }
 
   render() {
-    return (
-      <div className="queue-songs">
+    let upNextSongIndex;
+    if (this.props.upNext.length > 0) {
+      upNextSongIndex = <div className="queuemodal-upnext">
         <h1>Up Next</h1>
         <SongIndex
           songs={this.props.upNext}
           indexType="queue"
           removeFromQueue={this.props.removeFromQueue}
         />
+      </div>;
+    }
+
+    let normalQueueSongIndex;
+    if (this.props.normalQueue.length > 0) {
+      normalQueueSongIndex = <div className="queuemodal-normal">
+        <h1>{`Playing from ${this.props.queueName}`}</h1>
+        <SongIndex
+          songs={this.props.normalQueue}
+          indexType="notqueue"
+          // removeFromQueue={this.props.removeFromQueue}
+        />
+      </div>;
+    }
+
+    let noSongsIndicator;
+    if (this.props.normalQueue.length === 0 && this.props.upNext.length === 0) {
+      noSongsIndicator = <h2>Nothing in Queue.</h2>;
+    }
+    
+    return (
+      <div className="queue-songs">
+        {upNextSongIndex}
+        {normalQueueSongIndex}
+        {noSongsIndicator}
       </div>
     )
   }
@@ -32,7 +58,9 @@ class QueueSongIndex extends React.Component {
 const msp = state => {
   return {
     upNext: state.ui.modal.upNext,
-    removeFromQueue: id => state.ui.modal.removeFromQueue(id)
+    normalQueue: state.ui.modal.normalQueue,
+    removeFromQueue: id => state.ui.modal.removeFromQueue(id),
+    queueName: state.ui.modal.queueName
   };
 };
 

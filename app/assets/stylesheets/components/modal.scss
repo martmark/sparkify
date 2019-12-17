@@ -65,17 +65,25 @@
 }
 
 .queue-songs {
-  width: 50vw;
+  width: 60vw;
+  max-height: 75vh;
+  overflow-y: scroll;
   background: rgb(39,39,39);
   padding: 20px;
   font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
+  border-radius: 15px;
+  // text-decoration: underline;
+}
 
-  h1 {
-    font-size: 24px;
-    padding-bottom: 20px;
-  }
+.queuemodal-upnext {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.queuemodal-normal {
+  width: 100%;
 }

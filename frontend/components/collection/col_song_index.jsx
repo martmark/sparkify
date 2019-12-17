@@ -33,7 +33,7 @@ class CollectionSongIndex extends React.Component {
 
     return (
       <div className='collection-song-index'>
-        <SongIndex songs={songs} indexType={'collection'}/>
+        <SongIndex songs={songs} indexType={'collection'} queueName={'Your Saved Songs'}/>
       </div>
     )
 

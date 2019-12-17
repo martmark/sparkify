@@ -30,7 +30,7 @@ class SongSearch extends React.Component {
     if (this.props.songs.length > 0) {
       return(
         <div className='search-song-index'>
-          <SongIndex songs={this.props.songs} indexType='search' />
+          <SongIndex songs={this.props.songs} indexType='search' queueName={"Search Results"}/>
         </div>
       )
     } else {
