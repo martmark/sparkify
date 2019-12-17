@@ -59,9 +59,6 @@ class User < ApplicationRecord
   def ensure_username
     downcase_username = self.username.downcase
     user = User.where('lower(username) = ?', downcase_username).first
-
-    if user
-      errors.add(:username, 'has already been taken')
-    end
+    errors.add(:username, 'has already been taken') if user
   end
 end
