@@ -9,7 +9,6 @@ import { setCurrentSong, setQueue } from './../../actions/music_actions';
 import { IconContext } from "react-icons";
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 
-
 class AlbumShow extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +20,7 @@ class AlbumShow extends React.Component {
     }
     this.followAlbum = this.followAlbum.bind(this);
     this.unfollowAlbum = this.unfollowAlbum.bind(this);
+    this.playAlbum = this.playAlbum.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +54,15 @@ class AlbumShow extends React.Component {
     let id = this.props.album.id;
     this.props.unfollowAlbum(id)
       .then(() => this.setState({ followed: false }));
+  }
+
+  playAlbum() {
+    this.props.setCurrentSong({
+      currentSong: this.props.songs[0],
+      currentIdx: 0,
+      queue: this.props.songs,
+      queueName: this.props.album.title
+    });
   }
 
   render() {
@@ -114,6 +123,7 @@ class AlbumShow extends React.Component {
               {albumTitle}
               {albumArtistName}
               {albumInfo}
+              <button className='play-collection' onClick={this.playAlbum}>PLAY</button>
               <div className='album-show-follow-btn'>
                 {button}
               </div>
@@ -146,7 +156,7 @@ const mdp = dispatch => {
     setLoadingTrue: () => dispatch(setLoadingTrue()),
     followAlbum: id => followAlbum(id),
     unfollowAlbum: id => unfollowAlbum(id),
-    
+    setCurrentSong: song => dispatch(setCurrentSong(song))
   })
 }
 

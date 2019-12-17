@@ -190,3 +190,48 @@ html {
 .clickable {
   cursor: pointer;
 }
+
+#no-collection-button {
+  background: white;
+  height: 30px;
+  margin: 0 auto;
+  width: 140px;
+  border-radius: 30px;
+  font-family: Circular, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  transition: all .2s ease-in-out;
+  color: black;
+  // text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+#no-collection-button:hover {
+  // background: rgb(30,150,50);
+  transform: scale(1.05);
+}
+
+.play-collection {
+  background: rgb(30,167,73);
+  height: 30px;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 90px;
+  border-radius: 30px;
+  font-family: Circular, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  transition: 0.3s;
+  color: white;
+  text-align: center;
+}
+
+.play-collection:hover {
+  background: rgb(30,150,50);
+}

@@ -36,7 +36,12 @@ class SongIndexItem extends React.Component {
   unfollowSong() {
     let id = this.props.song.id;
     this.props.unfollowSong(id)
-    .then(() => this.setState({ saved: false }));
+    .then(() => {
+      if (this.props.indexType === 'collection') {
+        this.props.removeFromCollection(this.props.song.id);
+      }
+      this.setState({ saved: false });
+    });
   }
 
   playSong() {

@@ -6,8 +6,16 @@ import { fetchSongs } from './../../actions/song_actions';
 import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
 
 class CollectionSongIndex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { songs: [] };
+
+    this.removeFromCollection = this.removeFromCollection.bind(this);
+  }
+
   componentDidMount() {
     this.props.fetchSongs()
+    .then(() => this.setState({ songs: this.props.songs }))
     .then(() => this.props.setLoadingFalse())
   }
 
@@ -15,8 +23,14 @@ class CollectionSongIndex extends React.Component {
     this.props.setLoadingTrue();
   }
 
+  removeFromCollection(id) {
+    let newSongs = this.state.songs.filter(song => song.id !== id);
+    this.setState({ songs: newSongs })
+  }
+
   render() {
-    const { songs, loading } = this.props;
+    const { loading } = this.props;
+    const { songs } = this.state;
 
     if (loading) {
       return (
@@ -48,7 +62,12 @@ class CollectionSongIndex extends React.Component {
 
     return (
       <div className='collection-song-index'>
-        <SongIndex songs={songs} indexType={'collection'} queueName={'Your Saved Songs'}/>
+        <SongIndex 
+          songs={songs} 
+          indexType={'collection'} 
+          queueName={'Your Saved Songs'}
+          removeFromCollection={this.removeFromCollection}
+        />
       </div>
     )
 

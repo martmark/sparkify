@@ -9,6 +9,7 @@ import { followPlaylist, unfollowPlaylist } from "./../../util/playlist_api_util
 import { deletePlaylist } from './../../actions/playlist_actions';
 import { IconContext } from "react-icons";
 import { IoMdHeartEmpty, IoMdHeart, IoIosCog } from "react-icons/io";
+import { setCurrentSong } from './../../actions/music_actions';
 
 class PlaylistShow extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class PlaylistShow extends React.Component {
     this.reveal = this.reveal.bind(this);
     this.hideDropdown = this.hideDropdown.bind(this);
     this.editPlaylist = this.editPlaylist.bind(this);
+    this.playPlaylist = this.playPlaylist.bind(this);
   }
 
   componentDidMount() {
@@ -77,6 +79,15 @@ class PlaylistShow extends React.Component {
 
   editPlaylist(e) {
     this.props.openModal({ modalType: 'editPlaylist', playlist: this.props.playlist })
+  }
+
+  playPlaylist() {
+    this.props.setCurrentSong({
+      currentSong: this.props.songs[0],
+      currentIdx: 0,
+      queue: this.props.songs,
+      queueName: this.props.playlist.title
+    });
   }
 
   render() {
@@ -159,6 +170,7 @@ class PlaylistShow extends React.Component {
           <div className="album-show-details">
             {playlistTitle}
             {playlistInfo}
+            <button className='play-collection' onClick={this.playPlaylist}>PLAY</button>
             {button}
             <ul id="playlistdropdown" className="playlistdropdown hidden">
               <li key={1}>
@@ -201,7 +213,8 @@ const mdp = dispatch => {
     followPlaylist: id => followPlaylist(id),
     unfollowPlaylist: id => unfollowPlaylist(id),
     deletePlaylist: id => dispatch(deletePlaylist(id)),
-    openModal: modalInfo => dispatch(openModal(modalInfo))
+    openModal: modalInfo => dispatch(openModal(modalInfo)),
+    setCurrentSong: song => dispatch(setCurrentSong(song))
   };
 };
 

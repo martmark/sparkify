@@ -8,6 +8,7 @@ import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions
 import { followArtist, unfollowArtist } from './../../util/artist_api_util';
 import { IconContext } from "react-icons";
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
+import { setCurrentSong } from './../../actions/music_actions';
 
 class ArtistShow extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class ArtistShow extends React.Component {
     // }
     this.followArtist = this.followArtist.bind(this);
     this.unfollowArtist = this.unfollowArtist.bind(this);
+    this.playArtist = this.playArtist.bind(this);
   }
 
   componentDidMount() {
@@ -53,6 +55,16 @@ class ArtistShow extends React.Component {
     let id = this.props.artist.id;
     this.props.unfollowArtist(id)
       .then(() => this.setState({ followed: false }));
+  }
+
+  playArtist() {
+    // debugger;
+    this.props.setCurrentSong({
+      currentSong: this.props.songs[0],
+      currentIdx: 0,
+      queue: this.props.songs,
+      queueName: this.props.artist.name
+    });
   }
 
   addFeaturedSongs() {
@@ -122,6 +134,7 @@ class ArtistShow extends React.Component {
         <div className='info'>
           <span className='artist-name'>
             {artistName}
+            <button className='play-collection' onClick={this.playArtist}>PLAY</button>
             <span className='artist-show-follow-button'>{button}</span>
           </span>
         
@@ -161,7 +174,8 @@ const mdp = dispatch => {
     setLoadingFalse: () => dispatch(setLoadingFalse()),
     setLoadingTrue: () => dispatch(setLoadingTrue()),
     followArtist: id => followArtist(id),
-    unfollowArtist: id => unfollowArtist(id)
+    unfollowArtist: id => unfollowArtist(id),
+    setCurrentSong: song => dispatch(setCurrentSong(song))
   });
 };
 
