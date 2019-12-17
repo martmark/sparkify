@@ -38,7 +38,8 @@ class MusicPlayer extends React.Component {
       shuffleQueue: [],
       origIndex: null,
       shuffleIdx: null,
-      queueName: null
+      queueName: null,
+      volumeOn: true
     };
 
     this.positionInterval = null;
@@ -98,7 +99,7 @@ class MusicPlayer extends React.Component {
             shuffleIdx: 0,
             currentTime: '0:00',
             cursorPosition: 0,
-            queueName: newProps.queueName
+            queueName: newProps.queueName,
           })
         } else { 
           this.setState({ 
@@ -389,14 +390,14 @@ class MusicPlayer extends React.Component {
 
   setVolume(e) {
     var player = document.getElementById('the-music-player');
-    this.setState({ volume: e.target.value });
+    this.setState({ volume: e.target.value, volumeOn: false });
     player.volume = e.target.value / 100;
   }
 
   mutePlayer() {
     var player = document.getElementById('the-music-player');
     player.volume = 0;
-    this.setState({ prevVolume: this.state.volume, volume: 0 });
+    this.setState({ prevVolume: this.state.volume, volume: 0, volumeOn: false });
   }
 
   unmutePlayer() {
@@ -554,7 +555,7 @@ class MusicPlayer extends React.Component {
     let volumeButton;
     
     var playerplayer = document.getElementById('the-music-player');
-    if (playerplayer && playerplayer.volume > 0.0) {
+    if ((playerplayer && playerplayer.volume > 0.0) || this.state.volumeOn) {
       volumeButton = <IconContext.Provider
         value={{ className: "volume-button", size: "1.25em" }}
       >
