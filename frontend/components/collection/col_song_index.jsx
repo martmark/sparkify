@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import SongIndex from './../song/song_index';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import { fetchSongs } from './../../actions/song_actions';
 import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
@@ -26,6 +27,20 @@ class CollectionSongIndex extends React.Component {
             <div className="rect3"></div>
             <div className="rect4"></div>
             <div className="rect5"></div>
+          </div>
+        </div>
+      )
+    }
+
+    if (songs.length === 0) {
+      return (
+        <div className='no-collection-items'>
+          <h1>Songs you’ve liked live here</h1>
+          <h3>Find more of the songs you love and save to your Liked Songs.</h3>
+          <div className='button-holder'>
+            <Link to='/browse'>
+              <button id="no-collection-button">DISCOVER</button>
+            </Link>
           </div>
         </div>
       )

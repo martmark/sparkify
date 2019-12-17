@@ -68,3 +68,53 @@
   .collection-song-index {
     margin-bottom: 100px;
   }
+
+  .no-collection-items {
+    margin-top: 65px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+
+    h1 {
+      font-size: 40px;
+    }
+
+    h3 {
+      margin-top: 45px;
+      font-size: 13px;
+    }
+  }
+
+#no-collection-button {
+  background: white;
+  height: 30px;
+  margin: 0 auto;
+  width: 140px;
+  border-radius: 30px;
+  font-family: Circular, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  transition: all .2s ease-in-out;
+  color: black;
+  // text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+#no-collection-button:hover {
+  // background: rgb(30,150,50);
+  transform: scale(1.05);
+}
+
+.button-holder {
+  margin-top: 40px;
+  height: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

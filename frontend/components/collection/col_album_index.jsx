@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import AlbumIndex from './../album/album_index';
 import { fetchAlbums } from './../../actions/album_actions';
 import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
@@ -26,6 +27,20 @@ class CollectionAlbumIndex extends React.Component {
             <div className="rect3"></div>
             <div className="rect4"></div>
             <div className="rect5"></div>
+          </div>
+        </div>
+      )
+    }
+
+    if (albums.length === 0) {
+      return (
+        <div className='no-collection-items'>
+          <h1>Save your favorite albums</h1>
+          <h3>Save albums you love to build the collection of your dreams.</h3>
+          <div className='button-holder'>
+            <Link to='/browse/albums'>
+              <button id="no-collection-button">DISCOVER</button>
+            </Link>
           </div>
         </div>
       )

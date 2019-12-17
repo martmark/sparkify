@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import PlaylistIndex from './../playlist/playlist_index';
 import { fetchPlaylists } from './../../actions/playlist_actions';
 import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
+import { openModal } from './../../actions/modal_actions';
 import React from 'react';
 
 class CollectionPlaylistIndex extends React.Component {
@@ -31,6 +32,18 @@ class CollectionPlaylistIndex extends React.Component {
       )
     }
 
+    if (playlists.length === 0) {
+      return (
+        <div className='no-collection-items'>
+          <h1>Create your first playlist</h1>
+          <h3>We'll help you make the perfect mixtape, minus the tape.</h3>
+          <div className='button-holder'>
+            <button id="no-collection-button" onClick={this.props.openModal}>NEW PLAYLIST</button>
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div className='collection-playlist-index'>
         <PlaylistIndex playlists={playlists} />
@@ -50,7 +63,8 @@ const mdp = dispatch => {
   return({
     fetchPlaylists: () => dispatch(fetchPlaylists({ fetchType: 'collection' })),
     setLoadingTrue: () => dispatch(setLoadingTrue()),
-    setLoadingFalse: () => dispatch(setLoadingFalse())
+    setLoadingFalse: () => dispatch(setLoadingFalse()),
+    openModal: () => dispatch(openModal({ modalType: 'playlistForm' }))
   })
 }
 
