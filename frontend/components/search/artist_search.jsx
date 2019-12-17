@@ -36,7 +36,7 @@ class ArtistSearch extends React.Component {
     } else {
       return (
         <div className="noresults-outer">
-          <h2 className="noresults">No results</h2>
+          <h2 className="noresults">No Artists Found</h2>
         </div>
       );
     }
