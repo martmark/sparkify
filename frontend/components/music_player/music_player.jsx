@@ -71,6 +71,7 @@ class MusicPlayer extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    // debugger;
     if (newProps.upNext) {
       let newSong = newProps.upNext;
       let newUpNextArr = this.state.upNext.concat(newSong);

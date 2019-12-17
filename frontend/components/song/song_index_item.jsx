@@ -124,6 +124,14 @@ class SongIndexItem extends React.Component {
       </IconContext.Provider>
     );
 
+    let notePlayIcons;
+    if (this.props.indexType !== 'queue' && this.props.indexType !== 'notqueue') {
+      notePlayIcons = <div className="song-idx-list-icon">
+        {musicNote}
+        {playButton}
+      </div>;
+    }
+
     let removeFromQueueButton;
     if (this.props.indexType == 'queue') {
       removeFromQueueButton = <li key={'aj3557772d8ch3'} className='song-idx-remove-btn'>
@@ -214,10 +222,7 @@ class SongIndexItem extends React.Component {
     } else {
       return (
         <li className="song-index-item" id='songindexitem'>
-          <div className="song-idx-list-icon">
-            {musicNote}
-            {playButton}
-          </div>
+          {notePlayIcons}
           {albumImage}
           <div className='song-idx-item-info'>
             <div className="song-index-item-details">
