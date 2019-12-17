@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { closeModal } from "./../../actions/modal_actions";
 import React from 'react';
 import SongIndex from '../song/song_index';
+import { IconContext } from "react-icons";
+import { MdClose } from "react-icons/md";
 
 class QueueSongIndex extends React.Component {
   constructor(props) {
@@ -46,10 +48,24 @@ class QueueSongIndex extends React.Component {
     }
     
     return (
-      <div className="queue-songs">
-        {upNextSongIndex}
-        {normalQueueSongIndex}
-        {noSongsIndicator}
+      <div className="queue-outer">
+        <div className='playlist-form-x'>
+          <IconContext.Provider
+            value={{
+              className: "reacticon",
+              size: "1.75em"
+              // color: 'white'
+              // color: "rgb(30,167,73)"
+            }}
+          >
+            <MdClose onClick={this.props.closeModal} />
+          </IconContext.Provider>
+        </div>
+        <div className="queue-songs">
+          {upNextSongIndex}
+          {normalQueueSongIndex}
+          {noSongsIndicator}
+        </div>
       </div>
     )
   }

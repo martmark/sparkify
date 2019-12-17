@@ -4,6 +4,8 @@ import { fetchCurrentUserPlaylists } from './../../actions/playlist_actions';
 import { addPlaylistSong } from './../../util/playlist_song_api_util';
 import React from 'react';
 import { closeModal } from './../../actions/modal_actions';
+import { IconContext } from "react-icons";
+import { MdClose } from "react-icons/md";
 
 class AddSongToPlaylist extends React.Component {
   constructor(props) {
@@ -57,6 +59,18 @@ class AddSongToPlaylist extends React.Component {
 
     return (
       <div className="addsong-idx-outer">
+        <div className='playlist-form-x'>
+          <IconContext.Provider
+            value={{
+              className: "reacticon",
+              size: "1.75em"
+              // color: 'white'
+              // color: "rgb(30,167,73)"
+            }}
+          >
+            <MdClose onClick={this.props.closeModal} />
+          </IconContext.Provider>
+        </div>
         <ul className='addsong-idx'>
           {playlistLis}
         </ul>

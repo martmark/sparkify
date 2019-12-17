@@ -203,6 +203,9 @@ class MusicPlayer extends React.Component {
           });
           let span = document.getElementById('durationspan');
           span.innerHTML = '0:00';
+          if (this.props.modalType == 'queue') {
+            this.showQueue();
+          }
           return;
         
       }
@@ -238,6 +241,9 @@ class MusicPlayer extends React.Component {
           });
           let span = document.getElementById('durationspan');
           span.innerHTML = '0:00';
+          if (this.props.modalType == 'queue') {
+            this.showQueue();
+          }
           return;
           
         } else {
@@ -251,6 +257,9 @@ class MusicPlayer extends React.Component {
           let span = document.getElementById('durationspan');
           if (this.state.queue[0].duration) {
             span.innerHTML = this.state.queue[0].duration;
+          }
+          if (this.props.modalType == 'queue') {
+            this.showQueue();
           }
         }
       } else {
@@ -267,6 +276,9 @@ class MusicPlayer extends React.Component {
         }
         this.refs.musicPlayer.src = this.state.currentSong.track_url;
         this.play();
+        if (this.props.modalType == 'queue') {
+          this.showQueue();
+        }
       }
     }
   }

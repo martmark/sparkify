@@ -64,9 +64,17 @@
   padding-bottom: 15px;
 }
 
+.queue-outer {
+  width: 60vw;
+  max-height: 75vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .queue-songs {
   width: 60vw;
   max-height: 75vh;
+  overflow: hidden;
   overflow-y: scroll;
   background: rgb(39,39,39);
   padding: 20px;
