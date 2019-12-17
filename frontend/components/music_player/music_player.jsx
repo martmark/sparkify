@@ -138,7 +138,28 @@ class MusicPlayer extends React.Component {
 
   play() {
     if (this.state.currentSong.title == "") {
-      return;
+      if (this.state.upNext.length > 0) {
+        let nextSong = this.state.upNext.shift();
+        let durSpan = document.getElementById('durationspan');
+        if (nextSong.duration) {
+          durSpan.innerHTML = nextSong.duration;
+        }
+        this.refs.musicPlayer.src = nextSong.track_url;
+
+        this.setState({
+          currentSong: nextSong,
+          currentTime: '0:00',
+          cursorPosition: 0
+        }, () => {
+          this.play();
+        });
+        let span = document.getElementById('durationspan');
+        if (nextSong.duration) {
+          span.innerHTML = nextSong.duration;
+        }
+      } else {
+        return;
+      }
     }
     this.setState({ playing: true });
     const audioPromise = this.refs.musicPlayer.play();
