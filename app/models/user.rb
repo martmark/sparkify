@@ -2,6 +2,7 @@ class User < ApplicationRecord
   validates :username, :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6 }, allow_nil: true
+  validate :ensure_username, :on => :create
 
   has_many :playlists
   has_many :follows
@@ -26,7 +27,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   
   def self.find_by_credentials(username, password)
-    user = User.find_by(username: username)
+    user = User.where('lower(username) = ?', username.downcase).first
     return user if user && user.is_password?(password)  
     return nil
   end
@@ -50,7 +51,17 @@ class User < ApplicationRecord
     self.session_token
   end
 
+  private
   def ensure_session_token
     self.session_token ||= User.generate_session_token
+  end
+
+  def ensure_username
+    downcase_username = self.username.downcase
+    user = User.where('lower(username) = ?', downcase_username).first
+
+    if user
+      errors.add(:username, 'has already been taken')
+    end
   end
 end
