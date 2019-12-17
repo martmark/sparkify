@@ -42,9 +42,10 @@ class QueueSongIndex extends React.Component {
       </div>;
     }
 
-    let noSongsIndicator;
     if (this.props.normalQueue.length === 0 && this.props.upNext.length === 0) {
-      noSongsIndicator = <h2>Nothing in Queue.</h2>;
+      return (
+        <h2>Nothing in Queue.</h2>
+      );
     }
     
     return (
@@ -64,7 +65,6 @@ class QueueSongIndex extends React.Component {
         <div className="queue-songs">
           {upNextSongIndex}
           {normalQueueSongIndex}
-          {noSongsIndicator}
         </div>
       </div>
     )

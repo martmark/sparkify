@@ -576,11 +576,17 @@ class MusicPlayer extends React.Component {
       >
         <MdQueueMusic onClick={this.showQueue} />
       </IconContext.Provider>;
-    } else {
+    } else if (this.state.queue.length > 0) {
       queueButton = <IconContext.Provider
         value={{ className: "queue-button clickable", size: "1.25em" }}
       >
         <MdQueueMusic onClick={this.showQueue} />
+      </IconContext.Provider>;
+    } else {
+      queueButton = <IconContext.Provider
+        value={{ className: "queue-button inactive", size: "1.25em" }}
+      >
+        <MdQueueMusic />
       </IconContext.Provider>;
     }
 
