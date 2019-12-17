@@ -12,7 +12,7 @@ class QueueSongIndex extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.upNext.length < 1) {
+    if (this.props.upNext.length < 1 && this.props.normalQueue.length < 1) {
       this.props.closeModal();
     }
   }
