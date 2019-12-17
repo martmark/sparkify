@@ -5,8 +5,32 @@ import { setLoadingTrue, setLoadingFalse } from '../../actions/loading_actions';
 import React from 'react';
 
 class BrowseArtistIndex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { artists: [] };
+  }
+
   componentDidMount() {
     this.props.fetchArtists()
+    .then(() => {
+      var shuffle = function (array) {
+        var currentIndex = array.length;
+        var temporaryValue, randomIndex;
+
+        while (0 !== currentIndex) {
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+      };
+      let shuffledArtists = shuffle(this.props.artists.slice());
+      this.setState({ artists: shuffledArtists });
+    })
     .then(() => this.props.setLoadingFalse());
   }
 
@@ -15,7 +39,7 @@ class BrowseArtistIndex extends React.Component {
   }
 
   render() {
-    const { artists, loading } = this.props;
+    const { loading } = this.props;
 
     if (loading) {
       return (
@@ -31,23 +55,7 @@ class BrowseArtistIndex extends React.Component {
       )
     }
 
-    var shuffle = function (array) {
-      var currentIndex = array.length;
-      var temporaryValue, randomIndex;
-
-      while (0 !== currentIndex) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-      }
-
-      return array;
-    };
-
-    let browseArtists = shuffle(artists.slice());
+    let browseArtists = this.state.artists;
 
     return (
       <div className='browse-artist-index'>

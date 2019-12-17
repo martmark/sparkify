@@ -5,8 +5,33 @@ import { setLoadingTrue, setLoadingFalse } from '../../actions/loading_actions';
 import React from 'react';
 
 class BrowseAlbumIndex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { albums: [] };
+  }
+
   componentDidMount() {
     this.props.fetchAlbums()
+      .then(() => {
+        var shuffle = function (array) {
+          var currentIndex = array.length;
+          var temporaryValue, randomIndex;
+
+          while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+          }
+
+          return array;
+        };
+        let albums = this.props.albums.slice();
+        let shuffledAlbums = shuffle(albums);
+        this.setState({ albums: shuffledAlbums });
+      })
       .then(() => this.props.setLoadingFalse());
   }
 
@@ -15,25 +40,8 @@ class BrowseAlbumIndex extends React.Component {
   }
 
   render() {
-    const { albums, loading } = this.props;
-
-    var shuffle = function (array) {
-      var currentIndex = array.length;
-      var temporaryValue, randomIndex;
-
-      while (0 !== currentIndex) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-      }
-
-      return array;
-    };
-
-    let browseAlbums = shuffle(albums.slice());
+    const { loading } = this.props;
+    const albums = this.state.albums;
 
     if (loading) {
       return (
@@ -51,7 +59,7 @@ class BrowseAlbumIndex extends React.Component {
 
     return (
       <div className='browse-album-index'>
-        <AlbumIndex albums={browseAlbums} />
+        <AlbumIndex albums={albums} />
       </div>
     );
   };
