@@ -5,7 +5,6 @@ import {
   CLEAR_UP_NEXT, 
   ADD_TO_QUEUE 
 } from './../actions/music_actions';
-import merge from 'lodash/merge';
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 
 const defaultState = {
@@ -34,7 +33,7 @@ const musicPlayerReducer = (state = defaultState, action) => {
         queueName: action.queueInfo.queueName
       };
     case TOGGLE_PLAY:
-      let newState = merge({},state);
+      let newState = Object.assign({},state);
       if (newState.playing === true) {
         newState.playing = false;
       } else {
@@ -42,7 +41,7 @@ const musicPlayerReducer = (state = defaultState, action) => {
       }
       return newState;
     case SET_QUEUE:
-      return merge({}, state, { queue: action.queue, currentIdx: action.currentIdx });
+      return Object.assign({}, state, { queue: action.queue, currentIdx: action.currentIdx });
     case LOGOUT_CURRENT_USER:
       return defaultState;
     case ADD_TO_QUEUE:

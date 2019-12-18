@@ -1,5 +1,4 @@
 import { RECEIVE_CURRENT_USER, RECEIVE_SESSION_ERRORS } from './../actions/session_actions';
-import merge from 'lodash/merge';
 
 const sessionErrorsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -7,7 +6,7 @@ const sessionErrorsReducer = (state = {}, action) => {
     case RECEIVE_SESSION_ERRORS:
       return {errors: action.errors};
     case RECEIVE_CURRENT_USER:
-      return merge({}, state, { errors: [] });
+      return Object.assign({}, state, { errors: [] });
     default:
       return state;
   }

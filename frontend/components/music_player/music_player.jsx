@@ -129,6 +129,9 @@ class MusicPlayer extends React.Component {
         this.setState({playing: false});
         this.pause();
       }
+    } else if (newProps.playing && (newProps.modalType === this.props.modalType)) {
+      this.setState({ playing: true });
+      this.play();
     }
   }
 
@@ -497,7 +500,7 @@ class MusicPlayer extends React.Component {
       }
     } else {
       // debugger;
-      let normalQueue = this.state.queue.filter((song, idx) => idx > this.state.currentIdx);
+      let normalQueue = this.state.queue.filter((_, idx) => idx > this.state.currentIdx);
       this.props.openModal({
         modalType: 'queue',
         upNext: this.state.upNext,
