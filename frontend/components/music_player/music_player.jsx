@@ -82,7 +82,7 @@ class MusicPlayer extends React.Component {
         this.props.clearUpNext();
         if (newProps.modalType == 'queue') this.showQueue();
       });
-    } else if (this.props.currentSong.id !== newProps.currentSong.id) {
+    } else if ((this.props.currentSong.id !== newProps.currentSong.id) || (this.props.queueName !== newProps.queueName)) {
       this.pause();
       if (newProps.queue.length > 0) {
         if (this.state.shuffle) {
