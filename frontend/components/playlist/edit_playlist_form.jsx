@@ -17,7 +17,8 @@ class EditPlaylistForm extends React.Component {
     this.setState({ title: e.target.value });
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
     let title = this.state.title;
     let updatedPlaylist = { id: this.props.playlist.id, title }
     this.props.updatePlaylist(updatedPlaylist).then(() => this.props.closeModal());
