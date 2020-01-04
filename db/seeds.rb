@@ -8,7 +8,7 @@
 # #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 # #   Character.create(name: 'Luke', movie: movies.first)
 
-
+# ##### ORIGINAL SEED FILE
 
 # ### USERS
 
@@ -369,34 +369,6 @@
 #   small_image_url: 'https://sparkifyimages.s3.amazonaws.com/leon-small.jpg'
 # })
 
-nico = Artist.create({
-  name: "Nico",
-  bio: "Coming",
-  image_url: "https://sparkifyimages.s3.amazonaws.com/nico.jpg",
-  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/nico-small.jpg'
-})
-
-bob = Artist.create({
-  name: "Bob Marley",
-  bio: "Coming",
-  image_url: "https://sparkifyimages.s3.amazonaws.com/bob.jpg",
-  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/bob-small.jpg'
-})
-
-janet = Artist.create({
-  name: "Janet Jackson",
-  bio: "Coming",
-  image_url: "https://sparkifyimages.s3.amazonaws.com/janet.jpg",
-  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/janet-small.jpg'
-})
-
-wilco = Artist.create({
-  name: "Wilco",
-  bio: "Coming",
-  image_url: "https://sparkifyimages.s3.amazonaws.com/wilco.jpg",
-  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/wilco-small.jpg'
-})
-
 # ## ALBUMS
 
 # asleep = billie.albums.create({ 
@@ -626,200 +598,6 @@ wilco = Artist.create({
 #     track_url: "#{url}"
 #   })
 # end
-
-legend = bob.albums.create({
-  title: 'Legend',
-  genre: 'Reggae',
-  year: 1984,
-  image_url: "https://sparkifyimages.s3.amazonaws.com/legend.jpg"
-})
-
-legend_songs = [
-  { title: "Is This Love", duration: "3:52"},
-  { title: "No Woman, No Cry (Live)", duration: "7:09"},
-  { title: "Could You Be Loved", duration: "3:58"},
-  { title: "Three Little Birds", duration: "3:02"},
-  { title: "Buffalo Soldier", duration: "4:19"},
-  { title: "Get Up, Stand Up", duration: "3:20"},
-  { title: "Stir It Up", duration: "5:35"},
-  { title: "One Love / People Get Ready", duration: "2:54"},
-  { title: "I Shot the Sheriff", duration: "4:42"},
-  { title: "Waiting in Vain", duration: "4:17"},
-  { title: "Redemption Song", duration: "3:48"},
-  { title: "Satisfy My Soul", duration: "4:33"},
-  { title: "Exodus", duration: "7:40"},
-  { title: "Jamming", duration: "3:34"}
-]
-
-legend_songs.each_with_index do |song, idx|
-  i = idx + 1
-  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/legend/#{i}.mp3"
-  title = song[:title]
-  duration = song[:duration]
-  legend.songs.create({
-    title: "#{title}",
-    duration: "#{duration}",
-    track_url: "#{url}"
-  })
-end
-
-yankee = wilco.albums.create({
-  title: 'Yankee Hotel Foxtrot',
-  genre: 'Alternative',
-  year: 2001,
-  image_url: 'https://sparkifyimages.s3.amazonaws.com/yankee.jpg'
-})
-
-yankee_songs = [
-  { title: "I Am Trying to Break Your Heart", duration: "6:58" },
-  { title: "Kamera", duration: "3:30" },
-  { title: "Radio Cure", duration: "5:09" },
-  { title: "War on War", duration: "3:49" },
-  { title: "Jesus, Etc.", duration: "3:52" },
-  { title: "Ashes of American Flags", duration: "4:45" },
-  { title: "Heavy Metal Drummer", duration: "3:09" },
-  { title: "I'm the Man Who Loves You", duration: "3:56" },
-  { title: "Pot Kettle Black", duration: "4:01" },
-  { title: "Poor Places", duration: "5:18" },
-  { title: "Reservations", duration: "7:23" }
-]
-
-yankee_songs.each_with_index do |song, idx|
-  i = idx + 1
-  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/yankee/#{i}.mp3"
-  title = song[:title]
-  duration = song[:duration]
-  yankee.songs.create({
-    title: "#{title}",
-    duration: "#{duration}",
-    track_url: "#{url}"
-  })
-end
-
-chelsea = nico.albums.create({
-  title: "Chelsea Girl",
-  genre: "Folk",
-  year: 1967,
-  image_url: 'https://sparkifyimages.s3.amazonaws.com/chelsea.jpg'
-})
-
-chelsea_songs = [
-  { title: "The Fairest of the Seasons", duration: "4:09" },
-  { title: "These Days", duration: "3:33" },
-  { title: "Little Sister", duration: "4:26" },
-  { title: "Winter Song", duration: "3:21" },
-  { title: "It Was a Pleasure Then", duration: "8:05" },
-  { title: "Chelsea Girls", duration: "7:26" },
-  { title: "I'll Keep It with Mine", duration: "3:20" },
-  { title: "Somewhere There's a Feather", duration: "2:20" },
-  { title: "Wrap Your Troubles in Dreams", duration: "5:10" },
-  { title: "Eulogy to Lenny Bruce", duration: "3:46" }
-]
-
-chelsea_songs.each_with_index do |song, idx|
-  i = idx + 1
-  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/chelsea/#{i}.mp3"
-  title = song[:title]
-  duration = song[:duration]
-  chelsea.songs.create({
-    title: "#{title}",
-    duration: "#{duration}",
-    track_url: "#{url}"
-  })
-end
-
-janetalbum = janet.albums.create({
-  title: "Janet",
-  genre: "R&B",
-  year: 1993,
-  image_url: 'https://sparkifyimages.s3.amazonaws.com/janetalbum.jpg'
-})
-
-janetalbum_songs = [
-  { title: "Morning", duration: "0:31" },
-  { title: "That's the Way Love Goes", duration: "4:25" },
-  { title: "You Know...", duration: "0:12" },
-  { title: "You Want This", duration: "5:06" },
-  { title: "Be a Good Boy...", duration: "0:08" },
-  { title: "If", duration: "4:32" },
-  { title: "Back", duration: "0:05" },
-  { title: "This Time", duration: "6:59" },
-  { title: "Go on Miss Janet", duration: "0:05" },
-  { title: "Throb", duration: "4:36" },
-  { title: "What'll I Do", duration: "4:05" },
-  { title: "The Lounge", duration: "0:16" },
-  { title: "Funky Big Band", duration: "5:23" },
-  { title: "Racism", duration: "0:08" },
-  { title: "New Agenda", duration: "4:01" },
-  { title: "Love Pt. 2", duration: "0:12" },
-  { title: "Because of Love", duration: "4:21" },
-  { title: "Wind", duration: "0:11" },
-  { title: "Again", duration: "3:47" },
-  { title: "Another Lover", duration: "0:11" },
-  { title: "Where Are You Now", duration: "5:47" },
-  { title: "Hold on Baby", duration: "0:09" },
-  { title: "The Body That Loves You", duration: "5:33" },
-  { title: "Rain", duration: "0:19" },
-  { title: "Any Time, Any Place", duration: "7:08" },
-  { title: "Are You Still Up", duration: "1:37" },
-  { title: "Sweet Dreams", duration: "5:35" }
-]
-
-janetalbum_songs.each_with_index do |song, idx|
-  i = idx + 1
-  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/janetalbum/#{i}.mp3"
-  title = song[:title]
-  duration = song[:duration]
-  janetalbum.songs.create({
-    title: "#{title}",
-    duration: "#{duration}",
-    track_url: "#{url}"
-  })
-end
-
-velvet = janet.albums.create({
-  title: "The Velvet Rope",
-  year: 1997,
-  genre: "R&B",
-  image_url: 'https://sparkifyimages.s3.amazonaws.com/velvet.jpg'
-})
-
-velvet_songs = [
-  { title: "Interlude: Twisted Elegance", duration: "0:43" },
-  { title: "Velvet Rope", duration: "4:56" },
-  { title: "You", duration: "4:43" },
-  { title: "Got 'til It's Gone", duration: "4:02" },
-  { title: "Interlude: Speaker Phone", duration: "0:54" },
-  { title: "My Need", duration: "3:44" },
-  { title: "Interlude: Fasten Your Seatbelts", duration: "0:19" },
-  { title: "Go Deep", duration: "4:42" },
-  { title: "Free Xone", duration: "4:57" },
-  { title: "Interlude: Memory", duration: "0:05" },
-  { title: "Together Again", duration: "5:01" },
-  { title: "Interlude: Online", duration: "0:19" },
-  { title: "Empty", duration: "4:33" },
-  { title: "Interlude: Full", duration: "0:13" },
-  { title: "What About", duration: "4:24" },
-  { title: "Every Time", duration: "4:17" },
-  { title: "Tonight's the Night", duration: "5:08" },
-  { title: "I Get Lonely", duration: "5:18" },
-  { title: "Rope Burn", duration: "4:16" },
-  { title: "Anything", duration: "4:55" },
-  { title: "Interlude: Sad", duration: "0:11" },
-  { title: "Special", duration: "7:56" }
-]
-
-velvet_songs.each_with_index do |song, idx|
-  i = idx + 1
-  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/velvet/#{i}.mp3"
-  title = song[:title]
-  duration = song[:duration]
-  velvet.songs.create({
-    title: "#{title}",
-    duration: "#{duration}",
-    track_url: "#{url}"
-  })
-end
 
 # onandon = jack.albums.create({ 
 #   title: 'On and On', 
@@ -2231,3 +2009,227 @@ end
 # demo.followed_songs << mised.songs[2]
 # demo.followed_songs << outside.songs[2]
 # demo.followed_songs << whois.songs[8]
+
+# ##### ADDED 12/26/19
+
+# nico = Artist.create({
+#   name: "Nico",
+#   bio: "Coming",
+#   image_url: "https://sparkifyimages.s3.amazonaws.com/nico.jpg",
+#   small_image_url: 'https://sparkifyimages.s3.amazonaws.com/nico-small.jpg'
+# })
+
+# bob = Artist.create({
+#   name: "Bob Marley",
+#   bio: "Coming",
+#   image_url: "https://sparkifyimages.s3.amazonaws.com/bob.jpg",
+#   small_image_url: 'https://sparkifyimages.s3.amazonaws.com/bob-small.jpg'
+# })
+
+# janet = Artist.create({
+#   name: "Janet Jackson",
+#   bio: "Coming",
+#   image_url: "https://sparkifyimages.s3.amazonaws.com/janet.jpg",
+#   small_image_url: 'https://sparkifyimages.s3.amazonaws.com/janet-small.jpg'
+# })
+
+# wilco = Artist.create({
+#   name: "Wilco",
+#   bio: "Coming",
+#   image_url: "https://sparkifyimages.s3.amazonaws.com/wilco.jpg",
+#   small_image_url: 'https://sparkifyimages.s3.amazonaws.com/wilco-small.jpg'
+# })
+
+# legend = bob.albums.create({
+#   title: 'Legend',
+#   genre: 'Reggae',
+#   year: 1984,
+#   image_url: "https://sparkifyimages.s3.amazonaws.com/legend.jpg"
+# })
+
+# legend_songs = [
+#   { title: "Is This Love", duration: "3:52"},
+#   { title: "No Woman, No Cry (Live)", duration: "7:09"},
+#   { title: "Could You Be Loved", duration: "3:58"},
+#   { title: "Three Little Birds", duration: "3:02"},
+#   { title: "Buffalo Soldier", duration: "4:19"},
+#   { title: "Get Up, Stand Up", duration: "3:20"},
+#   { title: "Stir It Up", duration: "5:35"},
+#   { title: "One Love / People Get Ready", duration: "2:54"},
+#   { title: "I Shot the Sheriff", duration: "4:42"},
+#   { title: "Waiting in Vain", duration: "4:17"},
+#   { title: "Redemption Song", duration: "3:48"},
+#   { title: "Satisfy My Soul", duration: "4:33"},
+#   { title: "Exodus", duration: "7:40"},
+#   { title: "Jamming", duration: "3:34"}
+# ]
+
+# legend_songs.each_with_index do |song, idx|
+#   i = idx + 1
+#   url = "https://s3.us-east-2.amazonaws.com/sparkify2019/legend/#{i}.mp3"
+#   title = song[:title]
+#   duration = song[:duration]
+#   legend.songs.create({
+#     title: "#{title}",
+#     duration: "#{duration}",
+#     track_url: "#{url}"
+#   })
+# end
+
+# yankee = wilco.albums.create({
+#   title: 'Yankee Hotel Foxtrot',
+#   genre: 'Alternative',
+#   year: 2001,
+#   image_url: 'https://sparkifyimages.s3.amazonaws.com/yankee.jpg'
+# })
+
+# yankee_songs = [
+#   { title: "I Am Trying to Break Your Heart", duration: "6:58" },
+#   { title: "Kamera", duration: "3:30" },
+#   { title: "Radio Cure", duration: "5:09" },
+#   { title: "War on War", duration: "3:49" },
+#   { title: "Jesus, Etc.", duration: "3:52" },
+#   { title: "Ashes of American Flags", duration: "4:45" },
+#   { title: "Heavy Metal Drummer", duration: "3:09" },
+#   { title: "I'm the Man Who Loves You", duration: "3:56" },
+#   { title: "Pot Kettle Black", duration: "4:01" },
+#   { title: "Poor Places", duration: "5:18" },
+#   { title: "Reservations", duration: "7:23" }
+# ]
+
+# yankee_songs.each_with_index do |song, idx|
+#   i = idx + 1
+#   url = "https://s3.us-east-2.amazonaws.com/sparkify2019/yankee/#{i}.mp3"
+#   title = song[:title]
+#   duration = song[:duration]
+#   yankee.songs.create({
+#     title: "#{title}",
+#     duration: "#{duration}",
+#     track_url: "#{url}"
+#   })
+# end
+
+# chelsea = nico.albums.create({
+#   title: "Chelsea Girl",
+#   genre: "Folk",
+#   year: 1967,
+#   image_url: 'https://sparkifyimages.s3.amazonaws.com/chelsea.jpg'
+# })
+
+# chelsea_songs = [
+#   { title: "The Fairest of the Seasons", duration: "4:09" },
+#   { title: "These Days", duration: "3:33" },
+#   { title: "Little Sister", duration: "4:26" },
+#   { title: "Winter Song", duration: "3:21" },
+#   { title: "It Was a Pleasure Then", duration: "8:05" },
+#   { title: "Chelsea Girls", duration: "7:26" },
+#   { title: "I'll Keep It with Mine", duration: "3:20" },
+#   { title: "Somewhere There's a Feather", duration: "2:20" },
+#   { title: "Wrap Your Troubles in Dreams", duration: "5:10" },
+#   { title: "Eulogy to Lenny Bruce", duration: "3:46" }
+# ]
+
+# chelsea_songs.each_with_index do |song, idx|
+#   i = idx + 1
+#   url = "https://s3.us-east-2.amazonaws.com/sparkify2019/chelsea/#{i}.mp3"
+#   title = song[:title]
+#   duration = song[:duration]
+#   chelsea.songs.create({
+#     title: "#{title}",
+#     duration: "#{duration}",
+#     track_url: "#{url}"
+#   })
+# end
+
+# janetalbum = janet.albums.create({
+#   title: "Janet",
+#   genre: "R&B",
+#   year: 1993,
+#   image_url: 'https://sparkifyimages.s3.amazonaws.com/janetalbum.jpg'
+# })
+
+# janetalbum_songs = [
+#   { title: "Morning", duration: "0:31" },
+#   { title: "That's the Way Love Goes", duration: "4:25" },
+#   { title: "You Know...", duration: "0:12" },
+#   { title: "You Want This", duration: "5:06" },
+#   { title: "Be a Good Boy...", duration: "0:08" },
+#   { title: "If", duration: "4:32" },
+#   { title: "Back", duration: "0:05" },
+#   { title: "This Time", duration: "6:59" },
+#   { title: "Go on Miss Janet", duration: "0:05" },
+#   { title: "Throb", duration: "4:36" },
+#   { title: "What'll I Do", duration: "4:05" },
+#   { title: "The Lounge", duration: "0:16" },
+#   { title: "Funky Big Band", duration: "5:23" },
+#   { title: "Racism", duration: "0:08" },
+#   { title: "New Agenda", duration: "4:01" },
+#   { title: "Love Pt. 2", duration: "0:12" },
+#   { title: "Because of Love", duration: "4:21" },
+#   { title: "Wind", duration: "0:11" },
+#   { title: "Again", duration: "3:47" },
+#   { title: "Another Lover", duration: "0:11" },
+#   { title: "Where Are You Now", duration: "5:47" },
+#   { title: "Hold on Baby", duration: "0:09" },
+#   { title: "The Body That Loves You", duration: "5:33" },
+#   { title: "Rain", duration: "0:19" },
+#   { title: "Any Time, Any Place", duration: "7:08" },
+#   { title: "Are You Still Up", duration: "1:37" },
+#   { title: "Sweet Dreams", duration: "5:35" }
+# ]
+
+# janetalbum_songs.each_with_index do |song, idx|
+#   i = idx + 1
+#   url = "https://s3.us-east-2.amazonaws.com/sparkify2019/janetalbum/#{i}.mp3"
+#   title = song[:title]
+#   duration = song[:duration]
+#   janetalbum.songs.create({
+#     title: "#{title}",
+#     duration: "#{duration}",
+#     track_url: "#{url}"
+#   })
+# end
+
+# velvet = janet.albums.create({
+#   title: "The Velvet Rope",
+#   year: 1997,
+#   genre: "R&B",
+#   image_url: 'https://sparkifyimages.s3.amazonaws.com/velvet.jpg'
+# })
+
+# velvet_songs = [
+#   { title: "Interlude: Twisted Elegance", duration: "0:43" },
+#   { title: "Velvet Rope", duration: "4:56" },
+#   { title: "You", duration: "4:43" },
+#   { title: "Got 'til It's Gone", duration: "4:02" },
+#   { title: "Interlude: Speaker Phone", duration: "0:54" },
+#   { title: "My Need", duration: "3:44" },
+#   { title: "Interlude: Fasten Your Seatbelts", duration: "0:19" },
+#   { title: "Go Deep", duration: "4:42" },
+#   { title: "Free Xone", duration: "4:57" },
+#   { title: "Interlude: Memory", duration: "0:05" },
+#   { title: "Together Again", duration: "5:01" },
+#   { title: "Interlude: Online", duration: "0:19" },
+#   { title: "Empty", duration: "4:33" },
+#   { title: "Interlude: Full", duration: "0:13" },
+#   { title: "What About", duration: "4:24" },
+#   { title: "Every Time", duration: "4:17" },
+#   { title: "Tonight's the Night", duration: "5:08" },
+#   { title: "I Get Lonely", duration: "5:18" },
+#   { title: "Rope Burn", duration: "4:16" },
+#   { title: "Anything", duration: "4:55" },
+#   { title: "Interlude: Sad", duration: "0:11" },
+#   { title: "Special", duration: "7:56" }
+# ]
+
+# velvet_songs.each_with_index do |song, idx|
+#   i = idx + 1
+#   url = "https://s3.us-east-2.amazonaws.com/sparkify2019/velvet/#{i}.mp3"
+#   title = song[:title]
+#   duration = song[:duration]
+#   velvet.songs.create({
+#     title: "#{title}",
+#     duration: "#{duration}",
+#     track_url: "#{url}"
+#   })
+# end
