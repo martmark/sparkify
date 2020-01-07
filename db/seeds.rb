@@ -2233,3 +2233,83 @@
 #     track_url: "#{url}"
 #   })
 # end
+
+# ADDED 1/6/20
+
+sylvan = Artist.create({
+  name: 'Sylvan Esso',
+  bio: 'Coming',
+  image_url: "https://sparkifyimages.s3.amazonaws.com/sylvan.jpg",
+  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/sylvan-small.jpg'
+})
+
+ esso = sylvan.albums.create({
+  title: 'Sylvan Esso',
+  genre: 'Indie',
+  year: 2004,
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/esso.jpg'
+})
+
+esso_songs = [
+  { title: "Hey Mami", duration: "3:20" },
+  { title: "Dreamy Bruises", duration: "4:08" },
+  { title: "Could I Be", duration: "4:39" },
+  { title: "Wolf", duration: "3:16" },
+  { title: "Dress", duration: "3:50" },
+  { title: "H.S.K.T", duration: "4:18" },
+  { title: "Coffee", duration: "4:28" },
+  { title: "Uncatena", duration: "4:15" },
+  { title: "Play It Right", duration: "3:05" },
+  { title: "Come Down", duration: "2:57" }
+]
+
+esso_songs.each_with_index do |song, idx|
+  i = idx + 1
+  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/esso/#{i}.mp3"
+  title = song[:title]
+  duration = song[:duration]
+  esso.songs.create({
+    title: "#{title}",
+    duration: "#{duration}",
+    track_url: "#{url}"
+  })
+end
+
+rhye = Artist.create({
+  name: 'Rhye',
+  bio: 'Coming',
+  image_url: "https://sparkifyimages.s3.amazonaws.com/rhye.jpg",
+  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/rhye-small.jpg'
+})
+
+ woman = rhye.albums.create({
+  title: 'Woman',
+  genre: 'Alternative',
+  year: 2004,
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/woman.jpg'
+})
+
+woman_songs = [
+  { title: "Open", duration: "3:37" },
+  { title: "The Fall", duration: "3:45" },
+  { title: "Last Dance", duration: "3:27" },
+  { title: "Verse", duration: "2:52" },
+  { title: "Shed Some Blood", duration: "3:21" },
+  { title: "3 Days", duration: "4:16" },
+  { title: "One of Those Summer Days", duration: "4:33" },
+  { title: "Major Minor Love", duration: "3:56" },
+  { title: "Hunger", duration: "3:30" },
+  { title: "Woman", duration: "2:40" }
+]
+
+woman_songs.each_with_index do |song, idx|
+  i = idx + 1
+  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/woman/#{i}.mp3"
+  title = song[:title]
+  duration = song[:duration]
+  woman.songs.create({
+    title: "#{title}",
+    duration: "#{duration}",
+    track_url: "#{url}"
+  })
+end

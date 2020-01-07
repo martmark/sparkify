@@ -4,24 +4,35 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, allow_nil: true
   validate :ensure_username, :on => :create
 
-  has_many :playlists
-  has_many :follows
+  has_many :playlists, 
+    dependent: :destroy
+
+  has_many :follows, 
+    dependent: :destroy
+
   has_many :followed_playlists,
     through: :follows,
     source: :followable,
-    source_type: 'Playlist'
+    source_type: 'Playlist',
+    dependent: :destroy
+
   has_many :followed_artists,
     through: :follows,
     source: :followable,
-    source_type: 'Artist'
+    source_type: 'Artist',
+    dependent: :destroy
+
   has_many :followed_albums,
     through: :follows,
     source: :followable,
-    source_type: 'Album'
+    source_type: 'Album',
+    dependent: :destroy
+
   has_many :followed_songs,
     through: :follows,
     source: :followable,
-    source_type: 'Song'
+    source_type: 'Song',
+    dependent: :destroy
   
   attr_reader :password
   after_initialize :ensure_session_token
