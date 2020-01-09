@@ -42,8 +42,11 @@
   letter-spacing: 1.5px;
   transition: 0.3s;
   color: white;
-  
   text-align: center;
+}
+
+.logout-button:hover {
+  background: rgb(30,215,96);
 }
 
 .contact-icons {
