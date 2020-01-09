@@ -44,7 +44,8 @@
 }
 
 #new-playlist-button:hover {
-  background: rgb(30,150,50);
+  // background: rgb(30,150,50);
+  background: rgb(30,215,96);
 }
 
 .content-nav-links > li {
@@ -60,7 +61,8 @@
 
   .content-link-active {
     color: white;
-    border-bottom: 2px solid green;
+    border-bottom: 2px solid rgb(30,215,96);
+    // color: rgb(30,215,96);
   }
 
   .collection-song-index {
