@@ -7,7 +7,7 @@ import React from 'react';
 class BrowsePlaylistIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { playlists: [] };
+    this.state = { sparkifyPlaylists: [], otherPlaylists: [] };
   }
 
   componentDidMount() {
@@ -28,8 +28,17 @@ class BrowsePlaylistIndex extends React.Component {
 
         return array;
       };
-      let shuffledPlaylists = shuffle(this.props.playlists.slice());
-      this.setState( { playlists: shuffledPlaylists });
+      let spPlaylists = [];
+      let otPlaylists = [];
+      this.props.playlists.forEach(playlist => {
+        if (playlist.userId === 2) {
+          spPlaylists.push(playlist)
+        } else {
+          otPlaylists.push(playlist)
+        }
+      })
+      let shuffledPlaylists = shuffle(otPlaylists);
+      this.setState( { otherPlaylists: shuffledPlaylists, sparkifyPlaylists: spPlaylists });
     })
     .then(() => this.props.setLoadingFalse());
   }
@@ -55,11 +64,36 @@ class BrowsePlaylistIndex extends React.Component {
       )
     }
 
-    let browsePlaylists = this.state.playlists;
+    if (this.props.playlists.length === 0) {
+      return (
+        <div className='sad'>
+          
+            <p>You have literally followed every existing playlist.</p>
+            
+            <p>¯\_(ツ)_/¯</p>
+          
+        </div>
+      )
+    }
+
+    let sparkPlaylists = this.state.sparkifyPlaylists;
+    let publicPlaylists;
+
+    if (this.state.otherPlaylists.length > 0) {
+      publicPlaylists = <div className='other-playlists-outer'>
+        <span className='other-playlists'>Playlists from Other Users</span>
+        <div className='browse-playlist-index'>
+          <PlaylistIndex playlists={this.state.otherPlaylists} />
+        </div>
+      </div>  
+    }
    
     return (
-      <div className='browse-playlist-index'>
-        <PlaylistIndex playlists={browsePlaylists} />
+      <div className='browse-playlists-outer'>
+        <div className='browse-playlist-index'>
+          <PlaylistIndex playlists={sparkPlaylists} />
+        </div>
+        {publicPlaylists}
       </div>
     )
   }

@@ -2,6 +2,7 @@
   width: 100%;
   // height: 100vh;
   margin-left: 230px;
+  margin-bottom: 100px;
 }
 
 .browse-nav {
@@ -29,4 +30,32 @@
 .browse-playlist-index {
   // height: 100vh;
   box-sizing: border-box;
+}
+
+.other-playlists {
+  margin: 0 30px;
+  // padding: 100px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+.browse-playlists-outer {
+  display: flex;
+  flex-direction: column;
+}
+
+.other-playlists-outer {
+  display: flex;
+  flex-direction: column;
+}
+
+.sad {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
