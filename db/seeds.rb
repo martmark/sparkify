@@ -2306,169 +2306,211 @@
 
 # #### ADDED 1/7/20
 
-aaliyah = Artist.create({
-  name: 'Aaliyah',
-  bio: 'Coming',
-  image_url: "https://sparkifyimages.s3.amazonaws.com/aaliyah.jpg",
-  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/aaliyah-small.jpg'
-})
+# aaliyah = Artist.create({
+#   name: 'Aaliyah',
+#   bio: 'Coming',
+#   image_url: "https://sparkifyimages.s3.amazonaws.com/aaliyah.jpg",
+#   small_image_url: 'https://sparkifyimages.s3.amazonaws.com/aaliyah-small.jpg'
+# })
 
- million = aaliyah.albums.create({
-  title: 'One in a Million',
-  genre: 'Alternative',
-  year: 1996,
-  image_url: 'https://sparkifyimages.s3.amazonaws.com/million.jpg'
-})
+#  million = aaliyah.albums.create({
+#   title: 'One in a Million',
+#   genre: 'Alternative',
+#   year: 1996,
+#   image_url: 'https://sparkifyimages.s3.amazonaws.com/million.jpg'
+# })
 
-million_songs = [
-  { title: "Beats 4 da Streets (Intro)", duration: "2:11" },
-  { title: "Hot Like Fire", duration: "4:23" },
-  { title: "One in a Million", duration: "4:31" },
-  { title: "A Girl Like You", duration: "4:23" },
-  { title: "If Your Girl Only Knew", duration: "4:51" },
-  { title: "Choosey Lover (Old School/New School)", duration: "7:08" },
-  { title: "Got to Give It Up", duration: "4:41" },
-  { title: "4 Page Letter", duration: "4:52" },
-  { title: "Everything's Gonna Be Alright", duration: "4:50" },
-  { title: "Giving You More", duration: "4:26" },
-  { title: "I Gotcha' Back", duration: "2:54" },
-  { title: "Never Givin' Up", duration: "5:12" },
-  { title: "Heartbroken", duration: "4:19" },
-  { title: "Never Comin' Back", duration: "4:06" },
-  { title: "Ladies in da House", duration: "4:21" },
-  { title: "The One I Gave My Heart To", duration: "4:31" },
-  { title: "Came to Give Love (Outro)", duration: "1:40" }
-]
+# million_songs = [
+#   { title: "Beats 4 da Streets (Intro)", duration: "2:11" },
+#   { title: "Hot Like Fire", duration: "4:23" },
+#   { title: "One in a Million", duration: "4:31" },
+#   { title: "A Girl Like You", duration: "4:23" },
+#   { title: "If Your Girl Only Knew", duration: "4:51" },
+#   { title: "Choosey Lover (Old School/New School)", duration: "7:08" },
+#   { title: "Got to Give It Up", duration: "4:41" },
+#   { title: "4 Page Letter", duration: "4:52" },
+#   { title: "Everything's Gonna Be Alright", duration: "4:50" },
+#   { title: "Giving You More", duration: "4:26" },
+#   { title: "I Gotcha' Back", duration: "2:54" },
+#   { title: "Never Givin' Up", duration: "5:12" },
+#   { title: "Heartbroken", duration: "4:19" },
+#   { title: "Never Comin' Back", duration: "4:06" },
+#   { title: "Ladies in da House", duration: "4:21" },
+#   { title: "The One I Gave My Heart To", duration: "4:31" },
+#   { title: "Came to Give Love (Outro)", duration: "1:40" }
+# ]
 
-million_songs.each_with_index do |song, idx|
-  i = idx + 1
-  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/million/#{i}.mp3"
-  title = song[:title]
-  duration = song[:duration]
-  million.songs.create({
-    title: "#{title}",
-    duration: "#{duration}",
-    track_url: "#{url}"
-  })
-end
+# million_songs.each_with_index do |song, idx|
+#   i = idx + 1
+#   url = "https://s3.us-east-2.amazonaws.com/sparkify2019/million/#{i}.mp3"
+#   title = song[:title]
+#   duration = song[:duration]
+#   million.songs.create({
+#     title: "#{title}",
+#     duration: "#{duration}",
+#     track_url: "#{url}"
+#   })
+# end
 
-tigre = Artist.create({
-  name: 'Le Tigre',
+# tigre = Artist.create({
+#   name: 'Le Tigre',
+#   bio: 'coming',
+#   image_url: "https://sparkifyimages.s3.amazonaws.com/tigre.jpg",
+#   small_image_url: 'https://sparkifyimages.s3.amazonaws.com/tigre-small.jpg'
+# })
+
+# tigrealbum = tigre.albums.create({
+#   title: 'Le Tigre',
+#   genre: 'Indie',
+#   year: 1999,
+#   image_url: 'https://sparkifyimages.s3.amazonaws.com/tigrealbum.jpg'
+# })
+
+# tigrealbum_songs = [
+#   { title: "Deceptacon", duration: "3:05"},
+#   { title: "Hot Topic", duration: "3:45"},
+#   { title: "What's Yr Take on Cassavetes", duration: "2:23"},
+#   { title: "The The Empty", duration: "2:04"},
+#   { title: "Phanta", duration: "3:15"},
+#   { title: "Eau d'Bedroom Dancing", duration: "2:56"},
+#   { title: "Let's Run", duration: "2:35"},
+#   { title: "My My Metrocard", duration: "2:54"},
+#   { title: "Friendship Station", duration: "3:08"},
+#   { title: "Slideshow at Free University", duration: "2:48"},
+#   { title: "Dude, Yr So Crazy!", duration: "3:27"},
+#   { title: "Les and Ray", duration: "2:06"}
+# ]
+
+# tigrealbum_songs.each_with_index do |song, idx|
+#   i = idx + 1
+#   url = "https://s3.us-east-2.amazonaws.com/sparkify2019/tigrealbum/#{i}.mp3"
+#   title = song[:title]
+#   duration = song[:duration]
+#   tigrealbum.songs.create({
+#     title: "#{title}",
+#     duration: "#{duration}",
+#     track_url: "#{url}"
+#   })
+# end
+
+# pony = Artist.create({
+#   name: 'NYPC',
+#   bio: 'coming',
+#   image_url: "https://sparkifyimages.s3.amazonaws.com/pony.jpg",
+#   small_image_url: 'https://sparkifyimages.s3.amazonaws.com/pony-small.jpg'
+# })
+
+# playroom = pony.albums.create({
+#   title: 'Fantastic Playroom',
+#   genre: 'Indie',
+#   year: 2007,
+#   image_url: 'https://sparkifyimages.s3.amazonaws.com/playroom.jpg'
+# })
+
+# playroom_songs = [
+#   { title: "Get Lucky", duration: "3:48"},
+#   { title: "Hiding on the Staircase", duration: "3:36"},
+#   { title: "Ice Cream", duration: "3:13"},
+#   { title: "The Bomb", duration: "4:17"},
+#   { title: "Jerk Me", duration: "4:10"},
+#   { title: "The Get Go", duration: "4:32"},
+#   { title: "Talking, Talking", duration: "4:02"},
+#   { title: "Grey", duration: "4:16"},
+#   { title: "F.A.N.", duration: "3:29"},
+#   { title: "Tight Fit", duration: "4:10"}
+# ]
+
+# playroom_songs.each_with_index do |song, idx|
+#   i = idx + 1
+#   url = "https://s3.us-east-2.amazonaws.com/sparkify2019/playroom/#{i}.mp3"
+#   title = song[:title]
+#   duration = song[:duration]
+#   playroom.songs.create({
+#     title: "#{title}",
+#     duration: "#{duration}",
+#     track_url: "#{url}"
+#   })
+# end
+
+# onda = Artist.create({
+#   name: 'Onda Vaga',
+#   bio: 'coming',
+#   image_url: "https://sparkifyimages.s3.amazonaws.com/onda.jpg",
+#   small_image_url: 'https://sparkifyimages.s3.amazonaws.com/onda-small.jpg'
+# })
+
+# fuerte = onda.albums.create({
+#   title: 'Fuerte y Caliente',
+#   genre: 'Latin',
+#   year: 2008,
+#   image_url: 'https://sparkifyimages.s3.amazonaws.com/fuerte.jpg'
+# })
+
+# fuerte_songs = [
+#   { title: "Vaguisenial", duration: "2:01"},
+#   { title: "Parque", duration: "3:01"},
+#   { title: "Sequía De Amor", duration: "2:24"},
+#   { title: "Como Que No?", duration: "2:52"},
+#   { title: "Me Pega Fuerte", duration: "2:40"},
+#   { title: "Cartagena", duration: "2:17"},
+#   { title: "Havana Affair", duration: "3:20"},
+#   { title: "Ir Al Baile", duration: "4:09"},
+#   { title: "Va El Oeste", duration: "2:19"},
+#   { title: "Gilda", duration: "2:41"},
+#   { title: "El Experimento", duration: "2:41"},
+#   { title: "Mambeado", duration: "3:42"},
+#   { title: "Te Quiero", duration: "3:02"},
+#   { title: "Rayada", duration: "5:18"}
+# ]
+
+# fuerte_songs.each_with_index do |song, idx|
+#   i = idx + 1
+#   url = "https://s3.us-east-2.amazonaws.com/sparkify2019/fuerte/#{i}.mp3"
+#   title = song[:title]
+#   duration = song[:duration]
+#   fuerte.songs.create({
+#     title: "#{title}",
+#     duration: "#{duration}",
+#     track_url: "#{url}"
+#   })
+# end
+
+# ### ADDED 1/9/20
+
+lhasa = Artist.create({
+  name: 'Lhasa de Sela',
   bio: 'coming',
-  image_url: "https://sparkifyimages.s3.amazonaws.com/tigre.jpg",
-  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/tigre-small.jpg'
+  image_url: "https://sparkifyimages.s3.amazonaws.com/lhasa.jpg",
+  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/lhasa-small.jpg'
 })
 
-tigrealbum = tigre.albums.create({
-  title: 'Le Tigre',
-  genre: 'Indie',
-  year: 1999,
-  image_url: 'https://sparkifyimages.s3.amazonaws.com/tigrealbum.jpg'
-})
-
-tigrealbum_songs = [
-  { title: "Deceptacon", duration: "3:05"},
-  { title: "Hot Topic", duration: "3:45"},
-  { title: "What's Yr Take on Cassavetes", duration: "2:23"},
-  { title: "The The Empty", duration: "2:04"},
-  { title: "Phanta", duration: "3:15"},
-  { title: "Eau d'Bedroom Dancing", duration: "2:56"},
-  { title: "Let's Run", duration: "2:35"},
-  { title: "My My Metrocard", duration: "2:54"},
-  { title: "Friendship Station", duration: "3:08"},
-  { title: "Slideshow at Free University", duration: "2:48"},
-  { title: "Dude, Yr So Crazy!", duration: "3:27"},
-  { title: "Les and Ray", duration: "2:06"}
-]
-
-tigrealbum_songs.each_with_index do |song, idx|
-  i = idx + 1
-  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/tigrealbum/#{i}.mp3"
-  title = song[:title]
-  duration = song[:duration]
-  tigrealbum.songs.create({
-    title: "#{title}",
-    duration: "#{duration}",
-    track_url: "#{url}"
-  })
-end
-
-pony = Artist.create({
-  name: 'NYPC',
-  bio: 'coming',
-  image_url: "https://sparkifyimages.s3.amazonaws.com/pony.jpg",
-  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/pony-small.jpg'
-})
-
-playroom = pony.albums.create({
-  title: 'Fantastic Playroom',
-  genre: 'Indie',
-  year: 2007,
-  image_url: 'https://sparkifyimages.s3.amazonaws.com/playroom.jpg'
-})
-
-playroom_songs = [
-  { title: "Get Lucky", duration: "3:48"},
-  { title: "Hiding on the Staircase", duration: "3:36"},
-  { title: "Ice Cream", duration: "3:13"},
-  { title: "The Bomb", duration: "4:17"},
-  { title: "Jerk Me", duration: "4:10"},
-  { title: "The Get Go", duration: "4:32"},
-  { title: "Talking, Talking", duration: "4:02"},
-  { title: "Grey", duration: "4:16"},
-  { title: "F.A.N.", duration: "3:29"},
-  { title: "Tight Fit", duration: "4:10"}
-]
-
-playroom_songs.each_with_index do |song, idx|
-  i = idx + 1
-  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/playroom/#{i}.mp3"
-  title = song[:title]
-  duration = song[:duration]
-  playroom.songs.create({
-    title: "#{title}",
-    duration: "#{duration}",
-    track_url: "#{url}"
-  })
-end
-
-onda = Artist.create({
-  name: 'Onda Vaga',
-  bio: 'coming',
-  image_url: "https://sparkifyimages.s3.amazonaws.com/onda.jpg",
-  small_image_url: 'https://sparkifyimages.s3.amazonaws.com/onda-small.jpg'
-})
-
-fuerte = onda.albums.create({
-  title: 'Fuerte y Caliente',
+llorona = lhasa.albums.create({
+  title: 'La Llorona',
   genre: 'Latin',
-  year: 2008,
-  image_url: 'https://sparkifyimages.s3.amazonaws.com/fuerte.jpg'
+  year: 1997,
+  image_url: 'https://sparkifyimages.s3.amazonaws.com/llorona.jpg'
 })
 
-fuerte_songs = [
-  { title: "Vaguisenial", duration: "2:01"},
-  { title: "Parque", duration: "3:01"},
-  { title: "Sequía De Amor", duration: "2:24"},
-  { title: "Como Que No?", duration: "2:52"},
-  { title: "Me Pega Fuerte", duration: "2:40"},
-  { title: "Cartagena", duration: "2:17"},
-  { title: "Havana Affair", duration: "3:20"},
-  { title: "Ir Al Baile", duration: "4:09"},
-  { title: "Va El Oeste", duration: "2:19"},
-  { title: "Gilda", duration: "2:41"},
-  { title: "El Experimento", duration: "2:41"},
-  { title: "Mambeado", duration: "3:42"},
-  { title: "Te Quiero", duration: "3:02"},
-  { title: "Rayada", duration: "5:18"}
+llorona_songs = [
+  { title: "De Cara a la Pared", duration: "4:16"},
+  { title: "La Celestina", duration: "4:48"},
+  { title: "El Desierto", duration: "3:54"},
+  { title: "Por Eso Me Quedo", duration: "3:51"},
+  { title: "El Payande", duration: "3:32"},
+  { title: "Los Peces", duration: "3:52"},
+  { title: "Floricanto", duration: "4:10"},
+  { title: "Desdenosa", duration: "4:34"},
+  { title: "El Pajaro", duration: "3:59"},
+  { title: "Mi Vanidad", duration: "4:13"},
+  { title: "El Arbor del Olvideo", duration: "3:12"}
 ]
 
-fuerte_songs.each_with_index do |song, idx|
+llorona_songs.each_with_index do |song, idx|
   i = idx + 1
-  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/fuerte/#{i}.mp3"
+  url = "https://s3.us-east-2.amazonaws.com/sparkify2019/llorona/#{i}.mp3"
   title = song[:title]
   duration = song[:duration]
-  fuerte.songs.create({
+  llorona.songs.create({
     title: "#{title}",
     duration: "#{duration}",
     track_url: "#{url}"
