@@ -1,25 +1,13 @@
-# README
+# [Sparkify](https://sparkify.herokuapp.com)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Sparkify](https://markaj.dev/images/pic01.jpg)
 
-Things you may want to cover:
+[Live App](https://sparkify.herokuapp.com)
 
-* Ruby version
+Sparkify is a music player app, inspired by Spotify.
 
-* System dependencies
+- React / Redux
+- Ruby on Rails
+- PostgreSQL
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# sparkify
+Built by [Martin Markaj](https://linkedin.com/in/martinmarkaj)
