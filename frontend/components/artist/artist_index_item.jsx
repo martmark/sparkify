@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
-import { setLoadingTrue, setLoadingFalse } from './../../actions/loading_actions';
+import { withRouter } from 'react-router-dom';
+import { setLoadingTrue } from './../../actions/loading_actions';
 
 // const artistIndexItem = ({ artist, history }) => {
 

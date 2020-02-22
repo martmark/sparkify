@@ -13,19 +13,21 @@ import Search from './../search/search';
 
 const Main = () => (
   <div className='main-content'>
-      <ModalContainer />
-      
-      <div className='main-content-inner'>
-        <MainNav />
-        <Route path="/browse" component={Browse} />
-        <Route path="/search" component={Search} />
-        <Route path="/collection" component={Collection} />
-        <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
-        <Route path="/album/:albumId" component={AlbumShow} />
-        <Route path="/artist/:artistId" component={ArtistShow} />
-        <Route path="/settings" component={SettingsContainer} />
-      </div>
-      <MusicPlayer />
+    
+    <ModalContainer />
+    
+    <div className='main-content-inner'>
+      <div id='alert-window' className='alert hidden'><p id='alert-p' className='alert-p'></p></div>
+      <MainNav />
+      <Route path="/browse" component={Browse} />
+      <Route path="/search" component={Search} />
+      <Route path="/collection" component={Collection} />
+      <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
+      <Route path="/album/:albumId" component={AlbumShow} />
+      <Route path="/artist/:artistId" component={ArtistShow} />
+      <Route path="/settings" component={SettingsContainer} />
+    </div>
+    <MusicPlayer />
   </div>
 );
 

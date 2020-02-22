@@ -4,6 +4,7 @@ import { updatePlaylist } from "./../../actions/playlist_actions";
 import { closeModal } from "./../../actions/modal_actions";
 import { IconContext } from "react-icons";
 import { MdClose } from "react-icons/md";
+import showAlert from './../../actions/alert_actions';
 
 class EditPlaylistForm extends React.Component {
   constructor(props) {
@@ -21,7 +22,10 @@ class EditPlaylistForm extends React.Component {
     e.preventDefault();
     let title = this.state.title;
     let updatedPlaylist = { id: this.props.playlist.id, title }
-    this.props.updatePlaylist(updatedPlaylist).then(() => this.props.closeModal());
+    this.props.updatePlaylist(updatedPlaylist).then(() => {
+      this.props.closeModal();
+      showAlert(`${title} updated.`);
+    });
   }
 
   render() {

@@ -1,0 +1,27 @@
+.alert {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 30px;
+  background-color: #1ea749;
+  z-index: 5000000;
+  // text-align: center;
+  // margin-left: 230px;
+  // box-sizing: border-box;
+  transition: ease-in;
+}
+
+.alert-p {
+  width: 100%;
+  // margin-left: 230px;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: 600;
+  
+  
+  // height: 30px;
+  align-items: center;
+}

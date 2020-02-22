@@ -4,6 +4,7 @@ import { createPlaylist } from './../../actions/playlist_actions';
 import { closeModal } from './../../actions/modal_actions';
 import { IconContext } from "react-icons";
 import { MdClose } from "react-icons/md";
+import showAlert from './../../actions/alert_actions';
 
 class PlaylistForm extends React.Component {
   constructor(props) {
@@ -19,8 +20,12 @@ class PlaylistForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    let { title } = this.state;
     this.props.createPlaylist(this.state)
-      .then(() => this.props.closeModal());
+      .then(() => {
+        this.props.closeModal();
+        showAlert(`${title} created.`)
+      });
   }
 
   render() {

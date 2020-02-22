@@ -1,7 +1,7 @@
 @media only screen 
   and (min-device-width: 320px) 
   and (max-device-width: 767px)
-  and (-webkit-min-device-pixel-ratio: 2) {
+   {
 
     .album-index {
       width: 100%;
@@ -18,31 +18,20 @@
       padding: 20px 30px;
       text-align: center;
       // font-size: em;
-      // font-size: .9em;
+      // font-size: 2em;
     }
 
-    .album-index-info {
-      width: 100%;
-      // overflow: hidden;
-      // font-size: .9em;
-      // transform: scale(2);;
-    }
-
-    .album-index-item-title {
-      width: 410px;
-      overflow: hidden;
-      // white-space: nowrap;
-      // font-size: .9em;
-      // font-size: 24px;
-    }
-    
-    // .album-index-item-artist {
-    //   font-size: 24px;
+    // .album-index-info {
+    //   width: 100%;
+    //   // overflow: hidden;
+    //   // font-size: .9em;
+    //   // transform: scale(2);;
     // }
 
-    #albidxtitle {
-      transform: scale(2);
-    }
+
+    // #albidxtitle {
+    //   transform: scale(2);
+    // }
 
     .album-show-image {
       width: 60%;
@@ -88,5 +77,17 @@
 
     .album-show-year {
       font-size: 20px;
+    }
+
+     #albumidx-album {
+      // width: 410px;
+      // overflow: hidden;
+      // white-space: nowrap;
+      // font-size: .9em;
+      font-size: 20px !important;
+    }
+    
+    #albumidx-artist {
+      font-size: 20px !important;
     }
 }

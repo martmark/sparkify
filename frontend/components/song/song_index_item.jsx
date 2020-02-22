@@ -7,6 +7,7 @@ import { addToQueue } from './../../actions/music_actions';
 import { IconContext } from "react-icons";
 import { MdPlayArrow } from "react-icons/md";
 import { IoMdAddCircle, IoIosMusicalNotes } from "react-icons/io";
+import showAlert from './../../actions/alert_actions';
 
 class SongIndexItem extends React.Component {
   constructor(props) {
@@ -30,7 +31,11 @@ class SongIndexItem extends React.Component {
   followSong() {
     let id = this.props.song.id;
     this.props.followSong(id)
-    .then(() => this.setState({ saved: true }));
+    .then(() => {
+      this.setState({ saved: true });
+      showAlert(`${this.props.song.title} has been added to your library.`);
+    });
+    
   }
 
   unfollowSong() {
@@ -41,6 +46,7 @@ class SongIndexItem extends React.Component {
         this.props.removeFromCollection(this.props.song.id);
       }
       this.setState({ saved: false });
+      showAlert(`${this.props.song.title} has been removed your library.`);
     });
   }
 
@@ -58,7 +64,7 @@ class SongIndexItem extends React.Component {
   }
 
   addToPlaylist() {
-    this.props.openModal({ songId: this.props.song.id, modalType: 'addsong' })
+    this.props.openModal({ song: this.props.song, modalType: 'addsong' })
   }
 
   reveal()  {
@@ -72,7 +78,8 @@ class SongIndexItem extends React.Component {
   }
 
   addSongToQueue() {
-    this.props.addToQueue(this.props.song);
+    this.props.addToQueue(this.props.song)
+    showAlert(`${this.props.song.title} added to queue.`);
   }
 
   removeFromQueue() {

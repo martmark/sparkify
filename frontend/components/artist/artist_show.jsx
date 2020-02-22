@@ -9,6 +9,7 @@ import { followArtist, unfollowArtist } from './../../util/artist_api_util';
 import { IconContext } from "react-icons";
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import { setCurrentSong } from './../../actions/music_actions';
+import showAlert from './../../actions/alert_actions';
 
 class ArtistShow extends React.Component {
   constructor(props) {
@@ -48,13 +49,20 @@ class ArtistShow extends React.Component {
   followArtist() {
     let id = this.props.artist.id;
     this.props.followArtist(id)
-      .then(() => this.setState({ followed: true }));
+      .then(() => {
+        this.setState({ followed: true })
+        console.log('bbb');
+        showAlert(`${this.props.artist.name} has been added to your library.`);
+      });
   }
 
   unfollowArtist() {
     let id = this.props.artist.id;
     this.props.unfollowArtist(id)
-      .then(() => this.setState({ followed: false }));
+      .then(() => {
+        this.setState({ followed: false })
+        showAlert(`${this.props.artist.name} has been removed from your library.`);
+      });
   }
 
   playArtist() {

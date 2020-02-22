@@ -6,6 +6,7 @@ import React from 'react';
 import { closeModal } from './../../actions/modal_actions';
 import { IconContext } from "react-icons";
 import { MdClose } from "react-icons/md";
+import showAlert from './../../actions/alert_actions';
 
 class AddSongToPlaylist extends React.Component {
   constructor(props) {
@@ -19,11 +20,13 @@ class AddSongToPlaylist extends React.Component {
       .then(() => this.setState({ loading: false }));
   }
 
-  handleClick(playlistId) {
-    let that = this;
+  handleClick(playlist) {
     return e => {
-      this.props.addPlaylistSong({ playlistId: playlistId, songId: this.props.songId })
-        .then(() => this.props.closeModal());
+      this.props.addPlaylistSong({ playlistId: playlist.id, songId: this.props.song.id })
+        .then(() => {
+          this.props.closeModal();
+          showAlert(`${this.props.song.title} added to ${playlist.title}.`)
+        });
     }
   }
 
@@ -50,7 +53,7 @@ class AddSongToPlaylist extends React.Component {
 
     let playlistLis = playlists.map(playlist => {
       return (
-        <li key={playlist.id} className='addsong-idx-item' onClick={this.handleClick(playlist.id)}>
+        <li key={playlist.id} className='addsong-idx-item' onClick={this.handleClick(playlist)}>
           <img className='addsong-idx-img' src={playlist.image_url} alt={playlist.title}/>
           <span className='addsong-idx-title'>{playlist.title}</span>
         </li>
