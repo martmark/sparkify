@@ -1,0 +1,43 @@
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 767px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+  .playlist-index {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .playlist-index-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .playlist-index-item {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    // font-size: 1.75em;
+  }
+
+  .playlist-index-item-title {
+    font-size: 1.75em;
+  }
+
+  .other-playlists-outer {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .other-playlists {
+    padding: 40px;
+    // text-align: center;
+    // width: 100%;
+    // margin: 0 auto;
+    font-size: 50px;
+  }
+
+}

@@ -1,45 +1,48 @@
-.addsong-idx-outer {
-  width: 50vw;
-  // height: 50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+@media only screen 
+  and (min-device-width: 768px) {
+  
+  .addsong-idx-outer {
+    width: 50vw;
+    // height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-.addsong-idx {
+  .addsong-idx {
 
-  display: flex;
-  border-style: solid;
-  border-width: 1px;
-  border-color: lightgray;
-  padding: 40px;
-  flex-wrap: wrap;
-}
+    display: flex;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    padding: 40px;
+    flex-wrap: wrap;
+  }
 
-.addsong-idx-item {
-  width: 25%;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  padding: 15px;
-  box-sizing: border-box;
-}
+  .addsong-idx-item {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 15px;
+    box-sizing: border-box;
+  }
 
-.addsong-idx-img {
-  width: 90%;
-  border-radius: 75%;
-  margin: 0 auto;
-}
+  .addsong-idx-img {
+    width: 90%;
+    border-radius: 75%;
+    margin: 0 auto;
+  }
 
-.addsong-idx-title {
-  margin: 0 auto;
-  padding-top: 10px;
-  text-align: center;
-}
+  .addsong-idx-title {
+    margin: 0 auto;
+    padding-top: 10px;
+    text-align: center;
+  }
 
-.addsong-idx-item:hover {
-  img {
-    opacity: .5;
+  .addsong-idx-item:hover {
+    img {
+      opacity: .5;
+    }
   }
 }
-

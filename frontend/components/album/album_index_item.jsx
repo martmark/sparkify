@@ -13,7 +13,7 @@ class albumIndexItem extends React.Component {
         <div className='album-index-info'>
           <Link to={`/album/${album.id}`}>
             <div className='album-index-item-image'><img src={album.image_url} alt={album.title}/></div>
-            <span className='album-index-item-title'>{album.title}</span>
+            <span id='albidxtitle' className='album-index-item-title'>{album.title}</span>
           </Link>
         </div>
         <div className='album-index-item-artist'>

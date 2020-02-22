@@ -50,10 +50,10 @@ class PlaylistForm extends React.Component {
           </div>
         </form>
         <div className="playlist-form-buttons">
-          <button id="new-playlist-button" onClick={this.props.closeModal}>
+          <button id="playlist-form-button" onClick={this.props.closeModal}>
             CANCEL
           </button>
-          <button id="new-playlist-button" onClick={this.handleSubmit}>
+          <button id="playlist-form-button" onClick={this.handleSubmit}>
             CREATE
           </button>
         </div>

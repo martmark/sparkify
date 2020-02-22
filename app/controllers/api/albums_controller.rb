@@ -6,7 +6,7 @@ class Api::AlbumsController < ApplicationController
     elsif params[:fetchType] == 'browse'
       @albums = []
       allalbums = Album.all
-      while @albums.length < 15
+      while @albums.length < 10
         album = allalbums.sample
         @albums << album if !@albums.include?(album) && !followed_album_ids.include?(album.id)
       end

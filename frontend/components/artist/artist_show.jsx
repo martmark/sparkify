@@ -143,7 +143,7 @@ class ArtistShow extends React.Component {
           </div>
         </div>
         <div className='music'>
-          <span className='featured'>Featured</span>
+          <span className='featured'>Featured Songs</span>
           <div className='song-index'>{songIndex}</div>
           <span className='artist-albums'>Albums</span>
           <div className='artist-album-index'>{albumIndex}</div>

@@ -87,14 +87,14 @@ class AlbumShow extends React.Component {
     let button = '';
     if (!this.state.followed) {
       button = (
-        <IconContext.Provider value={{ className: "custom-icon reacticon", size: '3em' }}>
+        <IconContext.Provider value={{ className: "album-show-follow-button custom-icon reacticon", size: '3em' }}>
           <IoMdHeartEmpty onClick={this.followAlbum} />
         </IconContext.Provider>
       );
     } else {
       button = (
         <IconContext.Provider
-          value={{ className: "heart-icon reacticon", size: "3em" }}
+          value={{ className: "album-show-follow-button heart-icon reacticon", size: "3em" }}
         >
           <IoMdHeart onClick={this.unfollowAlbum} />
         </IconContext.Provider>

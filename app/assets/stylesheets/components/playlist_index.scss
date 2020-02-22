@@ -1,35 +1,39 @@
-.playlist-index {
-  min-height: 100%;
-  margin: 0 20px;
-  // margin-bottom: 100px;
-  box-sizing: border-box;
-}
+@media only screen 
+  and (min-device-width: 768px) {
+  
+  .playlist-index {
+    min-height: 100%;
+    margin: 0 20px;
+    // margin-bottom: 100px;
+    box-sizing: border-box;
+  }
 
-.playlist-index-list {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
+  .playlist-index-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
 
-.playlist-index-item {
-  width: 20%;
-  padding: 10px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
+  .playlist-index-item {
+    width: 20%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
 
-.playlist-index-item-image > img {
-  width: 100%;
-}
+  .playlist-index-item-image > img {
+    width: 100%;
+  }
 
-.playlist-index-item-image:hover {
-  opacity: 0.2;
-}
+  .playlist-index-item-image:hover {
+    opacity: 0.2;
+  }
 
-.playlist-index-item-info > h4 {
-  font-size: 12px;
+  .playlist-index-item-info > h4 {
+    font-size: 12px;
+  }
 }

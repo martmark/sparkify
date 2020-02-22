@@ -1,202 +1,206 @@
-.song-index {
-  // padding: 20px;
-  // color: white;
-  // // font-weight: 300;
-  width: 100%;
-  // margin: 0 30px;
-  background: rbg(24,24,24);
-  // height: 100%;
-  // border-top: 0.1px solid gray;
-  padding: 0 20px;
-}
-
-.song-index > li {
-  padding: 10px;
-}
-
-.song-idx-outer {
-  width: 100%;
-}
-
-.song-index-item {
-  height: 60px;
-  // max-height: 60px;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-}
-
-.album-song-item {
-  height: 40px;
-}
-
-.song-idx-list-icon {
-  width: 35px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.song-index-item-details {
-  width: 100%;
-  padding-left: 10px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.song-index-item-left {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;  
-  box-sizing: border-box;
-}
-
-.song-index-item-title {
-  font-size: 15px;
+@media only screen 
+  and (min-device-width: 768px) {
   
-}
+  .song-index {
+    // padding: 20px;
+    // color: white;
+    // // font-weight: 300;
+    width: 100%;
+    // margin: 0 30px;
+    background: rbg(24,24,24);
+    // height: 100%;
+    // border-top: 0.1px solid gray;
+    padding: 0 20px;
+  }
 
-.song-artist-info {
-  font-size: 12px;
-  display: flex;
-  // justify-content: center;
-  width: 100%;
-}
+  .song-index > li {
+    padding: 10px;
+  }
 
-.song-artist-info > span {
-  padding-right: 4px;
-}
+  .song-idx-outer {
+    width: 100%;
+  }
 
-.song-index-item-image {
-  width: 50px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  margin: 0 5px;
-  margin-bottom: 5px;
+  .song-index-item {
+    height: 60px;
+    // max-height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+  }
 
-  img {
-    width: 40px;
+  .album-song-item {
     height: 40px;
   }
-}
+
+  .song-idx-list-icon {
+    width: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .song-index-item-details {
+    width: 100%;
+    padding-left: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .song-index-item-left {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;  
+    box-sizing: border-box;
+  }
+
+  .song-index-item-title {
+    font-size: 15px;
+    
+  }
+
+  .song-artist-info {
+    font-size: 12px;
+    display: flex;
+    // justify-content: center;
+    width: 100%;
+  }
+
+  .song-artist-info > span {
+    padding-right: 4px;
+  }
+
+  .song-index-item-image {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 0 5px;
+    margin-bottom: 5px;
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
 
 
 
-.song-index-item > button {
-  color: green;
-}
+  .song-index-item > button {
+    color: green;
+  }
 
-.song-duration {
-  // width: px;
-  // padding-left: 25px;
-  width: 40px; 
-  // align-items: right;
-  // justify-items: right;3
-  // display: flex;
-  // justify-content: flex-end;
-  margin-left: 10px;
-  font-size: 14px;
-  text-align: center;
-}
-
-.song-index-item-buttons {
-  font-size: 12px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.song-idx-item-info {
-  display: flex;
-  width: 100%;
-}
-
-.songdropdown {
-  float: left;
-  position: relative;
-  background-color: rgb(39,39,39);
-  right: 18px;
-  // top: 5px;
-  // z-index: 2;
-  border: 1px solid black;
-  // width: auto;
-  min-width: 160px;
-
-  li {
-    padding: 4px;
-    // padding-right: 7px;
-    text-align: center;
+  .song-duration {
+    // width: px;
+    // padding-left: 25px;
+    width: 40px; 
+    // align-items: right;
+    // justify-items: right;3
+    // display: flex;
+    // justify-content: flex-end;
+    margin-left: 10px;
     font-size: 14px;
+    text-align: center;
   }
 
-  li:hover {
-    color: rgb(30,167,73);
-  }
-}
-
-.song-idx-remove-btn {
-  width: 220px;
-}
-
-// .songdropdown > li
-// {
-// float: left;
-// margin-left: 21px;
-// font-family: 'Open Sans', sans-serif;
-// font-size: 14px;
-// // text-transform: uppercase;
-// color: #fff;
-// border-top: 2px solid transparent;
-// // padding-top: 8px;
-//     position: relative;
-//     line-height: 1.5;
-//     height: 24px;
-// }
-
-// #navbar > ul > li > ul {
-// list-style: none;
-// position: absolute; /* change this */
-// margin-left: 0px;
-// padding-left: 0px;
-//     margin-top: -5px; /* this can control the whitespace... */
-// }
-
-.hidden {
-  display: none;
-}
-
-.songdropdown-btn:hover {
-  color: rgb(30,167,73);
-}
-
-.song-index-item-play {
-  display: none;
-}
-
-.song-index > li:hover {
-  background: rgba(0,0,0,0.5);
-  
-  .song-index-item-play {
-    display: block;
+  .song-index-item-buttons {
+    font-size: 12px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 
-  .song-index-item-note {
+  .song-idx-item-info {
+    display: flex;
+    width: 100%;
+  }
+
+  .songdropdown {
+    float: left;
+    position: relative;
+    background-color: rgb(39,39,39);
+    right: 18px;
+    // top: 5px;
+    // z-index: 2;
+    border: 1px solid black;
+    // width: auto;
+    min-width: 160px;
+
+    li {
+      padding: 4px;
+      // padding-right: 7px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    li:hover {
+      color: rgb(30,167,73);
+    }
+  }
+
+  .song-idx-remove-btn {
+    width: 220px;
+  }
+
+  // .songdropdown > li
+  // {
+  // float: left;
+  // margin-left: 21px;
+  // font-family: 'Open Sans', sans-serif;
+  // font-size: 14px;
+  // // text-transform: uppercase;
+  // color: #fff;
+  // border-top: 2px solid transparent;
+  // // padding-top: 8px;
+  //     position: relative;
+  //     line-height: 1.5;
+  //     height: 24px;
+  // }
+
+  // #navbar > ul > li > ul {
+  // list-style: none;
+  // position: absolute; /* change this */
+  // margin-left: 0px;
+  // padding-left: 0px;
+  //     margin-top: -5px; /* this can control the whitespace... */
+  // }
+
+  .hidden {
     display: none;
   }
 
-  .song-index-item-add {
+  .songdropdown-btn:hover {
     color: rgb(30,167,73);
   }
-}
 
-.sticky-info {
-  position: absolute;
+  .song-index-item-play {
+    display: none;
+  }
+
+  .song-index > li:hover {
+    background: rgba(0,0,0,0.5);
+    
+    .song-index-item-play {
+      display: block;
+    }
+
+    .song-index-item-note {
+      display: none;
+    }
+
+    .song-index-item-add {
+      color: rgb(30,167,73);
+    }
+  }
+
+  .sticky-info {
+    position: absolute;
+  }
 }

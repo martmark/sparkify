@@ -1,114 +1,118 @@
-.signup {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  justify-content: center;
-  width: 100%;
-  // height: 100vh;
-  position: absolute;
-  font-family: Circular, Helvetica, Arial, sans-serif;
-}
-
-.signup-header {
-  width: 100%;
-  text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 40px;
-  border-bottom: 0.5px solid lightgray;
-}
-
-.signup-main {
-  width: 400px;
-  margin: auto;
+@media only screen 
+  and (min-device-width: 768px) {
   
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
+  .signup {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    width: 100%;
+    // height: 100vh;
+    position: absolute;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+  }
 
-.signup-main > h1 {
-  font-size: 16px;
-  font-weight: 800;
-  transform:scale(1.05,1.0);
-  letter-spacing: 0.5px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-}
+  .signup-header {
+    width: 100%;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    border-bottom: 0.5px solid lightgray;
+  }
+
+  .signup-main {
+    width: 400px;
+    margin: auto;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .signup-main > h1 {
+    font-size: 16px;
+    font-weight: 800;
+    transform:scale(1.05,1.0);
+    letter-spacing: 0.5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
 
 
-.signup-demo-button {
-  margin-top: 25px;
-  margin-bottom: 10px;
-}
+  .signup-demo-button {
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
 
-.signup-demo-button > button {
-  background: rgb(58,90,152);
-  height: 50px;
-  width: 320px;
-  margin: auto;
-  border-radius: 30px;
-  font-family: Circular, Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  transition: 0.3s;
-  color: white;
-}
+  .signup-demo-button > button {
+    background: rgb(58,90,152);
+    height: 50px;
+    width: 320px;
+    margin: auto;
+    border-radius: 30px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
+    color: white;
+  }
 
-.signup-demo-button > button:hover {
-  background: rgb(46,74,158);
-  transition: 0.3s;
-}
+  .signup-demo-button > button:hover {
+    background: rgb(46,74,158);
+    transition: 0.3s;
+  }
 
-.signup-form {
-  display: flex;
-  flex-direction: column;
-  margin-block-end: 20px;
-}
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    margin-block-end: 20px;
+  }
 
-.signup-form > input {
-  width: 380px;
-  border: 0.5px solid lightgray;
-  text-align: left;
-  padding: 10px;
-  margin-bottom: 15px;
-}
+  .signup-form > input {
+    width: 380px;
+    border: 0.5px solid lightgray;
+    text-align: left;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
 
-.signup-form > button {
-  background: rgb(30,167,73);
-  height: 50px;
-  width: 320px;
-  margin: auto;
-  border-radius: 30px;
-  font-family: Circular, Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  transition: 0.3s;
-  color: white;
-}
+  .signup-form > button {
+    background: rgb(30,167,73);
+    height: 50px;
+    width: 320px;
+    margin: auto;
+    border-radius: 30px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
+    color: white;
+  }
 
-.signup-form > button:hover {
-  background: rgb(30,215,96);
-  transition: 0.3s;
-}
+  .signup-form > button:hover {
+    background: rgb(30,215,96);
+    transition: 0.3s;
+  }
 
-.green-link {
-  color: rgb(30,167,73);
-}
+  .green-link {
+    color: rgb(30,167,73);
+  }
 
-.green-link:hover {
-  color: rgb(30,215,96);
-}
+  .green-link:hover {
+    color: rgb(30,215,96);
+  }
 
-.session-errors {
-  background: rgb(245,155,34);
-  color: white;
-  width: 380px;
-  font-size: 12px;
-  padding: 10px;
-  margin-bottom: 10px;
+  .session-errors {
+    background: rgb(245,155,34);
+    color: white;
+    width: 380px;
+    font-size: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
 }

@@ -1,0 +1,40 @@
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 767px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+
+    .browse-nav {
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    bottom: 0;
+    padding: 0 30px;
+    // margin-top: 60px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .browse-nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    // justify-content: center;
+    // width: 100vw;
+    font-size: 30px;
+    // margin-left: 0;
+    margin: 30px 0;
+    // box-sizing: border-box;
+
+    li {
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .content-link-active {
+      color: white;
+      border-bottom: 2px solid rgb(30,215,96);
+      // color: rgb(30,215,96);
+    }
+  }
+}

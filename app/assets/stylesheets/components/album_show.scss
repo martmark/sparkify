@@ -1,63 +1,67 @@
-.album-show {
-  // height: 100vh;
-  margin-left: 230px;
-  margin-top: 50px;
-  width: 100%;
-  display: flex;
-  margin-bottom: 110px;
-}
-// .album-show-info-outer {
-//   position: fixed;
-// }
+@media only screen 
+  and (min-device-width: 768px) {
+  
+  .album-show {
+    // height: 100vh;
+    margin-left: 230px;
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    margin-bottom: 110px;
+  }
+  // .album-show-info-outer {
+  //   position: fixed;
+  // }
 
-.album-show-info {
-  margin-left: 15px;
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  align-items: center;
-}
+  .album-show-info {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+  }
 
-.album-show-image {
-  height: 230px;
-  width: 230px;
-}
+  .album-show-image {
+    height: 230px;
+    width: 230px;
+  }
 
-.album-show-details {
-  display: flex;
-  flex-direction: column;
-  // margin-left: 40px;
-  width: 100%;
-  font-size: 13px;
-  text-align: center;
-  justify-content: center;
-}
+  .album-show-details {
+    display: flex;
+    flex-direction: column;
+    // margin-left: 40px;
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    justify-content: center;
+  }
 
-.album-show-album-title {
-  font-size: 28px;
-  width: 100%;
-  padding: 10px 0;
-}
+  .album-show-album-title {
+    font-size: 28px;
+    width: 100%;
+    padding: 10px 0;
+  }
 
-.album-show-year {
-  font-size: 11px;
-}
+  .album-show-year {
+    font-size: 11px;
+  }
 
-.album-show-songs {
-  width: 70%;
-  margin-right: 50px;
-  box-sizing: border-box;
-}
+  .album-show-songs {
+    width: 70%;
+    margin-right: 50px;
+    box-sizing: border-box;
+  }
 
-.fa-heart {
-  font-size: 45px;
-}
+  .fa-heart {
+    font-size: 45px;
+  }
 
-.album-show-artist-name {
-  font-size: 18px;
-  padding-bottom: 7px;
-}
+  .album-show-artist-name {
+    font-size: 18px;
+    padding-bottom: 7px;
+  }
 
-.album-show-follow-btn {
-  margin-top: 10px;
+  .album-show-follow-btn {
+    margin-top: 10px;
+  }
 }

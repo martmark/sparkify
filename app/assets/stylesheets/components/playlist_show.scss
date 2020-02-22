@@ -1,56 +1,60 @@
-.playlist-show {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  margin-left: 230px;
-}
-
-.playlist-header {
-  width: 100%;
-  border-bottom: 1px solid lightgray;
-}
-
-.playlist-show-image > img {
-  height: 150px;
-  width: 150px;
-}
-
-// .heart-icon {
-//   height: 40px;
-//   width: 40px;;
-// }
-
-.playlist-follow-btn {
-  // position: absolute;
-  width: 40px;
-  margin: 0 auto;
-  margin-top: 15px;
-}
-
-.playlistdropdown {
-  // float: right;
-  // position: absolute;
-  background-color: rgb(39,39,39);
-  // left: 250px;  
-  // bottom: 45px;
-  // right: 18px;
-  // top: 355px;
-  // z-index: 2;
-  margin: 0 auto;
-  margin-top: 10px;
-  border: 1px solid black;
-  width: 140px;
-
-  li {
-    padding: 4px;
-    // padding-right: 7px;
-    text-align: center;
-    font-size: 14px;
+@media only screen 
+  and (min-device-width: 768px) {
+  
+  .playlist-show {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin-left: 230px;
   }
 
-  li:hover {
-    // color: rgb(30,215,73);
-    color: rgb(30,215,96);
+  .playlist-header {
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .playlist-show-image > img {
+    height: 150px;
+    width: 150px;
+  }
+
+  // .heart-icon {
+  //   height: 40px;
+  //   width: 40px;;
+  // }
+
+  .playlist-follow-btn {
+    // position: absolute;
+    width: 40px;
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+
+  .playlistdropdown {
+    // float: right;
+    // position: absolute;
+    background-color: rgb(39,39,39);
+    // left: 250px;  
+    // bottom: 45px;
+    // right: 18px;
+    // top: 355px;
+    // z-index: 2;
+    margin: 0 auto;
+    margin-top: 10px;
+    border: 1px solid black;
+    width: 140px;
+
+    li {
+      padding: 4px;
+      // padding-right: 7px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    li:hover {
+      // color: rgb(30,215,73);
+      color: rgb(30,215,96);
+    }
   }
 }

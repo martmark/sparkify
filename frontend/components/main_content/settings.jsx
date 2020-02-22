@@ -35,7 +35,7 @@ class Settings extends React.Component {
             <IconContext.Provider
               value={{ className: "reacticon", size: "3em" }}
             >
-              <a href="https://github.com/martmark/sparkify" target="_blank">
+              <a href="https://github.com/martmark" target="_blank">
                 <IoLogoGithub />
               </a>
             </IconContext.Provider>

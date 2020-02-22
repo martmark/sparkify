@@ -1,0 +1,195 @@
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 767px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+  .music-player {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 325px;
+    display: flex;
+    z-index: 2;
+    background: rgb(39,39,39);
+    
+    border-top: 1px solid black;
+    padding: 0 20px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 20px 0;
+  }
+
+  .music-player-album-image {
+    display: none;
+  }
+  
+  .current-time-display {
+    width: 10%;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .duration-display {
+    width: 10%;
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .volume-button {
+    display: none;
+  }
+
+  #vol-control {
+    display: none
+  }
+
+  .music-player-center {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .music-player-controls {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 3.25em;
+  }
+
+  .queue-button {
+    position: fixed;
+    top: 33px;
+    right: 30px;
+    font-size: 4.25em;
+    z-index: 100;
+  }
+
+  .queue-active {
+    color: rgb(30,215,96); 
+  }
+
+  .inactive {
+    color: gray;
+  }
+
+  .mp-progress {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    // padding: 0 40px;
+    box-sizing: border-box;
+    align-content: center;
+  }
+
+  #the-progress-bar {
+    -webkit-appearance: none;
+    width: 80%;
+    margin: 13.3px 0;
+  }
+  #the-progress-bar:focus {
+    outline: none;
+  }
+  #the-progress-bar::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #ffffff;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  #the-progress-bar::-webkit-slider-thumb {
+    box-shadow: 0.7px 0.7px 1px #000000, 0px 0px 0.7px #0d0d0d;
+    border: 0.9px solid #000000;
+    height: 35px;
+    width: 35px;
+    border-radius: 50px;
+    background: #1ed760;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -13.5px;
+  }
+  #the-progress-bar:focus::-webkit-slider-runnable-track {
+    background: #ffffff;
+  }
+  #the-progress-bar::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #ffffff;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  #the-progress-bar::-moz-range-thumb {
+    box-shadow: 0.7px 0.7px 1px #000000, 0px 0px 0.7px #0d0d0d;
+    border: 0.9px solid #000000;
+    height: 35px;
+    width: 35px;
+    border-radius: 50px;
+    background: #1ed760;
+    cursor: pointer;
+  }
+  #the-progress-bar::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  #the-progress-bar::-ms-fill-lower {
+    background: #f2f2f2;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  #the-progress-bar::-ms-fill-upper {
+    background: #ffffff;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  #the-progress-bar::-ms-thumb {
+    box-shadow: 0.7px 0.7px 1px #000000, 0px 0px 0.7px #0d0d0d;
+    border: 0.9px solid #000000;
+    height: 35px;
+    width: 35px;
+    border-radius: 50px;
+    background: #1ed760;
+    cursor: pointer;
+    height: 8.4px;
+  }
+  #the-progress-bar:focus::-ms-fill-lower {
+    background: #ffffff;
+  }
+  #the-progress-bar:focus::-ms-fill-upper {
+    background: #ffffff;
+  }
+
+  .music-player-text-info {
+    width: 100%;
+    position: fixed;
+    bottom: 90px;
+    z-index: 400;
+    display: block;
+    text-align: center;
+    font-size: 35px;
+  }
+
+  .repeat-on {
+    color: rgb(30,215,96);
+  }
+
+  // .mp-track-title::after {
+  //   content: "  •  ";
+  // }
+}

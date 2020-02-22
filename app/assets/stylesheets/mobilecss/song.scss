@@ -1,0 +1,62 @@
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 767px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+    .song-index {
+      width: 100%;
+    }
+
+    .song-index-item {
+      width: 100%;
+      display: flex;
+      font-size: 30px;
+      padding: 15px;
+      box-sizing: border-box;
+      align-items: center;
+    }
+
+    .song-idx-item-info {
+      display: flex;
+      width: 90%;
+      align-items: center;
+    }
+
+    .song-index-item-details {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .song-index-item-note {
+      display: none;
+    }
+
+    .song-index-item-left {
+      width: 80%;
+    }
+
+    .song-index-item-image {
+      display: none;
+    }
+
+    .song-index-item-buttons {
+      width: 20%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      text-align: end;
+    }
+
+    .song-idx-list-icon {
+      width: 10%;
+      font-size: 1.5em;
+      display: flex;
+      // align-items: center;
+    }
+
+    .song-index-item-add {
+      font-size: 1.5em;
+    }
+}

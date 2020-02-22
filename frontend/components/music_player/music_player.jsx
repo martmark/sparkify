@@ -622,6 +622,7 @@ class MusicPlayer extends React.Component {
     let artistName;
     let songTitle;
     let trackUrl;
+    let middleDot;
     if (song && song.title != "") {
       albumArt = <Link to={`/album/${song.albumId}`}><img src={song.image_url} alt={song.albumTitle} /></Link>;
       albumId = song.albumId;
@@ -629,6 +630,7 @@ class MusicPlayer extends React.Component {
       songTitle = song.title;
       artistName = song.artistName;
       trackUrl = song.track_url;
+      middleDot = <span className='middledot'>{'  •  '}</span>;
     }
     return (
       <div className="music-player">
@@ -638,6 +640,7 @@ class MusicPlayer extends React.Component {
             <span className="mp-track-title">
               <Link to={`/album/${albumId}`}>{songTitle}</Link>
             </span>
+            {middleDot}
             <span className="mp-artist-name">
               <Link to={`/artist/${artistId}`}>{artistName}</Link>
             </span>

@@ -212,7 +212,7 @@ class SongIndexItem extends React.Component {
                 </ul>
                 <IconContext.Provider
                   value={{
-                    className: "song-index-item-add reacticon",
+                    className: "song-index-item-add reacticon mobilehidden",
                     size: "1.25em"
                   }}
                 >
@@ -245,7 +245,7 @@ class SongIndexItem extends React.Component {
                 </ul>
                 <IconContext.Provider
                   value={{
-                    className: "song-index-item-add reacticon",
+                    className: "song-index-item-add reacticon mobilehidden",
                     size: "1.25em"
                   }}
                 >
@@ -253,6 +253,17 @@ class SongIndexItem extends React.Component {
                 </IconContext.Provider>
                 <span className="song-duration">{song.duration}</span>
               </div>
+            </div>
+          </div>
+          <div className='song-dropdown-outer desktop-hidden hidden' id={`dropdown${song.id}`}>
+            <div className='song-dropdown-inner'>
+              <ul className="mobile-dropdown-list">
+                {removeFromQueueButton}
+                {removeButton}
+                {addToQueueButton}
+                <li key={1}>{button}</li>
+                <li key={2}>{addSong}</li>
+              </ul>
             </div>
           </div>
         </li>

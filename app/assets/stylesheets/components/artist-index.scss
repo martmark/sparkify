@@ -1,7 +1,11 @@
-.artist-index {
-  background: rbg(24,24,24);
-  height: 100%;
-  // padding-bottom: 90px;
-  box-sizing: border-box;
-  margin: 0 25px;
+@media only screen 
+  and (min-device-width: 768px) {
+  
+  .artist-index {
+    background: rbg(24,24,24);
+    height: 100%;
+    // padding-bottom: 90px;
+    box-sizing: border-box;
+    margin: 0 25px;
+  }
 }

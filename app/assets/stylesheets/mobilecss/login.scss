@@ -1,6 +1,8 @@
 @media only screen 
-  and (min-device-width: 768px) {
-  
+  and (min-device-width: 320px) 
+  and (max-device-width: 767px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
   .sessionform {
     background-color: white;
     height: 100vh;
@@ -18,19 +20,24 @@
   }
 
   .login-header {
+    position: fixed;
+    top: 0;
+    height: 30px;
+    height: 145px;
+    background: rgb(39,39,39);
     width: 100%;
     text-align: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    font-size: 95px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     font-family: 'Montserrat', sans-serif;
-    font-size: 40px;
-    border-bottom: 0.5px solid lightgray;
   }
 
   .login-main {
-    width: 400px;
+    width: 90%;
     margin: auto;
-    
+    margin-top: 25vh;
     display: flex;
     flex-direction: column;
     // justify-content: flex-start;
@@ -38,10 +45,14 @@
     // align-items: flex-start;
     justify-content: center;
     text-align: center;
+
+    h1 {
+      color: rgb(39,39,39);
+    }
   }
 
   .login-main > h1 {
-    font-size: 16px;
+    font-size: 40px;
     font-weight: 800;
     transform:scale(1.05,1.0);
     letter-spacing: 0.5px;
@@ -52,6 +63,8 @@
   #form-or {
     margin-top: 10px;
     margin-bottom: 10px;
+    color: rgb(39,39,39);
+    font-size: 25px;
   }
 
   #form-or:before,
@@ -63,13 +76,13 @@
     position: relative;
     vertical-align: middle;
     width: 44%;
-    overflow: hidden;
+    // overflow: hidden;
   }
 
   #form-or:before {
     right: 0.5em;
     margin-left: -50%;
-    overflow: hidden;
+    // overflow: hidden;
   }
 
   #form-or:after {
@@ -85,13 +98,13 @@
 
   .login-demo-button > button {
     background: rgb(58,90,152);
-    height: 50px;
-    width: 100%;
+    height: 75px;
+    width: 95%;
     margin: auto;
-    border-radius: 30px;
+    border-radius: 50px;
     font-family: Circular, Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    font-size: 12px;
+    font-weight: 500;
+    font-size: 35px;
     letter-spacing: 1.5px;
     transition: 0.3s;
     color: white;
@@ -110,7 +123,8 @@
   }
 
   .login-form > input {
-    width: 380px;
+    width: 100%;
+    font-size: 40px;
     border: 0.5px solid lightgray;
     text-align: left;
     padding: 10px;
@@ -119,13 +133,13 @@
 
   .login-form > button {
     background: rgb(30,167,73);
-    height: 50px;
-    width: 100%;
+    height: 75px;
+    width: 95%;
     margin: auto;
-    border-radius: 30px;
+    border-radius: 50px;
     font-family: Circular, Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    font-size: 12px;
+    font-weight: 500;
+    font-size: 35px;
     letter-spacing: 1.5px;
     transition: 0.3s;
     color: white;
@@ -145,24 +159,37 @@
     color: rgb(30,215,96);
   }
 
-  .to-signup-button > button {
-    border: 2px solid rgb(50,50,50);
-    height: 50px;
-    width: 100%;
-    margin: auto;
-    border-radius: 30px;
-    font-family: Circular, Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    transition: 0.3s;
-    color: rgb(50,50,50);
+  .to-signup-button  {
+    padding-top: 125px;
+
+    button {
+      border: 2px solid rgb(50,50,50);
+      height: 75px;
+      width: 95%;
+      margin: auto;
+      border-radius: 50px;
+      font-family: Circular, Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      font-size: 35px;
+      letter-spacing: 1.5px;
+      transition: 0.3s;
+      color: white;
+      background: rgb(50,50,50);
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
   }
 
-  .to-signup-button > button:hover {
-    background: rgb(50,50,50);
+  .session-errors {
+    background: rgb(245,155,34);
     color: white;
-    transition: 0.3s;
+    width: 100%;
+    font-size: 30px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 10px;
   }
-
 }

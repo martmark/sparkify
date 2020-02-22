@@ -1,120 +1,139 @@
-
-.collection-nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  bottom: 0;
-  margin: 0 80px;
-  margin-top: 40px;
-}
-
-.collection-nav-links {
-  display: flex;
-  flex-direction: row;
-  // justify-content: space-betwee;
-  justify-content: center;
-  width: 100%;
-  font-size: 12px;
-}
-
-.collection-nav-links > li {
-  padding: 0 20px;
-}
-
-.collection-window {
-  width: 100%;
-  // height: 100vh;
-  margin-left: 230px;
-  margin-bottom: 100px;
-}
-
-#new-playlist-button {
-  background: rgb(30,167,73);
-  height: 30px;
-  margin: 30px auto;
-  width: 140px;
-  border-radius: 30px;
-  font-family: Circular, Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  transition: 0.3s;
-  color: white;
-  text-align: center;
-}
-
-#new-playlist-button:hover {
-  // background: rgb(30,150,50);
-  background: rgb(30,215,96);
-}
-
-.content-nav-links > li {
-  color: gray;
-  transition: 0.3s;
-}
-
-.content-nav-links > li:hover {
-  color: white;
-  transition: 0.3s;
-}
-
-
-  .content-link-active {
-    color: white;
-    border-bottom: 2px solid rgb(30,215,96);
-    // color: rgb(30,215,96);
+@media only screen 
+  and (min-device-width: 768px) {
+  
+  
+  .collection-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    bottom: 0;
+    margin: 0 80px;
+    margin-top: 40px;
   }
 
-  .collection-song-index {
+  .collection-nav-links {
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-betwee;
+    justify-content: center;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .collection-nav-links > li {
+    padding: 0 20px;
+  }
+
+  .collection-window {
+    width: 100%;
+    // height: 100vh;
+    margin-left: 230px;
     margin-bottom: 100px;
   }
 
-  .no-collection-items {
-    margin-top: 65px;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
+  #new-playlist-button {
+    background: rgb(30,167,73);
+    height: 30px;
+    margin: 30px auto;
+    width: 140px;
+    border-radius: 30px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
+    color: white;
     text-align: center;
-
-    h1 {
-      font-size: 40px;
-    }
-
-    h3 {
-      margin-top: 45px;
-      font-size: 13px;
-    }
   }
 
-#no-collection-button {
-  background: white;
-  height: 30px;
-  margin: 0 auto;
-  width: 140px;
-  border-radius: 30px;
-  font-family: Circular, Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  transition: all .2s ease-in-out;
-  color: black;
-  // text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-}
+  #playlist-form-button {
+    background: rgb(30,167,73);
+    height: 30px;
+    margin: 30px auto;
+    width: 140px;
+    border-radius: 30px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
+    color: white;
+    text-align: center;
+  }
 
-#no-collection-button:hover {
-  // background: rgb(30,150,50);
-  transform: scale(1.05);
-}
+  #new-playlist-button:hover {
+    // background: rgb(30,150,50);
+    background: rgb(30,215,96);
+  }
 
-.button-holder {
-  margin-top: 40px;
-  height: 35px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  .content-nav-links > li {
+    color: gray;
+    transition: 0.3s;
+  }
+
+  .content-nav-links > li:hover {
+    color: white;
+    transition: 0.3s;
+  }
+
+
+    .content-link-active {
+      color: white;
+      border-bottom: 2px solid rgb(30,215,96);
+      // color: rgb(30,215,96);
+    }
+
+    .collection-song-index {
+      margin-bottom: 100px;
+    }
+
+    .no-collection-items {
+      margin-top: 65px;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      text-align: center;
+
+      h1 {
+        font-size: 40px;
+      }
+
+      h3 {
+        margin-top: 45px;
+        font-size: 13px;
+      }
+    }
+
+  #no-collection-button {
+    background: white;
+    height: 30px;
+    margin: 0 auto;
+    width: 140px;
+    border-radius: 30px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    transition: all .2s ease-in-out;
+    color: black;
+    // text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  #no-collection-button:hover {
+    // background: rgb(30,150,50);
+    transform: scale(1.05);
+  }
+
+  .button-holder {
+    margin-top: 40px;
+    height: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

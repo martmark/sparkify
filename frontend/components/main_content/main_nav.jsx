@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, withRouter } from 'react-router-dom';
 import { IconContext } from "react-icons";
 import {
   MdHome,
@@ -7,11 +7,48 @@ import {
   MdLibraryMusic
 } from "react-icons/md";
 import { FiUser } from "react-icons/fi";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 
 class mainNav extends React.Component {
   constructor(props) {
     super(props);
+    this.openMenu = this.openMenu.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
+    this.linkToBrowse = this.linkToBrowse.bind(this);
+    this.linkToLibrary = this.linkToLibrary.bind(this);
+    this.linkToSearch = this.linkToSearch.bind(this);
+    this.linkToSettings = this.linkToSettings.bind(this);
+  }
+
+  openMenu() {
+    let mobileNav = document.getElementById('mobilenav');
+    mobileNav.classList.toggle('hidden');
+  }
+
+  closeMenu() {
+    let mobileNav = document.getElementById('mobilenav');
+    mobileNav.classList.add('hidden');
+  }
+
+  linkToBrowse() {
+    this.closeMenu();
+    this.props.history.push('/browse');
+  }
+
+  linkToSearch() {
+    this.closeMenu();
+    this.props.history.push('/search');
+  }
+
+  linkToLibrary() {
+    this.closeMenu();
+    this.props.history.push('/collection');
+  }
+
+  linkToSettings() {
+    this.closeMenu();
+    this.props.history.push('/settings/account');
   }
 
   render() {
@@ -113,14 +150,42 @@ class mainNav extends React.Component {
               </NavLink>
             </li>
           </ul>
-
-          {/* <Link to={"/settings/account"}>
-            {this.props.currentUser.username}
-          </Link> */}
         </span>
+        <div className="hamburgerdiv desktop-hidden">
+          <IconContext.Provider
+            value={{
+              className: "hamburgericon reacticon",
+              size: "1.5em"
+            }}
+          >
+            <GiHamburgerMenu onClick={this.openMenu}/>
+          </IconContext.Provider>
+        </div>
+        <div 
+          id='mobilenav' 
+          className='mobile-nav-outer desktop-hidden hidden'
+          onClick={this.closeMenu}
+        >
+          <div className='mobile-nav-inner' onClick={e => e.stopPropagation()}>
+            <ul className='mobile-nav-list'>
+              <li key='1' onClick={this.linkToBrowse}>
+                Browse
+              </li>
+              <li key='2' onClick={this.linkToSearch}>
+                Search
+              </li>
+              <li key='3' onClick={this.linkToLibrary}>
+                Your Library
+              </li>
+              <li key='4' onClick={this.linkToSettings}>
+                {this.props.currentUser.username}
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default mainNav;
+export default withRouter(mainNav);

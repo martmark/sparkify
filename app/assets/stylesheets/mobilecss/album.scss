@@ -1,0 +1,92 @@
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 767px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+    .album-index {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 20px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    .album-index-item {
+      width: 50%;
+      box-sizing: border-box;
+      padding: 20px 30px;
+      text-align: center;
+      // font-size: em;
+      // font-size: .9em;
+    }
+
+    .album-index-info {
+      width: 100%;
+      // overflow: hidden;
+      // font-size: .9em;
+      // transform: scale(2);;
+    }
+
+    .album-index-item-title {
+      width: 410px;
+      overflow: hidden;
+      // white-space: nowrap;
+      // font-size: .9em;
+      // font-size: 24px;
+    }
+    
+    // .album-index-item-artist {
+    //   font-size: 24px;
+    // }
+
+    #albidxtitle {
+      transform: scale(2);
+    }
+
+    .album-show-image {
+      width: 60%;
+      margin: auto;
+      padding-top: 30px;
+    }
+
+    .album-show-details {
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .album-show-album-title {
+      font-size: 70px;
+    }
+
+    .album-show-artist-name {
+      font-size: 50px;
+    }
+
+    .play-collection {
+      background: rgb(30,167,73);
+      height: 60px;
+      margin: 20px auto;
+      // margin-top: 20px;
+      width: 120px;
+      border-radius: 30px;
+      // font-family: Circular, Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      letter-spacing: 1.5px;
+      transition: 0.3s;
+      color: white;
+      text-align: center;
+    }
+
+    .album-show-follow-button {
+      font-size: 2em;
+    }
+
+    .album-show-year {
+      font-size: 20px;
+    }
+}
