@@ -2,7 +2,7 @@
 
 ![Sparkify](https://markaj.dev/images/pic01.jpg)
 
-[Live App](https://sparkify.herokuapp.com)
+[Live App](https://sparkify.app)
 
 Sparkify is a music player app, inspired by Spotify.
 
