@@ -13,11 +13,11 @@ import {
   MdSkipPrevious,
   MdQueueMusic
 } from "react-icons/md";
-import { 
-  IoIosRepeat, 
-  IoIosShuffle, 
-  IoMdVolumeHigh, 
-  IoMdVolumeOff 
+import {
+  IoIosRepeat,
+  IoIosShuffle,
+  IoMdVolumeHigh,
+  IoMdVolumeOff
 } from 'react-icons/io';
 
 class MusicPlayer extends React.Component {
@@ -200,7 +200,7 @@ class MusicPlayer extends React.Component {
         span.innerHTML = nextSong.duration;
       }
       this.refs.musicPlayer.src = nextSong.track_url;
-     
+
       this.setState({
         currentSong: nextSong,
         currentTime: '0:00',
@@ -212,12 +212,12 @@ class MusicPlayer extends React.Component {
       if (this.props.modalType == 'queue') {
         this.showQueue();
       }
-      
+
     } else if (this.state.shuffle) {
-      
+
       let queue = this.state.shuffleQueue;
       if (this.state.shuffleIdx == queue.length - 1) {
-        
+
           this.pause();
           this.setState({
             currentIdx: 0,
@@ -233,13 +233,13 @@ class MusicPlayer extends React.Component {
             this.showQueue();
           }
           return;
-        
+
       }
       let nextIdx = this.state.shuffleIdx + 1;
       let nextSong = this.state.shuffleQueue[nextIdx];
       let origIdx = this.state.origQueue.indexOf(nextSong);
-      
-      this.setState({ 
+
+      this.setState({
         shuffleIdx: nextIdx,
         origIdx: origIdx,
         currentSong: nextSong,
@@ -256,7 +256,7 @@ class MusicPlayer extends React.Component {
       if (current >= this.state.queue.length - 1) {
         let queue = this.state.queue;
         if (queue.length == 0) {
-          
+
           this.pause();
           this.setState({
             currentIdx: 0,
@@ -271,11 +271,11 @@ class MusicPlayer extends React.Component {
             this.showQueue();
           }
           return;
-          
+
         } else {
           this.pause();
-          this.setState({ 
-            currentIdx: 0, 
+          this.setState({
+            currentIdx: 0,
             currentSong: this.state.queue[0],
             currentTime: '0:00',
             cursorPosition: 0
@@ -290,8 +290,8 @@ class MusicPlayer extends React.Component {
         }
       } else {
         let currentIndex = this.state.currentIdx + 1;
-        this.setState({ 
-          currentIdx: currentIndex, 
+        this.setState({
+          currentIdx: currentIndex,
           currentSong: this.state.queue[currentIndex],
           currentTime: '0:00',
           cursorPosition: 0
@@ -332,14 +332,14 @@ class MusicPlayer extends React.Component {
         player.currentTime = 0;
       } else {
         current = current - 1;
-        this.setState({ 
-          currentIdx: current, 
+        this.setState({
+          currentIdx: current,
           currentSong: this.state.queue[current],
           currentTime: '0:00',
           cursorPosition: 0
         });
         let span = document.getElementById('durationspan');
-        if (this.state.queue[current].duration) { 
+        if (this.state.queue[current].duration) {
           span.innerHTML = this.state.queue[current].duration;
         }
         this.refs.musicPlayer.src = this.state.currentSong.track_url;
@@ -374,7 +374,7 @@ class MusicPlayer extends React.Component {
         this.play();
       }
     }
-    
+
   }
 
   toggleRepeat() {
@@ -577,7 +577,7 @@ class MusicPlayer extends React.Component {
     }
 
     let volumeButton;
-    
+
     var playerplayer = document.getElementById('the-music-player');
     if ((playerplayer && playerplayer.volume > 0.0) || this.state.volumeOn) {
       volumeButton = <IconContext.Provider
@@ -677,12 +677,12 @@ class MusicPlayer extends React.Component {
         <div className="mp-volume-control">
           {queueButton}
           {volumeButton}
-          <input 
-            id="vol-control" 
-            type="range" 
-            min="0" 
-            max="100" 
-            step="1" 
+          <input
+            id="vol-control"
+            type="range"
+            min="0"
+            max="100"
+            step="1"
             value={this.state.volume}
             onInput={this.setVolume}
             onChange={this.setVolume}
