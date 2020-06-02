@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { togglePlay } from './../../actions/music_actions';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { IconContext } from "react-icons";
 import { clearUpNext } from './../../actions/music_actions';
 import { openModal } from './../../actions/modal_actions';
@@ -101,10 +101,10 @@ class MusicPlayer extends React.Component {
             cursorPosition: 0,
             queueName: newProps.queueName,
           })
-        } else { 
-          this.setState({ 
-            currentSong: newProps.currentSong, 
-            queue: newProps.queue, 
+        } else {
+          this.setState({
+            currentSong: newProps.currentSong,
+            queue: newProps.queue,
             currentIdx: newProps.currentIdx,
             currentTime: '0:00',
             cursorPosition: 0,
