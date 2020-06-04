@@ -6,6 +6,7 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "babel-polyfill": "^6.0.16",
     "font-awesome": "^4.7.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
