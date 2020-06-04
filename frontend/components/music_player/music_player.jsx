@@ -23,16 +23,21 @@ import {
 class MusicPlayer extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props.currentSong);
     this.state = {
       playing: props.playing,
-      currentSong: props.currentSong,
+      currentSong: {
+        currentTime: "0:00",
+        ended: false,
+        error: false,
+        ...props.currentSong,
+      },
       currentIdx: 0,
       queue: [],
       repeat: false,
       volume: 100,
       prevVolume: null,
       cursorPosition: 0,
-      currentTime: "0:00",
       upNext: [],
       origQueue: [],
       shuffleQueue: [],
@@ -62,7 +67,7 @@ class MusicPlayer extends React.Component {
   }
 
   componentDidMount() {
-    let musicPlayer = this.refs.musicPlayer;
+    const musicPlayer = this.refs.musicPlayer;
     musicPlayer.addEventListener('ended', this.next);
     musicPlayer.addEventListener('error', this.next);
 
@@ -92,29 +97,35 @@ class MusicPlayer extends React.Component {
           shuffledQueue.splice(shuffledQueueIdx, 1);
           shuffledQueue.unshift(currentSong);
           this.setState({
-            currentSong: currentSong,
+            currentSong: {
+              currentTime: '0:00',
+              ...currentSong
+            },
             origQueue: newProps.queue,
             origIndex: newProps.currentIdx,
             shuffleQueue: shuffledQueue,
             shuffleIdx: 0,
-            currentTime: '0:00',
             cursorPosition: 0,
             queueName: newProps.queueName,
           })
         } else {
           this.setState({
-            currentSong: newProps.currentSong,
+            currentSong: {
+              currentTime: '0:00',
+              ...newProps.currentSong,
+            },
             queue: newProps.queue,
             currentIdx: newProps.currentIdx,
-            currentTime: '0:00',
             cursorPosition: 0,
             queueName: newProps.queueName
           });
         }
       } else {
         this.setState({
-          currentSong: newProps.currentSong,
-          currentTime: '0:00',
+          currentSong: {
+            currentTime: '0:00',
+            ...newProps.currentSong,
+          },
           cursorPosition: 0
         });
       }
@@ -139,180 +150,120 @@ class MusicPlayer extends React.Component {
     clearInterval(this.positionInterval);
   }
 
-  play() {
-    if (this.state.currentSong.title == "") {
-      if (this.state.upNext.length > 0) {
-        let nextSong = this.state.upNext.shift();
-        let durSpan = document.getElementById('durationspan');
-        if (nextSong.duration) {
-          durSpan.innerHTML = nextSong.duration;
-        }
-        this.refs.musicPlayer.src = nextSong.track_url;
+  // Can optionally take origIdx and shuffleIdx to allow reuse for shuffle
+  setSong(newSong, origIdx, shuffleIdx) {
+    this.refs.musicPlayer.src = newSong.track_url;
+    this.play();
+    this.setState({
+      currentSong: {
+        currentTime: 0.00,
+        ...newSong,
+      },
+      cursorPosition: 0,
+      playing: true,
+      shuffleIdx,
+      origIdx
+    });
+  }
 
-        this.setState({
-          currentSong: nextSong,
-          currentTime: '0:00',
-          cursorPosition: 0
-        }, () => {
-          this.play();
-        });
-        let span = document.getElementById('durationspan');
-        if (nextSong.duration) {
-          span.innerHTML = nextSong.duration;
-        }
-      } else {
-        return;
+  play() {
+    if (this.state.currentSong.title === "" && this.state.upNext.length > 0) {
+      const nextSong = this.state.upNext.shift();
+      this.setSong(nextSong);
+    } else {
+      console.log(this.state.currentSong);
+      const audioPromise = this.refs.musicPlayer.play();
+      if (audioPromise !== undefined) {
+        audioPromise.then().catch(e => null);
       }
-    }
-    this.setState({ playing: true });
-    const audioPromise = this.refs.musicPlayer.play();
-    if (audioPromise !== undefined) {
-      audioPromise
-        .then(_ => {
-          return;
-        })
-        .catch(err => {
-          return;
-        });
     }
   }
 
+  floatTimeToString(floatTime) {
+    const minutes = Math.floor(floatTime / 60);
+    const seconds = Math.floor(floatTime) % 60;
+    const secStr = (seconds < 10 ? '0' + seconds : seconds);
+
+    return minutes.toString() + ':' + secStr;
+  }
+
+  parseNewTime(floatCurTime, floatDuration) {
+    return floatDuration * (floatCurTime / 1000);
+  }
+
   pause() {
-    this.setState({ playing: false });
+    const playerTime = this.refs.musicPlayer.currentTime
+    this.setState({
+      playing: false,
+      currentTime: this.floatTimeToString(playerTime)
+    });
     this.refs.musicPlayer.pause();
   }
 
   next() {
     if (this.state.repeat) {
-      this.setState({ currentTime: '0:00', cursorPosition: 0 });
+      this.setState({ currentTime: 0.00, cursorPosition: 0 });
       this.play();
     } else {
       this.clickNext();
     }
   }
 
+  clearSong() {
+    this.pause();
+    this.setState({
+      currentIdx: 0,
+      shuffleIdx: 0,
+      currentSong: {
+        title: '',
+        duration: 0.00,
+        track_url: '',
+        currentTime: 0.00
+      },
+      cursorPosition: 0,
+      playing: false
+    });
+  }
+
   clickNext() {
-    let current = this.state.currentIdx;
+    const currentIdx = this.state.currentIdx;
+    const queue = this.state.queue;
     if (this.state.upNext.length > 0) {
-      let nextSong = this.state.upNext.shift();
-      let span = document.getElementById('durationspan');
-      if (nextSong.duration) {
-        span.innerHTML = nextSong.duration;
-      }
-      this.refs.musicPlayer.src = nextSong.track_url;
+      const nextSong = this.state.upNext.shift();
+      this.setSong(nextSong);
 
-      this.setState({
-        currentSong: nextSong,
-        currentTime: '0:00',
-        cursorPosition: 0
-      }, () => {
-        this.play();
-      });
+    // Handle the case where the current song is the last song in the queue.
+    } else if ((this.state.shuffle && this.state.shuffleIdx == queue.length - 1)
+      || currentIdx >= this.state.queue.length - 1) {
 
-      if (this.props.modalType == 'queue') {
-        this.showQueue();
-      }
-
+      this.clearSong();
     } else if (this.state.shuffle) {
+      const nextIdx = this.state.shuffleIdx + 1;
+      const nextSong = this.state.shuffleQueue[nextIdx];
+      const origIdx = this.state.origQueue.indexOf(nextSong);
 
-      let queue = this.state.shuffleQueue;
-      if (this.state.shuffleIdx == queue.length - 1) {
-
-          this.pause();
-          this.setState({
-            currentIdx: 0,
-            shuffleIdx: 0,
-            currentSong: {title: '', duration: '0:00', track_url: ''},
-            currentTime: '0:00',
-            cursorPosition: 0,
-            playing: false
-          });
-          let span = document.getElementById('durationspan');
-          span.innerHTML = '0:00';
-          if (this.props.modalType == 'queue') {
-            this.showQueue();
-          }
-          return;
-
-      }
-      let nextIdx = this.state.shuffleIdx + 1;
-      let nextSong = this.state.shuffleQueue[nextIdx];
-      let origIdx = this.state.origQueue.indexOf(nextSong);
+      this.setSong(nextSong, origIdx, nextIdx);
+    } else {
+      const newIdx = this.state.currentIdx + 1;
 
       this.setState({
-        shuffleIdx: nextIdx,
-        origIdx: origIdx,
-        currentSong: nextSong,
-        currentTime: '0:00',
-        cursorPosition: 0
+        currentIdx: newIdx
       });
-      let span = document.getElementById('durationspan');
-      if (nextSong.duration) {
-        span.innerHTML = nextSong.duration;
-      }
-      this.refs.musicPlayer.src = nextSong.track_url;
-      this.play();
-    } else {
-      if (current >= this.state.queue.length - 1) {
-        let queue = this.state.queue;
-        if (queue.length == 0) {
 
-          this.pause();
-          this.setState({
-            currentIdx: 0,
-            currentSong: { title: '', duration: '0:00', track_url: '' },
-            currentTime: '0:00',
-            cursorPosition: 0,
-            playing: false
-          });
-          let span = document.getElementById('durationspan');
-          span.innerHTML = '0:00';
-          if (this.props.modalType == 'queue') {
-            this.showQueue();
-          }
-          return;
+      this.setSong(this.state.queue[newIdx]);
+    }
 
-        } else {
-          this.pause();
-          this.setState({
-            currentIdx: 0,
-            currentSong: this.state.queue[0],
-            currentTime: '0:00',
-            cursorPosition: 0
-          });
-          let span = document.getElementById('durationspan');
-          if (this.state.queue[0].duration) {
-            span.innerHTML = this.state.queue[0].duration;
-          }
-          if (this.props.modalType == 'queue') {
-            this.showQueue();
-          }
-        }
-      } else {
-        let currentIndex = this.state.currentIdx + 1;
-        this.setState({
-          currentIdx: currentIndex,
-          currentSong: this.state.queue[currentIndex],
-          currentTime: '0:00',
-          cursorPosition: 0
-        });
-        let span = document.getElementById('durationspan');
-        if (this.state.queue[currentIndex].duration) {
-          span.innerHTML = this.state.queue[currentIndex].duration;
-        }
-        this.refs.musicPlayer.src = this.state.currentSong.track_url;
-        this.play();
-        if (this.props.modalType == 'queue') {
-          this.showQueue();
-        }
-      }
+    if (this.props.modalType == 'queue') {
+      this.showQueue();
     }
   }
 
   previous() {
     if (this.state.cursorPosition > 10) {
       this.setState({
-        currentTime: '0:00',
+        currentSong: {
+          currentTime: '0:00'
+        },
         cursorPosition: 0
       });
       let player = document.getElementById('the-music-player');
@@ -325,7 +276,9 @@ class MusicPlayer extends React.Component {
       if (current === 0) {
         this.pause();
         this.setState({
-          currentTime: '0:00',
+          currentSong: {
+            currentTime: '0:00'
+          },
           cursorPosition: 0
         })
         let player = document.getElementById('the-music-player');
@@ -419,9 +372,7 @@ class MusicPlayer extends React.Component {
   }
 
   mutePlayer() {
-    var player = document.getElementById('the-music-player');
-    player.volume = 0;
-    this.setState({ prevVolume: this.state.volume, volume: 0, volumeOn: false });
+    this.setVolume(0);
   }
 
   unmutePlayer() {
@@ -436,41 +387,30 @@ class MusicPlayer extends React.Component {
     this.setState({ volume: newVol, prevVolume: null });
   }
 
-  setCursorPosition() {
-    if (this.state.playing) {
-      var player = document.getElementById('the-music-player');
-      let currentTime = player.currentTime;
-      if (currentTime) {
-        let pos = Math.round(player.currentTime / player.duration * 1000);
-        let minutes = Math.floor(currentTime / 60);
-        let seconds = Math.round(currentTime) % 60;
-        let secStr = seconds;
-        if (seconds < 10) {
-          secStr = '0' + seconds;
-        }
-        let newTime = minutes.toString() + ':' + secStr;
-        this.setState({ cursorPosition: pos, currentTime: newTime });
-      } else {
-        this.setState({ cursorPosition: 0, currentTime: '0:00'});
-      }
+  setNewCursorPos(newTime) {
+    const player = document.getElementById('the-music-player');
+    newTime = (newTime === undefined ? player.currentTime : newTime);
+    if (player.currentTime) {
+      const newTimeFloat = this.parseNewTime(newTime, player.duration);
+      const newTimeString = this.floatTimeToString(newTimeFloat);
+
+      this.setState({ cursorPosition: newTimeFloat, currentTime: newTimeString });
+    } else {
+      this.setState({ cursorPosition: 0, currentTime: '0:00'});
     }
   }
 
+  setCursorPosition() {
+    if (this.state.playing) this.setNewCursorPos();
+  }
+
   changeCursorPosition(e) {
-    var player = document.getElementById('the-music-player');
     if (!player.currentTime) return;
-    let duration = player.duration;
-    let pos = e.target.value;
-    let currentTime = duration * (pos / 1000);
-    let minutes = Math.floor(currentTime / 60);
-    let seconds = Math.round(currentTime) % 60;
-    let secStr = seconds;
-    if (seconds < 10) {
-      secStr = '0' + seconds;
-    }
-    let newTime = minutes.toString() + ':' + secStr;
-    this.setState({ cursorPosition: pos, currentTime: newTime });
-    player.currentTime = currentTime;
+
+    const newTimeFloat = this.parseNewTime(e.target.value, player.duration);
+    const newTimeString = this.floatTimeToString(newTimeFloat);
+
+    player.currentTime = newTimeFloat;
   }
 
   isntPlaying() {
@@ -660,7 +600,7 @@ class MusicPlayer extends React.Component {
             {repeatButton}
           </div>
           <div className='mp-progress'>
-            <span className='current-time-display'>{this.state.currentTime}</span>
+            <span className='current-time-display'>{ this.state.currentTime }</span>
             <input
               id="the-progress-bar"
               type="range"
@@ -671,7 +611,7 @@ class MusicPlayer extends React.Component {
               onInput={this.changeCursorPosition}
               onChange={this.changeCursorPosition}
             />
-            <span className='duration-display' id='durationspan'>0:00</span>
+            <span className='duration-display' id='durationspan'>{ this.state.currentSong.duration }</span>
           </div>
         </div>
         <div className="mp-volume-control">
@@ -693,6 +633,7 @@ class MusicPlayer extends React.Component {
           src={trackUrl}
           autoPlay={this.state.playing}
           id="the-music-player"
+          currentTime={ this.state.currentTime }
           preload="none"
           ref="musicPlayer"
           type="audio/mp3"
