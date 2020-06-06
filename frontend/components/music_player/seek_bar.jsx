@@ -15,12 +15,14 @@ export default ({ isPlaying, currentSong }) => {
   );
 
   const changeCursorPosition = ({target: { value }}) => {
-    if (isNaN(position) || isNaN(duration)) return;
     setPercent(value);
+    if (isNaN(position) || isNaN(duration)) return;
     const newTime = percentToTime(value, duration);
     seek(newTime);
     setTimeString(floatTimeToString(newTime));
   }
+
+  console.log(percent, duration);
 
   return (
     <div className='mp-progress'>
@@ -51,8 +53,12 @@ const percentToTime = (percent, duration) => {
   return (percent * duration) / 1000 || 0;
 }
 
-const timeToPercent = (percent, duration) => {
-  return (isNaN(percent) || isNaN(duration) ? 0
-    : (percent / duration) * 1000 || 0);
+const timeToPercent = (time, duration) => {
+  // Set percent to zero if given invalid input or duration is 0
+  return (isNaN(time)
+    || isNaN(duration)
+    || duration === 0
+    ? 0
+    : (time / duration) * 1000 || 0);
 }
 
