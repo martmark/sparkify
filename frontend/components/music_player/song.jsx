@@ -24,9 +24,7 @@ export default ({ shouldPlay, trackUrl, gotoNextSong }) => {
     [ended]
   )
 
-  console.log(loading, trackUrl.length, trackUrl.length === 0);
-
-  // Render no op button if loading or empty track
+  // Render no-op button if loading or empty track
   return (loading || trackUrl.length === 0 ? (
     <PlayPauseButton playing={true} />
   ) : (
