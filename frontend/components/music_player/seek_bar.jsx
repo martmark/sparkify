@@ -22,8 +22,6 @@ export default ({ isPlaying, currentSong }) => {
     setTimeString(floatTimeToString(newTime));
   }
 
-  console.log(percent, duration);
-
   return (
     <div className='mp-progress'>
       <span className='current-time-display'>{timeString}</span>

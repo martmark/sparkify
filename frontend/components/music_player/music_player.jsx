@@ -25,7 +25,6 @@ import {
 class MusicPlayer extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props.currentSong);
     this.musicPlayer = React.createRef();
     this.state = {
       playing: props.playing,
