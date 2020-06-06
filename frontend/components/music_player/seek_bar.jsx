@@ -2,22 +2,24 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useAudioPosition } from 'react-use-audio-player';
 
 export default ({ isPlaying, currentSong }) => {
-  const { position, duration, seek } = useAudioPosition({ highRefreshRate: true });
+  const { position = 0, duration = 100, seek } = useAudioPosition({ highRefreshRate: true });
   const [percent, setPercent] = React.useState(0);
-
   const [timeString, setTimeString] = useState('0:00');
 
   useEffect(() => {
     setPercent(timeToPercent(position, duration));
+    if (isNaN(position) || isNaN(duration)) return;
     setTimeString(floatTimeToString(position));
   },
     [position, duration]
   );
 
-  const changeCursorPosition = (e) => {
-    if (!position) return;
-    const newTime = percentToTime(e.target.value, duration);
+  const changeCursorPosition = ({target: { value }}) => {
+    if (isNaN(position) || isNaN(duration)) return;
+    setPercent(value);
+    const newTime = percentToTime(value, duration);
     seek(newTime);
+    setTimeString(floatTimeToString(newTime));
   }
 
   return (
@@ -27,7 +29,7 @@ export default ({ isPlaying, currentSong }) => {
         id="the-progress-bar"
         type="range"
         min="0"
-        max="100"
+        max="1000"
         step="1"
         value={percent}
         onChange={changeCursorPosition}
@@ -46,10 +48,11 @@ const floatTimeToString = (floatTime) => {
 }
 
 const percentToTime = (percent, duration) => {
-  return (percent * duration) / 100 || 0;
+  return (percent * duration) / 1000 || 0;
 }
 
 const timeToPercent = (percent, duration) => {
-  return (percent / duration) * 100 || 0;
+  return (isNaN(percent) || isNaN(duration) ? 0
+    : (percent / duration) * 1000 || 0);
 }
 

@@ -3,11 +3,9 @@ import { useAudioPlayer } from 'react-use-audio-player';
 import { PlayPauseButton } from './media_buttons.jsx';
 
 export default ({ shouldPlay, trackUrl, gotoNextSong }) => {
-  console.log(shouldPlay);
   const {
-    play,
-    pause,
     playing,
+    ended,
     togglePlayPause,
     loading,
     ready
@@ -18,19 +16,21 @@ export default ({ shouldPlay, trackUrl, gotoNextSong }) => {
     onerror: gotoNextSong
   });
 
-  // Set seek marker to constantly re-render into correct position
   useEffect(() => {
-    if (shouldPlay && !playing) {
-      play();
-    } else if (!shouldPlay && playing) {
-      pause();
+    if (ended) {
+      gotoNextSong();
     }
   },
-    [shouldPlay, playing]
-  );
+    [ended]
+  )
 
-  return (
+  console.log(loading, trackUrl.length, trackUrl.length === 0);
+
+  // Render no op button if loading or empty track
+  return (loading || trackUrl.length === 0 ? (
+    <PlayPauseButton playing={true} />
+  ) : (
     <PlayPauseButton playing={playing} onClick={togglePlayPause}/>
-  );
+  ));
 }
 
