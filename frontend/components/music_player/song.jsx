@@ -2,19 +2,28 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useAudioPlayer } from 'react-use-audio-player';
 import { PlayPauseButton } from './media_buttons.jsx';
 
-export default ({ shouldPlay, trackUrl, gotoNextSong }) => {
+export default ({ shouldPlay, trackUrl, gotoNextSong, desiredVolume }) => {
   const {
     playing,
     ended,
     togglePlayPause,
     loading,
-    ready
+    ready,
+    volume
   } = useAudioPlayer({
     src: trackUrl,
     autoplay: shouldPlay,
     onend: gotoNextSong,
     onerror: gotoNextSong
   });
+
+  useEffect(() => {
+    if (desiredVolume !== volume) {
+      volume(desiredVolume);
+    }
+  },
+    [desiredVolume]
+  )
 
   useEffect(() => {
     if (ended) {
