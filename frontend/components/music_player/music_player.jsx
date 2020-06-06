@@ -67,7 +67,6 @@ class MusicPlayer extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    // debugger;
     if (newProps.upNext) {
       let newSong = newProps.upNext;
       let newUpNextArr = this.state.upNext.concat(newSong);
@@ -77,7 +76,8 @@ class MusicPlayer extends React.Component {
         this.props.clearUpNext();
         if (newProps.modalType == 'queue') this.showQueue();
       });
-    } else if ((this.props.currentSong.id !== newProps.currentSong.id) || (this.props.queueName !== newProps.queueName)) {
+    } else if ((this.props.currentSong.id !== newProps.currentSong.id)
+      || (this.props.queueName !== newProps.queueName)) {
       this.pause();
       if (newProps.queue.length > 0) {
         if (this.state.shuffle) {
@@ -162,10 +162,6 @@ class MusicPlayer extends React.Component {
     } else {
       console.log(this.state.currentSong);
       this.setState({ playing: true });
-      //const audioPromise = this.refs.musicPlayer.play();
-      //if (audioPromise !== undefined) {
-      //  audioPromise.then().catch(e => null);
-      //}
     }
   }
 

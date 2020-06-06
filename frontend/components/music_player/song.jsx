@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import {Howl, Howler} from 'howler';
 
 const floatTimeToString = (floatTime) => {
@@ -19,18 +19,17 @@ export default ({ playing, currentSong, gotoNextSong }) => {
   );
   const [timeString, setTimeString] = useState('0:00');
   // Create song in state so that it only gets created once
-  const [song, setSong] = useState(new Howl({
+  const song = useMemo(new Howl({
     src: [currentSong.trackUrl],
-    autoplay: playing
+    autoplay: playing,
+    onend: gotoNextSong,
+    onerror: gotoNextSong
   }));
 
   // Set seek marker to constantly re-render into correct position
   useEffect(() => {
-    console.log(playing, song);
     if (playing) {
       song.play();
-      song.on('end', gotoNextSong);
-      song.on('error', gotoNextSong);
     }
 
     setInterval(() => {
