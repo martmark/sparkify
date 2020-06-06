@@ -4,6 +4,7 @@ import { togglePlay } from './../../actions/music_actions';
 import { Link } from 'react-router-dom';
 import { IconContext } from "react-icons";
 import Song from './song';
+import SeekBar from './seek_bar.jsx';
 import { clearUpNext } from './../../actions/music_actions';
 import { openModal } from './../../actions/modal_actions';
 
@@ -29,10 +30,11 @@ class MusicPlayer extends React.Component {
     this.state = {
       playing: props.playing,
       currentSong: {
-        currentTime: 0.00,
         ended: false,
         error: false,
         ...props.currentSong,
+        currentTime: 0.00,
+        duration: 0.00
       },
       currentIdx: 0,
       queue: [],
@@ -398,26 +400,6 @@ class MusicPlayer extends React.Component {
   }
 
   render() {
-
-    let button;
-    if (this.state.playing) {
-      button = (
-        <IconContext.Provider
-          value={{ className: "play-icon reacticon", size: "3em" }}
-        >
-          <MdPauseCircleOutline onClick={this.pause} />
-        </IconContext.Provider>
-      );
-    } else {
-      button = (
-        <IconContext.Provider
-          value={{ className: "play-icon reacticon", size: "3em" }}
-        >
-          <MdPlayCircleOutline onClick={this.play} />
-        </IconContext.Provider>
-      );
-    }
-
     let shuffleButton;
     if (this.state.shuffle) {
       shuffleButton = <IconContext.Provider
@@ -523,7 +505,11 @@ class MusicPlayer extends React.Component {
             >
               <MdSkipPrevious onClick={this.previous} />
             </IconContext.Provider>
-            <div className="play-pause">{button}</div>
+            <Song
+              shouldPlay={this.state.playing}
+              trackUrl={this.state.currentSong.track_url}
+              gotoNextSong={this.next}
+            />
             <IconContext.Provider
               value={{ className: "play-icon reacticon", size: "2em" }}
             >
@@ -531,11 +517,7 @@ class MusicPlayer extends React.Component {
             </IconContext.Provider>
             {repeatButton}
           </div>
-          <Song
-            playing={this.state.playing}
-            currentSong={this.state.currentSong}
-            gotoNextSong={this.next}
-          />
+          <SeekBar currentSong={this.state.currentSong}/>
         </div>
         <div className="mp-volume-control">
           {queueButton}

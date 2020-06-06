@@ -1,5 +1,5 @@
 import React from 'react';
-import { AudioPlayerProvider } from "react-use-audio-player"
+import { AudioPlayerProvider } from "react-use-audio-player";
 import { Route, Switch } from 'react-router-dom';
 import SignupFormContainer from './session/signup_form_container';
 import LoginFormContainer from './session/login_form_container';
