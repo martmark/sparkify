@@ -8,19 +8,19 @@ import {
   MdQueueMusic
 } from 'react-icons/md';
 
-export const PlayPauseButton = ({playing, ...props}) => {
-  return playing ? (
-    <IconContext.Provider
-      value={{ className: "play-icon reacticon", size: "3em" }}
-    >
-      <MdPauseCircleOutline {...props} />
-    </IconContext.Provider>
+const PlayIcon = ({ children }) => (
+  <IconContext.Provider
+    value={{ className: "play-icon reacticon", size: "3em" }}
+  >
+    {children}
+  </IconContext.Provider>
+);
+
+export const PlayPauseButton = ({playing, ...props}) => (
+  <PlayIcon>{ playing ? (
+    <MdPauseCircleOutline {...props} />
   ) : (
-    <IconContext.Provider
-      value={{ className: "play-icon reacticon", size: "3em" }}
-    >
-      <MdPlayCircleOutline {...props} />
-    </IconContext.Provider>
-  );
-};
+    <MdPlayCircleOutline {...props} />
+  )}</PlayIcon>
+);
 
