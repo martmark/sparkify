@@ -1,21 +1,42 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useAudioPosition } from 'react-use-audio-player';
 
-export default ({ isPlaying, currentSong }) => {
-  const { position = 0, duration = 100, seek } = useAudioPosition({ highRefreshRate: true });
+export default ({ isPlaying, currentTime, durationString, updateContainerCursor }) => {
   const [percent, setPercent] = React.useState(0);
   const [timeString, setTimeString] = useState('0:00');
 
-  useEffect(() => {
-    setPercent(timeToPercent(position, duration));
+  // Set default duration to an arbritrary high number so the cursor sits on
+  // the left edge of the bar when no song is playing
+  const {
+    position = 0,
+    duration = 100,
+    seek
+  } = useAudioPosition({ highRefreshRate: true });
+
+  const setNewTime = (newTime) => {
+    const newPercent = timeToPercent(newTime, duration);
+    setPercent(newPercent);
+    updateContainerCursor(newPercent);
     if (isNaN(position) || isNaN(duration)) return;
-    setTimeString(floatTimeToString(position));
+    setTimeString(floatTimeToString(newTime));
+  };
+
+  useEffect(() => {
+    setNewTime(currentTime);
+    seek(currentTime);
+  },
+    [currentTime]
+  );
+
+  useEffect(() => {
+    setNewTime(position);
   },
     [position, duration]
   );
 
   const changeCursorPosition = ({target: { value }}) => {
     setPercent(value);
+    updateContainerCursor(value);
     if (isNaN(position) || isNaN(duration)) return;
     const newTime = percentToTime(value, duration);
     seek(newTime);
@@ -34,7 +55,7 @@ export default ({ isPlaying, currentSong }) => {
         value={percent}
         onChange={changeCursorPosition}
       />
-      <span className='duration-display' id='durationspan'>{currentSong.duration}</span>
+      <span className='duration-display' id='durationspan'>{durationString}</span>
     </div>
   );
 }
