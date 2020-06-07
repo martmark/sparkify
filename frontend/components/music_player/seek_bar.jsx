@@ -1,7 +1,13 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useAudioPosition } from 'react-use-audio-player';
 
-export default ({ isPlaying, currentTime, durationString, updateContainerCursor }) => {
+export default ({
+  isPlaying,
+  currentTime,
+  durationString,
+  containerCursor,
+  updateContainerCursor
+}) => {
   const [percent, setPercent] = React.useState(0);
   const [timeString, setTimeString] = useState('0:00');
 
@@ -9,7 +15,7 @@ export default ({ isPlaying, currentTime, durationString, updateContainerCursor 
   // the left edge of the bar when no song is playing
   const {
     position = 0,
-    duration = 100,
+    duration = 1,
     seek
   } = useAudioPosition({ highRefreshRate: true });
 
@@ -74,6 +80,7 @@ const percentToTime = (percent, duration) => {
 
 const timeToPercent = (time, duration) => {
   // Set percent to zero if given invalid input or duration is 0
+  duration = Math.max(duration, 1);
   return (isNaN(time)
     || isNaN(duration)
     || duration === 0

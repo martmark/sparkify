@@ -2,11 +2,13 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useAudioPlayer } from 'react-use-audio-player';
 import { PlayPauseButton } from './media_buttons.jsx';
 
-export default ({ shouldPlay, trackUrl, gotoNextSong, desiredVolume }) => {
+export default ({ shouldPlay, reset, trackUrl, gotoNextSong, desiredVolume }) => {
   const {
     playing,
     ended,
     togglePlayPause,
+    pause,
+    stop,
     loading,
     ready,
     volume
@@ -23,6 +25,22 @@ export default ({ shouldPlay, trackUrl, gotoNextSong, desiredVolume }) => {
     }
   },
     [desiredVolume]
+  )
+
+  useEffect(() => {
+    if (!shouldPlay && !reset) {
+      pause();
+    }
+  },
+    [shouldPlay, reset]
+  )
+
+  useEffect(() => {
+    if (reset) {
+      stop();
+    }
+  },
+    [reset]
   )
 
   useEffect(() => {

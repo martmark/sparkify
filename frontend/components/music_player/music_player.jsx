@@ -37,6 +37,7 @@ class MusicPlayer extends React.Component {
       currentIdx: 0,
       queue: [],
       repeat: false,
+      reset: false,
       volume: 100,
       prevVolume: null,
       cursorPosition: 0,
@@ -66,27 +67,25 @@ class MusicPlayer extends React.Component {
     this.updateCursor = this.updateCursor.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
+  static getDerivedStateFromProps(newProps, state) {
     if (newProps.upNext) {
       let newSong = newProps.upNext;
-      let newUpNextArr = this.state.upNext.concat(newSong);
-      this.setState({
-        upNext: newUpNextArr
-      }, () => {
-        this.props.clearUpNext();
-        if (newProps.modalType == 'queue') this.showQueue();
-      });
-    } else if ((this.props.currentSong.id !== newProps.currentSong.id)
-      || (this.props.queueName !== newProps.queueName)) {
-      this.pause();
+      let newUpNextArr = state.upNext.concat(newSong);
+      newProps.clearUpNext();
+      return {
+        upNext: newUpNextArr,
+        showModel: (newProps.modalType == 'queue')
+      };
+    } else if ((state.currentSong.id !== newProps.currentSong.id)
+      || (state.queueName !== newProps.queueName)) {
       if (newProps.queue.length > 0) {
-        if (this.state.shuffle) {
+        if (state.shuffle) {
           let currentSong = newProps.currentSong;
           let shuffledQueue = this.shuffleArray(newProps.queue);
           let shuffledQueueIdx = shuffledQueue.indexOf(currentSong);
           shuffledQueue.splice(shuffledQueueIdx, 1);
           shuffledQueue.unshift(currentSong);
-          this.setState({
+          return {
             currentSong: {
               currentTime: 0.00,
               ...currentSong
@@ -94,42 +93,39 @@ class MusicPlayer extends React.Component {
             origQueue: newProps.queue,
             origIndex: newProps.currentIdx,
             shuffleQueue: shuffledQueue,
+            playing: newProps.playing,
             shuffleIdx: 0,
             cursorPosition: 0,
             queueName: newProps.queueName,
-          })
+          };
         } else {
-          this.setState({
+          return {
             currentSong: {
               currentTime: 0.00,
               ...newProps.currentSong,
             },
             queue: newProps.queue,
+            playing: newProps.playing,
             currentIdx: newProps.currentIdx,
             cursorPosition: 0,
             queueName: newProps.queueName
-          });
+          };
         }
       } else {
-        this.setState({
+        return {
           currentSong: {
             currentTime: 0.00,
             ...newProps.currentSong,
           },
+          playing: newProps.playing,
           cursorPosition: 0
-        });
+        };
       }
-      if (newProps.playing === true) {
-        this.setState({playing: true});
-        this.play();
-      } else {
-        this.setState({playing: false});
-        this.pause();
-      }
+      return { playing: newProps.playing };
     } else if (newProps.playing && (newProps.modalType === this.props.modalType)) {
-      this.setState({ playing: true });
       this.play();
     }
+    return null;
   }
 
   componentWillUnmount() {
@@ -138,7 +134,6 @@ class MusicPlayer extends React.Component {
 
   // Can optionally take origIdx and shuffleIdx to allow reuse for shuffle
   setSong(newSong, origIdx, shuffleIdx) {
-    this.play();
     this.setState({
       currentSong: {
         currentTime: 0.00,
@@ -149,6 +144,7 @@ class MusicPlayer extends React.Component {
       shuffleIdx,
       origIdx
     });
+    this.play();
   }
 
   updateCursor(newCursor) {
@@ -160,14 +156,14 @@ class MusicPlayer extends React.Component {
       const nextSong = this.state.upNext.shift();
       this.setSong(nextSong);
     } else {
-      console.log(this.state.currentSong);
-      this.setState({ playing: true });
+      this.setState({
+        playing: true,
+      });
     }
   }
 
   pause() {
     this.setState({ playing: false });
-    //this.refs.musicPlayer.pause();
   }
 
   next() {
@@ -188,10 +184,15 @@ class MusicPlayer extends React.Component {
         title: '',
         duration: "0:00",
         track_url: '',
-        currentTime: 0.00
+        currentTime: 0.00,
+        id: null
       },
+      reset: true,
       cursorPosition: 0,
       playing: false
+    }, () => {
+      console.log(this.state);
+      this.setState({reset: false})
     });
   }
 
@@ -205,8 +206,8 @@ class MusicPlayer extends React.Component {
     // Handle the case where the current song is the last song in the queue.
     } else if ((this.state.shuffle && this.state.shuffleIdx == queue.length - 1)
       || currentIdx >= this.state.queue.length - 1) {
-
       this.resetPlaylist();
+
     } else if (this.state.shuffle) {
       const nextIdx = this.state.shuffleIdx + 1;
       const nextSong = this.state.shuffleQueue[nextIdx];
@@ -230,24 +231,22 @@ class MusicPlayer extends React.Component {
 
   previous() {
     if (!this.state.shuffle) {
-      let currentIdx = this.state.currentIdx;
-      if (currentIdx === 0) {
-        this.resetPlaylist();
-      } else {
-        const newIdx = currentIdx - 1;
-        const newSong = this.state.queue[newIdx];
-        this.setSong(newSong);
-        this.setState({ currentIdx: newIdx });
-        this.play();
-      }
+      this.setState(({ currentIdx }) => ({currentIdx: currentIdx - 1}),
+        () => {
+          const { currentIdx, queue } = this.state;
+          if (currentIdx < 0) {
+            this.resetPlaylist();
+          } else {
+            const newSong = queue[currentIdx]
+            this.setSong(newSong);
+            this.play();
+          }
+        }
+      );
     } else if (this.state.shuffle) {
       let shuffleIndex = this.state.shuffleIdx;
       if (shuffleIndex === 0) {
-        this.pause();
-        this.setState({
-          currentTime: 0.00,
-          cursorPosition: 0
-        })
+        this.resetPlaylist();
       } else {
         this.setState(({ shuffleQueue, shuffleIdx }) => ({
           shuffleIdx: shuffleInx - 1,
@@ -261,8 +260,7 @@ class MusicPlayer extends React.Component {
   }
 
   toggleRepeat() {
-    let repeat = this.state.repeat;
-    this.setState({ repeat: !repeat });
+    this.setState((oldState) => { repeat: !oldState.repeat });
   }
 
   toggleShuffle() {
@@ -317,6 +315,8 @@ class MusicPlayer extends React.Component {
     return !this.state.playing;
   }
 
+  //TODOMAYBE: Rework this so that the modal is passed down as a prop and then
+  //selectively render based on a renderModal boolean saved in state
   showQueue() {
     // debugger;
     if (this.state.shuffle) {
@@ -440,6 +440,7 @@ class MusicPlayer extends React.Component {
               shouldPlay={this.state.playing}
               trackUrl={this.state.currentSong.track_url}
               gotoNextSong={this.next}
+              reset={this.state.reset}
               desiredVolume={this.state.volume}
             />
             <IconContext.Provider
