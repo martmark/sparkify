@@ -36,6 +36,14 @@ export const BackButton = ({ gotoLastSong }) => {
   );
 }
 
+export const ForwardButton = (props) => (
+  <IconContext.Provider
+    value={{ className: "play-icon reacticon", size: "2em" }}
+  >
+    <MdSkipNext {...props} />
+  </IconContext.Provider>
+);
+
 const PlayIcon = ({ children }) => (
   <IconContext.Provider
     value={{ className: "play-icon reacticon", size: "3em" }}
