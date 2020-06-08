@@ -51,5 +51,5 @@ const Song = ({ shouldPlay, reset, trackUrl, gotoNextSong, desiredVolume }) => {
   ));
 }
 
-export { Song as default } ;
+export { Song as default };
 

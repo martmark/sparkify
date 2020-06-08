@@ -42,7 +42,7 @@ const VolumeControl = () => {
         ) : (
           <IoMdVolumeOff onClick={unmutePlayer} />
         ))}
-      </IconContext.Provider>;
+      </IconContext.Provider>
 
       <input
         id="vol-control"
@@ -58,3 +58,4 @@ const VolumeControl = () => {
 }
 
 export { VolumeControl as default };
+

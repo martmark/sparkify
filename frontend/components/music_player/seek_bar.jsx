@@ -88,5 +88,5 @@ const timeToPercent = (time, duration) => {
     : (time / duration) * 1000 || 0);
 }
 
-export { SeekBar as default } ;
+export { SeekBar as default };
 
