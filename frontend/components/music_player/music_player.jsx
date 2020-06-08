@@ -4,6 +4,7 @@ import Song from './song.jsx';
 import TrackInfo from './track_info.jsx';
 import SeekBar from './seek_bar.jsx';
 import QueueButton from './queue_button.jsx';
+import ShuffleHandler from './shuffle_handler.jsx';
 import VolumeControl from './volume_control.jsx';
 import { clearUpNext } from './../../actions/music_actions';
 import { openModal } from './../../actions/modal_actions';
@@ -34,15 +35,6 @@ const RESET_STATE = {
   playing: false
 };
 
-const shuffleArray = (arr) => {
-  let newArr = [...arr];
-  for (let i = newArr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
-  }
-  return newArr;
-}
-
 export default class MusicPlayer extends React.Component {
   constructor(props) {
     super(props);
@@ -66,6 +58,7 @@ export default class MusicPlayer extends React.Component {
       cursorPosition: 0,
       upNext: [],
       origQueue: [],
+      effectiveQueue: [],
       shuffleQueue: [],
       origIndex: null,
       currentPropSongId: props.currentSong.id,
@@ -83,6 +76,7 @@ export default class MusicPlayer extends React.Component {
     this.toggleShuffle = this.toggleShuffle.bind(this);
     this.isntPlaying = this.isntPlaying.bind(this);
     this.showQueue = this.showQueue.bind(this);
+    this.setEffectiveQueue = this.setEffectiveQueue.bind(this);
     this.removeFromQueue = this.removeFromQueue.bind(this);
     this.shuffleArray = this.shuffleArray.bind(this);
     this.updateCursor = this.updateCursor.bind(this);
@@ -173,7 +167,7 @@ export default class MusicPlayer extends React.Component {
   }
 
   // Can optionally take origIdx and shuffleIdx to allow reuse for shuffle
-  setSong(newSong, currentIdx, shuffleIdx) {
+  setSong(newSong, currentIdx) {
     this.setState({
       currentSong: {
         currentTime: 0.00,
@@ -185,6 +179,13 @@ export default class MusicPlayer extends React.Component {
       shuffleIdx
     }, () => {
       this.play()
+    });
+  }
+
+  setEffectiveQueue(newQueue, curIdx) {
+    this.setState({
+      effectiveQueue: newQueue,
+
     });
   }
 
@@ -298,34 +299,16 @@ export default class MusicPlayer extends React.Component {
     this.setState((oldState) => { repeat: !oldState.repeat });
   }
 
-  toggleShuffle() {
-    let shuffle = this.state.shuffle;
-    if (this.state.queue.length === 0) {
-      this.setState({ shuffle: !shuffle });
-      return;
-    }
-    if (!shuffle) {
-      let currentSong = this.state.currentSong;
-      let shuffledQueue = this.shuffleArray(this.state.queue);
-      let shuffledQueueIdx = shuffledQueue.indexOf(currentSong);
-      let origQueueIdx = this.state.queue.indexOf(currentSong);
-      shuffledQueue.splice(shuffledQueueIdx, 1);
-      shuffledQueue.unshift(currentSong);
-      this.setState({
-        origQueue: this.state.queue,
-        origIndex: origQueueIdx,
-        shuffleQueue: shuffledQueue,
-        shuffleIdx: 0,
-        shuffle: true
-      })
-    } else {
-      let origIndex = this.state.origQueue.indexOf(this.state.currentSong);
-      this.setState({
-        queue: this.state.origQueue,
-        currentIdx: origIndex,
-        shuffle: false
-      })
-    }
+  // When toggle is turned on, the newIdx should be set to 0
+  // When toggle is turned off, the newIdx should be set to the current song's
+  // index in the original queue
+  toggleShuffle(newIdx) {
+    return this.setState(({ shuffle }) => {
+      return {
+        shuffle: !shuffle,
+        currentIdx: newIdx
+      }
+    });
   }
 
   isntPlaying() {
@@ -398,7 +381,9 @@ export default class MusicPlayer extends React.Component {
         />
         <div className="music-player-center">
           <div className="music-player-controls">
-            <ShuffleButton isOn={this.state.shuffle} onClick={this.toggleShuffle} />
+            <ShuffleHandler
+              setEffectiveQueue={this.setEffectiveQueue}
+            />
             <BackButton gotoLastSong={this.previous} />
             <Song
               shouldPlay={this.state.playing}
