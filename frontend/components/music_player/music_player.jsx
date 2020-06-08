@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { IconContext } from "react-icons";
 import Song from './song';
 import SeekBar from './seek_bar.jsx';
+import QueueButton from './queue_button.jsx';
+import VolumeControl from './volume_control.jsx';
 import { clearUpNext } from './../../actions/music_actions';
 import { openModal } from './../../actions/modal_actions';
 import { BackButton, ShuffleButton, RepeatButton } from './media_buttons.jsx';
@@ -14,17 +16,39 @@ import {
   MdSkipPrevious,
   MdQueueMusic
 } from "react-icons/md";
-import {
-  IoIosRepeat,
-  IoMdVolumeHigh,
-  IoMdVolumeOff
-} from 'react-icons/io';
+import { IoIosRepeat } from 'react-icons/io';
 
+const EMPTY_SONG = {
+  title: '',
+  duration: "0:00",
+  track_url: '',
+  currentTime: 0.00,
+  id: null,
+};
+
+const RESET_STATE = {
+  currentIdx: 0,
+  shuffleIdx: 0,
+  currentSong: EMPTY_SONG,
+  reset: true,
+  cursorPosition: 0,
+  playing: false
+};
+
+const shuffleArray = (arr) => {
+    let newArr = [];
+    while (newArr.length < arr.length) {
+      let song = arr[Math.floor(Math.random() * arr.length)];
+      if (!newArr.includes(song)) newArr.push(song);
+    }
+    return newArr;
+  }
 
 class MusicPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.musicPlayer = React.createRef();
+    console.log(props);
     this.state = {
       playing: props.playing,
       currentSong: {
@@ -45,8 +69,9 @@ class MusicPlayer extends React.Component {
       origQueue: [],
       shuffleQueue: [],
       origIndex: null,
+      currentPropSongId: props.currentSong.id,
       shuffleIdx: null,
-      queueName: null
+      queueName: props.queueName
     };
 
     this.positionInterval = null;
@@ -57,9 +82,6 @@ class MusicPlayer extends React.Component {
     this.clickNext = this.clickNext.bind(this);
     this.toggleRepeat = this.toggleRepeat.bind(this);
     this.toggleShuffle = this.toggleShuffle.bind(this);
-    this.setVolume = this.setVolume.bind(this);
-    this.mutePlayer = this.mutePlayer.bind(this);
-    this.unmutePlayer = this.unmutePlayer.bind(this);
     this.isntPlaying = this.isntPlaying.bind(this);
     this.showQueue = this.showQueue.bind(this);
     this.removeFromQueue = this.removeFromQueue.bind(this);
@@ -71,17 +93,16 @@ class MusicPlayer extends React.Component {
     if (newProps.upNext) {
       let newSong = newProps.upNext;
       let newUpNextArr = state.upNext.concat(newSong);
-      newProps.clearUpNext();
       return {
         upNext: newUpNextArr,
         showModel: (newProps.modalType == 'queue')
       };
-    } else if ((state.currentSong.id !== newProps.currentSong.id)
+    } else if ((state.currentPropSongId !== newProps.currentSong.id)
       || (state.queueName !== newProps.queueName)) {
       if (newProps.queue.length > 0) {
         if (state.shuffle) {
           let currentSong = newProps.currentSong;
-          let shuffledQueue = this.shuffleArray(newProps.queue);
+          let shuffledQueue = shuffleArray(newProps.queue);
           let shuffledQueueIdx = shuffledQueue.indexOf(currentSong);
           shuffledQueue.splice(shuffledQueueIdx, 1);
           shuffledQueue.unshift(currentSong);
@@ -95,6 +116,7 @@ class MusicPlayer extends React.Component {
             shuffleQueue: shuffledQueue,
             playing: newProps.playing,
             shuffleIdx: 0,
+            currentPropSongId: currentSong.id,
             cursorPosition: 0,
             queueName: newProps.queueName,
           };
@@ -107,6 +129,7 @@ class MusicPlayer extends React.Component {
             queue: newProps.queue,
             playing: newProps.playing,
             currentIdx: newProps.currentIdx,
+            currentPropSongId: newProps.currentSong.id,
             cursorPosition: 0,
             queueName: newProps.queueName
           };
@@ -122,8 +145,15 @@ class MusicPlayer extends React.Component {
         };
       }
       return { playing: newProps.playing };
-    } else if (newProps.playing && (newProps.modalType === this.props.modalType)) {
-      this.play();
+    } else if (state.playing == false) {
+      return {
+        currentSong: {
+          currentTime: 0.00,
+          ...newProps.currentSong,
+        },
+        playing: newProps.playing,
+        cursorPosition: 0
+      };
     }
     return null;
   }
@@ -133,7 +163,7 @@ class MusicPlayer extends React.Component {
   }
 
   // Can optionally take origIdx and shuffleIdx to allow reuse for shuffle
-  setSong(newSong, origIdx, shuffleIdx) {
+  setSong(newSong, currentIdx, shuffleIdx) {
     this.setState({
       currentSong: {
         currentTime: 0.00,
@@ -141,10 +171,12 @@ class MusicPlayer extends React.Component {
       },
       cursorPosition: 0,
       playing: true,
-      shuffleIdx,
-      origIdx
+      currentIdx,
+      shuffleIdx
+    }, () => {
+      console.log(this.state);
+      this.play()
     });
-    this.play();
   }
 
   updateCursor(newCursor) {
@@ -162,6 +194,17 @@ class MusicPlayer extends React.Component {
     }
   }
 
+  // This needs to be called whenever state is reset to avoid locking up the
+  // audio player
+  unsetReset() {
+    this.setState({reset: false})
+  }
+
+  resetPlaylist() {
+    // Change reset state to default on next render
+    this.setState(RESET_STATE, this.unsetReset);
+  }
+
   pause() {
     this.setState({ playing: false });
   }
@@ -175,33 +218,12 @@ class MusicPlayer extends React.Component {
     }
   }
 
-  resetPlaylist() {
-    this.pause();
-    this.setState({
-      currentIdx: 0,
-      shuffleIdx: 0,
-      currentSong: {
-        title: '',
-        duration: "0:00",
-        track_url: '',
-        currentTime: 0.00,
-        id: null
-      },
-      reset: true,
-      cursorPosition: 0,
-      playing: false
-    }, () => {
-      console.log(this.state);
-      this.setState({reset: false})
-    });
-  }
-
   clickNext() {
     const currentIdx = this.state.currentIdx;
     const queue = this.state.queue;
     if (this.state.upNext.length > 0) {
       const nextSong = this.state.upNext.shift();
-      this.setSong(nextSong);
+      this.setSong(nextSong, currentIdx);
 
     // Handle the case where the current song is the last song in the queue.
     } else if ((this.state.shuffle && this.state.shuffleIdx == queue.length - 1)
@@ -213,7 +235,7 @@ class MusicPlayer extends React.Component {
       const nextSong = this.state.shuffleQueue[nextIdx];
       const origIdx = this.state.origQueue.indexOf(nextSong);
 
-      this.setSong(nextSong, origIdx, nextIdx);
+      this.setSong(nextSong, origIdx, currentIdx);
     } else {
       const newIdx = this.state.currentIdx + 1;
 
@@ -221,7 +243,7 @@ class MusicPlayer extends React.Component {
         currentIdx: newIdx
       });
 
-      this.setSong(this.state.queue[newIdx]);
+      this.setSong(this.state.queue[newIdx], newIdx);
     }
 
     if (this.props.modalType == 'queue') {
@@ -231,16 +253,22 @@ class MusicPlayer extends React.Component {
 
   previous() {
     if (!this.state.shuffle) {
-      this.setState(({ currentIdx }) => ({currentIdx: currentIdx - 1}),
+      this.setState(({ currentIdx, queue, song }) => {
+        const newIdx = currentIdx - 1;
+        if (newIdx < 0) {
+          return RESET_STATE
+        } else {
+          return {
+            currentIdx: newIdx
+          };
+        }
+      },
         () => {
+          this.unsetReset()
           const { currentIdx, queue } = this.state;
-          if (currentIdx < 0) {
-            this.resetPlaylist();
-          } else {
-            const newSong = queue[currentIdx]
-            this.setSong(newSong);
-            this.play();
-          }
+          const newSong = queue[currentIdx];
+          console.log(newSong);
+          this.setSong(newSong, currentIdx);
         }
       );
     } else if (this.state.shuffle) {
@@ -291,24 +319,6 @@ class MusicPlayer extends React.Component {
         shuffle: false
       })
     }
-  }
-
-  setVolume(e) {
-    this.setState({ volume: e.target.value });
-  }
-
-  mutePlayer() {
-    this.setState(({ volume }) => ({
-      volume: 0,
-      prevVolume: volume
-    }));
-  }
-
-  unmutePlayer() {
-    this.setState(({prevVolume}) => {
-      const newVol = (prevVolume ? prevVolume : 50);
-      return {volume: newVol, prevVolume: null }
-    });
   }
 
   isntPlaying() {
@@ -366,44 +376,7 @@ class MusicPlayer extends React.Component {
   }
 
   render() {
-    let volumeButton;
-
-    if (this.state.volume > 0) {
-      volumeButton = <IconContext.Provider
-        value={{ className: "volume-button", size: "1.25em" }}
-      >
-        <IoMdVolumeHigh onClick={this.mutePlayer} />
-      </IconContext.Provider>;
-    } else {
-      volumeButton = <IconContext.Provider
-        value={{ className: "volume-button", size: "1.25em" }}
-      >
-        <IoMdVolumeOff onClick={this.unmutePlayer} />
-      </IconContext.Provider>;
-    }
-
-    let queueButton;
-    if (this.state.upNext.length > 0) {
-      queueButton = <IconContext.Provider
-        value={{ className: "queue-button queue-active clickable", size: "1.25em" }}
-      >
-        <MdQueueMusic onClick={this.showQueue} />
-      </IconContext.Provider>;
-    } else if (this.state.queue.length > 0) {
-      queueButton = <IconContext.Provider
-        value={{ className: "queue-button clickable", size: "1.25em" }}
-      >
-        <MdQueueMusic onClick={this.showQueue} />
-      </IconContext.Provider>;
-    } else {
-      queueButton = <IconContext.Provider
-        value={{ className: "queue-button inactive", size: "1.25em" }}
-      >
-        <MdQueueMusic />
-      </IconContext.Provider>;
-    }
-
-    let song = this.state.currentSong;
+    const song = this.state.currentSong;
 
     let albumArt = <img src='https://sparkifyimages.s3.amazonaws.com/blank.jpg' alt='' />
     let albumId;
@@ -435,7 +408,9 @@ class MusicPlayer extends React.Component {
         <div className="music-player-center">
           <div className="music-player-controls">
             <ShuffleButton isOn={this.state.shuffle} onClick={this.toggleShuffle} />
-            <BackButton gotoLastSong={this.previous}/>
+            <BackButton
+              gotoLastSong={this.previous}
+            />
             <Song
               shouldPlay={this.state.playing}
               trackUrl={this.state.currentSong.track_url}
@@ -457,19 +432,12 @@ class MusicPlayer extends React.Component {
           />
         </div>
         <div className="mp-volume-control">
-          {queueButton}
-          {volumeButton}
-          <input
-            id="vol-control"
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            value={this.state.volume}
-            onInput={this.setVolume}
-            onChange={this.setVolume}
-          >
-          </input>
+          <QueueButton
+            upNext={this.state.upNext}
+            queue={this.state.queue}
+            onClick={this.showQueue}
+          />
+          <VolumeControl />
         </div>
       </div>
     );
