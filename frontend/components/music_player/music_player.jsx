@@ -35,13 +35,13 @@ const RESET_STATE = {
 };
 
 const shuffleArray = (arr) => {
-    let newArr = [];
-    while (newArr.length < arr.length) {
-      let song = arr[Math.floor(Math.random() * arr.length)];
-      if (!newArr.includes(song)) newArr.push(song);
-    }
-    return newArr;
+  let newArr = [...arr];
+  for (let i = newArr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
   }
+  return newArr;
+}
 
 export default class MusicPlayer extends React.Component {
   constructor(props) {
@@ -374,10 +374,10 @@ export default class MusicPlayer extends React.Component {
   }
 
   shuffleArray(arr) {
-    let newArr = [];
-    while (newArr.length < arr.length) {
-      let song = arr[Math.floor(Math.random() * arr.length)];
-      if (!newArr.includes(song)) newArr.push(song);
+    let newArr = [...arr];
+    for (let i = newArr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
     }
     return newArr;
   }
