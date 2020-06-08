@@ -166,9 +166,8 @@ export default class MusicPlayer extends React.Component {
     clearInterval(this.positionInterval);
   }
 
-  // Can optionally take origIdx and shuffleIdx to allow reuse for shuffle
-  setSong(newSong, currentIdx) {
-    this.setState({
+  newSongState(newSong, currentIdx = 0) {
+    return {
       currentSong: {
         currentTime: 0.00,
         ...newSong,
@@ -177,15 +176,23 @@ export default class MusicPlayer extends React.Component {
       playing: true,
       currentIdx,
       shuffleIdx
-    }, () => {
-      this.play()
-    });
+    };
+  }
+
+  // Can optionally take origIdx and shuffleIdx to allow reuse for shuffle
+  setSong(newSong, currentIdx) {
+    this.setState(
+      newSongState(newSong, currentIdx),
+      () => {
+        this.play()
+      }
+    );
   }
 
   setEffectiveQueue(newQueue, curIdx) {
     this.setState({
       effectiveQueue: newQueue,
-
+      currentIdx: curIdx
     });
   }
 
@@ -231,68 +238,49 @@ export default class MusicPlayer extends React.Component {
   }
 
   clickNext() {
-    const currentIdx = this.state.currentIdx;
-    const queue = this.state.queue;
-    if (this.state.upNext.length > 0) {
-      const nextSong = this.state.upNext.shift();
-      this.setSong(nextSong, currentIdx);
+    this.setState(({ currentIdx, effectiveQueue, upNext }) => {
+      if (upNext.length > 0) {
+        let newUpNext = [...upnext];
+        const nextSong = newUpNext.shift();
+        return {
+          ...newSongState(nextSong),
+          upNext: newUpNext
+        };
 
-    // Handle the case where the current song is the last song in the queue.
-    } else if ((this.state.shuffle && this.state.shuffleIdx == queue.length - 1)
-      || currentIdx >= this.state.queue.length - 1) {
-      this.resetPlaylist();
+      // Handle the case where the current song is the last song in the effectiveQueue.
+      } else if (currentIdx >= effectiveQueue.length - 1) {
+        return RESET_STATE;
+      } else {
+        const newIdx = this.state.currentIdx + 1;
 
-    } else if (this.state.shuffle) {
-      const nextIdx = this.state.shuffleIdx + 1;
-      const nextSong = this.state.shuffleQueue[nextIdx];
-      const origIdx = this.state.origQueue.indexOf(nextSong);
+        this.setSong(effectiveQueue[newIdx], newIdx);
+      }
 
-      this.setSong(nextSong, origIdx, nextIdx);
-    } else {
-      const newIdx = this.state.currentIdx + 1;
-
-      this.setSong(this.state.queue[newIdx], newIdx);
-    }
-
-    if (this.props.modalType == 'queue') {
-      this.showQueue();
-    }
+      if (this.props.modalType == 'queue') {
+        this.showQueue();
+      }
+    });
   }
 
   previous() {
-    if (!this.state.shuffle) {
-      this.setState(({ currentIdx, queue, song }) => {
-        const newIdx = currentIdx - 1;
-        if (newIdx < 0) {
-          return RESET_STATE
-        } else {
-          return {
-            currentIdx: newIdx
-          };
-        }
-      },
-        () => {
-          this.unsetReset()
-          const { currentIdx, queue } = this.state;
-          const newSong = queue[currentIdx];
-          console.log(newSong);
-          this.setSong(newSong, currentIdx);
-        }
-      );
-    } else if (this.state.shuffle) {
-      let shuffleIndex = this.state.shuffleIdx;
-      if (shuffleIndex === 0) {
-        this.resetPlaylist();
+    this.setState(({ currentIdx, effectiveQueue, song }) => {
+      const newIdx = currentIdx - 1;
+      // Handle the case where the last index was the first song in the queue
+      if (newIdx < 0) {
+        return RESET_STATE
       } else {
-        this.setState(({ shuffleQueue, shuffleIdx }) => ({
-          shuffleIdx: shuffleInx - 1,
-          currentSong: shuffleQueue[shuffleIdx - 1],
-          currentTime: 0.00,
-          cursorPosition: 0
-        }));
-        this.play();
+        return {
+          currentIdx: newIdx
+        };
       }
-    }
+    },
+      () => {
+        this.unsetReset()
+        const { currentIdx, effectiveQueue } = this.state;
+        const newSong = queue[currentIdx];
+        this.setSong(newSong, currentIdx);
+      }
+    );
   }
 
   toggleRepeat() {
