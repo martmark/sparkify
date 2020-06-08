@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useAudioPosition } from 'react-use-audio-player';
 
-export default ({
+const SeekBar = ({
   isPlaying,
   currentTime,
   durationString,
@@ -87,4 +87,6 @@ const timeToPercent = (time, duration) => {
     ? 0
     : (time / duration) * 1000 || 0);
 }
+
+export { SeekBar as default } ;
 

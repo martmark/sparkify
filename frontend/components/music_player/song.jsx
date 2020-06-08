@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useAudioPlayer } from 'react-use-audio-player';
 import { PlayPauseButton } from './media_buttons.jsx';
 
-export default ({ shouldPlay, reset, trackUrl, gotoNextSong, desiredVolume }) => {
+const Song = ({ shouldPlay, reset, trackUrl, gotoNextSong, desiredVolume }) => {
   const {
     playing,
     ended,
@@ -39,6 +39,7 @@ export default ({ shouldPlay, reset, trackUrl, gotoNextSong, desiredVolume }) =>
     if (reset) {
       stop();
     }
+    return stop;
   },
     [reset]
   )
@@ -58,4 +59,6 @@ export default ({ shouldPlay, reset, trackUrl, gotoNextSong, desiredVolume }) =>
     <PlayPauseButton playing={playing} onClick={togglePlayPause}/>
   ));
 }
+
+export { Song as default } ;
 
