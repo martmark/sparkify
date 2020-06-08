@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { IconContext } from "react-icons";
 import Song from './song.jsx';
+import TrackInfo from './track_info.jsx';
 import SeekBar from './seek_bar.jsx';
 import QueueButton from './queue_button.jsx';
 import VolumeControl from './volume_control.jsx';
@@ -20,7 +20,7 @@ const EMPTY_SONG = {
   track_url: '',
   currentTime: 0.00,
   id: null,
-  image_url: 'https://sparkifyimages.s3.amazonaws.com/blank.jpg'
+  image_url: ''
 };
 
 const RESET_STATE = {
@@ -385,40 +385,24 @@ export default class MusicPlayer extends React.Component {
   render() {
     const song = this.state.currentSong;
 
-    let albumArt = <img src='https://sparkifyimages.s3.amazonaws.com/blank.jpg' alt='' />
-    let albumId;
-    let artistId;
-    let artistName;
-    let songTitle;
-    let trackUrl;
-    if (song && song.title != "") {
-      albumArt = <Link to={`/album/${song.albumId}`}><img src={song.image_url} alt={song.albumTitle} /></Link>;
-      albumId = song.albumId;
-      artistId = song.artistId;
-      songTitle = song.title;
-      artistName = song.artistName;
-      trackUrl = song.track_url;
-    }
     return (
       <div className="music-player">
-        <div className="music-player-song-info">
-          <div className="music-player-album-image">{albumArt}</div>
-          <div className="music-player-text-info">
-            <span className="mp-track-title">
-              <Link to={`/album/${albumId}`}>{songTitle}</Link>
-            </span>
-            <span className="mp-artist-name">
-              <Link to={`/artist/${artistId}`}>{artistName}</Link>
-            </span>
-          </div>
-        </div>
+        <TrackInfo
+          albumId={song.albumId}
+          albumTitle={song.albumTitle}
+          albumArt={song.image_url}
+          artistId={song.artistId}
+          artistName={song.artistName}
+          songTitle={song.title}
+          trackUrl={song.trackUrl}
+        />
         <div className="music-player-center">
           <div className="music-player-controls">
             <ShuffleButton isOn={this.state.shuffle} onClick={this.toggleShuffle} />
             <BackButton gotoLastSong={this.previous} />
             <Song
               shouldPlay={this.state.playing}
-              trackUrl={this.state.currentSong.track_url}
+              trackUrl={song.track_url}
               gotoNextSong={this.next}
               reset={this.state.reset}
             />
@@ -426,8 +410,8 @@ export default class MusicPlayer extends React.Component {
             <RepeatButton isOn={this.state.repeat} onClick={this.toggleRepeat} />
           </div>
           <SeekBar
-            currentTime={this.state.currentSong.currentTime}
-            durationString={this.state.currentSong.duration}
+            currentTime={song.currentTime}
+            durationString={song.duration}
             updateContainerCursor={this.updateCursor}
           />
         </div>
