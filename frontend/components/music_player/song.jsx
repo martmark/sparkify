@@ -11,21 +11,12 @@ const Song = ({ shouldPlay, reset, trackUrl, gotoNextSong, desiredVolume }) => {
     stop,
     loading,
     ready,
-    volume
   } = useAudioPlayer({
     src: trackUrl,
     autoplay: shouldPlay,
     onend: gotoNextSong,
     onerror: gotoNextSong
   });
-
-  useEffect(() => {
-    if (desiredVolume !== volume) {
-      volume(desiredVolume);
-    }
-  },
-    [desiredVolume]
-  )
 
   useEffect(() => {
     if (!shouldPlay && !reset) {

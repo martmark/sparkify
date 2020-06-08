@@ -416,7 +416,6 @@ class MusicPlayer extends React.Component {
               trackUrl={this.state.currentSong.track_url}
               gotoNextSong={this.next}
               reset={this.state.reset}
-              desiredVolume={this.state.volume}
             />
             <IconContext.Provider
               value={{ className: "play-icon reacticon", size: "2em" }}
