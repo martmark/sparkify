@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useAudioPlayer } from 'react-use-audio-player';
 import { IconContext } from "react-icons";
 import {
@@ -6,17 +6,29 @@ import {
   IoMdVolumeOff
 } from 'react-icons/io';
 
-const VolumeControl = () => {
+const VolumeControl = ({ songId, persistentVolume, setPersistentVolume }) => {
   const { volume } = useAudioPlayer();
-  const [stateVolume, setStateVolume] = useState(1);
-  const [prevVol, setPrevVol] = useState(1);
+  const [stateVolume, setStateVolume] = useState(persistentVolume);
+  const [prevVol, setPrevVol] = useState(persistentVolume);
+
+  const setNewVol = (newVol) => {
+    setPrevVol(stateVolume);
+    setStateVolume(newVol);
+    setPersistentVolume(newVol);
+
+    return volume(newVol);
+  }
+
+  useEffect(() => {
+    setNewVol(persistentVolume);
+  },
+    [songId]
+  );
 
   const handleChange = useCallback(({ target: { value }}) => {
-    setPrevVol(stateVolume);
-    setStateVolume(value);
-    return volume(value);
+    return setNewVol(value);
   },
-    [volume]
+    [volume, prevVol]
   );
 
   const mutePlayer = () => {

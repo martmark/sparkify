@@ -7,7 +7,7 @@ const Song = ({
   reset,
   trackUrl = "",
   gotoNextSong,
-  desiredVolume,
+  persistentVolume,
   setContainerPlaying
 }) => {
   const {
@@ -22,7 +22,8 @@ const Song = ({
     src: trackUrl,
     autoplay: shouldPlay,
     onend: gotoNextSong,
-    onerror: gotoNextSong
+    onerror: gotoNextSong,
+    volume: persistentVolume
   });
 
   useEffect(() => {

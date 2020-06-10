@@ -31,8 +31,7 @@ export default class MusicPlayer extends React.Component {
       queue: [],
       repeat: false,
       reset: false,
-      volume: 100,
-      prevVolume: null,
+      volume: 1,
       cursorPosition: 0,
       prevSongs: [],
       upNext: [],
@@ -74,6 +73,7 @@ export default class MusicPlayer extends React.Component {
     this.setPlaying = this.setPlaying.bind(this);
     this.showQueue = this.showQueue.bind(this);
     this.setEffectiveQueue = this.setEffectiveQueue.bind(this);
+    this.setVolume = this.setVolume.bind(this);
     this.removeFromQueue = this.removeFromQueue.bind(this);
     this.updateCursor = this.updateCursor.bind(this);
   }
@@ -106,6 +106,7 @@ export default class MusicPlayer extends React.Component {
             ...newProps.currentSong,
           },
           queue: newProps.queue,
+          effectiveQueue: newProps.queue,
           playing: newProps.playing,
           currentIdx: newProps.currentIdx,
           currentPropSongId: newProps.currentSong.id,
@@ -147,14 +148,19 @@ export default class MusicPlayer extends React.Component {
         ...newSong,
       },
       cursorPosition: 0,
-      playing: true,
-      currentIdx
+      playing: true
     };
   }
 
   setPlaying(isPlaying) {
     this.setState({
       playing: isPlaying
+    });
+  }
+
+  setVolume(newVol) {
+    this.setState({
+      volume: newVol
     });
   }
 
@@ -215,10 +221,16 @@ export default class MusicPlayer extends React.Component {
   }
 
   clickNext() {
-    this.setState(({ currentIdx, effectiveQueue, upNext }) => {
+    this.setState(({ currentIdx, currentSong, effectiveQueue, prevSongs, upNext }) => {
       if (upNext.length > 0) {
         let newUpNext = [...upNext];
         const nextSong = newUpNext.shift();
+        let newPrevSongs = [...prevSongs];
+
+        if (currentSong && currentSong.id) {
+          newPrevSongs.push(currentSong);
+        }
+
         return {
           ...this.newSongState(nextSong),
           upNext: newUpNext
@@ -226,14 +238,20 @@ export default class MusicPlayer extends React.Component {
 
       // Handle the case where the current song is the last song in the effectiveQueue.
       } else if (effectiveQueue.length === 0) {
-        return RESET_STATE;
+        return this.RESET_STATE;
       } else {
-        let newEffectiveQueue = [...effectiveQueue];
-        const newSong = newEffectiveQueue.shift();
+        const newEffectiveQueue = effectiveQueue.slice(1);
+        const newSong = effectiveQueue[0];
+        let newPrevSongs = [...prevSongs];
+
+        if (currentSong && currentSong.id) {
+          newPrevSongs.push(newSong);
+        }
 
         return {
-          ...this.newSongState(newSongState),
-          effectiveQueue: newEffectiveQueue
+          ...this.newSongState(newSong),
+          effectiveQueue: newEffectiveQueue,
+          previous: newPrevSongs
         };
       }
 
@@ -319,6 +337,7 @@ export default class MusicPlayer extends React.Component {
               shouldPlay={this.state.playing}
               setContainerPlaying={this.setPlaying}
               trackUrl={song.track_url}
+              persistentVolume={this.state.volume}
               gotoNextSong={this.next}
               reset={this.state.reset}
             />
@@ -337,7 +356,11 @@ export default class MusicPlayer extends React.Component {
             queue={this.state.queue}
             onClick={this.showQueue}
           />
-          <VolumeControl />
+          <VolumeControl
+            persistentVolume={this.state.volume}
+            setPersistentVolume={this.setVolume}
+            songId={song.id}
+          />
         </div>
       </div>
     );
