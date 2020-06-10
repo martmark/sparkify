@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { ShuffleButton } from './media_buttons.jsx';
 
 // We may not even need to store shuffle state in container.
 // If the main container only cares about the effectiveQueue and the currentIdx
 // and this component changes those based on shuffleState then the container
 // never needs to know if it is playing the shuffle queue or the original queue
+// Counter to this it may be useful to save something in the container state
+// like requestReShuffle that will signal to this component that it needs to
+// reshuffle the playlist.
 const ShuffleHandler = ({
   origQueue,
-  effectiveQueue,
+  effectiveQueue = origQueue,
   setEffectiveQueue,
   currentIdx
 }) => {
@@ -14,9 +18,12 @@ const ShuffleHandler = ({
 
   // If  receive a new idx we need to build a new queue around that idx
   useEffect(() => {
-    if (isOn && origQueue[currentIdx] ) {
+    // If the queue isn't shuffled, shuffle it
+    if (isOn && origQueue === effectiveQueue) {
       const shuffledQueue = shuffleQueue(origQueue, currentIdx);
-      setEffectiveQueue(shuffleQueue, 0);
+      setEffectiveQueue(shuffledQueue, 0);
+    } else if (!isOn && origQueue !== effectiveQueue) {
+      setEffectiveQueue(origQueue, currentIdx);
     }
   },
     [origQueue, currentIdx]
@@ -30,13 +37,15 @@ const ShuffleHandler = ({
       setIsOn(true);
 
       const shuffledQueue = shuffleQueue(origQueue, currentIdx);
-      return setEffectiveQueue(shuffleQueue, 0);
+      return setEffectiveQueue(shuffledQueue, 0);
     } else {
       setIsOn(false);
+
       const currentSong = effectiveQueue[currentIdx];
+      console.log(currentSong, origQueue);
       const origIndex = origQueue.indexOf(currentSong);
 
-      return setEffectiveQueue(origIndex, origIdx);
+      return setEffectiveQueue(origQueue, origIndex);
     }
   },
     [isOn, origQueue, currentIdx, effectiveQueue, setEffectiveQueue]
@@ -59,7 +68,7 @@ const shuffleQueue = (arr, currentIdx) => {
       [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
   }
 
-  console.log(arr, newArr);
+  console.log("Array re-shuffle");
   return [firstEle, ...newArr];
 }
 

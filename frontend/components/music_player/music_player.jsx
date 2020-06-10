@@ -15,31 +15,9 @@ import {
   RepeatButton
 } from './media_buttons.jsx';
 
-const EMPTY_SONG = {
-  title: '',
-  duration: "0:00",
-  track_url: '',
-  currentTime: 0.00,
-  id: null,
-  image_url: ''
-};
-
-const RESET_STATE = {
-  currentIdx: 0,
-  shuffleIdx: 0,
-  queue: [],
-  upNext: [],
-  currentSong: EMPTY_SONG,
-  reset: true,
-  cursorPosition: 0,
-  playing: false
-};
-
 export default class MusicPlayer extends React.Component {
   constructor(props) {
     super(props);
-    this.musicPlayer = React.createRef();
-    console.log(props);
     this.state = {
       playing: props.playing,
       currentSong: {
@@ -56,15 +34,34 @@ export default class MusicPlayer extends React.Component {
       volume: 100,
       prevVolume: null,
       cursorPosition: 0,
+      prevSongs: [],
       upNext: [],
       origQueue: [],
       effectiveQueue: [],
-      shuffleQueue: [],
       origIndex: null,
       currentPropSongId: props.currentSong.id,
-      shuffleIdx: null,
       queueName: props.queueName
     };
+
+    this.EMPTY_SONG = (props.currentSong ? props.currentSong : {
+      title: '',
+      duration: "0:00",
+      track_url: '',
+      currentTime: 0.00,
+      id: null,
+      image_url: ''
+    });
+
+    this.RESET_STATE = {
+      currentIdx: 0,
+      queue: [],
+      upNext: [],
+      currentSong: this.EMPTY_SONG,
+      reset: true,
+      cursorPosition: 0,
+      playing: false
+    };
+
 
     this.positionInterval = null;
     this.play = this.play.bind(this);
@@ -73,12 +70,11 @@ export default class MusicPlayer extends React.Component {
     this.previous = this.previous.bind(this);
     this.clickNext = this.clickNext.bind(this);
     this.toggleRepeat = this.toggleRepeat.bind(this);
-    this.toggleShuffle = this.toggleShuffle.bind(this);
     this.isntPlaying = this.isntPlaying.bind(this);
+    this.setPlaying = this.setPlaying.bind(this);
     this.showQueue = this.showQueue.bind(this);
     this.setEffectiveQueue = this.setEffectiveQueue.bind(this);
     this.removeFromQueue = this.removeFromQueue.bind(this);
-    this.shuffleArray = this.shuffleArray.bind(this);
     this.updateCursor = this.updateCursor.bind(this);
   }
 
@@ -103,41 +99,19 @@ export default class MusicPlayer extends React.Component {
       || state.currentPropSongId !== newProps.currentSong.id
       || (state.queueName !== newProps.queueName)) {
       if (newProps.queue.length > 0) {
-        if (state.shuffle) {
-          const currentSong = newProps.currentSong;
-          let shuffledQueue = shuffleArray(newProps.queue);
-          const shuffledQueueIdx = shuffledQueue.indexOf(currentSong);
-          shuffledQueue.splice(shuffledQueueIdx, 1);
-          shuffledQueue.unshift(currentSong);
-          return {
-            currentSong: {
-              currentTime: 0.00,
-              ...currentSong
-            },
-            origQueue: newProps.queue,
-            origIndex: newProps.currentIdx,
-            shuffleQueue: shuffledQueue,
-            playing: newProps.playing,
-            shuffleIdx: 0,
-            currentPropSongId: currentSong.id,
-            cursorPosition: 0,
-            queueName: newProps.queueName,
-          };
-        } else {
-          console.log(state, newProps.currentSong);
-          return {
-            currentSong: {
-              currentTime: 0.00,
-              ...newProps.currentSong,
-            },
-            queue: newProps.queue,
-            playing: newProps.playing,
-            currentIdx: newProps.currentIdx,
-            currentPropSongId: newProps.currentSong.id,
-            cursorPosition: 0,
-            queueName: newProps.queueName
-          };
-        }
+        console.log(state, newProps.currentSong);
+        return {
+          currentSong: {
+            currentTime: 0.00,
+            ...newProps.currentSong,
+          },
+          queue: newProps.queue,
+          playing: newProps.playing,
+          currentIdx: newProps.currentIdx,
+          currentPropSongId: newProps.currentSong.id,
+          cursorPosition: 0,
+          queueName: newProps.queueName
+        };
       } else {
         return {
           currentSong: {
@@ -166,7 +140,7 @@ export default class MusicPlayer extends React.Component {
     clearInterval(this.positionInterval);
   }
 
-  newSongState(newSong, currentIdx = 0) {
+  newSongState(newSong) {
     return {
       currentSong: {
         currentTime: 0.00,
@@ -174,26 +148,29 @@ export default class MusicPlayer extends React.Component {
       },
       cursorPosition: 0,
       playing: true,
-      currentIdx,
-      shuffleIdx
+      currentIdx
     };
   }
 
-  // Can optionally take origIdx and shuffleIdx to allow reuse for shuffle
-  setSong(newSong, currentIdx) {
+  setPlaying(isPlaying) {
+    this.setState({
+      playing: isPlaying
+    });
+  }
+
+  setSong(newSong) {
     this.setState(
-      newSongState(newSong, currentIdx),
+      this.newSongState(newSong),
       () => {
         this.play()
       }
     );
   }
 
-  setEffectiveQueue(newQueue, curIdx) {
+  setEffectiveQueue(newQueue) {
     this.setState({
-      effectiveQueue: newQueue,
-      currentIdx: curIdx
-    });
+      effectiveQueue: newQueue
+    }, () => console.log(this.state.effectiveQueue));
   }
 
   updateCursor(newCursor) {
@@ -240,20 +217,24 @@ export default class MusicPlayer extends React.Component {
   clickNext() {
     this.setState(({ currentIdx, effectiveQueue, upNext }) => {
       if (upNext.length > 0) {
-        let newUpNext = [...upnext];
+        let newUpNext = [...upNext];
         const nextSong = newUpNext.shift();
         return {
-          ...newSongState(nextSong),
+          ...this.newSongState(nextSong),
           upNext: newUpNext
         };
 
       // Handle the case where the current song is the last song in the effectiveQueue.
-      } else if (currentIdx >= effectiveQueue.length - 1) {
+      } else if (effectiveQueue.length === 0) {
         return RESET_STATE;
       } else {
-        const newIdx = this.state.currentIdx + 1;
+        let newEffectiveQueue = [...effectiveQueue];
+        const newSong = newEffectiveQueue.shift();
 
-        this.setSong(effectiveQueue[newIdx], newIdx);
+        return {
+          ...this.newSongState(newSongState),
+          effectiveQueue: newEffectiveQueue
+        };
       }
 
       if (this.props.modalType == 'queue') {
@@ -277,7 +258,7 @@ export default class MusicPlayer extends React.Component {
       () => {
         this.unsetReset()
         const { currentIdx, effectiveQueue } = this.state;
-        const newSong = queue[currentIdx];
+        const newSong = effectiveQueue[currentIdx];
         this.setSong(newSong, currentIdx);
       }
     );
@@ -285,18 +266,6 @@ export default class MusicPlayer extends React.Component {
 
   toggleRepeat() {
     this.setState((oldState) => { repeat: !oldState.repeat });
-  }
-
-  // When toggle is turned on, the newIdx should be set to 0
-  // When toggle is turned off, the newIdx should be set to the current song's
-  // index in the original queue
-  toggleShuffle(newIdx) {
-    return this.setState(({ shuffle }) => {
-      return {
-        shuffle: !shuffle,
-        currentIdx: newIdx
-      }
-    });
   }
 
   isntPlaying() {
@@ -307,50 +276,20 @@ export default class MusicPlayer extends React.Component {
   //selectively render based on a renderModal boolean saved in state
   showQueue() {
     // debugger;
-    if (this.state.shuffle) {
-      if (this.state.shuffleQueue.length > 0) {
-        let normalQueue = this.state.shuffleQueue.filter((song, idx) => idx > this.state.shuffleIdx);
-        this.props.openModal({
-          modalType: 'queue',
-          upNext: this.state.upNext,
-          removeFromQueue: this.removeFromQueue,
-          normalQueue,
-          queueName: this.state.queueName
-        });
-      } else {
-        this.props.openModal({
-          modalType: 'queue',
-          upNext: this.state.upNext,
-          removeFromQueue: this.removeFromQueue,
-          normalQueue: [],
-          queueName: this.state.queueName
-        });
-      }
-    } else {
-      // debugger;
-      let normalQueue = this.state.queue.filter((_, idx) => idx > this.state.currentIdx);
-      this.props.openModal({
-        modalType: 'queue',
-        upNext: this.state.upNext,
-        removeFromQueue: this.removeFromQueue,
-        normalQueue,
-        queueName: this.state.queueName
-      });
-    }
+    // debugger;
+    let normalQueue = this.state.queue.filter((_, idx) => idx > this.state.currentIdx);
+    this.props.openModal({
+      modalType: 'queue',
+      upNext: this.state.upNext,
+      removeFromQueue: this.removeFromQueue,
+      normalQueue,
+      queueName: this.state.queueName
+    });
   }
 
   removeFromQueue(idx) {
     this.state.upNext.splice(idx, 1);
     this.showQueue();
-  }
-
-  shuffleArray(arr) {
-    let newArr = [...arr];
-    for (let i = newArr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
-    }
-    return newArr;
   }
 
   render() {
@@ -370,11 +309,15 @@ export default class MusicPlayer extends React.Component {
         <div className="music-player-center">
           <div className="music-player-controls">
             <ShuffleHandler
+              origQueue={this.state.queue}
               setEffectiveQueue={this.setEffectiveQueue}
+              effectiveQueue={this.effectiveQueue}
+              currentIdx={this.state.currentIdx}
             />
             <BackButton gotoLastSong={this.previous} />
             <Song
               shouldPlay={this.state.playing}
+              setContainerPlaying={this.setPlaying}
               trackUrl={song.track_url}
               gotoNextSong={this.next}
               reset={this.state.reset}

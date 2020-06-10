@@ -2,7 +2,14 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useAudioPlayer } from 'react-use-audio-player';
 import { PlayPauseButton } from './media_buttons.jsx';
 
-const Song = ({ shouldPlay, reset, trackUrl = "", gotoNextSong, desiredVolume }) => {
+const Song = ({
+  shouldPlay,
+  reset,
+  trackUrl = "",
+  gotoNextSong,
+  desiredVolume,
+  setContainerPlaying
+}) => {
   const {
     playing,
     ended,
@@ -37,6 +44,7 @@ const Song = ({ shouldPlay, reset, trackUrl = "", gotoNextSong, desiredVolume })
 
   useEffect(() => {
     if (ended) {
+      setContainerPlaying(false);
       gotoNextSong();
     }
   },
