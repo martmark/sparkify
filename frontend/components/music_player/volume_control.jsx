@@ -7,7 +7,7 @@ import {
 } from 'react-icons/io';
 
 const VolumeControl = ({ songId, persistentVolume, setPersistentVolume }) => {
-  const { volume } = useAudioPlayer();
+  const { volume, loading } = useAudioPlayer();
   const [stateVolume, setStateVolume] = useState(persistentVolume);
   const [prevVol, setPrevVol] = useState(persistentVolume);
 
@@ -20,9 +20,11 @@ const VolumeControl = ({ songId, persistentVolume, setPersistentVolume }) => {
   }
 
   useEffect(() => {
-    setNewVol(persistentVolume);
+    if (!loading) {
+      setNewVol(persistentVolume);
+    }
   },
-    [songId]
+    [songId, persistentVolume, loading]
   );
 
   const handleChange = useCallback(({ target: { value }}) => {
