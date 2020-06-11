@@ -17,16 +17,11 @@ import { clearUpNext } from './../../actions/music_actions';
 export default class PlayQueue extends React.Component {
   constructor(props) {
     super(props);
+    console.log("Re-render PlayQueue");
 
     this.state = {
       playing: props.playing,
-      currentSong: {
-        ended: false,
-        error: false,
-        duration: "0:00",
-        currentTime: 0.00,
-        ...props.startingSong,
-      },
+      currentSong: props.startingSong,
       currentIdx: 0,
       repeat: false,
       reset: false,
@@ -80,16 +75,12 @@ export default class PlayQueue extends React.Component {
       const newPrevSongs = newProps.queue.slice(0, newProps.currentIdx);
       const newQueue = newProps.queue.slice(newProps.currentIdx + 1);
       return {
-        currentSong: {
-          currentTime: 0.00,
-          ...newProps.currentSong,
-        },
+        currentSong: newProps.currentSong,
         prevSongs: newPrevSongs,
         queue: newQueue,
         effectiveQueue: newQueue,
         playing: newProps.playing,
         currentIdx: 0,
-        currentPropSongId: newProps.currentSong.id,
         cursorPosition: 0,
         queueName: newProps.queueName
       };
@@ -102,10 +93,7 @@ export default class PlayQueue extends React.Component {
 
   newSongState(newSong) {
     return {
-      currentSong: {
-        currentTime: 0.00,
-        ...newSong,
-      },
+      currentSong: newSong,
       cursorPosition: 0,
       playing: true
     };
@@ -138,9 +126,10 @@ export default class PlayQueue extends React.Component {
     );
   }
 
-  setEffectiveQueue(newQueue) {
+  setEffectiveQueue(newQueue, newPrevious = []) {
     this.setState({
-      effectiveQueue: newQueue
+      effectiveQueue: newQueue,
+      prevSongs: newPrevious
     }, () => console.log(this.state.effectiveQueue));
   }
 
@@ -185,8 +174,6 @@ export default class PlayQueue extends React.Component {
         if (currentSong && currentSong.id) {
           newPrevSongs.push(currentSong);
         }
-
-        console.log(currentSong, newSong, newEffectiveQueue, newPrevSongs);
 
         return {
           ...this.newSongState(newSong),
@@ -276,10 +263,10 @@ export default class PlayQueue extends React.Component {
         <div className="music-player-center">
           <div className="music-player-controls">
             <ShuffleHandler
-              origQueue={this.state.queue}
+              origQueue={this.props.origQueue}
+              currentSong={song}
               setEffectiveQueue={this.setEffectiveQueue}
               effectiveQueue={this.effectiveQueue}
-              currentIdx={this.state.currentIdx}
             />
             <BackButton gotoLastSong={this.previous} />
             <Song

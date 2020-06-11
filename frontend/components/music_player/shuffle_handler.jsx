@@ -9,10 +9,10 @@ import { ShuffleButton } from './media_buttons.jsx';
 // like requestReShuffle that will signal to this component that it needs to
 // reshuffle the playlist.
 const ShuffleHandler = ({
+  currentSong,
   origQueue,
   effectiveQueue = origQueue,
-  setEffectiveQueue,
-  currentIdx
+  setEffectiveQueue
 }) => {
   const [isOn, setIsOn] = useState(false);
 
@@ -20,13 +20,13 @@ const ShuffleHandler = ({
   useEffect(() => {
     // If the queue isn't shuffled, shuffle it
     if (isOn && origQueue === effectiveQueue) {
-      const shuffledQueue = shuffleQueue(origQueue);
+      const shuffledQueue = shuffleQueue(origQueue, currentSong);
       setEffectiveQueue(shuffledQueue);
     } else if (!isOn && origQueue !== effectiveQueue) {
       setEffectiveQueue(origQueue);
     }
   },
-    [origQueue, currentIdx]
+    [origQueue, currentSong]
   );
 
   // When toggle is turned on, the newIdx should be set to 0
@@ -36,19 +36,20 @@ const ShuffleHandler = ({
     if (!isOn) {
       setIsOn(true);
 
-      const shuffledQueue = shuffleQueue(origQueue, currentIdx);
+      const shuffledQueue = shuffleQueue(origQueue, currentSong);
+
       return setEffectiveQueue(shuffledQueue, 0);
     } else {
       setIsOn(false);
 
-      const currentSong = effectiveQueue[currentIdx];
-      console.log(currentSong, origQueue);
       const origIndex = origQueue.indexOf(currentSong);
+      const newPrevious = origQueue.slice(0, origIndex);
+      const newQueue = origQueue.slice(origIndex + 1);
 
-      return setEffectiveQueue(origQueue, origIndex);
+      return setEffectiveQueue(newQueue, newPrevious);
     }
   },
-    [isOn, origQueue, currentIdx, effectiveQueue, setEffectiveQueue]
+    [isOn, origQueue, effectiveQueue, setEffectiveQueue]
   );
 
   return (
@@ -58,8 +59,11 @@ const ShuffleHandler = ({
 
 // Return new array will the currentIdx at the beginning and all other elements
 // randomly shuffled.
-const shuffleQueue = (arr) => {
+const shuffleQueue = (arr, song) => {
+  const songIdx = arr.indexOf(song);
+  console.log(arr, song, songIdx);
   let newArr = [...arr];
+  console.log(newArr.splice(songIdx, 1));
 
   for (let i = newArr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
