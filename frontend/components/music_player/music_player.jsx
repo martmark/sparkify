@@ -69,8 +69,8 @@ export default class MusicPlayer extends React.Component {
     this.previous = this.previous.bind(this);
     this.clickNext = this.clickNext.bind(this);
     this.toggleRepeat = this.toggleRepeat.bind(this);
-    this.isntPlaying = this.isntPlaying.bind(this);
     this.setPlaying = this.setPlaying.bind(this);
+    this.togglePlaying = this.togglePlaying.bind(this);
     this.showQueue = this.showQueue.bind(this);
     this.setEffectiveQueue = this.setEffectiveQueue.bind(this);
     this.setVolume = this.setVolume.bind(this);
@@ -87,6 +87,7 @@ export default class MusicPlayer extends React.Component {
     // select a new song to intentionally restart the playlist is indistinguishable
     // from the initial click to select a song.
 
+    console.log(state.playing);
     if (newProps.upNext) {
       let newSong = newProps.upNext;
       let newUpNextArr = state.upNext.concat(newSong);
@@ -95,20 +96,23 @@ export default class MusicPlayer extends React.Component {
         showModel: (newProps.modalType == 'queue')
       };
     } else if ((state.currentPropSongId !== state.currentSong.id
-      && !state.playing)
+      && !state.playing && false)
       || state.currentPropSongId !== newProps.currentSong.id
       || (state.queueName !== newProps.queueName)) {
       if (newProps.queue.length > 0) {
-        console.log(state, newProps.currentSong);
+        const newPrevSongs = newProps.queue.slice(0, newProps.currentIdx);
+        const newQueue = newProps.queue.slice(newProps.currentIdx + 1);
+        console.log(newPrevSongs);
         return {
           currentSong: {
             currentTime: 0.00,
             ...newProps.currentSong,
           },
-          queue: newProps.queue,
-          effectiveQueue: newProps.queue,
+          prevSongs: newPrevSongs,
+          queue: newQueue,
+          effectiveQueue: newQueue,
           playing: newProps.playing,
-          currentIdx: newProps.currentIdx,
+          currentIdx: 0,
           currentPropSongId: newProps.currentSong.id,
           cursorPosition: 0,
           queueName: newProps.queueName
@@ -124,7 +128,8 @@ export default class MusicPlayer extends React.Component {
         };
       }
       return { playing: newProps.playing };
-    } else if (state.playing == false) {
+    /*} else if (state.playing === false) {
+      console.log("Start song please");
       return {
         currentSong: {
           currentTime: 0.00,
@@ -132,9 +137,10 @@ export default class MusicPlayer extends React.Component {
         },
         playing: newProps.playing,
         cursorPosition: 0
-      };
+      };*/
+    } else {
+      return null;
     }
-    return null;
   }
 
   componentWillUnmount() {
@@ -156,6 +162,12 @@ export default class MusicPlayer extends React.Component {
     this.setState({
       playing: isPlaying
     });
+  }
+
+  togglePlaying() {
+    this.setState(({ playing }) => {
+      playing: !playing
+    }, () => console.log(this.state.playing));
   }
 
   setVolume(newVol) {
@@ -262,22 +274,27 @@ export default class MusicPlayer extends React.Component {
   }
 
   previous() {
-    this.setState(({ currentIdx, effectiveQueue, song }) => {
-      const newIdx = currentIdx - 1;
-      // Handle the case where the last index was the first song in the queue
-      if (newIdx < 0) {
-        return RESET_STATE
-      } else {
-        return {
-          currentIdx: newIdx
-        };
+    this.setState(({ effectiveQueue, prevSongs, song }) => {
+      // Handle the case where there is no song to go back to
+      if (prevSongs.length === 0) {
+        return this.RESET_STATE;
       }
+
+      const newEffectiveQueue = effectiveQueue.slice();
+      newEffectiveQueue.unshift(song);
+
+      let newPrevSongs = [...prevSongs];
+      const newSong = newPrevSongs.pop();
+
+      return {
+        ...this.newSongState(newSong),
+        prevSongs: newPrevSongs,
+        effectiveQueue: newEffectiveQueue,
+        queue: newEffectiveQueue
+      };
     },
       () => {
         this.unsetReset()
-        const { currentIdx, effectiveQueue } = this.state;
-        const newSong = effectiveQueue[currentIdx];
-        this.setSong(newSong, currentIdx);
       }
     );
   }
@@ -286,14 +303,9 @@ export default class MusicPlayer extends React.Component {
     this.setState((oldState) => { repeat: !oldState.repeat });
   }
 
-  isntPlaying() {
-    return !this.state.playing;
-  }
-
   //TODOMAYBE: Rework this so that the modal is passed down as a prop and then
   //selectively render based on a renderModal boolean saved in state
   showQueue() {
-    // debugger;
     // debugger;
     let normalQueue = this.state.queue.filter((_, idx) => idx > this.state.currentIdx);
     this.props.openModal({
@@ -336,6 +348,8 @@ export default class MusicPlayer extends React.Component {
             <Song
               shouldPlay={this.state.playing}
               setContainerPlaying={this.setPlaying}
+              toggleShouldPlay={this.togglePlaying}
+              setShouldPlay={this.setPlaying}
               trackUrl={song.track_url}
               persistentVolume={this.state.volume}
               gotoNextSong={this.next}

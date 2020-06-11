@@ -20,10 +20,10 @@ const ShuffleHandler = ({
   useEffect(() => {
     // If the queue isn't shuffled, shuffle it
     if (isOn && origQueue === effectiveQueue) {
-      const shuffledQueue = shuffleQueue(origQueue, currentIdx);
-      setEffectiveQueue(shuffledQueue, 0);
+      const shuffledQueue = shuffleQueue(origQueue);
+      setEffectiveQueue(shuffledQueue);
     } else if (!isOn && origQueue !== effectiveQueue) {
-      setEffectiveQueue(origQueue, currentIdx);
+      setEffectiveQueue(origQueue);
     }
   },
     [origQueue, currentIdx]
@@ -58,10 +58,8 @@ const ShuffleHandler = ({
 
 // Return new array will the currentIdx at the beginning and all other elements
 // randomly shuffled.
-const shuffleQueue = (arr, currentIdx) => {
-  const firstEle = arr[currentIdx];
+const shuffleQueue = (arr) => {
   let newArr = [...arr];
-  newArr.splice(currentIdx, 1);
 
   for (let i = newArr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -69,7 +67,7 @@ const shuffleQueue = (arr, currentIdx) => {
   }
 
   console.log("Array re-shuffle");
-  return [firstEle, ...newArr];
+  return newArr;
 }
 
 export { ShuffleHandler as default };

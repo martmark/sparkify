@@ -1,9 +1,11 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAudioPlayer } from 'react-use-audio-player';
 import { PlayPauseButton } from './media_buttons.jsx';
 
 const Song = ({
   shouldPlay,
+  toggleShouldPlay,
+  setShouldPlay,
   reset,
   trackUrl = "",
   gotoNextSong,
@@ -14,6 +16,7 @@ const Song = ({
     playing,
     ended,
     togglePlayPause,
+    play,
     pause,
     stop,
     loading,
@@ -29,6 +32,8 @@ const Song = ({
   useEffect(() => {
     if (!shouldPlay && !reset) {
       pause();
+    } else if (shouldPlay && !playing) {
+      play();
     }
   },
     [shouldPlay, reset]
@@ -52,11 +57,21 @@ const Song = ({
     [ended]
   )
 
+  const togglePlaying = useCallback(() => {
+    setShouldPlay(!playing);
+    togglePlayPause();
+  },
+    [playing, togglePlayPause, setShouldPlay]
+  );
+
   // Render no-op button if loading or empty track
   return (loading || trackUrl.length === 0 ? (
     <PlayPauseButton playing={true} />
   ) : (
-    <PlayPauseButton playing={playing} onClick={togglePlayPause}/>
+    <PlayPauseButton
+      playing={playing}
+      onClick={togglePlaying}
+    />
   ));
 }
 
