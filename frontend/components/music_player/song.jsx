@@ -25,18 +25,18 @@ const Song = ({
   } = useAudioPlayer({
     src: trackUrl,
     autoplay: shouldPlay,
-    onend: gotoNextSong,
     onerror: gotoNextSong,
     volume: persistentVolume
   });
 
+
   // When the trackUrl changes, stop the current track and load the new one
   useEffect(() => {
-    console.log(trackUrl);
-    if (!loading) {
-      stop();
+    // Avoid calling this on the first render
+    if (!loading && trackUrl.length > 0) {
       load({ src: trackUrl, autoplay: shouldPlay });
     }
+
     // Return stop to be used on cleanup
     return stop;
   },
@@ -46,8 +46,10 @@ const Song = ({
   useEffect(() => {
     if (!shouldPlay && !reset) {
       pause();
-    } else if (shouldPlay && !playing) {
-      play();
+    } else if (!reset && ready && shouldPlay && !playing) {
+      // Although calling play seems like something we should do here, it causes
+      // the last song to start playing if it was paused when gotoNextSong is
+      // called.
     }
   },
     [shouldPlay, reset]
@@ -57,6 +59,7 @@ const Song = ({
     if (reset) {
       stop();
     }
+
     // Return stop to be used on cleanup
     return stop;
   },
@@ -64,8 +67,7 @@ const Song = ({
   )
 
   useEffect(() => {
-    if (ended) {
-      setContainerPlaying(false);
+    if (ended && shouldPlay) {
       gotoNextSong();
     }
   },

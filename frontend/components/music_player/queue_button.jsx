@@ -2,9 +2,9 @@ import React from 'react';
 import { IconContext } from 'react-icons';
 import { MdQueueMusic } from 'react-icons/md';
 
-const QueueButton = ({ queue, upNext, showQueue }) => {
+const QueueButton = ({ queue, usingUpNext, showQueue }) => {
   let classAddition = "";
-  if (upNext.length > 0) {
+  if (usingUpNext) {
     classAddition = " queue-active clickable";
   } else if (queue.length > 0) {
     classAddition = " clickable";
