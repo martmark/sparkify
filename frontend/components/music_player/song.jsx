@@ -19,6 +19,7 @@ const Song = ({
     play,
     pause,
     stop,
+    load,
     loading,
     ready,
   } = useAudioPlayer({
@@ -28,6 +29,19 @@ const Song = ({
     onerror: gotoNextSong,
     volume: persistentVolume
   });
+
+  // When the trackUrl changes, stop the current track and load the new one
+  useEffect(() => {
+    console.log(trackUrl);
+    if (!loading) {
+      stop();
+      load({ src: trackUrl, autoplay: shouldPlay });
+    }
+    // Return stop to be used on cleanup
+    return stop;
+  },
+    [trackUrl]
+  )
 
   useEffect(() => {
     if (!shouldPlay && !reset) {
@@ -43,6 +57,7 @@ const Song = ({
     if (reset) {
       stop();
     }
+    // Return stop to be used on cleanup
     return stop;
   },
     [reset]
@@ -65,7 +80,7 @@ const Song = ({
   );
 
   // Render no-op button if loading or empty track
-  return (loading || trackUrl.length === 0 ? (
+  return (!ready || trackUrl.length === 0 ? (
     <PlayPauseButton playing={true} />
   ) : (
     <PlayPauseButton
