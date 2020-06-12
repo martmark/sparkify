@@ -4,7 +4,7 @@ process.env.NODE_ENV = 'development';
 
 module.exports = {
   context: __dirname,
-  entry: ['./frontend/sparkify.jsx'],
+  entry: './frontend/sparkify.jsx',
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: 'bundle.js',
