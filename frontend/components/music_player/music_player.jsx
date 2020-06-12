@@ -10,14 +10,11 @@ export default class MusicPlayer extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.reset && this.props !== prevProps) {
-      console.log("undoing reset");
-      console.log(prevProps);
       this.setState({ reset: false });
     }
   }
 
   resetPlaylist() {
-    console.log("resetting");
     this.setState({ reset: true });
   }
 
@@ -30,12 +27,11 @@ export default class MusicPlayer extends React.Component {
       upNext,
       currentIdx
     } = this.props;
+
     const usingUpNext = upNext && upNext.length > 0;
     const origQueue = (usingUpNext ? upNext : queue);
     const effectiveQueue = origQueue.slice(currentIdx + 1);
     const prevSongs = origQueue.slice(0, currentIdx);
-
-    console.log(this.state.reset);
 
     // There is an issue where you cannot restart the playlist form the
     // initial starting song. This is because of the currentSong.id that is set

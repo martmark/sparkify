@@ -38,7 +38,7 @@ const ShuffleHandler = ({
 
       const shuffledQueue = shuffleQueue(origQueue, currentSong);
 
-      return setEffectiveQueue(shuffledQueue, 0);
+      return setEffectiveQueue(shuffledQueue);
     } else {
       setIsOn(false);
 
@@ -49,7 +49,7 @@ const ShuffleHandler = ({
       return setEffectiveQueue(newQueue, newPrevious);
     }
   },
-    [isOn, origQueue, effectiveQueue, setEffectiveQueue]
+    [isOn, origQueue, effectiveQueue, setEffectiveQueue, currentSong]
   );
 
   return (
@@ -60,17 +60,15 @@ const ShuffleHandler = ({
 // Return new array will the currentIdx at the beginning and all other elements
 // randomly shuffled.
 const shuffleQueue = (arr, song) => {
-  const songIdx = arr.indexOf(song);
-  console.log(arr, song, songIdx);
   let newArr = [...arr];
-  console.log(newArr.splice(songIdx, 1));
+  const songIdx = newArr.indexOf(song);
+  newArr.splice(songIdx, 1);
 
   for (let i = newArr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
   }
 
-  console.log("Array re-shuffle");
   return newArr;
 }
 

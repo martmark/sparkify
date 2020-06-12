@@ -17,7 +17,6 @@ import { clearUpNext } from './../../actions/music_actions';
 export default class PlayQueue extends React.Component {
   constructor(props) {
     super(props);
-    console.log("Re-render PlayQueue");
 
     this.state = {
       playing: props.playing,
@@ -108,7 +107,7 @@ export default class PlayQueue extends React.Component {
   togglePlaying() {
     this.setState(({ playing }) => {
       playing: !playing
-    }, () => console.log(this.state.playing));
+    });
   }
 
   setVolume(newVol) {
@@ -130,7 +129,7 @@ export default class PlayQueue extends React.Component {
     this.setState({
       effectiveQueue: newQueue,
       prevSongs: newPrevious
-    }, () => console.log(this.state.effectiveQueue));
+    });
   }
 
   updateCursor(newCursor) {
@@ -147,9 +146,6 @@ export default class PlayQueue extends React.Component {
       });
     }
   }
-
-  // This needs to be called whenever state is reset to avoid locking up the
-  // audio player
 
   pause() {
     this.setState({ playing: false });
@@ -195,36 +191,27 @@ export default class PlayQueue extends React.Component {
   previous() {
     this.setState(({ effectiveQueue, prevSongs, song }) => {
       // Handle the case where there is no song to go back to
-      if (prevSongs.length === 0) {
+      if (prevSongs.length > 0) {
+        const newEffectiveQueue = [song, ...effectiveQueue];
+        const newPrevSongs = [...prevSongs];
+        const newSong = newPrevSongs.pop();
+
+        return {
+          ...this.newSongState(newSong),
+          prevSongs: newPrevSongs,
+          effectiveQueue: newEffectiveQueue,
+          queue: newEffectiveQueue
+        };
+
+      } else {
         this.props.resetPlaylist();
         return this.RESET_STATE;
       }
-
-      const newEffectiveQueue = [song, ...effectiveQueue];
-
-      const newPrevSongs = [...prevSongs];
-      console.log(newPrevSongs, newEffectiveQueue);
-      const newSong = newPrevSongs.pop();
-
-      return {
-        ...this.newSongState(newSong),
-        prevSongs: newPrevSongs,
-        effectiveQueue: newEffectiveQueue,
-        queue: newEffectiveQueue
-      };
-    },
-      () => {
-        console.log(
-          this.state.prevSongs,
-          this.state.currentSong,
-          this.state.effectiveQueue
-        )
-      }
-    );
+    });
   }
 
   toggleRepeat() {
-    this.setState((oldState) => { repeat: !oldState.repeat });
+    this.setState(({ repeat }) => { repeat: !repeat });
   }
 
   //TODOMAYBE: Rework this so that the modal is passed down as a prop and then
