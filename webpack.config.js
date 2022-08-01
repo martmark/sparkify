@@ -1,4 +1,6 @@
 var path = require('path');
+process.env.BABEL_ENV = 'development';
+process.env.NODE_ENV = 'development';
 
 module.exports = {
   context: __dirname,
@@ -16,7 +18,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           query: {
-            presets: ['@babel/env', '@babel/react']
+            presets: ['react-app']
           }
         },
       }
